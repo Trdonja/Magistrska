@@ -1,0 +1,100 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage{style}
+
+\begin{document}
+
+% --- naslovna stran ---
+\thispagestyle{empty}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics{img/logo_fmf.pdf}
+\end{figure}
+\begin{center}Matematika\ -- 2.~stopnja\end{center}
+\vfill
+\begin{center}{\large
+Domen Močnik\\[2mm]
+{\bf HAMILTONOV PRINCIP V MEHANIKI KONTINUUMA ZA MATERIALE S SINGULARNIMI PLOSKVAMI}\\[10mm]
+Magistrsko delo\\[1cm]
+Mentor: prof.~dr. Igor Dobovšek}
+\end{center}
+\vfill
+\noindent{\large
+Ljubljana, 2015}
+\pagebreak
+
+\pagenumbering{roman}
+
+% --- izjava ---
+\null
+\vfill
+\noindent{Podpisani Domen Močnik izjavljam:
+\begin{itemize}
+\item[-] da sem magistrsko delo z naslovom \textit{Hamiltonov princip v mehaniki kontinuuma za materiale
+s singularnimi ploskvami} izdelal samostojno pod mentorstvom prof.~dr. Igorja Dobovška in
+\item[-] da Fakulteti za matematiko in fiziko Univerze v Ljubljani dovoljujem objavo
+elektronske oblike svojega dela na spletnih straneh.
+\end{itemize}
+\null
+Ljubljana, XX.XX.2015 \hfill Podpis: .......................................}
+\pagebreak
+
+% --- zahvala ---
+\chapter*{Zahvala}
+\input{tex/zahvala}
+
+\null
+
+\noindent Ljubljana, mesec 2015 \hfill Domen Močnik
+\pagebreak
+
+% --- kazalo ---
+\tableofcontents
+\pagebreak
+
+% --- program dela ---
+\chapter*{Program dela}
+\input{tex/program_dela}
+
+\null
+
+\noindent prof.~dr. Igor Dobovšek
+\pagebreak
+
+% --- povzetek ---
+\input{tex/povzetek}
+\pagebreak
+
+\pagenumbering{arabic}
+
+% --- vsebina ---
+
+\input{tex/Opis_materialnega_telesa}
+
+
+% kazalo
+\begin{thebibliography}{99}
+
+\bibitem{bedford}
+A.~Bedford, \emph{Hamilton's principle in continuum mechanics}, Research notes in mathematics {\bf 139},
+Pitman, Boston, London, Melbourne, 1985.
+
+\bibitem{clanek}
+S.~Dost in B.~Tabarrok, \emph{Application of Hamilton's principle to large deformation and flow problems},
+J. appl. mech. {\bf 46} (1979), 285--289.
+
+\bibitem{haupt}
+P.~Haupt, \emph{Continuum mechanics and theory of materials}, Advanced text in physics,
+Springer, Berlin, 2000.
+
+\bibitem{liu}
+I-Shih~Liu, \emph{Continuum mechanics}, Advanced text in physics,
+Springer, Berlin, 2002.
+
+\bibitem{chadwick}
+P.~Chadwick, \emph{Continuum mechanics: Concise theory and problems},
+George Allen \& Unwin, London, 1976.
+
+\end{thebibliography}
+
+\end{document}

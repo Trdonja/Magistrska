@@ -1,0 +1,161 @@
+V klasični mehaniki se materialno telo umesti v trirazsežni evklidski prostor $\E$. Če si
+v prostoru $\E$ izberemo fiksno točko $O$ kot izhodišče, potem lahko vsako drugo točko $P$
+iz $\E$ enolično predstavimo s krajevnim vektorjem od točke $O$ to točke $P$. Množica
+vseh krajevnih vektorjev tvori trirazsežen realni vektorski prostor, ki ga bomo označili z $V$.
+Ničelni vektor $\vek{0}\in V$ ustreza krajevnemu vektorju izhodiščne točke $O$.
+Vektorski prostor $V$ opremimo še s standardnim skalarnim produktom,
+$\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ pa naj bo v naprej izbrana fiksna ortonormirana baza za $V$.
+
+Trenutni konfiguraciji $\chi_t:\B\rightarrow\R^3$ materialnega telesa ob času $t$ pripada ustrezna
+umestitev $\chi_t:\B\rightarrow V$ v evklidski prostor, njuno medsebojno povezanost
+\begin{align*}
+	(\P,t)\mapsto \ \ \chi_t(\P) &= (x^1,x^2,x^3)\in\R^3\\ &\Updownarrow \\
+	\chi_t(\P) &= \vek{x} = y^k\vek{e}_k \in V \\ &\Updownarrow \\
+	\hat{P}(\P ,t) &= P\in\E ,
+\end{align*}
+pa opisujejo gladke realne funkcije treh spremenljivk
+\begin{equation*}
+	\hat{y}^k(x^1,x^2,x^3) = y^k\ \Leftrightarrow\ \hat{x}^k(y^1,y^2,y^3) = x^k.
+\end{equation*}
+
+Podobno, sklicni konfiguraciji $\r:\B\rightarrow\R^3$ materialnega telesa pripada ustrezna
+umestitev $\r:\B\rightarrow V$ v evklidski prostor, njuno medsebojno povezanost
+\begin{align*}
+	\P\mapsto \ \ \r(\P) &= (X^1,X^2,X^3)\in\R^3\\ &\Updownarrow \\
+	\r(\P) &= \vek{X} = Y^K\vek{e}_K \in V \\ &\Updownarrow \\
+	\hat{P}_{\r}(\P) &= P\in\E ,
+\end{align*}
+pa opisujejo gladke realne funkcije treh spremenljivk
+\begin{equation*}
+	\hat{Y}^k(X^1,X^2,X^3) = Y^k\ \Leftrightarrow\ \hat{X}^k(Y^1,Y^2,Y^3) = X^k.
+\end{equation*}
+
+\begin{definicija}\label{def-ks}
+	Naj bosta $\mathcal{D}\subseteq V$ in $U\subseteq\R^3$ odprti množici. Bijektivno gladko preslikavo
+	$\psi:\mathcal{D}\rightarrow U$, katere inverz $\psi^{-1}:U\rightarrow\mathcal{D}$
+	je tudi gladka preslikava, imenujemo \emph{koordinatni sistem} za $\mathcal{D}\subseteq V$
+	oziroma za množico tistih točk iz $\E$, ki imajo krajevni vektor v $\mathcal{D}$.
+\end{definicija}
+
+S koordinatnim sistemom vzpostavimo bijekcijo med krajevnim vektorjem točke v evklidskem prostoru ter
+njenimi koordinatami. Iz koordinatnega sistema dobimo funkcije, ki veljajo za vsako
+točko iz $\mathcal{D}\subseteq\E$ s krajevnim vektorjem $\vek{\xi}=\eta^k\vek{e}_k$ in pripadajočimi
+koordinatami $(\xi^1,\xi^2,\xi^3)$:
+\begin{equation*}
+	\hat{\eta}^k(\xi^1,\xi^2,\xi^3) = \eta^k\ \Leftrightarrow\ \hat{\xi}^k(\eta^1,\eta^2,\eta^3) = \xi^k.
+\end{equation*}
+Komponente $\eta^j$ ter koordinate $\xi^k$ so odvisne od vektorja $\vek{\xi}$. Gladkost funkcije $\psi$
+iz definicije \ref{def-ks} pomeni ravno to, da so funkcije $\hat{\eta}^k$ in $\hat{\xi}^k$ gladke.
+
+V povezavi s koordinatnim sistemom lahko definiramo dve množici vektorjev, in sicer
+\begin{equation*}
+	\vek{g}_k = \frac{\partial\vek{\xi}}{\partial \xi^k} =
+	\frac{\partial}{\partial \xi^k}\hat{\eta}^j(\xi^1,\xi^2,\xi^3)\vek{e}_j
+\end{equation*}
+se imenujejo \emph{tangentni vektorji},
+\begin{equation*}
+	\vek{g}^k = \grad \xi^k(\vek{\xi}) =
+	\frac{\partial}{\partial \eta^j}\hat{\xi}^k(\eta^1,\eta^2,\eta^3)\vek{e}_j
+\end{equation*}
+pa se imenujejo \emph{gradientni vektorji}. Velja $\vek{g}_i\cdot\vek{g}^j=\delta_i^{\phantom{i}j}$.
+
+
+------------------
+
+
+\subsection{Odvajanje}
+
+\begin{definicija}
+	Naj bosta $(W_1,\| .\|_1)$ in $(W_2,\| .\|_2)$ normirana prostora. Naj bo $\mathcal{D}\subseteq W_1$
+	odprta in $F:\mathcal{D}\rightarrow W_2$.
+	\begin{enumerate}
+		\item 
+			Preslikava $F$ je \emph{diferenciabilna} ali \emph{odvedljiva} v točki $x\in\mathcal{D}$,
+			če obstaja taka zvezna linearna preslikava $A:W_1\rightarrow W_2$, da za vsak $h\in W_1$ velja
+			\begin{equation*}
+				F(x+h)=F(x)+A[h]+o(h),
+			\end{equation*}
+			kjer je $o(h)$ količina, za katero velja
+			\begin{equation*}
+				\lim_{h\to 0}\frac{\| o(h)\|_2}{\| h\|_1}=0.
+			\end{equation*}
+			Če $A$ obstaja, se označi z $DF(x)=A$ in se imenuje \emph{krepki} oziroma \emph{Frechetov odvod}.
+		\item
+			Naj bo $h\in W_1$. Če obstaja limita
+			\begin{equation*}
+				\lim_{s\to 0}\frac{1}{s}\Big(F(x+sh)-F(x)\Big)=\frac{d}{ds}F(x+sh)\Big|_{s=0}=\delta F(x)[h],
+			\end{equation*}
+			jo imenujemo \emph{smerni} ali \emph{šibki odvod} preslikave $F$ v točki $x$ v smeri vektorja $h$.
+	\end{enumerate}
+\end{definicija}
+
+Običajno se krepki odvod računa s pomočjo šibkega odvoda.
+Brez dokazov navedimo nekaj pomembnih rezultatov za odvode iz matematične analize.
+
+\begin{trditev}
+	Če je $F$ odvedljiva v točki $x\in\mathcal{D}\subseteq W$, je krepki odvod natanko en,
+	obstaja pa tudi šibki odvod in velja $DF(x)[h]=\delta F(x)[h]$ za vsak $h\in W$.
+\end{trditev}
+
+\begin{izrek}[Odvajanje kompozituma] Naj bo $F:\mathcal{D}^{\mathrm{odp}}\subseteq W_1\rightarrow
+	F(\mathcal{D})\subseteq W_2$ odvedljiva na $\mathcal{D}$ in naj bo
+	$G:F(\mathcal{D})\rightarrow W_3$ odvedljiva na $F(\mathcal{D})$. Potem je $G\circ F:\mathcal{D}
+	\rightarrow W_3$ odvedljiva na $\mathcal{D}$ in velja
+	\begin{equation*}
+		D\left(G\circ F\right)(x)[h]=DG\left(F(x)\right)\left[DF(x)[h]\right]
+	\end{equation*}
+	za vsak $h\in W_1$.
+\end{izrek}
+
+\begin{izrek}[Odvajanje produkta] Naj bo $\pi:W_1 \times W_2\rightarrow W_3$ bilinearna
+	preslikava, $\mathcal{D}$ odprta množica v nekem normiranem prostoru $W$ ter
+	$F:\mathcal{D}\rightarrow W_1$ in $G:\mathcal{D}\rightarrow W_2$
+	odvedljivi preslikavi v točki $x\in\mathcal{D}$. Potem je njun produkt $H=\pi(F,G)$
+	odvedljiv v $x$ in velja
+	\begin{equation*}
+		DH(x)[h]=\pi\left(DF(x)[h],G(x)\right)+\pi\left(F(x),DG(x)[h]\right)
+	\end{equation*}
+	za vsak $h\in W$.
+\end{izrek}
+
+\begin{izrek}[Totalni odvod] Če je $F:W_1\times W_2\rightarrow W_3$ odvedljiva v točki
+$(x,y)\in\mathcal{D}^{\mathrm{odp}}\subseteq W_1\times W_2$,
+%potem obstajata parcialna odvoda v točki $(x,y)\in\mathcal{D}$
+%\begin{align*}
+	%\frac{\partial}{\partial x}F(x,y)[h]&=\lim_{s\to 0}\frac{1}{s}\Big(F(x+sh,y)-F(x,y)\Big)=
+	%\frac{d}{ds}F(x+sh,y)\Big|_{s=0}\\
+	%\frac{\partial}{\partial y}F(x,y)[k]&=\lim_{s\to 0}\frac{1}{s}\Big(F(x,y+sk)-F(x,y)\Big)=
+	%\frac{d}{ds}F(x+sk,y)\Big|_{s=0}\\
+%\end{align*}
+%za vsaka $h\in W_1$ in $k\in W_2$ in velja
+potem obstajata odvoda $\partial_xF(x,y)$ in $\partial_yF(x,y)$ in velja
+\begin{equation*}
+	DF(x,y)[(h,k)]=\partial_xF(x,y)[h]+\partial_yF(x,y)[k].
+\end{equation*}
+\end{izrek}
+Ta izrek ima tudi očitno posplošitev, ko je $F$ preslikava v več kot dveh argumentih.
+
+
+---------------
+POJMOVANJE GRADIENTOV PREKO RIEZSOVEGA IZREKA
+
+, torej linearna preslikava iz $V$ v $\R$. Po Riezsovem izreku o reprezentaciji
+pripada $\nabla f$ natanko določen vektor $\vek{w}\in V$, da je $\nabla f[\vek{u}]=\vek{w}\cdot\vek{u}$ za vsak
+$\vek{u}\in V$. Zato enačimo $\nabla f$ z njegovim reprezentacijskim vektorjem $\vek{w}$
+
+Podobno kot lahko po Riezsovem izreku linearnim funkcionalom pripišemo vektor, lahko
+tenzorjem drugega reda pripišemo linearno preslikavo, in sicer, če je $\vek{u}\otimes\vek{v}$
+enostavni tenzor iz $V\otimes V$, potem mu pripada linearna preslikava iz $V$ v $V$,
+$(\vek{u}\otimes\vek{v})[\vek{w}]=(\vek{w}\cdot\vek{v})\vek{u}$. Vsako linearno preslikavo
+iz $V$ v $V$ lahko zapišemo kot linearno kombinacijo preslikav, določenih z enostavnimi tenzorji.
+
+----------------
+KRAJEVNI VEKTOR
+
+\begin{primer}
+	Vektroska količina $\vek{r} \colon \B\times I \rightarrow V$, ki materialni točki $\P$ ob času $t$ priredi
+	njen krajevni vektor glede na izbrano izhodišče $o\in\E$, ima naslednji materialni in prostorski opis:
+	\begin{equation*}
+		\hat{\vek{r}}(X,t) = \overset{\rightarrow}{oX},\quad \bar{\vek{r}}(x,t)=\vec{ox}.
+	\end{equation*}
+\end{primer}

@@ -1,0 +1,443 @@
+\chapter{Matematični opis materialnega telesa}
+
+\section{Materialno telo}
+
+V tem razdelku bomo podali abstraktno definicijo materialnega telesa. Ker bomo kasneje
+potrebovali variacijski račun, moramo materialno telo definirati kot trirazsežno gladko
+mnogoterost, da bomo na voljo dobili vsa sredstva iz matematične analize.
+V klasični mehaniki se materialno telo umesti v Evklidski prostor. Ta povezava bo opisana v razdelku
+\ref{sec-ep}.
+
+\begin{definicija}
+	\emph{Materialno telo} $\B$ je abstraktna množica točk $\P$, za katero
+	obstaja množica $\mathscr{K}$ bijektivnih preslikav $\chi$
+	\begin{align*}
+		\chi \colon \B &\rightarrow \chi [\B] \subseteq \R^3 \\
+		\P &\mapsto \chi(\P) = (x^1,x^2,x^3)\ \Leftrightarrow \ \P = \chi^{-1}(x^1,x^2,x^3),
+	\end{align*}
+	imenovanih \emph{konfiguracije}, tako da je za
+	poljubni konfiguraciji
+	\begin{equation*}
+		\begin{array}{rlcrl}
+		\chi_1 \colon \B &\rightarrow \chi_1 [\B] \subseteq \R^3 &\ \mathrm{in}\ &
+		\chi_2 \colon \B &\rightarrow \chi_2 [\B] \subseteq \R^3 \\
+		\P &\mapsto \chi_1(\P) = (x^1,x^2,x^3)&&
+		\P &\mapsto \chi_2(\P) = (y^1,y^2,y^3)
+		\end{array}
+	\end{equation*}
+	kompozitum
+	\begin{align*}
+		\chi_2\circ\chi_1^{-1} \colon\phantom{xxx} \chi_1 [\B] &\rightarrow \chi_2 [\B] \\
+		(x^1,x^2,x^3) &\mapsto (y^1,y^2,y^3) = \chi_2\left(\chi_1^{-1}(x^1,x^2,x^3)\right)
+	\end{align*}
+	gladka preslikava.
+	Točke $\P\in\B$ imenujemo tudi \emph{delci} ali pa \emph{materialne točke}.
+\end{definicija}
+Vsaka konfiguracija je parametrizacija materialnega telesa: vsaki materialni točki enolično priredi trojico
+realnih števil -- \emph{koordinate}.
+\begin{figure}[ht]
+	\centering
+	\begin{picture}(300,185)
+		\put(150,163){\circle*{2}} \put(145,168){$\P\in\B$}
+		\put(145,160){\vector(-1,-1){100}} \put(57,110){$\chi_1(\P)$}
+		\put(155,160){\vector(1,-1){100}} \put(211,110){$\chi_2(\P)$}
+		\put(45,55){\vector(1,0){210}} \put(100,38){$y^k=\chi_2\left(\chi_1^{-1}(x^l)\right)$}
+		\put(40,55){\circle*{2}} \put(15,35){$(x^1,x^2,x^3)$}
+		\put(260,55){\circle*{2}} \put(235,35){$(y^1,y^2,y^3)$}
+		\thinlines
+		\qbezier(10,13)(0,60)(10,90)
+		\qbezier(8,13)(40,30)(70,20)
+		\qbezier(68,18)(75,50)(90,85)
+		\qbezier(92,83)(50,95)(8,88)
+		\put(30,3){$\chi_1[\B]\subseteq \R^3$}
+		\qbezier(210,20)(250,30)(300,20)
+		\qbezier(298,18)(285,50)(298,85)
+		\qbezier(300,83)(260,70)(210,85)
+		\qbezier(212,87)(225,55)(212,18)
+		\put(230,3){$\chi_2[\B]\subseteq \R^3$}
+		\put(150,163){\oval(90,43)} \put(90,175){$\B$}
+	\end{picture}
+	\caption{Konfiguracije}
+\end{figure}
+\begin{definicija}
+	\emph{Sklicna konfiguracija} je poljubno izbrana, a fiksna konfiguracija $\r\in\mathscr{K}$,
+	\begin{align*}
+		\r \colon \B &\rightarrow \r [\B] \subseteq \R^3 \\
+		\P &\mapsto \r(\P) = (X^1,X^2,X^3)\ \Leftrightarrow \ \P = \r^{-1}(X^1,X^2,X^3).
+	\end{align*}
+\end{definicija}
+\begin{definicija}
+	\emph{Gibanje} materialnega telesa v časovnem intervalu $I\subseteq\R$ je enoparametrična
+	družina konfiguracij $\{\chi_t \, ; \ t\in I \} \subset \mathscr{K}$,
+	\begin{align*}
+		\chi_t \colon \B &\rightarrow \chi_t [\B] \subseteq \R^3 \\
+		\P &\mapsto \chi_t(\P) = \left(x^1(t),x^2(t),x^3(t)\right)\ \Leftrightarrow \ 
+		\P = \chi_t^{\phantom{t}-1}(x^1,x^2,x^3),
+	\end{align*}	
+	z lastnostjo, da je za vsak $\P\in\B$ preslikava $t\mapsto\chi_t(\P)$
+	gladka na celotnem intervalu $I$. Konfiguracijo $\chi_t$ iz take družine imenujemo
+	\emph{trenutna konfiguracija} pri času $t$.
+\end{definicija}
+Gibanje običajno predstavimo s preslikavo
+\begin{align}
+	&\chi_{\r}\colon\r[\B]\times I\rightarrow\chi_t[\B]\subseteq\R^3 \nonumber \\
+	&\chi_{\r}(X^1,X^2,X^3,t) = \chi_t\left(\r^{-1}(X^1,X^2,X^3)\right),\label{eq-chir}
+\end{align}
+ki se jo da izraziti s tremi realnimi funkcijami štirih spremenljivk
+\begin{equation}\label{eq-xk}
+	x^k=\chi_{\r}^{\phantom{\r}k}(X^1,X^2,X^3,t)\quad\mathrm{za}\ k=1,2,3.
+\end{equation}
+Pri opisu gibanja na tak način se znebimo abstraktnih točk $\P$, na voljo pa dobimo vsa sredstva iz analize.
+\begin{definicija}
+	V predstavitvi (\ref{eq-xk}) se številska trojica $(X^1,X^2,X^3)$ imenuje \emph{materialne},
+	trojica $(x^1,x^2,x^3)$ pa \emph{prostorske koordinate} materialne točke
+	\[ \P=\r^{-1}(X^1,X^2,X^3)=\chi_t^{\phantom{t}-1}(x^1,x^2,x^3). \]
+\end{definicija}
+\begin{figure}[ht]
+	\centering
+	\begin{picture}(320,185)
+		\put(150,163){\circle*{2}} \put(145,168){$\P\in\B$}
+		\put(145,160){\vector(-1,-1){100}} \put(57,110){$\r(\P)$}
+		\put(155,160){\vector(1,-1){100}} \put(211,110){$\chi_t(\P)$}
+		\put(45,55){\vector(1,0){210}} \put(105,38){$x^k=\chi_{\r}^{\phantom{\r}k}\left(X^L,t\right)$}
+		\put(40,55){\circle*{2}} \put(10,35){$(X^1,X^2,X^3)$}
+		\put(260,55){\circle*{2}} \put(218,35){$\left(x^1(t),x^2(t),x^3(t)\right)$}
+		\thinlines
+		\qbezier(10,13)(0,60)(10,90)
+		\qbezier(8,13)(40,30)(80,20)
+		\qbezier(78,18)(85,50)(90,85)
+		\qbezier(92,83)(50,95)(8,88)
+		\put(30,3){$\r[\B]\subseteq \R^3$}
+		\qbezier(210,20)(250,30)(320,20)
+		\qbezier(318,18)(310,50)(318,85)
+		\qbezier(320,83)(270,70)(210,85)
+		\qbezier(212,87)(220,55)(212,18)
+		\put(230,3){$\chi_t[\B]\subseteq \R^3$}
+		\put(150,163){\oval(90,43)} \put(90,175){$\B$}
+	\end{picture}
+	\caption{Sklicna in trenutna konfiguracija, materialne in prostorske koordinate.}
+\end{figure}
+\begin{opomba}\label{op-chirinv}
+	Preslikava $\chi_{\r}$ nima inverza, saj ni bijektivna. Če nanjo gledamo kot na časovno odvisno
+	preslikavo iz $\r[\B]$ v $\chi_t[\B]$, ta potem ima časovno odvisni inverz, zato na smiselen način definiramo
+	\begin{align*}
+		&\chi_{\r}^{\phantom{\r}-1}\colon\chi_t[\B]\times I\rightarrow \r[\B]\subseteq\R^3 \\
+		&\chi_{\r}^{\phantom{\r}-1}(x^1,x^2,x^3,t) = \r\left(\chi_t^{\phantom{t}-1}(x^1,x^2,x^3)\right).
+	\end{align*}
+\end{opomba}
+Z enačbami (\ref{eq-xk}) je podana časovno odvisna koordinatna transformacija,
+njena Jacobijeva matrika je
+\begin{equation*}
+	J = \left[\begin{array}{ccc}
+			\frac{\partial x^1}{\partial X^1} & \frac{\partial x^1}{\partial X^2} & \frac{\partial x^1}{\partial X^3} \\[10pt]
+			\frac{\partial x^2}{\partial X^1} & \frac{\partial x^2}{\partial X^2} & \frac{\partial x^2}{\partial X^3} \\[10pt]
+			\frac{\partial x^3}{\partial X^1} & \frac{\partial x^3}{\partial X^2} & \frac{\partial x^3}{\partial X^3}
+			\end{array}\right].
+\end{equation*}
+Ker so konfiguracije gladke bijektivne preslikave, je determinanta matrike $J$ različna od 0.
+
+
+\section{Konfiguracije v Evklidskem prostoru}\label{sec-ep}
+
+V klasični mehaniki konfiguracijam materialnega telesa pripisujemo enakovredne
+konfiguracije v Evklidskem prostoru. Na tak način opremimo materialno telo
+z Evklidsko geometrijo, kar nam omogoča merjenje razdalij, kotov ter
+ostalih izpeljanih fizikalnih količin, kot je npr. deformacija.
+
+\begin{definicija}
+	\emph{Evklidski prostor} dimenzije $n$ je množica točk $\E$, za katero obstaja
+	realen $n$-razsežen vektorski prostor $V$, imenovan \emph{translacijski prostor},
+	tako da vsakemu paru točk $x,y$ iz $\E$ enolično pripada vektor iz $V$, ki ga označimo
+	z $\vec{xy}$, tako da veljajo naslednje lastnosti:
+	\begin{enumerate}
+		\item $\vec{xy}=-\vec{yx} \quad \forall\: x,y\in\E$,
+		\item $\vec{xy}+\vec{yz}=\vec{xz} \quad \forall\: x,y,z\in\E$,
+		\item če je $o$ poljubna, a fiksna točka iz $\E$, potem za vsako točko $x\in\E$ obstaja
+		enolično določen vektor $\vek{v}\in V$, da je $\vek{v}=\vec{ox}$.
+	\end{enumerate}
+\end{definicija}
+Točki $o$ iz tretjega aksioma rečemo \emph{izhodišče}, vektorju $\vek{v}$ pa \emph{krajevni
+vektor} točke $x$ glede na izhodišče $o$. Odslej bomo oznako $\E$ uporabljali za trirazsežen
+Evklidski prostor, $V$ pa za njegov translacijski prostor, ki je dodatno opremljen
+s standardnim skalarnim produktom, kar nam bo omogočalo računanje geometrijskih količin.
+\begin{definicija}
+	Množico $V_x=\{\vec{xy}\ |\ y\in\E\}$ imenujemo \emph{tangentni prostor} Evklidskega prostora
+	$\E$ v točki $x\in\E$.
+\end{definicija}
+$V_x$ je vektorski prostor, ki je kopija prostora $V$. Če sta $V_x$ in $V_y$ tangentna prostora,
+je $V_y$ translacija prostora $V_x$ za vektor $\vec{xy}$. Vektorje iz različnih tangentnih prostorov
+lahko med sabo seštevamo, kot da bi bili iz istega vektorskega prostora.
+
+\begin{definicija}\label{def-ks}
+	Naj bosta $\mathcal{D}\subseteq \E$ in $U\subseteq\R^3$ odprti množici. Bijektivno gladko preslikavo
+	$\Psi\colon\mathcal{D}\rightarrow U$, katere inverz $\Psi^{-1}\colon U\rightarrow\mathcal{D}$
+	je tudi gladka preslikava, imenujemo \emph{koordinatni sistem} za $\mathcal{D}\subseteq \E$.
+\end{definicija}
+
+V prostoru $\E$ si izberemo izhodišče $o$, $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ pa naj bo ortonormirana
+baza prostora $V_o\cong V$. Poljubni točki $x$ iz $\E$ pripada glede na izhodišče $o$ krajevni
+vektor $\vek{u}_x$ z enoličnim
+razvojem po bazi, $\vek{u}_x=y_k\vek{e}_k$. Preslikava $x\mapsto (y_1,y_2,y_3)$, ki točki $x$ priredi
+trojico koeficientov razvoja njenega krajevnega vektorja po bazi $\{\vek{e}_k\}$, je očitno koordinatni sistem,
+ki ga imenujemo \emph{Kartezijev koordinatni sistem}. 
+Povezavo med konfiguracijo $\chi$ in njej enakovredno konfiguracijo v Evklidskem prostoru
+podaja koordinatni sistem $\psi \colon\mathcal{D}^{\mathrm{odp}}\subseteq\E\rightarrow U\subseteq\R^3$,\label{ks}
+ki je podan s koordinatno transformacijo Kartezijevih koordinat,
+\begin{equation*}
+	x^k = \psi^k(y_1,y_2,y_3) \ \Leftrightarrow \ y_k=\varphi_k(x^1,x^2,x^3), \quad k=1,2,3.
+\end{equation*}
+Inverz od $\psi$ bomo označili s $\varphi=\psi^{-1}$. Če je torej $\chi\in\mathscr{K}$ konfiguracija,
+je njena pripadajoča konfiguracija v Evklidskem prostoru definirana kot
+\begin{align*}
+	\varphi\circ\chi\colon\B&\rightarrow\varphi\big[\chi[\B]\big]=\body\subseteq\E\\
+	\P&\mapsto\varphi\big(\chi(\P)\big).
+\end{align*}
+\begin{opomba}
+Običajno je, da se za konfiguracijo $\varphi\circ\chi$ z zlorabo notacije uporabi kar oznako $\chi$. V takem primeru
+moramo biti pozorni, ko naletimo na oznako za $\chi$, ali gre za preslikavo 
+$\chi\colon\B\rightarrow\R^3$ ali za $\chi\colon\B\rightarrow\E$.
+\end{opomba}
+{\color[rgb]{1,0,0}SLIKA $\B$ levo, $\body$ desno, $\chi[\B]$ spodaj, kartezijev KS zgoraj, puščice vmes.}
+
+Gibanje v Evklidskem prostoru lahko tako predstavimo s preslikavo, ki jo, prav tako z zlorabo notacije,
+označimo enako, kot v (\ref{eq-chir}), in je
+\begin{align}
+	\chi_{\r} \colon\body_{\r}\times I&\rightarrow \body_{t} \nonumber \\
+	(X,t) &\mapsto x=\varphi\big(\chi_{\r}(\psi(X),t)\big), \label{eq-chire}
+\end{align}
+kjer je
+\begin{equation*}
+	\body_{\r}=\varphi\big[\r[\B]\big]\subseteq\E \quad\mathrm{in}\quad \body_{t}=\varphi\big[\chi_t[\B]\big]\subseteq\E.
+\end{equation*}
+%V predstavitvi $x=\chi_{\r}(X,t)$ rečemo $x$ \emph{prostorske}, $X$ pa \emph{materialne točke}.
+Podobno, kot v opombi \ref{op-chirinv}, tudi tukaj na smiselen način definiramo
+\begin{align}
+	\bottop{\chi}{\r}{-1} \colon\body_{t}\times I&\rightarrow \body_{\r} \nonumber \\
+	(x,t) &\mapsto X=\varphi\big(\bottop{\chi}{\r}{-1}(\psi(x),t)\big). \label{eq-chirinve}
+\end{align}
+
+
+\section{Tenzorska polja}
+
+Funkciji $f\colon\mathcal{D}\times I\rightarrow W$, kjer je $\mathcal{D}\subseteq\E$, $I\subseteq\R$ časovni
+interval, $W$ pa nek normiran vektorski prostor, rečemo \emph{tenzorsko polje}. V posebnem primeru, ko je $W=\R$,
+rečemo $f$ \emph{skalarno}, v primeru $W=V$ pa \emph{vektorsko polje}. Tenzorsko polje $f$ lahko
+preko koordinatnega sistema definiramo tudi na podmnožici $\psi[\mathcal{D}]$ v $\R^3$, in sicer 
+\begin{equation*}
+	\tilde{f}\colon\psi[\mathcal{D}]\times I\rightarrow W, \quad
+	\tilde{f}\colon(x^1,x^2,x^3,t)\mapsto f\big(\varphi(x^1,x^2,x^3),t\big).
+\end{equation*}
+Zopet je običajno, da se $\tilde{f}$ označi kar z $f$.
+
+\subsection{Zapis v naravni bazi}
+
+Tenzorje, ki so elementi nekega vektorskega prostora $W$, lahko predstavimo v komponentni obliki
+glede na neko bazo prostora $W$. Posebno pomemben je dualni par baz, ki ga v točki
+\[
+	(x^1,x^2,x^3)\in \R^3\ \xrightleftharpoons[\ \psi\ ]{\ \varphi\ }\ 
+	x\in\E\ \xrightleftharpoons[\ \phantom{\varphi}\ ]{\ \phantom{\psi}\ }\ 
+	\vek{x}=y_i\vek{e}_i \in V_o
+\]
+definira koordinatni sistem\footnote{Za oznake glej stran \pageref{ks}.}:
+\begin{align*}
+	\vek{g}_k(x)&=\frac{\partial}{\partial x^k}\varphi(x^1,x^2,x^3)=
+	\frac{\partial}{\partial x^k}\varphi_j(x^1,x^2,x^3)\,\vek{e}_j \\
+	\vek{g}^k(x)&=\grad \psi^k(y_1,y_2,y_3)=
+	\frac{\partial}{\partial y_j}\psi^k(y_1,y_2,y_3)\,\vek{e}_j.
+\end{align*}
+$\vek{g}_k$ imenujemo \emph{tangentni}, $\vek{g}^k$ pa \emph{gradientni vektorji}.
+\begin{trditev}\label{tr-nb}
+	Množici $\{\vek{g^k(x)}\}$ in $\{\vek{g_j(x)}\}$ tvorita bazo tangentnega prostora $V_x$.
+	Bazi sta si dualni, tj. $\vek{g}^i(x)\cdot\vek{g}_j(x)=\topbot{\delta}{i}{j}$.
+\end{trditev}
+Trditev je splošno znana iz tenzorske analize, zato dokaza tukaj ne bomo navajali; bralec ga lahko
+najde npr. v \cite[str.~273]{liu}. Bazi iz trditve \ref{tr-nb} imenujemo \emph{naravni bazi} v točki
+$x\in\E$ glede na koordinatni sistem $\psi$. Definirajmo še \emph{metrične koeficiente}:
+\begin{equation*}
+	g^{ij}(x)=\vek{g}^i(x)\cdot\vek{g}^j(x) \quad\mathrm{in}\quad g_{ij}(x)=\vek{g}_i(x)\cdot\vek{g}_j(x).
+\end{equation*}
+
+Tenzorska polja običajno zapisujemo v komponentni obliki glede na naravno bazo. Če je
+$\vek{u}$ vektorsko polje z vrednostmi v $V$, $S$ pa tenzorsko polje z vrednostmi v $V\otimes V$,
+potem ju v točki $x\in\E$ pri nekem danem času v naravni bazi zapišemo kot
+\begin{align*}
+	\vek{u}&=u_j\,\vek{g}^j=u^k\,\vek{g}_k,\\
+	S&=\bottop{S}{i}{j}\,\vek{g}^i\otimes\vek{g}_j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j=
+	S^{ij}\,\vek{g}_i\otimes\vek{g}_j=S_{ij}\,\vek{g}^i\otimes\vek{g}^j.
+\end{align*}
+Predpostavljamo, da bralec pozna pravila za višanje in nižanje indeksov s pomočjo metričnih koeficientov
+ter pravila za transformacijo komponent tenzorjev pri prehodu iz ene baze v drugo.
+
+\subsection{Odvajanje}
+
+Posvetimo se sedaj odvajanju tenzorskih polj. Pri matematični analizi se spoznamo z odvodi med normiranimi prostori,
+običajno v poglavju o variacijskem računu.
+Če je $F:D^{\mathrm{odp}}\subseteq W_1\rightarrow W_2$ preslikava med normiranima prostoroma $W_1$ in $W_2$,
+potem je njen odvod $DF$ element prostora $W_2\otimes W_1$ (tenzorski produkt vektorskih prostorov).
+Za dosledno definicijo odvoda tenzorske funkcije na Evklidskem prostoru, ki sam po sebi še ni vektorski prostor,
+potrebujemo naslednji dogovor.
+\begin{enumerate}
+	\item Če je $x\in\E$ in $\vek{v}\in V$, potem je $x+\vek{v}=y\in\E$, tako da je $\vek{v}=\vec{xy}$.
+	\item Za $x,y\in \E$ je njuna razlika $y-x=\vec{xy}\in V$.
+\end{enumerate}
+Evklidska metrika $d$ na $\E$ je tako
+\begin{equation*}
+	d(x,y)=\|y-x\|=\|\vec{xy}\|.
+\end{equation*}
+\begin{definicija}
+	Naj bo $f:\mathcal{D}\times I\rightarrow W$ tenzorsko polje, kjer je $\mathcal{D}$ odprta
+	podmnožica v metričnem prostoru ($\E,d)$. $f$ je \emph{odvedljiva} ali \emph{diferenciabilna} v točki $x\in\E$,
+	če obstaja taka linearna preslikava $A:V\rightarrow W$, da za vsak $\vek{h}\in V$ velja
+	\begin{equation*}
+		f(x+\vek{h},t)=f(x,t)+A[\vek{h}]+o(\vek{h}),
+	\end{equation*}
+	kjer je $o(\vek{h})\in W$ količina, za katero je
+	\[ \lim_{\| h\|_V\to 0}\frac{\|o(\vek{h})\|_W}{\|\vek{h}\|_V}=0. \]
+	Če taka $A$ obstaja, ji rečemo \emph{gradient} oziroma \emph{(krepki) odvod} funkcije $f$ po spremenljivki $x$
+	in ga označimo z $\grad f(x,t)=\nabla f(x,t)$.
+\end{definicija}
+Imamo: $\nabla f \in W\otimes V$. Odvod, kadar obstaja, je en sam. Gradiente računamo s pomočjo
+\emph{šibkega} oziroma \emph{smernega odvoda}:
+\begin{equation*}
+	\delta f(x,t)[\vek{h}]=\lim_{s\to 0}\frac{1}{s}\Big(f(x+s\vek{h},t)-f(x,t)\Big)=
+	\at{\frac{d}{ds}f(x+s\vek{h},t)}{s=0}.
+\end{equation*}
+Znano je, da če obstaja krepki odvod (včasih imenovan tudi \emph{Fréchetov odvod}),
+potem obstaja tudi šibki odvod in sta enaka: $\nabla f(x,t)[\vek{h}]=\delta f(x,t)[\vek{h}]$ za vsak $\vek{h}\in V$.
+Za tovrstne odvode veljajo enaki izreki, kot veljajo za preslikave med normiranimi prostori, ki jih
+poznamo iz matematične analize: izrek o posrednem odvajanju, izrek o odvajanju produkta\footnote{
+Izrek o odvajanju produkta velja za katerikoli produkt, ki je bilinearna preslikava. Med njimi so
+npr. skalarni in vektorski produkt vektorjev, produkt tenzorja s skalarjem, tenzorski produkt,
+delovanje tenzorja na vektorju itd.},
+izrek o totalnem odvodu itd.
+
+Na podoben način definiramo tudi odvod tenzorske funkcije $f$ po času. Tega označimo z $\partial f/\partial t$
+in je element prostora $W\otimes\R\cong W$. Totalni odvod funkcije $f$ vključuje tako gradient kot tudi odvod po času.
+
+\subsection{Gradient in divergenca}
+
+Oglejmo si gradiente nekaterih posebnih tenzorskih polj. Za začetek naj bo $f$ skalarno polje. Potem je
+$\nabla f \in \R\otimes V \cong V$. Če je
+$\psi^k(x)=x^k$ $k$-ta koordinata točke $x\in\E$, potem s posrednim odvajanjem v točki $x$ dobimo
+\begin{equation*}
+	\nabla f=\frac{\partial f}{\partial x^k}\,\nabla\psi^k=\frac{\partial f}{\partial x^k}\,\vek{g}^k.
+\end{equation*}
+
+Vektorji iz naravne baze so (časovno neodvisna) vektorska polja, njihovi gradienti v točki
+$x$ pripadajo prostoru $V\otimes V$, torej
+so tenzorji drugega reda in jih lahko zapišemo v komponentni obliki glede na naravno bazo:
+\begin{align*}
+	\nabla \vek{g}_i(x)&=\cs{i}{j}{k}(x)\,\vek{g}_j(x)\otimes\vek{g}^k(x)\\
+	\nabla \vek{g}^i(x)&=\topbot{\Gamma}{i}{jk}(x)\,\vek{g}^j(x)\otimes\vek{g}^k(x).
+\end{align*}
+Koeficienti $\cs{i}{j}{k}$ in $\topbot{\Gamma}{i}{jk}$ se imenujejo \emph{Christoffelovi simboli} in
+jih ne smemo zamenjati s koeficienti tenzorjev tretjega reda. Navedimo nekaj lastnosti Christoffelovih
+simbolov, katerih izpeljavo lahko najdemo v \cite[str. 275--277]{liu} ali \cite[str. 59]{haupt}:
+\begin{equation*}
+	\cs{j}{i}{k}=-\topbot{\Gamma}{i}{jk},\quad \topbot{\Gamma}{i}{jk}=\topbot{\Gamma}{i}{kj},\quad
+	\cs{j}{i}{k}=\cs{k}{i}{j},
+\end{equation*}
+\begin{equation*}
+	\cs{i}{j}{k}=\frac{1}{2}\,g^{jl}\left(\frac{\partial g_{li}}{\partial x^k}+
+	\frac{\partial g_{lk}}{\partial x^i}-\frac{\partial g_{ik}}{\partial x^l}\right).
+\end{equation*}
+
+Naj bo sedaj $\vek{f}$ vektorsko polje. Njegov gradient v točki $x$ je
+\begin{align*}
+	\nabla \vek{f}&=\nabla(f^i\,\vek{g}_i)=\vek{g}_i\otimes\nabla f^i + f^i\,\nabla\vek{g}_i=\\
+	&=\vek{g}_i\otimes\frac{\partial f^i}{\partial x^k}\,\vek{g}^k+f^i\,\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k=\\
+	&=\left(\frac{\partial f^j}{\partial x^k}+f^i\,\cs{i}{j}{k}\right)\vek{g}_j\otimes\vek{g}^k
+\end{align*}
+in je tenzor iz prostora $V\otimes V$. V komponentni obliki ga zapišemo kot
+\begin{equation*}
+	\nabla\vek{f}= \topbot{f}{j}{,k}\:\vek{g}_j\otimes\vek{g}^k,\quad
+	\topbot{f}{j}{,k}=\frac{\partial f^j}{\partial x^k}+f^i\,\cs{i}{j}{k}.
+\end{equation*}
+Vejica v izrazu $\topbot{f}{j}{,k}$ označuje operacijo, imenovano \emph{kovariantni odvod}.
+
+Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
+\begin{definicija}
+	\emph{Divergenca vektorskega polja} $\vek{f}$ v točki $x\in\E$ je
+	\begin{equation*}
+		\div \vek{f}=\topbot{f}{k}{,k}=\frac{\partial f^k}{\partial x^k}+f^i\,\cs{i}{k}{k}\;\in\R.
+	\end{equation*}
+\end{definicija}
+
+
+\section{Materialni in prostorski opis}
+
+Materialno telo spremljajo različne fizikalne količine, ki jih predstavimo s skalarji,
+vektorji ali pa tenzorji. Naj $W$ označuje neki normirani prostor
+skalarjev, vektorjev ali pa tenzorjev, $I\subseteq\R$ pa naj bo časovni interval.
+Fizikalno količino iz prostora $W$, ki pripada materialni točki $\P$ ob času $t$, določa funkcija
+\begin{align*}
+	f \colon \B\times I &\rightarrow W \\
+	(\P,t) &\mapsto w = f(\P,t).
+\end{align*}
+Z uporabo oznak in dogovorov iz razdelka \ref{sec-ep} podajmo naslednjo definicijo.
+\begin{definicija}
+	\emph{Prostorski} ali \emph{Eulerjev opis} je izražava fizikalne količine $w=f(\P,t)$ s
+	tenzorskim poljem
+	\begin{align*}
+		&\bar{f}\colon\body_t\times I \rightarrow W \\
+		&\bar{f}(x,t)=f\left(\chi_t^{\phantom{t}-1}(x),t\right)=w.
+	\end{align*}
+	\emph{Materialni} ali \emph{Lagrangejev opis} je izražava fizikalne količine $w=f(\P,t)$ s
+	tenzorskim poljem
+	\begin{align*}
+		&\hat{f}\colon\body_{\r}\times I \rightarrow W \\
+		&\hat{f}(X,t)=f\left(\r^{-1}(X),t\right)=w.
+	\end{align*}
+\end{definicija}
+\begin{opomba}
+	Preko koordinatnega sistema $\psi$ dobi tenzorsko polje $\bar{f}$ enakovredno izražavo
+	$\bar{f}:\chi_t[\B]\times I\rightarrow W$ v pripadajočih prostorskih koordinatah,
+	tenzorsko polje $\hat{f}$ pa enakovredno izražavo $\hat{f}:\r[\B]\times I\rightarrow W$
+	v materialnih koordinatah.
+\end{opomba}
+S pomočjo preslikav (\ref{eq-chire}) in (\ref{eq-chirinve}) dobimo prehod med prostorskim in
+materialnim opisom:
+\begin{subequations}\begin{align}
+	\hat{f}(X,t)&=\bar{f}\left(\chi_{\r}(X,t),t\right), \\
+	\bar{f}(x,t)&=\hat{f}\left(\chi_{\r}^{\phantom{\r}-1}(x,t),t\right). \label{eq-transf-pro-mat}
+\end{align}\end{subequations}
+\begin{definicija}
+	Če je $w(t) = f(\P,t)$ časovno odvisna fizikalna količina, definirana za materialne točke, potem njen
+	časovni odvod
+	\begin{equation*}
+		\dot{w}(t)=\dot{f}(\P,t)=\frac{d}{dt}f(\P,t)
+	\end{equation*}
+	imenujemo \emph{materialni odvod}.
+\end{definicija}
+V materialnem opisu določeni točki $X\in\E$ pripada ena in ista materialna točka ne glede na čas,
+zato je materialni odvod kar parcialni odvod po času,
+\begin{equation}\label{eq-odv-mat}
+	\dot{w}(t)=\frac{\partial \hat{f}}{\partial t}(X,t).
+\end{equation}
+\begin{primer}
+	\emph{Hitrost} $\vek{v}$ delca $\P$ ob času $t$ je vektorska količina,
+	definirana kot materialni odvod pozicijske točke $X=\chi_{\r}(\P,t)\in\E$. Materialni
+	opis hitrosti je tako
+	\begin{equation}\label{eq-velocity}
+		\hat{\vek{v}}(X,t)=\frac{\partial \chi_{\r}}{\partial t}(X,t).
+	\end{equation}
+	Iz enačbe (\ref{eq-transf-pro-mat}) dobimo še prostorski opis hitrosti
+	\begin{equation}\label{eq-velocity-pro}
+		\bar{\vek{v}}(x,t)=\hat{\vek{v}}\left(\chi_{\r}^{\phantom{\r}-1}(x,t),t\right).
+	\end{equation}
+\end{primer}
+V prostorskem opisu pa določeni točki $x\in\E$ pripadajo različne materialne točke, odvisno od časa.
+Zato materialni odvod, ki je totalni odvod po času, v prostorskem opisu dobimo s posrednim odvajanjem
+glede na spremenljivko $x=\chi_{\r}(X,t)$. Z upoštevanjem (\ref{eq-velocity}) in (\ref{eq-velocity-pro}) dobimo
+\begin{equation}\label{eq-odv-pro}
+	\dot{w}(t)=\frac{\partial \bar{f}}{\partial t}(x,t)+\nabla\bar{f}(x,t)\,\bar{\vek{v}}(x,t).
+\end{equation}
+\begin{primer}
+	Materialni odvod hitrosti imenujemo \emph{pospešek} in ga označimo z $\vek{a}$.
+	Iz enačb (\ref{eq-odv-mat}) in (\ref{eq-odv-pro}) dobimo materialni in prostorski opis pospeška:
+	\begin{align*}
+		\hat{\vek{a}}(X,t)&=\frac{\partial \hat{\vek{v}}}{\partial t}(X,t)=
+		\frac{\partial^2 \chi_{\r}}{\partial t^2}(X,t) \\
+		\bar{\vek{v}}(x,t)&=\frac{\partial \bar{\vek{v}}}{\partial t}(x,t)+\nabla\bar{\vek{v}}(x,t)\,\bar{\vek{v}}(x,t).
+	\end{align*}
+\end{primer}

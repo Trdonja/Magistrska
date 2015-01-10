@@ -1,0 +1,45 @@
+\ProvidesPackage{style}
+
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathrsfs,mathtools}
+\usepackage{color} % briši na koncu ven
+\usepackage[pdftex]{graphicx}
+
+\overfullrule=15pt % oznaci predlogo vrstico
+\everymath{\displaystyle}
+
+% ukazi za matematična okolja
+\theoremstyle{definition} % tekst napisan pokoncno
+\newtheorem{definicija}{Definicija}[chapter]
+\newtheorem{primer}[definicija]{Primer}
+
+\theoremstyle{plain} % tekst napisan posevno
+\newtheorem{izrek}[definicija]{Izrek}
+\newtheorem{trditev}[definicija]{Trditev}
+\newtheorem{lema}[definicija]{Lema}
+\newtheorem{posledica}[definicija]{Posledica}
+
+\theoremstyle{remark}
+\newtheorem{opomba}[definicija]{Opomba}
+
+% ukazi
+\newcommand{\R}{\mathbb R} % množica realnih števil
+\newcommand{\E}{\mathcal E} % trirazsežen evklidski prostor
+\newcommand{\T}{\mathrm T} % tangentni prostor
+\newcommand{\B}{\mathscr B} % materialno telo
+\newcommand{\body}{\mathcal B} % materialno telo v Evklidskem prostoru
+\renewcommand{\P}{\mathscr P} % točka materialnega telesa
+\renewcommand{\r}{\mathrm R} % oznaka za referenčno konfiguracijo
+\newcommand{\vek}[1]{\boldsymbol #1} % vektor
+\newcommand{\grad}{\mathrm{grad}\,} % gradient
+\renewcommand{\div}{\mathrm{div}\,} % divergenca
+\newcommand{\rot}{\mathrm{rot}\,} % rotor
+\newcommand{\Grad}{\mathrm{Grad}\,} % Gradient
+\newcommand{\Div}{\mathrm {Div}\,} % Divergenca
+\newcommand{\Rot}{\mathrm{Rot}\,} % Rotor
+\newcommand{\bottop}[3]{{#1}_{#2}^{\phantom{#2}{#3}}}
+\newcommand{\topbot}[3]{{#1}^{#2}_{\phantom{#2}{#3}}}
+\newcommand{\cs}[3]{\Gamma_{#1\phantom{#2}#3}^{\phantom{#1}#2}} % Christoffelov simbol prve vrste
+\newcommand{\at}[2]{\left.\kern-\nulldelimiterspace#1\right|_{#2}} % izvršeno v točki
