@@ -1,0 +1,150 @@
+\chapter{Matematični opis materialnega telesa}
+
+
+\section{Evklidski prostor}
+
+
+V klasični mehaniki opisujemo dogodke v \emph{Newtonovem prostor-času}, kar je produkt
+trirazsežnega Evklidskega prostora ter prostora realnih števil $\R$. Evklidski prostor nam služi
+za opis položaja in geometrije objektov, prostor $\R$ pa predstavlja časovno os.
+
+\begin{definicija} \label{d:ep}
+	Množica točk $\E$ je \emph{Evklidski točkovni prostor} in trirazsežni Evklidski vektorski prostor $V$ je
+	\emph{translacijski prostor} za $\E$, če poljubnemu paru točk $p,q\in\E$ pripada vektor iz $V$,
+	ki ga zapišemo kot $q-p$, tako da velja:
+	\begin{enumerate}
+		\item Za vsak $p\in\E$ je $p-p=\vek{0}$, ničelni vektor.
+		\item Za vsak $p\in\E$ in vsak $\vek{v}\in V$ obstaja natanko ena točka $q\in\E$, da je
+		$\vek{v}=q-p$. Pišemo: $q=p+\vek{v}$.
+		\item Za vse $p,q,r\in\E$ velja $(q-p)+(r-q)=(r-p)$.
+	\end{enumerate}
+\end{definicija}
+
+Razdalja med točkama $p,q\in\E$ je definirana kot $d(p,q)=\|q-p\|$, kjer $\|.\|$ označuje normo na
+vektorskem prostoru $V$, porojeno iz standardnega skalarnega produkta. $(\E,d)$ je metrični prostor.
+
+V prostoru $\E$ si izberimo točko, jo označimo z $o$ in jo imenujmo \emph{izhodišče}.
+V skladu z aksiomi iz definicije pripada vsaki točki $p\in\E$ glede na izhodišče $o$ \emph{krajevni vektor}
+$\vek{r}(p)=p-o\in V$. Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ neka ortonormirana baza prostora $V$,
+ki je desnosučna, t. j. $(\vek{e}_1\times\vek{e}_2)\cdot\vek{e}_3=1$. Krajevni vektor $\vek{r}(p)$
+ima enoličen razvoj po bazi $\vek{r}(p)=y_k\vek{e}_k$. Bijektivna zvezna preslikava
+\begin{equation*}
+	\kappa\colon\E\to\R^3,\qquad p\mapsto (y_1,y_2,y_3),
+\end{equation*}
+ki točki iz $\E$ priredi trojico koeficientov razvoja njenega krajevnega vektorja po bazi $\{\vek{e}_k\}$, je
+\emph{kartezijev koordinatni sistem}. Ta je odvisen od izbire izhodišča in ortonormirane baze.
+
+Včasih si želimo prostor $\E$ opremiti s kakšnim drugim koordinatnim sistemom.
+\begin{definicija}\label{d:ks}
+	Naj bosta $\mathcal{D}\subseteq\E$ in $U\subseteq\R^3$ odprti množici. Bijektivno preslikavo
+	$\psi\colon\mathcal{D}\to U$ z lastnostjo, da sta preslikavi $\psi\circ\kappa$ in njen inverz
+	$\kappa^{-1}\circ\psi^{-1}$ gladki (na svojih domenah), imenujemo \emph{koordinatni sistem}
+	za $\mathcal{D}\subseteq\E$.
+\end{definicija}
+Inverz od $\psi$ bomo označili s $\varphi=\psi^{-1}$.
+Koordinatni sistem lahko podamo kot koordinatno transformacijo kartezijevih koordinat $y_k$ s funkcijami
+\begin{equation*}
+	x_k = \psi_k(y_1,y_2,y_3) \ \Leftrightarrow \ y_k=\varphi_k(x_1,x_2,x_3), \quad k=1,2,3.
+\end{equation*}
+
+Imamo torej bijektivno korespondenco med naslednjimi objekti:
+\begin{itemize}
+	\item točka $p\in\E$,
+	\item krajevni vektor $\vek{r}(p)=y_k\vek{e}_k\in V$,
+	\item koordinate $\psi(p)=(x_1,x_2,x_3)\in\R^3, \quad x_k=\psi_k(y_1,y_2,y_3)$.
+\end{itemize}
+Zato bomo točke iz prostora $\E$ v bodoče identificirali z njihovimi krajevnimi vektorji ali pa z njihovimi koordinatami.
+
+
+\section{Tenzorska polja}
+
+
+V tem razdelku bomo navedli nekaj bistvenih pojmov in rezultatov iz tenzorske analize. Predpostavlja
+se, da bralec že pozna osnove tenzorske analize. Razdelek služi bolj vpeljavi oznak, ki jih
+bomo uporabljali v nadaljevanju.
+
+Funkciji $f\colon\mathcal{D}\subseteq\E\to W$, kjer je $W$ neki normirani vektorski prostor, rečemo
+\emph{tenzorsko polje}. V posebnem primeru, ko je $W=\R$, rečemo funkciji $f$ \emph{skalarno},
+v primeru $W=V$ pa \emph{vektorsko polje}. Tenzorsko polje lahko definiramo tudi na domeni
+\begin{itemize}
+	\item $\vek{r}(\mathcal{D})\subseteq V \quad$ kot $\quad f_{\vek{r}}\colon\vek{r}(x)\mapsto f(x) \quad$ oziroma
+	\item $\psi(\mathcal{D})\subseteq\R^3 \quad$ kot $\quad f_{\psi}\colon \psi(x)\mapsto f(x)$.
+\end{itemize}
+Navadno bomo funkciji $f_{\vek{r}}$ in $f_{\psi}$ označili enako, kot $f$, če bo njihova
+domena razvidna iz konteksta.
+
+\subsection{Zapis v naravni bazi}
+
+Tenzorje, ki so elementi nekega vektorskega prostora $W$, lahko predstavimo v komponentni obliki
+glede na neko bazo prostora $W$. Posebno pomemben je dualni par baz za prostor $V$, ki ga v točki
+\[
+	(x_1,x_2,x_3)\in \R^3\ \xrightleftharpoons[\ \psi\ ]{\ \varphi\ }\ 
+	x\in\E\ \xrightleftharpoons[\ \phantom{\varphi}\ ]{\ \phantom{\psi}\ }\ 
+	\vek{r}(x)=y_i\vek{e}_i \in V
+\]
+definira koordinatni sistem\footnote{Za oznake glej stran \pageref{d:ks}.} $\psi$:
+\begin{align*}
+	\vek{g}_k(x)&=\frac{\partial}{\partial x_k}\varphi(x_1,x_2,x_3)=
+	\frac{\partial}{\partial x_k}\varphi_j(x_1,x_2,x_3)\,\vek{e}_j \\
+	\vek{g}^k(x)&=\grad \psi_k(y_1,y_2,y_3)=
+	\frac{\partial}{\partial y_j}\psi_k(y_1,y_2,y_3)\,\vek{e}_j.
+\end{align*}
+$\vek{g}_k$ imenujemo \emph{tangentni}, $\vek{g}^k$ pa \emph{gradientni vektorji}.
+\begin{trditev}\label{t:nb}
+	Množici $\{\vek{g^k(x)}\}$ in $\{\vek{g_j(x)}\}$ tvorita bazo za $V$.
+	Bazi sta si dualni, t. j. $\vek{g}^i(x)\cdot\vek{g}_j(x)=\topbot{\delta}{i}{j}$.
+\end{trditev}
+Dokaz trditve je preprost, najde pa se ga lahko npr. v \cite[str.~273]{liu}. Bazi iz trditve \ref{t:nb}
+imenujemo \emph{naravni bazi} v točki $x\in\E$ glede na koordinatni sistem $\psi$.
+Definirajmo še \emph{metrične koeficiente}:
+\begin{equation*}
+	g^{ij}(x)=\vek{g}^i(x)\cdot\vek{g}^j(x) \quad\mathrm{in}\quad g_{ij}(x)=\vek{g}_i(x)\cdot\vek{g}_j(x).
+\end{equation*}
+
+Vektorsko polje običajno zapišemo v komponentni obliki glede na naravno bazo kot
+\[ \vek{u}=u^j\vek{g}_j=u_k\vek{g}^k. \]
+Tenzorsko polje z vrednostmi iz prostora $\L(V)$ pa običajno zapišemo v komponentni obliki
+glede na eno od baz prostora $\L(V)$, ki je izpeljana iz naravnih baz za $V$, kot
+\[
+	S=\bottop{S}{i}{j}\,\vek{g}^i\otimes\vek{g}_j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j=
+	S^{ij}\,\vek{g}_i\otimes\vek{g}_j=S_{ij}\,\vek{g}^i\otimes\vek{g}^j.
+\]
+
+\subsection{Odvajanje}
+
+\begin{definicija}
+	Naj bo $f:\mathcal{D}^{\mathrm{odp}}\subseteq\E\to W$ tenzorsko polje. Funkcija $f$ je \emph{odvedljiva}
+	ali \emph{diferenciabilna} v točki $x\in\mathcal{D}$,
+	če obstaja taka linearna preslikava $\D f(x):V\to W$, da za vsak $\vek{h}\in V$ velja
+	\begin{equation*}
+		f(x+\vek{h})=f(x)+\D f(x)[\vek{h}]+o(\vek{h}),
+	\end{equation*}
+	kjer je $o(\vek{h})\in W$ količina, za katero je
+	\[
+		\lim_{\| h\|_V\to 0}\frac{\|o(\vek{h})\|_W}{\|\vek{h}\|_V}=0.
+	\]
+	Če taka $\D f(x)$ obstaja, ji rečemo \emph{krepki} oz. \emph{Fréchetov odvod} funkcije $f$ v točki $x$.
+\end{definicija}
+Krepki odvod je tudi tenzorsko polje, definirano povsod, kjer obstaja, vrednosti pa ima v prostoru $\L(V,W)$.
+
+Krepke odvode računamo s pomočjo \emph{šibkega} oziroma \emph{smernega} (včasih tudi \emph{Gâteauxovega}) \emph{odvoda}:
+\begin{equation*}
+	\delta f(x)[\vek{h}]=\lim_{s\to 0}\frac{1}{s}\Big(f(x+s\vek{h})-f(x)\Big)=
+	\at{\frac{d}{ds}f(x+s\vek{h})}{s=0}.
+\end{equation*}
+Znano je, da če obstaja krepki odvod,
+potem obstaja tudi šibki odvod in sta enaka: $\D f(x)[\vek{h}]=\delta f(x)[\vek{h}]$ za vsak $\vek{h}\in V$.
+Za tovrstne odvode veljajo enaki izreki, kot veljajo za preslikave med normiranimi prostori, ki jih
+poznamo iz matematične analize: izrek o posrednem odvajanju, izrek o odvajanju produkta\footnote{
+Izrek o odvajanju produkta velja za katerikoli produkt, ki je bilinearna preslikava. Med njimi so
+npr. skalarni in vektorski produkt vektorjev, produkt tenzorja s skalarjem, tenzorski produkt,
+delovanje tenzorja na vektorju itd.},
+izrek o totalnem odvodu itd.
+
+
+
+Materialno telo $\body$ je določeno z izbrano množico točk $B\subseteq\E$. Tej določitvi rečemo
+\emph{referenčna konfiguracija} materialnega telesa $\body$ in služi zgolj označbi telesa; ni nujno,
+da se telo dejansko kadarkoli nahaja v tem položaju.
+\emph{Konfiguracija} materialnega telesa $\body$ je vsaka bijektivna gladka preslikava $\chi:B\to\chi(B)\subseteq\E$,
+katere inverz $\chi^{-1}:\chi(B)\to B$ je tudi gladga preslikava.

@@ -1,0 +1,14 @@
+\select@language {slovene}
+\contentsline {chapter}{\numberline {1}Matemati\IeC {\v c}ni opis materialnega telesa}{1}
+\contentsline {section}{\numberline {1.1}Evklidski prostor}{1}
+\contentsline {section}{\numberline {1.2}Tenzorska polja}{2}
+\contentsline {subsection}{\numberline {1.2.1}Zapis v naravni bazi}{3}
+\contentsline {subsection}{\numberline {1.2.2}Odvajanje}{3}
+\contentsline {chapter}{\numberline {2}Matemati\IeC {\v c}ni opis materialnega telesa}{5}
+\contentsline {section}{\numberline {2.1}Materialno telo}{5}
+\contentsline {section}{\numberline {2.2}Konfiguracije v Evklidskem prostoru}{8}
+\contentsline {section}{\numberline {2.3}Tenzorska polja}{9}
+\contentsline {subsection}{\numberline {2.3.1}Zapis v naravni bazi}{10}
+\contentsline {subsection}{\numberline {2.3.2}Odvajanje}{11}
+\contentsline {subsection}{\numberline {2.3.3}Gradient in divergenca}{12}
+\contentsline {section}{\numberline {2.4}Materialni in prostorski opis}{13}
