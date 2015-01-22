@@ -26,125 +26,189 @@ vektorskem prostoru $V$, porojeno iz standardnega skalarnega produkta. $(\E,d)$ 
 V prostoru $\E$ si izberimo točko, jo označimo z $o$ in jo imenujmo \emph{izhodišče}.
 V skladu z aksiomi iz definicije pripada vsaki točki $p\in\E$ glede na izhodišče $o$ \emph{krajevni vektor}
 $\vek{r}(p)=p-o\in V$. Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ neka ortonormirana baza prostora $V$,
-ki je desnosučna, t. j. $(\vek{e}_1\times\vek{e}_2)\cdot\vek{e}_3=1$. Krajevni vektor $\vek{r}(p)$
-ima enoličen razvoj po bazi $\vek{r}(p)=y_k\vek{e}_k$. Bijektivna zvezna preslikava
-\begin{equation*}
-	\kappa\colon\E\to\R^3,\qquad p\mapsto (y_1,y_2,y_3),
-\end{equation*}
-ki točki iz $\E$ priredi trojico koeficientov razvoja njenega krajevnega vektorja po bazi $\{\vek{e}_k\}$, je
-\emph{kartezijev koordinatni sistem}. Ta je odvisen od izbire izhodišča in ortonormirane baze.
+ki je desnosučna, tj.~$\vek{e}_3=(\vek{e}_1\times\vek{e}_2)$. Krajevni vektor $\vek{r}(p)$
+ima enoličen razvoj po bazi, $\vek{r}(p)=y_k\vek{e}_k$, koeficientom $y_k$ tega razvoja pa rečemo
+\emph{kartezijeve koordinate}. Te so odvisne od izbire izhodišča in ortonormirane baze.
 
-Včasih si želimo prostor $\E$ opremiti s kakšnim drugim koordinatnim sistemom.
-\begin{definicija}\label{d:ks}
-	Naj bosta $\mathcal{D}\subseteq\E$ in $U\subseteq\R^3$ odprti množici. Bijektivno preslikavo
-	$\psi\colon\mathcal{D}\to U$ z lastnostjo, da sta preslikavi $\psi\circ\kappa$ in njen inverz
-	$\kappa^{-1}\circ\psi^{-1}$ gladki (na svojih domenah), imenujemo \emph{koordinatni sistem}
-	za $\mathcal{D}\subseteq\E$.
-\end{definicija}
-Inverz od $\psi$ bomo označili s $\varphi=\psi^{-1}$.
-Koordinatni sistem lahko podamo kot koordinatno transformacijo kartezijevih koordinat $y_k$ s funkcijami
-\begin{equation*}
-	x_k = \psi_k(y_1,y_2,y_3) \ \Leftrightarrow \ y_k=\varphi_k(x_1,x_2,x_3), \quad k=1,2,3.
-\end{equation*}
+Včasih si želimo prostor $\E$ opremiti s kakšnim drugim koordinatnim sistemom, ki ga podamo
+s koordinatno transformacijo kartezijevih koordinat
+\begin{equation}\label{e:kt}
+	x^j = \hat{x}^j(y_1,y_2,y_3) \ \Leftrightarrow \ y_k=\hat{y}_k(x^1,x^2,x^3), \quad j,k=1,2,3.
+\end{equation}
+Za koordinatno transformacijo zahtevamo, da je bijektivna in gladka preslikava iz
+$D^{\mathrm{odp}}\subseteq\R^3$ v $U^{\mathrm{odp}}\subseteq\R^3$ s prav tako gladkim inverzom.
 
 Imamo torej bijektivno korespondenco med naslednjimi objekti:
 \begin{itemize}
 	\item točka $p\in\E$,
 	\item krajevni vektor $\vek{r}(p)=y_k\vek{e}_k\in V$,
-	\item koordinate $\psi(p)=(x_1,x_2,x_3)\in\R^3, \quad x_k=\psi_k(y_1,y_2,y_3)$.
+	\item koordinate $(x^1,x^2,x^3)\in\R^3$.
 \end{itemize}
 Zato bomo točke iz prostora $\E$ v bodoče identificirali z njihovimi krajevnimi vektorji ali pa z njihovimi koordinatami.
+
+Newtonov prostor čas $\mathcal{N}=\E\times\R$ lahko naredimo za vektorski prostor s skalarnim produktom
+\[ (\vek{x},t_1)\cdot(\vek{y},t_2) = \vek{x}\cdot\vek{y} + t_1 t_2. \]
+Iz skalarnega produkta dobimo tudi normo in metriko.
 
 
 \section{Tenzorska polja}
 
 
 V tem razdelku bomo navedli nekaj bistvenih pojmov in rezultatov iz tenzorske analize. Predpostavlja
-se, da bralec že pozna osnove tenzorske analize. Razdelek služi bolj vpeljavi oznak, ki jih
+se, da bralec že pozna osnove tenzorske analize. Razdelek služi bolj predstavitvi oznak, ki jih
 bomo uporabljali v nadaljevanju.
 
 Funkciji $f\colon\mathcal{D}\subseteq\E\to W$, kjer je $W$ neki normirani vektorski prostor, rečemo
 \emph{tenzorsko polje}. V posebnem primeru, ko je $W=\R$, rečemo funkciji $f$ \emph{skalarno},
-v primeru $W=V$ pa \emph{vektorsko polje}. Tenzorsko polje lahko definiramo tudi na domeni
-\begin{itemize}
-	\item $\vek{r}(\mathcal{D})\subseteq V \quad$ kot $\quad f_{\vek{r}}\colon\vek{r}(x)\mapsto f(x) \quad$ oziroma
-	\item $\psi(\mathcal{D})\subseteq\R^3 \quad$ kot $\quad f_{\psi}\colon \psi(x)\mapsto f(x)$.
-\end{itemize}
-Navadno bomo funkciji $f_{\vek{r}}$ in $f_{\psi}$ označili enako, kot $f$, če bo njihova
-domena razvidna iz konteksta.
-
-\subsection{Zapis v naravni bazi}
-
-Tenzorje, ki so elementi nekega vektorskega prostora $W$, lahko predstavimo v komponentni obliki
-glede na neko bazo prostora $W$. Posebno pomemben je dualni par baz za prostor $V$, ki ga v točki
-\[
-	(x_1,x_2,x_3)\in \R^3\ \xrightleftharpoons[\ \psi\ ]{\ \varphi\ }\ 
-	x\in\E\ \xrightleftharpoons[\ \phantom{\varphi}\ ]{\ \phantom{\psi}\ }\ 
-	\vek{r}(x)=y_i\vek{e}_i \in V
-\]
-definira koordinatni sistem\footnote{Za oznake glej stran \pageref{d:ks}.} $\psi$:
-\begin{align*}
-	\vek{g}_k(x)&=\frac{\partial}{\partial x_k}\varphi(x_1,x_2,x_3)=
-	\frac{\partial}{\partial x_k}\varphi_j(x_1,x_2,x_3)\,\vek{e}_j \\
-	\vek{g}^k(x)&=\grad \psi_k(y_1,y_2,y_3)=
-	\frac{\partial}{\partial y_j}\psi_k(y_1,y_2,y_3)\,\vek{e}_j.
-\end{align*}
-$\vek{g}_k$ imenujemo \emph{tangentni}, $\vek{g}^k$ pa \emph{gradientni vektorji}.
-\begin{trditev}\label{t:nb}
-	Množici $\{\vek{g^k(x)}\}$ in $\{\vek{g_j(x)}\}$ tvorita bazo za $V$.
-	Bazi sta si dualni, t. j. $\vek{g}^i(x)\cdot\vek{g}_j(x)=\topbot{\delta}{i}{j}$.
-\end{trditev}
-Dokaz trditve je preprost, najde pa se ga lahko npr. v \cite[str.~273]{liu}. Bazi iz trditve \ref{t:nb}
-imenujemo \emph{naravni bazi} v točki $x\in\E$ glede na koordinatni sistem $\psi$.
-Definirajmo še \emph{metrične koeficiente}:
-\begin{equation*}
-	g^{ij}(x)=\vek{g}^i(x)\cdot\vek{g}^j(x) \quad\mathrm{in}\quad g_{ij}(x)=\vek{g}_i(x)\cdot\vek{g}_j(x).
-\end{equation*}
-
-Vektorsko polje običajno zapišemo v komponentni obliki glede na naravno bazo kot
-\[ \vek{u}=u^j\vek{g}_j=u_k\vek{g}^k. \]
-Tenzorsko polje z vrednostmi iz prostora $\L(V)$ pa običajno zapišemo v komponentni obliki
-glede na eno od baz prostora $\L(V)$, ki je izpeljana iz naravnih baz za $V$, kot
-\[
-	S=\bottop{S}{i}{j}\,\vek{g}^i\otimes\vek{g}_j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j=
-	S^{ij}\,\vek{g}_i\otimes\vek{g}_j=S_{ij}\,\vek{g}^i\otimes\vek{g}^j.
-\]
-
-\subsection{Odvajanje}
+v primeru $W=V$ pa \emph{vektorsko polje}. Tenzorskim poljem bomo včasih kot argument namesto točke raje
+podali njen krajevni vektor ali pa njene koordinate, ne da bi pri tem spremenili oznako za tenzorsko polje.
 
 \begin{definicija}
 	Naj bo $f:\mathcal{D}^{\mathrm{odp}}\subseteq\E\to W$ tenzorsko polje. Funkcija $f$ je \emph{odvedljiva}
-	ali \emph{diferenciabilna} v točki $x\in\mathcal{D}$,
-	če obstaja taka linearna preslikava $\D f(x):V\to W$, da za vsak $\vek{h}\in V$ velja
+	v točki $x\in\mathcal{D}$, če obstaja taka linearna preslikava $\nabla f(x):V\to W$, da za vsak $\vek{h}\in V$ velja
 	\begin{equation*}
-		f(x+\vek{h})=f(x)+\D f(x)[\vek{h}]+o(\vek{h}),
+		f(x+\vek{h})=f(x)+\nabla f(x)[\vek{h}]+o(\vek{h}),
 	\end{equation*}
 	kjer je $o(\vek{h})\in W$ količina, za katero je
-	\[
-		\lim_{\| h\|_V\to 0}\frac{\|o(\vek{h})\|_W}{\|\vek{h}\|_V}=0.
-	\]
-	Če taka $\D f(x)$ obstaja, ji rečemo \emph{krepki} oz. \emph{Fréchetov odvod} funkcije $f$ v točki $x$.
+	\[ \lim_{\| h\|\to 0}\frac{\|o(\vek{h})\|}{\|\vek{h}\|}=0. \]
+	Če $\nabla f(x)$ obstaja, ji rečemo \emph{gradient} ali pa \emph{krepki} oz.~\emph{Fréchetov odvod} funkcije $f$ v točki $x$.
 \end{definicija}
-Krepki odvod je tudi tenzorsko polje, definirano povsod, kjer obstaja, vrednosti pa ima v prostoru $\L(V,W)$.
+Krepki odvod, če obstaja, je tudi tenzorsko polje, vrednosti pa zavzema v prostoru $\L(V,W)$.
+Drugi odvod oz. odvod odvoda, če obstaja, je tudi tenzorsko polje z vrednostmi v prostoru $\L\big(V,\L(V,W)\big)$,
+in tako dalje.
 
-Krepke odvode računamo s pomočjo \emph{šibkega} oziroma \emph{smernega} (včasih tudi \emph{Gâteauxovega}) \emph{odvoda}:
+Krepke odvode računamo s pomočjo \emph{šibkega} oz.~\emph{smernega} (včasih tudi \emph{Gâteauxovega}) \emph{odvoda}:
 \begin{equation*}
 	\delta f(x)[\vek{h}]=\lim_{s\to 0}\frac{1}{s}\Big(f(x+s\vek{h})-f(x)\Big)=
 	\at{\frac{d}{ds}f(x+s\vek{h})}{s=0}.
 \end{equation*}
 Znano je, da če obstaja krepki odvod,
-potem obstaja tudi šibki odvod in sta enaka: $\D f(x)[\vek{h}]=\delta f(x)[\vek{h}]$ za vsak $\vek{h}\in V$.
-Za tovrstne odvode veljajo enaki izreki, kot veljajo za preslikave med normiranimi prostori, ki jih
+potem obstaja tudi šibki odvod in sta enaka: $Df(x)[\vek{h}]=\delta f(x)[\vek{h}]$ za vsak $\vek{h}\in V$.
+Za krepke in šibke odvode veljajo enaki izreki, kot veljajo za preslikave med normiranimi prostori, ki jih
 poznamo iz matematične analize: izrek o posrednem odvajanju, izrek o odvajanju produkta\footnote{
 Izrek o odvajanju produkta velja za katerikoli produkt, ki je bilinearna preslikava. Med njimi so
 npr. skalarni in vektorski produkt vektorjev, produkt tenzorja s skalarjem, tenzorski produkt,
 delovanje tenzorja na vektorju itd.},
 izrek o totalnem odvodu itd.
 
+Gradient skalarnega polja $f$ zavzema vrednosti iz prostora $\L(V,\R)$, kar so linearni funkcionali.
+S pojmom \emph{gradient} in oznako $\nabla f$ se v tem primeru označuje polje vektorjev, ki pripadajo polju
+linearnih funkcionalov po Riezsovem izreku o reprezentaciji, tako da velja
+\[ \nabla f[\vek{h}]=\nabla f \cdot \vek{h} \quad \forall\, \vek{h}\in V. \]
+
+Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
+\emph{Divergenca vektorskega polja} $\vek{u}$ je skalarno polje
+\begin{equation*}
+	\div\vek{u}=\tr(\nabla\vek{u})
+\end{equation*}
+\emph{Divergenca tenzorskega polja} $S\colon\mathcal{D}\to\L(V)$, je vektorsko polje $\div S$ z lastnostjo,
+da za vsako konstantno vektorsko polje $\vek{v}$ velja
+\[ \vek{v}\cdot\div S = \div(S^T\vek{v}). \]
+
+Če je polje $f$ časovno odvisno, tj. $f$ je preslikava
+\[ f\colon\mathcal{D}\times I\to W, \]
+kjer je $\mathcal{D}\subseteq\E$ odprta množica, $I=(t_1,t_2)\subseteq\R$ (časovni) interval, $W$ pa neki normirani prostor,
+potem je definiran še \emph{časovni odvod}
+\[ \frac{\partial}{\partial t}f(x,t) = \lim_{s\to 0}\frac{1}{s}\Big(f(x,t+s)-f(x,t)\Big), \]
+kar je zopet časovno odvisno tenzorsko polje z vrednostmi iz prostora $W$. $n$-ti
+časovni odvod polja $f$ označimo z $\partial^n f/\partial t^n$.
 
 
-Materialno telo $\body$ je določeno z izbrano množico točk $B\subseteq\E$. Tej določitvi rečemo
-\emph{referenčna konfiguracija} materialnega telesa $\body$ in služi zgolj označbi telesa; ni nujno,
-da se telo dejansko kadarkoli nahaja v tem položaju.
-\emph{Konfiguracija} materialnega telesa $\body$ je vsaka bijektivna gladka preslikava $\chi:B\to\chi(B)\subseteq\E$,
-katere inverz $\chi^{-1}:\chi(B)\to B$ je tudi gladga preslikava.
+\section{Gibanje materialnega telesa}
+
+
+Materialno telo je določeno z izbrano množico točk $\B\subseteq\E$. Tej določitvi rečemo
+\emph{referenčna konfiguracija} materialnega telesa in služi zgolj označbi telesa; ni nujno,
+da se telo dejansko kadarkoli nahaja v tem položaju. Oznaka $\B$ bo odslej vedno prestavljala
+referenčno konfiguracijo telesa.
+
+\begin{definicija}
+	\emph{Gibanje} materialnega telesa v časovnem
+	intervalu $I=(t_0,t_1)$ je zvezno, časovno odvisno vektorsko polje
+	\begin{equation}\label{e:chi}
+		\chi\colon\B\times I\to\E,\qquad \chi\colon (\vek{X},t)\mapsto\vek{x},
+	\end{equation}
+	za katerega je za vsak $t\in I$ preslikava
+	\[ \chi_t\colon\B\to\B_t, \qquad \chi_t\colon\vek{X}\mapsto\chi(\vek{X},t)=\vek{x} \]
+	bijektivna. Slika $\B_t$ se imenuje \emph{trenutna konfiguracija} materialnega
+	telesa \emph{ob času} $t$.
+\end{definicija}
+Gibanje (\ref{e:chi}) ni bijektivna preslikava, zato nima inverza. Kljub temu na smiselen
+način definiramo \emph{inverzno gibanje}
+\[ \chi^{-1}(\vek{x},t)=\bottop{\chi}{t}{-1}(\vek{x}), \]
+za katerega tudi zahtevamo, da je zvezno.
+
+V predstavitvi gibanja (\ref{e:chi}) se krajevni vektor $\vek{X}$ imenuje \emph{materialni vektor},
+točka $X$, ki jo $\vek{X}$ predstavlja, se imenuje \emph{materialna točka} in njene koordinate
+$(X^1,X^2,X^3)$ se imenujejo \emph{materialne koordinate}. Krajevni vektor $\vek{x}$ se imenuje
+\emph{prostorski vektor}, točka $x$, ki jo predstavlja, se imenuje \emph{prostorska točka},
+njene koordinate $(x^1,x^2,x^3)$ pa se imenujejo \emph{prostorske koordinate}.
+
+\emph{Hitrost} $\vek{v}$ in \emph{pospešek} $\vek{a}$ gibanja $\chi$ v časovnem intervalu $I$ sta vektorski polji
+\begin{align}
+	\vek{v}\colon\B\times I\to V \qquad & \vek{v} = \frac{\partial}{\partial t}\chi(\vek{X},t), \label{e:v} \\
+	\vek{a}\colon\B\times I\to V \qquad & \vek{a} = \frac{\partial^2}{\partial t^2}\chi(\vek{X},t). \label{e:a}
+\end{align}
+Pri tem mora biti $\chi$ vsaj dvakrat odvedljivo po času. \emph{Deformacijski gradient} gibanja $\chi$ je
+tenzorsko polje
+\[ F=\nabla\chi(\vek{X},t). \]
+Za determinanto $j=\det F$ se predpostavi, da je pozitivna.
+
+
+Materialno telo spremljajo različne fizikalne lastnosti, katerih vrednosti predstavimo z elementi nekega
+normiranega prostora $W$. Vrednosti fizikalnih količin
+se med gibanjem v časovnem intervalu $I\subseteq\R$ spreminjajo, opišemo pa jih lahko na
+dva različna načina.
+\begin{definicija}
+	\emph{Materialni} ali \emph{Lagrangejev opis} je predstavitev fizikalne količine, ki spremlja materialno telo
+	med gibanjem $\chi$, s tenzorskim poljem
+	\[ f\colon\B\times I \to W, \qquad f\colon (\vek{X},t)\mapsto w. \]
+	\emph{Prostorski} ali \emph{Eulerjev opis} je pri vsakem $t\in I$ predstavitev taiste fizikalne količine s tenzorskim poljem
+	\[ \bar{f}(\cdot,t)\colon\B_t\to W, \qquad \bar{f}\colon (\vek{x},t)\mapsto w. \]
+\end{definicija}
+Med materialnim in prostorskim opisom veljata zvezi
+\begin{equation}\label{e:mpo-zveza}
+	f(\vek{X},t) = \bar{f}\big(\chi(\vek{X},t),t\big),\qquad \bar{f}(\vek{x},t) = f\big(\chi^{-1}(\vek{x},t),t\big).
+\end{equation}
+Kadar bomo uporabljali prostorski opis in bo to jasno iz konteksta, bomo črtico v oznaki za polje izpustili.
+Do dvomov lahko pride, kadar ne pišemo argumentov polja, še posebej, če so vključeni odvodi. Temu dvomu se izognemo tako,
+da uporabljamo različno notacijo za odvode. V materialnem opisu pišemo gradient in divergenco kot
+\[ \nabla_{\vek{X}}f=\nabla f(\vek{X},t),\qquad \Div f = \div f(\vek{X},t), \]
+v prostorskem opisu pa
+\[ \nabla_{\vek{x}}f=\nabla \bar{f}(\vek{x},t),\qquad \div f = \div \bar{f}(\vek{x},t). \]
+Če je $\phi$ skalarno, $\vek{u}$ pa vektorsko polje, potem je zveza med gradientoma
+\[
+	\nabla_{\!\!\vek{X}}\phi=F^{\,T}\,\nabla_{\!\!\vek{x}}\phi,\qquad \nabla_{\vek{X}}\vek{u}=\nabla_{\vek{x}}\vek{u}\,F.
+\]
+Res, če je $\vek{w}$ poljubno vektorsko polje, potem je
+\begin{align*}
+	&\nabla_{\vek{X}}\phi\cdot\vek{w}=\nabla_{\vek{x}}\phi\cdot\nabla_{\vek{X}}\chi\,[\vek{w}]=
+	\nabla_{\vek{x}}\phi\cdot F\vek{w}=F^{\,T}\,\nabla_{\vek{x}}\phi\cdot\vek{w}, \\
+	&\nabla_{\vek{X}}\vek{u}\,[\vek{w}]=\nabla_{\vek{x}}\vek{u}\,\big[\nabla_{\vek{X}}\chi\,[\vek{w}]\big]
+	=\nabla_{\vek{x}}\vek{u}\,F\,[\vek{w}].
+\end{align*}
+
+\begin{definicija}
+	Totalni odvod tenzorskega polja $f$ po času
+	\[
+		\dot{f}=\frac{d}{dt}f
+	\]
+	imenujemo \emph{materialni odvod}.
+\end{definicija}
+Poimenovanje naj nas ne zavede -- gre za časovni odvod polja $f$, ko to sledi póti materialne točke.
+V materialnem opisu je
+\[ \dot{f}=\frac{d}{dt}f(\vek{X},t)=\frac{\partial}{\partial t}f(\vek{X},t). \]
+V prostorskem opisu določena točka prostora ob vsakem času v splošnem predstavlja
+drugo materialno točko. Materialni odvod, ki je totalni odvod po času, je zato v prostorskem opisu
+\[
+	\dot{f}=\frac{d}{dt}\bar{f}(\vek{x},t) = \frac{\partial}{\partial t}\bar{f}(\vek{x},t) +
+	\nabla\bar{f}(\vek{x},t)\,[\bar{\vek{v}}(\vek{x},t)].
+\]
+Pri izpeljavi te enakosti se zaporedoma uporabi pravilo za totalni odvod, pravilo za posredno odvajanje,
+definicijo hitrosti (\ref{e:v}) ter zvezo (\ref{e:mpo-zveza}).
+\begin{primer}
+	Pospešek je materialni odvod hitrosti. V prostorskem opisu je
+	\[ \bar{\vek{a}}=\frac{\partial}{\partial t}\bar{\vek{v}}+L\bar{\vek{v}}, \]
+	kjer je $L=\nabla_{\vek{x}}\vek{v}$ t.~i.~\emph{hitrostni gradient}.
+\end{primer}
+

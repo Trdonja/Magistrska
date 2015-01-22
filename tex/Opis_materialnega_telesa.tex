@@ -341,27 +341,20 @@ simbolov, katerih izpeljavo lahko najdemo v \cite[str. 275--277]{liu} ali \cite[
 	\cs{i}{j}{k}=\frac{1}{2}\,g^{jl}\left(\frac{\partial g_{li}}{\partial x^k}+
 	\frac{\partial g_{lk}}{\partial x^i}-\frac{\partial g_{ik}}{\partial x^l}\right).
 \end{equation*}
-
-Naj bo sedaj $\vek{f}$ vektorsko polje. Njegov gradient v točki $x$ je
-\begin{align*}
-	\nabla \vek{f}&=\nabla(f^i\,\vek{g}_i)=\vek{g}_i\otimes\nabla f^i + f^i\,\nabla\vek{g}_i=\\
-	&=\vek{g}_i\otimes\frac{\partial f^i}{\partial x^k}\,\vek{g}^k+f^i\,\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k=\\
-	&=\left(\frac{\partial f^j}{\partial x^k}+f^i\,\cs{i}{j}{k}\right)\vek{g}_j\otimes\vek{g}^k
-\end{align*}
-in je tenzor iz prostora $V\otimes V$. V komponentni obliki ga zapišemo kot
+Komponentna oblika gradienta vektorskega polja $\vek{u}$ je
 \begin{equation*}
-	\nabla\vek{f}= \topbot{f}{j}{,k}\:\vek{g}_j\otimes\vek{g}^k,\quad
-	\topbot{f}{j}{,k}=\frac{\partial f^j}{\partial x^k}+f^i\,\cs{i}{j}{k}.
+	\nabla\vek{u}= \topbot{u}{j}{,k}\:\vek{g}_j\otimes\vek{g}^k,\quad
+	\topbot{u}{j}{,k}=\frac{\partial u^j}{\partial x^k}+u^i\,\cs{i}{j}{k}.
 \end{equation*}
-Vejica v izrazu $\topbot{f}{j}{,k}$ označuje operacijo, imenovano \emph{kovariantni odvod}.
+Izraz $\topbot{u}{j}{,k}$ označuje označuje t.~i.~\emph{kovariantni odvod} komponente $u^j$
+po koordinati $x^k$. V kartezijevih koordinatah so vsi Christoffelovi simboli enaki 0 in
+kovariantni odvod je kar običajni parcialni odvod.
 
 Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
-\begin{definicija}
-	\emph{Divergenca vektorskega polja} $\vek{f}$ v točki $x\in\E$ je
-	\begin{equation*}
-		\div \vek{f}=\topbot{f}{k}{,k}=\frac{\partial f^k}{\partial x^k}+f^i\,\cs{i}{k}{k}\;\in\R.
-	\end{equation*}
-\end{definicija}
+\emph{Divergenca vektorskega polja} $\vek{u}$ v točki $x\in\E$ je skalar
+\begin{equation*}
+	\div \vek{u}=\tr(\nabla\vek{u})=\topbot{u}{k}{,k}=\frac{\partial u^k}{\partial x^k}+u^i\,\cs{i}{k}{k}\;\in\R.
+\end{equation*}
 
 
 \section{Materialni in prostorski opis}
