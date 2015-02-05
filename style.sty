@@ -13,6 +13,7 @@
 % ukazi za matematična okolja
 \theoremstyle{definition} % tekst napisan pokoncno
 \newtheorem{definicija}{Definicija}[chapter]
+\newtheorem{aksiom}[definicija]{Aksiom}
 \newtheorem{primer}[definicija]{Primer}
 
 \theoremstyle{plain} % tekst napisan posevno
@@ -31,18 +32,20 @@
 \newcommand{\V}{\mathbb V} % Trirazsežni Evklidski vektorski prostor
 \renewcommand{\L}{\mathcal L} % Prostor linearnih preslikav
 \newcommand{\B}{\mathcal B} % materialno telo
+\newcommand{\Br}{\mathcal{B}_{\mathrm{R}}} % materialno telo v referenčni konfiguraciji
 \newcommand{\K}{\mathscr K} % množica konfiguracij
 \newcommand{\body}{\mathscr B} % materialno telo
 \renewcommand{\P}{\mathscr P} % točka materialnega telesa
 \renewcommand{\r}{\mathrm R} % oznaka za referenčno konfiguracijo
 \newcommand{\vek}[1]{\boldsymbol #1} % vektor
-\newcommand{\grad}{\mathrm{grad}\,} % gradient
-\renewcommand{\div}{\mathrm{div}\,} % divergenca
-\newcommand{\rot}{\mathrm{rot}\,} % rotor
-\newcommand{\Grad}{\mathrm{Grad}\,} % Gradient
-\newcommand{\Div}{\mathrm {Div}\,} % Divergenca
-\newcommand{\Rot}{\mathrm{Rot}\,} % Rotor
-\newcommand{\tr}{\mathrm{tr}\,} % Rotor
+\newcommand{\ten}[1]{\mathbf #1} % tenzor drugega reda
+\newcommand{\grad}{\mathrm{grad}} % gradient
+\renewcommand{\div}{\mathrm{div}} % divergenca
+\newcommand{\rot}{\mathrm{rot}} % rotor
+\newcommand{\Grad}{\mathrm{Grad}} % Gradient
+\newcommand{\Div}{\mathrm {Div}} % Divergenca
+\newcommand{\Rot}{\mathrm{Rot}} % Rotor
+\newcommand{\tr}{\mathrm{tr}} % sled
 \newcommand{\bottop}[3]{{#1}_{#2}^{\phantom{#2}{#3}}}
 \newcommand{\topbot}[3]{{#1}^{#2}_{\phantom{#2}{#3}}}
 \newcommand{\cs}[3]{\Gamma_{#1\phantom{#2}#3}^{\phantom{#1}#2}} % Christoffelov simbol prve vrste
