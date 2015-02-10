@@ -3,7 +3,8 @@
 \usepackage[slovene]{babel}
 \usepackage[utf8]{inputenc}
 %\usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsfonts,amsthm,mathrsfs,mathtools}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathrsfs,mathtools,stmaryrd}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
 \usepackage{color} % briši na koncu ven
 \usepackage[pdftex]{graphicx}
 
@@ -27,10 +28,11 @@
 
 % ukazi
 \newcommand{\R}{\mathbb R} % množica realnih števil
-\newcommand{\N}{\mathbb N} % množica naravnih števil
-\newcommand{\E}{\mathcal E} % Evklidski točkovni prostor
-\newcommand{\V}{\mathbb V} % Trirazsežni Evklidski vektorski prostor
-\renewcommand{\L}{\mathcal L} % Prostor linearnih preslikav
+\newcommand{\N}{\mathscr N} % Newtonov prostor-čas
+\newcommand{\E}{\mathscr E} % Evklidski točkovni prostor
+\newcommand{\V}{\mathscr V} % trirazsežni Evklidski vektorski prostor
+\newcommand{\W}{\mathscr W} % normirani vektorski prostor
+\renewcommand{\L}{\mathcal L} % prostor linearnih preslikav
 \newcommand{\B}{\mathcal B} % materialno telo
 \newcommand{\Br}{\mathcal{B}_{\mathrm{R}}} % materialno telo v referenčni konfiguraciji
 \newcommand{\K}{\mathscr K} % množica konfiguracij

@@ -1,0 +1,245 @@
+\section{Sredstva iz tenzorske analize}
+
+
+V tem razdelku bomo navedli nekaj bistvenih pojmov in rezultatov iz tenzorske analize. Predpostavlja
+se, da bralec že pozna osnove tenzorske analize. Razdelek služi bolj predstavitvi oznak, ki jih
+bomo uporabljali v nadaljevanju.
+
+
+\section{Evklidski prostor}
+
+
+V klasični mehaniki opisujemo dogodke v \emph{Newtonovem prostor-času}, kar je produkt
+trirazsežnega Evklidskega prostora ter prostora realnih števil $\R$. Evklidski prostor nam služi
+za opis položaja in geometrije objektov, prostor $\R$ pa predstavlja časovno os.
+
+\begin{definicija} \label{d:ep}
+	Množica točk $\E$ je \emph{Evklidski točkovni prostor} in trirazsežni Evklidski vektorski prostor $V$ je
+	\emph{translacijski prostor} za $\E$, če poljubnemu paru točk $p,q\in\E$ pripada vektor iz $V$,
+	ki ga zapišemo kot $q-p$, tako da velja:
+	\begin{enumerate}
+		\item Za vsak $p\in\E$ je $p-p=\vek{0}$, ničelni vektor.
+		\item Za vsak $p\in\E$ in vsak $\vek{v}\in V$ obstaja natanko ena točka $q\in\E$, da je
+		$\vek{v}=q-p$. Pišemo: $q=p+\vek{v}$.
+		\item Za vse $p,q,r\in\E$ velja $(q-p)+(r-q)=(r-p)$.
+	\end{enumerate}
+\end{definicija}
+
+Razdalja med točkama $p,q\in\E$ je definirana kot $d(p,q)=\|q-p\|$, kjer $\|.\|$ označuje normo na
+vektorskem prostoru $V$, porojeno iz standardnega skalarnega produkta. $(\E,d)$ je metrični prostor.
+
+V prostoru $\E$ si izberimo točko, jo označimo z $o$ in jo imenujmo \emph{izhodišče}.
+V skladu z aksiomi iz definicije pripada vsaki točki $p\in\E$ glede na izhodišče $o$ \emph{krajevni vektor}
+$\vek{r}(p)=p-o\in V$. Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ neka ortonormirana baza prostora $V$,
+ki je desnosučna, tj.~$\vek{e}_3=(\vek{e}_1\times\vek{e}_2)$. Krajevni vektor $\vek{r}(p)$
+ima enoličen razvoj po bazi, $\vek{r}(p)=y_k\vek{e}_k$, koeficientom $y_k$ tega razvoja pa rečemo
+\emph{kartezijeve koordinate}. Te so odvisne od izbire izhodišča in ortonormirane baze.
+Z izbiro izhodišča postane $\E$ vektorski prostor, preslikava $\vek{r}\colon\E\to\V$ pa je izomorfizem
+vektorskih prostorov. $\E$ torej lahko smatramo kot $\V\cong\R^3$.
+
+Včasih si želimo prostor $\E$ opremiti s kakšnim drugim koordinatnim sistemom, ki ga podamo
+s koordinatno transformacijo kartezijevih koordinat
+\begin{equation}\label{e:kt}
+	x^j = \hat{x}^j(y_1,y_2,y_3) \ \Leftrightarrow \ y_k=\hat{y}_k(x^1,x^2,x^3), \quad j,k=1,2,3.
+\end{equation}
+Za koordinatno transformacijo zahtevamo, da je bijektivna in gladka preslikava iz
+$D^{\mathrm{odp}}\subseteq\R^3$ v $U^{\mathrm{odp}}\subseteq\R^3$ s prav tako gladkim inverzom.
+
+Imamo torej bijektivno korespondenco med naslednjimi objekti:
+\begin{itemize}
+	\item točka $p\in\E$,
+	\item krajevni vektor $\vek{r}(p)=y_k\vek{e}_k\in V$,
+	\item koordinate $(x^1,x^2,x^3)\in\R^3$.
+\end{itemize}
+Zato bomo točke iz prostora $\E$ v bodoče identificirali z njihovimi krajevnimi vektorji ali pa z njihovimi koordinatami.
+
+Newtonov prostor čas $\mathcal{N}=\E\times\R$ lahko naredimo za vektorski prostor s skalarnim produktom
+\[ (\vek{x},t_1)\cdot(\vek{y},t_2) = \vek{x}\cdot\vek{y} + t_1 t_2. \]
+Iz skalarnega produkta dobimo tudi normo in metriko.
+
+
+\section{Tenzorska polja, gradient in divergenca}
+
+
+Funkciji $f\colon\mathcal{D}\subseteq\E\to W$, kjer je $W$ neki normirani vektorski prostor, rečemo
+\emph{tenzorsko polje}. V posebnem primeru, ko je $W=\R$, rečemo funkciji $f$ \emph{skalarno},
+v primeru $\mathscr{W}=\mathscr{V}$ pa \emph{vektorsko polje}. Tenzorskim poljem bomo včasih kot argument namesto točke raje
+podali njen krajevni vektor ali pa njene koordinate, ne da bi pri tem spremenili oznako za tenzorsko polje.
+
+\begin{definicija}
+	Naj bo $f:\mathcal{D}^{\mathrm{odp}}\subseteq\E\to W$ tenzorsko polje. Funkcija $f$ je \emph{odvedljiva}
+	v točki $x\in\mathcal{D}$, če obstaja taka linearna preslikava $\nabla f(x):V\to W$, da za vsak $\vek{h}\in V$ velja
+	\begin{equation*}
+		f(x+\vek{h})=f(x)+\nabla f(x)[\vek{h}]+o(\vek{h}),
+	\end{equation*}
+	kjer je $o(\vek{h})\in W$ količina, za katero je
+	\[ \lim_{\| h\|\to 0}\frac{\|o(\vek{h})\|}{\|\vek{h}\|}=0. \]
+	Če $\nabla f(x)$ obstaja, ji rečemo \emph{gradient} ali pa \emph{krepki} oz.~\emph{Fréchetov odvod} polja $f$ v točki $x$
+	in ga običajno označimo z $\grad f(x)$.
+\end{definicija}
+Gradient, če obstaja, je tudi tenzorsko polje, vrednosti pa zavzema v prostoru $\L(V,W)$.
+
+Gradient skalarnega polja $f$ zavzema vrednosti iz prostora $\L(V,\R)$, kar so linearni funkcionali.
+S pojmom \emph{gradient} in oznako $\grad f$ se v tem primeru označuje polje vektorjev, ki pripadajo polju
+linearnih funkcionalov po Riezsovem izreku o reprezentaciji, tako da velja
+\[ \nabla f[\vek{h}]=\grad f \cdot \vek{h} \quad \forall\, \vek{h}\in V. \]
+
+Krepke odvode računamo s pomočjo \emph{šibkega} oz.~\emph{smernega} (včasih tudi \emph{Gâteauxovega}) \emph{odvoda}:
+\begin{equation*}
+	\delta f(x)[\vek{h}]=\lim_{s\to 0}\frac{1}{s}\Big(f(x+s\vek{h})-f(x)\Big)=
+	\at{\frac{d}{ds}f(x+s\vek{h})}{s=0}.
+\end{equation*}
+Znano je, da če obstaja krepki odvod,
+potem obstaja tudi šibki odvod in sta enaka: $\nabla f(x)[\vek{h}]=\delta f(x)[\vek{h}]$ za vsak $\vek{h}\in V$.
+Za krepke in šibke odvode veljajo enaki izreki, kot veljajo za preslikave med normiranimi prostori, ki jih
+poznamo iz matematične analize: izrek o posrednem odvajanju, izrek o odvajanju produkta\footnote{
+Izrek o odvajanju produkta velja za katerikoli produkt, ki je bilinearna preslikava. Med njimi so
+npr. skalarni in vektorski produkt vektorjev, produkt tenzorja s skalarjem, tenzorski produkt,
+delovanje tenzorja na vektorju itd.},
+izrek o totalnem odvodu itd.
+
+Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
+\emph{Divergenca vektorskega polja} $\vek{u}$ je skalarno polje
+\begin{equation} \label{e:div1}
+	\div\vek{u}=\tr(\nabla\vek{u}).
+\end{equation}
+\emph{Divergenca tenzorskega polja} $S\colon\mathcal{D}\to\L(V)$, je vektorsko polje $\div S$ z lastnostjo,
+da za vsako konstantno vektorsko polje $\vek{v}$ velja
+\begin{equation} \label{e:div2}
+	\vek{v}\cdot\div S = \div(S^{\,T}\vek{v}).
+\end{equation}
+Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadaljevanju.
+\begin{trditev} \label{t:divprop}
+	Za diferenciabilno skalarno polje $\phi$ ter diferenciabilni vektorski polji $\vek{u}$ in $\vek{v}$ velja
+	\begin{enumerate}
+		\item $\nabla(\phi\vek{v})=\vek{v}\otimes\nabla\phi+\phi\nabla\vek{v},$
+		\item $\nabla(\vek{u}\cdot\vek{v})=(\nabla\vek{u})^T\vek{v}+(\nabla\vek{v})^T\vek{u},$
+		\item $\div(\phi\vek{v})=\vek{v}\cdot\nabla\phi+\phi\div\vek{v}$,
+		\item $\div(\vek{u}\otimes\vek{v})=(\nabla\vek{u})\vek{v}+\vek{u}\div\vek{v}$.
+	\end{enumerate}
+\end{trditev}
+\proof
+	Za poljuben vektor $\vek{h}$ je
+	\begin{align*}
+		\nabla(\phi\vek{v})[\vek{h}]&=(\nabla\phi[\vek{h}])\vek{v}+\phi(\nabla\vek{v})[\vek{h}]=
+		(\nabla\phi\cdot\vek{h})\vek{v}+\phi(\nabla\vek{v})\vek{h}=\\
+		&=(\vek{v}\otimes\nabla\phi)\vek{h}+\phi(\nabla\vek{v})\vek{h}=
+		\big(\vek{v}\otimes\nabla\phi+\phi\nabla\vek{v}\big)[\vek{h}],
+	\end{align*}
+	iz česar sledi prva enakost, ter
+	\begin{align*}
+		\nabla(\vek{u}\cdot\vek{v})[\vek{h}]&=(\nabla\vek{u})[\vek{h}]\cdot\vek{v}+\vek{u}\cdot(\nabla\vek{v})[\vek{h}]=
+		(\nabla\vek{u})^T\vek{v}\cdot\vek{h}+(\nabla\vek{v})^T\vek{u}\cdot\vek{h}=\\
+		&=\big((\nabla\vek{u})^T\vek{v}+(\nabla\vek{v})^T\vek{u}\big)[\vek{h}],
+	\end{align*}
+	iz česar sledi druga enakost. Tretjo enakost dokažemo neposredno:
+	\begin{align*}
+		\div(\phi\vek{v})&=\tr\big(\nabla(\phi\vek{v})\big)=\tr(\vek{v}\otimes\nabla\phi+\phi\nabla\vek{v})=\\
+		&=\tr(\vek{v}\otimes\nabla\phi)+\phi\tr(\nabla\vek{v})=\vek{v}\cdot\nabla\phi+\phi\div\vek{v}.
+	\end{align*}
+	Pri tem smo uporabili definicijo divergence (\ref{e:div1}), prvo enakost trditve in dejstvi, da je sled
+	linearen operator ter da je sled tenzorskega produkta dveh vektorjev enaka skalarnemu produktu teh
+	dveh vektorjev.
+	
+	Za poljubno konstantno vektorsko polje $\vek{w}$ je
+	\begin{align*}
+		\vek{w}\cdot\div(\vek{u}\otimes\vek{v})&=\div\big((\vek{u}\otimes\vek{v})^T\vek{w}\big)=
+		\div\big((\vek{v}\otimes\vek{u})\vek{w}\big)=\\
+		&=\div\big((\vek{u}\cdot\vek{w})\vek{v}\big)=\vek{v}\cdot\nabla(\vek{u}\cdot\vek{w})+(\vek{u}\cdot\vek{w})\div\vek{v}=\\
+		&=(\nabla\vek{u})\vek{v}\cdot\vek{w}+\vek{u}\div\vek{v}\cdot\vek{w}=\big((\nabla\vek{u})\vek{v}+\vek{u}\div\vek{v}\big)\cdot\vek{w},
+	\end{align*}
+	iz česar sledi četrta enakost. Pri tem smo uporabili definicijo divergence (\ref{e:div2}) ter
+	tretjo in drugo enakost trditve, pri čemer smo upoštevali, da je $\nabla\vek{w}=\ten{0}$.
+\endproof
+
+Če je polje $f$ časovno odvisno, tj. $f$ je preslikava
+\[ f\colon\mathcal{D}\times I\to W, \]
+kjer je $\mathcal{D}\subseteq\E$ odprta množica, $I=(t_1,t_2)\subseteq\R$ (časovni) interval, $W$ pa neki normirani prostor,
+potem je definiran še \emph{časovni odvod}
+\[ \frac{\partial}{\partial t}f(x,t) = \lim_{s\to 0}\frac{1}{s}\Big(f(x,t+s)-f(x,t)\Big), \]
+kar je zopet časovno odvisno tenzorsko polje z vrednostmi iz prostora $W$. $n$-ti
+časovni odvod polja $f$ označimo z $\partial^n f/\partial t^n$.
+
+
+\section{Integralski izreki}
+
+
+\begin{trditev}\label{t:oiz}
+	Naj bo $\mathcal{D}\subseteq\E$ odprta množica ter $f\colon\mathcal{D}\to W$ zvezno tenzorsko polje.
+	Če za vsako podmnožico $\mathcal{N}\subseteq\mathcal{D}$ velja
+	\[ \int_{\mathcal{N}}f\,dv=0, \]
+	potem je $f(x)=0$ za vsak $x\in\mathcal{D}$.
+\end{trditev}
+\proof
+	Recimo, da obstaja $x_0\in\mathcal{D}$, da je $f(x_0)\neq 0$. Ker je $f$ zvezno, obstaja okolica
+	$\mathcal{N}\subseteq\mathcal{D}$ točke $x_0$ z volumnom $v(\mathcal{N})>0$, tako da je $f(x)\neq 0$
+	za vsak $x\in\mathcal{N}$. Po izreku o povprečni vrednosti iz analize obstaja točka $\xi\in\mathcal{N}$, da je
+	\[ \int_{\mathcal{N}}f\,dv=v(\mathcal{N})f(\xi)\neq 0, \]
+	kar je v protislovju z začetno predpostavko.
+\endproof
+
+\begin{izrek}[Divergenčni izrek] \label{i:divtheo}
+	Naj bo $\mathcal{D}$ omejeno območje v $\E$, katerega rob $\partial\mathcal{D}$ je sestavljen
+	iz končnega števila gladkih ploskev. Naj bodo $\phi\colon\overline{\mathcal{D}}\to\R$,
+	$\vek{u}\colon\overline{\mathcal{D}}\to V$ ter $\ten{S}\colon\overline{\mathcal{D}}\to\L(V)$
+	zvezna polja, diferenciabilna v notranjosti območja $\mathcal{D}$, ter $\vek{n}\colon\partial\mathcal{D}\to V$
+	polje zunanjih enotskih normal. Potem velja
+	\begin{align*}
+		\int_{\partial\mathcal{D}} \phi\vek{n}\,ds &= \int_{\mathcal{D}} \grad\phi\,dv, \\
+		\int_{\partial\mathcal{D}} \vek{u}\cdot\vek{n}\,ds &= \int_{\mathcal{D}} \div\vek{u}\,dv, \\
+		\int_{\partial\mathcal{D}} \ten{S}\vek{n}\,ds &= \int_{\mathcal{D}} \div\ten{S}\,dv.
+	\end{align*}
+\end{izrek}
+\proof
+	Druga enakost je splošno znan \emph{Gaussov izrek} iz vektorske analize, zato ga tukaj ne bomo dokazovali.
+	Naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
+	\begin{align*}
+		\vek{w}\cdot\int_{\partial\mathcal{D}}\phi\vek{n}\,ds &= \int_{\partial\mathcal{D}}\phi\vek{w}\cdot\vek{n}\,ds=
+		\int_{\mathcal{D}}\div(\phi\vek{w})\,dv = \\
+		&= \int_{\mathcal{D}}\vek{w}\cdot\grad\phi \,dv = \vek{w}\cdot\int_{\mathcal{D}}\grad\phi \,dv,
+	\end{align*}
+	s čimer smo dokazali prvo enakost.
+	Pri tem smo uporabili Gaussov izrek ter tretjo enakost iz trditve (\ref{t:divprop}), pri čemer
+	smo upoštevali, da je $\div\vek{w}=0$.
+	
+	Zopet naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
+	\begin{align*}
+		\vek{w}\cdot\int_{\partial\mathcal{D}}\ten{S}\vek{n}\,ds &= \int_{\partial\mathcal{D}}\vek{w}\cdot\ten{S}\vek{n}\,ds=
+		\int_{\partial\mathcal{D}}\ten{S}^T\vek{w}\cdot\vek{n}\,ds=
+		\int_{\mathcal{D}}\div(\ten{S}^T\vek{w})\,dv = \\ &=\int_{\mathcal{D}}\vek{w}\cdot\div\ten{S}\,dv=
+		\vek{w}\cdot\int_{\mathcal{D}}\div\ten{S}\,dv,
+	\end{align*}
+	kjer smo zopet uporabili Gaussov izrek in definicijo divergence (\ref{e:div2}). S tem smo dokazali še tretjo enakost.
+\endproof
+
+Naj bodo $U_j$, $j=1,2\dots,n$, podmnožice v $\R^2$ in $I$ odprti interval v $\R$.
+Naj bodo $\vek{r}_j\colon U_j\times I\to\E$ preslikave z naslednjimi lastnostmi:
+\begin{enumerate}
+	\item $\vek{r}_j(\cdot,t)\colon U_j\to\mathcal{S}_j(t)\subset\E$ je difeomorfizem za vsak $t\in I$,
+	\item $\vek{r}_j(u,v,\cdot)$ je na $I$ zvezno odvedljiva za vsak $(u,v)\in U_j$,
+	\item za $i\neq j$ ima $\mathcal{S}_i(t)\cap\mathcal{S}_j(t)$ ploščinsko mero 0 za vsak $t\in I$ in
+	\item $\mathcal{S}(t)=\cup_{j=1}^n\mathcal{S}_j(t)$ je povezana in sklenjena ploskev za vsak $t\in I$.
+\end{enumerate}
+Prostor, ki ga ploskev $\mathcal{S}(t)$ zajema, bomo označili z $\mathcal{V}(t)$. Enoparametrično družino
+$\big\{\big(\mathcal{S}(t),\mathcal{V}(t)\big)\}_{t\in I}$
+bomo imenovali \emph{odprti sistem}. Gre za spreminjajočo se regularno domeno v Evklidskem prostoru.
+Za parametrizacije $\vek{r}_j$ dodatno predpostavimo, da so regularne, tj.
+\[
+	\frac{\partial\vek{r}_j}{\partial u}(u,v,t) \times \frac{\partial\vek{r}_j}{\partial v}(u,v,t) \neq \vek{0}
+	\quad\mathrm{za\ vse}\quad (u,v)\in U_j,\ t\in I,
+\]
+ter da je ta vektorski produkt vedno usmerjen navzven.
+
+Naslednji izrek bo igral ključno vlogo skozi celotno delo. Gre za posplošitev izreka o odvajanju integrala
+s parametrom, kot ga poznamo iz matematične analize.
+\begin{izrek}[Transportni izrek]
+	Naj bo $\big\{\big(\mathcal{S}(t),\mathcal{V}(t)\big)\}_{t\in I}$ odprti sistem in naj bo
+	$f\colon D\to\W$ funkcija razreda $C^1$, kjer je $D\supseteq \big\{ \overline{\mathcal{V}(t)}\times\{t\}\ |\  t\in I \big\}$
+	in $\W$ neki končnorazsežen vektorski prostor s skalarnim produktom. Potem velja
+	\begin{equation*}
+		\frac{d}{dt}\int_{\mathcal{V}(t)}f\,dV =
+		\int_{\mathcal{V}(t)}\frac{\partial f}{\partial t}\,dV +
+		\int_{\partial\mathcal{S}(t)}(\vek{v}\cdot\vek{n})f\,dS.
+	\end{equation*}
+	kjer je $\vek{n}\colon\big\{\mathcal{S}_t\times\{t\}\ |\ t\in I\big\}\to\V$ polje enotskih normal, usmerjeno navzven.
+\end{izrek}
