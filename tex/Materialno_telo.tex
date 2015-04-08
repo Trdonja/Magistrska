@@ -1,4 +1,4 @@
-\chapter{Materialno telo}
+\chapter{Kinematika kontinuuma}
 
 
 Materialno telo je določeno z izbrano množico točk $\B\subseteq\E$. Tej določitvi rečemo
@@ -183,30 +183,33 @@ kjer sta
 Naj bo $\Theta$ odprta podmnožica v $\R^2$ in $\zeta\colon\Theta\times I\to\E$ preslikava
 razreda $C^2$ na $\Theta\times I$, za katero zahtevamo, da je pri vsakem $t\in I$ parcialni
 odvod $D_{\theta}\zeta(\theta,t)\colon\R^2\to\V$ linearna preslikava ranga 2
-v vsaki točki $\theta=(\theta^1,\theta^2)\in\Theta$. Pri danem $t\in I$ je $S(t)=\zeta(\Theta, t)$ ploskev
-v $\E$ in $\zeta(\cdot, t)$ je njena regularna parametrizacija.
+v vsaki točki $\theta=(\theta^1,\theta^2)\in\Theta$, ter da je $\zeta(\cdot,t)\colon\Theta\to\E$
+injektivna. Pri danem $t\in I$ je $S(t)=\zeta(\Theta, t)$ ploskev
+v $\E$ in $\zeta(\cdot, t)$ je njena regularna parametrizacija. Odslej bomo uporabljali
+oznako $S(t)$ za $S(t)\cap B_t$ ter $I_c$ za podinterval v $I$, v katerem je $S(t)\cap B_t$ neprazen.
 
-Dodatno naj velja, da pri vsakem $t\in I$ ploskev $S(t)$ razdeljuje materialno telo $B_t$
+Dodatno naj velja, da pri vsakem $t\in I_c$ ploskev $S(t)$ razdeljuje materialno telo $B_t$
 na disjunktna, med seboj nepovezana dela $B_t^+$ in $B_t^-$. Velja
-\[ B_t^+\cup B_t^- = B_t-S(t)\quad\mathrm{in}\quad \overline{B_t^+}\cap \overline{B_t^-}=S(t). \]
-Odslej bomo uporabljali oznako $S(t)$ za $S(t)\cap B_t$. Vpeljimo še oznake
-\[ \Omega^+=\{(x, t)\: ; \: x\in B_t^+,\ t\in I\},\quad\Omega^-=\{(x, t)\: ; \: x\in B_t^-,\ t\in I\} \]
-\begin{equation} \label{e:Xi} \textrm{in}\quad\Sigma = \{(x, t)\: ; \: x\in S(t),\ t\in I\}. \end{equation}
+\[ B_t^+\cup B_t^- = B_t\setminus S(t)\quad\mathrm{in}\quad \overline{B_t^+}\cap \overline{B_t^-}=S(t). \]
+Vpeljimo še oznake
+\[ \Omega^+=\{(x, t)\: ; \: x\in B_t^+,\ t\in I_c\},\quad\Omega^-=\{(x, t)\: ; \: x\in B_t^-,\ t\in I_c\} \]
+\begin{equation*} \textrm{in}\quad\Sigma = \{(x, t)\: ; \: x\in S(t),\ t\in I_c\}. \end{equation*}
 
 \begin{definicija}
-	Pravimo, da je hiperploskev (\ref{e:Xi}) \emph{singularna} glede na tenzorsko polje
+	Pravimo, da je gibajoča se ploskev $S(t)$ \emph{singularna} glede na tenzorsko polje
 	$f\colon\Omega\to\W$, če je $f$ zvezno na $\Omega^+$ in $\Omega^-$, a ni zvezno na $\Sigma$.
 \end{definicija}
 \begin{definicija}
-	Naj bo $\Sigma$ singularna glede na polje $f$. Naj bo $f|_{\Omega^+}$
+	Naj bo $S(t)$ singularna glede na polje $f$. Naj bo $f|_{\Omega^+}$
 	skrčitev $f$ na $\Omega^+$ in $f|_{\Omega^-}$ skrčitev $f$ na $\Omega^-$. Označimo z
 	$f^+$ zvezno razširitev $f|_{\Omega^+}$ na $\overline{\Omega^+}=\Omega^+\cup\Sigma$ in z
 	$f^-$ zvezno razširitev $f|_{\Omega^-}$ na $\overline{\Omega^-}=\Omega^-\cup\Sigma$. \emph{Skok} polja $f$
 	je funkcija
 	\[ \llbracket f\rrbracket\colon\Sigma\to\W,\qquad \llbracket f\rrbracket=f^+-f^-. \]
 \end{definicija}
-Kot opombo velja omeniti, da je tako definiran $\llbracket f\rrbracket$ zvezen na $\Sigma$.
-Singularne hiperploskve predstavljajo širjenje vala skozi prostor v določenem časovnem intervalu.
+Kot opombo velja omeniti, da je tako definiran $\llbracket f\rrbracket$ zvezen na $\Sigma$,
+če sta normi od $f^+$ in $f^-$ končni na $\Sigma$.
+Singularne ploskve predstavljajo širjenje vala skozi prostor v določenem časovnem intervalu.
 
 Označimo parcialne odvode parametrizacije $\zeta$ z
 \[
@@ -221,20 +224,44 @@ enotska normala
 	\frac{\zeta_{,1}\times\zeta_{,2}}{\displaystyle\left\| \zeta_{,1}\times\zeta_{,2} \right\|}(\theta^1,\theta^2,t)
 \]
 in predpostaviti smemo, da je usmerjena v območje $B_t^+$. Če temu ni tako, lahko to
-dosežemo z reparametrizacijo. Hitrost točke $x=\zeta(\theta^1,\theta^2,t)$ na ploskvi $S(t)$ je
+dosežemo z reparametrizacijo. Hitrost točke $(\theta^1,\theta^2)\in\Theta$, ki
+ob času $t\in I$ zavzema prostorsko točko $x=\zeta(\theta^1,\theta^2,t)$, je
 \[
 	\vek{w}(x,t)=\zeta_{,t}(\theta^1,\theta^2,t).
-\]
+\] 
 V splošnem je $\vek{w}(x,t)\neq\vek{v}(x,t)$. Čeprav v obeh primerih $x$ predstavlja isto točko
 v prostoru, jo ob času $t$ hkrati zavzemata ploskovna in materialna točka.
 $\vek{w}(x,t)$ je hitrost ploskovne točke, $\vek{v}(x,t)$ pa hitrost materialne točke.
 
 Parametrizaciji $\zeta$ pripada parametrizacija $\omega\colon\Theta\times I\to\E_{\r}$, definirana kot
 \[ \omega(\theta,t)=\chi^{-1}\big(\zeta(\theta,t),t\big). \]
-S $S_{\r}(t)$ označimo sliko $\omega(\Theta, t)$ oz.~kar $\omega(\Theta, t)\cap B$.
+S $S_{\r}(t)$ označimo sliko $\omega(\Theta, t)$ oz.~kar $\omega(\Theta, t)\cap B$, kar
+je ploskev, ki se s časom širi po referenčni konfiguraciji materialnega telesa, in
+v časovnem intervalu $I_c$ razdeljuje materialno telo $B$ na disjunktna, med seboj nepovezana
+dela. Vpeljimo še oznake
+\[ \Omega_{\r}^+=\chi^{-1}(\Omega^+),\quad\Omega_{\r}^-=\chi^{-1}(\Omega^-),\quad\Sigma_{\r}=\chi^{-1}(\Sigma). \]
+Za gibanje $\chi$ bomo predpostavili, da je zvezno na $B\times I_c$ ter da je razreda $C^2$ na $\Omega_{\r}^+$
+ter $\Omega_{\r}^+$. \textcolor[rgb]{1,0,0}{Zunaj intervala $I_c$ je $\chi$ še vedno razreda $C^2$.}
 
+Če je $f\colon B\to\W$ tenzorsko polje, zvezno na $\Omega_{\r}^+$ in $\Omega_{\r}^-$, ni pa zvezno na
+$\Sigma_{\r}$, potem zvezno razširitev skrčitve $f|_{\Omega_{\r}^+}$ na $\overline{\Omega_{\r}^+}=\Omega_{\r}^+\cup\Sigma_{\r}$
+označimo z $f^+$. Podobno definiramo še $f^-$. Skok polja $f$ je funkcija
+\[ \llbracket f\rrbracket\colon\Sigma_{\r}\to\W,\qquad \llbracket f\rrbracket=f^+-f^-. \]
 
-
+Hitrost ploskovne točke $\theta\in\Theta$, ki v referenčni konfiguraciji zavzema materialno točko
+$X=\omega(\theta,t)$, je
+\[
+	\vek{w}_{\r}(X,t)=\frac{d}{dt}\omega(\theta, t)=\frac{d}{dt}\chi^{-1}\big(\zeta(\theta,t),t\big).
+\]
+Če uporabimo verižno pravilo za odvajanje in upoštevamo ? ter ?, dobimo
+\begin{align}
+	\vek{w}_{\r}&=(\nabla_{x}\chi^{-1})^{\pm}\zeta_{,t}+\left(\frac{\partial}{\partial t}\chi^{-1}\right)^{\pm} \nonumber \\
+	&=(\ten{F}^{-1})^+(\vek{w}-\vek{v}^+) \label{e:w} \\
+	&=(\ten{F}^{-1})^-(\vek{w}-\vek{v}^-). \nonumber
+\end{align}
+Čeprav je inverzno gibanje $\chi^{-1}$ zvezno v točkah hiperploskve $\Sigma$, njegov gradient in
+parcialni odvod po času nista nujno. Zato smo dobili dve enačbi, iz katerih, če ju med seboj odštejemo, dobimo pogoj
+\[ \llbracket \ten{F}^{-1}(\vek{w}-\vek{v}) \rrbracket = \vek{0}. \]
 
 
 \section{Transportni izrek}
@@ -319,6 +346,143 @@ ter enačbe (\ref{e:L}) dobimo pravilo za materialni odvod determinante deformac
 	nato pa upoštevamo tretjo oz.~četrto enačbo iz trditve \ref{t:divprop} ter nato še drugo oz.~tretjo enakost
 	iz divergenčnega izreka \ref{i:divtheo}, odvisno glede na to, ali je $\bar{f}$ skalarno ali
 	vektorsko polje, dobimo enačbo iz drugega dela izreka.
+\endproof
+
+\begin{izrek}[Transportni izrek]
+	Naj bo $S(t)$ singularna ploskev glede na polje $f\colon\Omega\to\W$. Velja
+	\begin{equation*}
+		\frac{d}{dt}\int_B \hat{f}\,dV = \int_B \frac{\partial \hat{f}}{\partial t}\,dV -
+		\int_{S_{\r}(t)} \llbracket\hat{f}\rrbracket(\vek{w}_{\r}\cdot\vek{N})\,dS\quad\textrm{in}
+	\end{equation*}
+	\[
+		\frac{d}{dt}\int_{B_t} f\,dV = \int_{B_t} \frac{\partial f}{\partial t}\,dV +
+		\int_{\partial B_t} f(\vek{v}\cdot\vek{n})\,dS - \int_{S(t)} \llbracket f\rrbracket(\vek{w}\cdot\vek{n})\,dS.
+	\]
+\end{izrek}
+\proof
+	Izrek bomo dokazali za primer, ko je gibanje singularne ploskve $S(t)$ nepovratno, tj.~parametrizacija
+	$\omega$ je injektivna preslikava. Izrek velja tudi sicer, le dokaz je bolj zapleten.
+	Najprej dokažimo prvo enakost. Opazimo, da velja
+	\[
+		\frac{d}{dt}\int_B \hat{f}(X,t)\,dV = \frac{d}{dt}\left(
+		\int_{B^-(t)} \hat{f}(X,t)\,dV + \int_{B^+(t)} \hat{f}(X,t)\,dV \right).
+	\]
+	Posvetimo se le odvajanju prvega integrala, odvajanja drugega integrala poteka na enak način.
+	Po definiciji odvoda je
+	\begin{gather*}
+		\frac{d}{dt}\int_{B^-(t)} \hat{f}(X,t)\,dV =\\ =\lim_{h\to 0} \frac{1}{h}\left(
+		\int_{B^-(t+h)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t)\,dV \right) \\
+		=\lim_{h\to 0} \frac{1}{h}\left( \int_{B^-(t+h)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t+h)\,dV \right) + \\
+		+ \lim_{h\to 0} \frac{1}{h}\left( \int_{B^-(t)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t)\,dV \right) \\
+		= \lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}(X,t+h)\,dV +
+		\int_{B^-(t)} \frac{\partial\hat{f}}{\partial t}(X,t)\,dV.
+	\end{gather*}
+	Območje $B^-(t)\setminus B^-(t+h)$ je po začetni predpostavki o nepovratnosti singularne ploskve prazno,
+	zato smo integral po tem območju izpustili. Limito bomo računali po komponentah. Polje $\hat{f}$
+	lahko namreč zapišemo v komponentni obliki glede na neko fiksno bazo $\{b_k\}_{k=1}^m$ prostora $\W$ kot
+	\[ \hat{f}(X,t)=\sum_{k=1}^m \hat{f}_k(X,t)b_k. \]
+	Zaradi začetne predpostavke lahko
+	območje $B^-(t+h)\setminus B^-(t)$ regularno parametriziramo kar s skrčeno bijektivno parametrizacijo
+	\[
+		\omega(\theta,\tau)\colon\Theta_{\tau}\times [t,t+h]\to B^-(t+h)\setminus B^-(t),\quad
+		\Theta_{\tau}=\{\theta\in \Theta\: ;\: \omega(\theta,\tau)\in B\},
+	\]
+	zato je
+	\begin{multline*}
+		F_k(t)=\lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}_k(X,t+h)\,dV=\\
+		=\lim_{h\to 0} \frac{1}{h}\int_{t}^{t+h}\iint_{\Theta_{\tau}}\hat{f}_k\big(\omega(\theta,\tau),t+h\big)
+		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot\frac{\partial\omega}{\partial\tau}\right|
+		(\theta,\tau)\,d\theta^1 d\theta^2 d\tau.
+	\end{multline*}
+	Po Lagrangevem izreku o srednji vrednosti obstaja $\xi\in [t,t+h]$, da je
+	\[
+		F_k(t)=\lim_{h\to 0} \frac{1}{h}h\iint_{\Theta_{\xi}}\hat{f}_k\big(\omega(\theta,\xi),t+h\big)
+		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot\frac{\partial\omega}{\partial\tau}\right|
+		(\theta,\xi)\,d\theta^1 d\theta^2.
+	\]
+	Ko gre $h$ proti $0$, gre $\xi$ proti $t$ in
+	\[ \hat{f}_k\big(\omega(\theta,\xi),t+h\big)\to\hat{f}^-_k\big(\omega(\theta,t),t\big). \]
+	Upoštevamo še
+	\[
+		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot
+		\frac{\partial\omega}{\partial\tau}\right|\,d\theta^1 d\theta^2=
+		\vek{N}\cdot\vek{w}_{\r}
+		\left\|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\right\|\,d\theta^1 d\theta^2=
+		\vek{N}\cdot\vek{w}_{\r}\,dS,
+	\]
+	pri čemer je skalarni produkt $\vek{w}_{\r}\cdot\vek{N}$ pozitiven, zato smo absolutno vrednost izspustili.
+	Hitrost $\vek{w}_{\r}$ in normala $\vek{N}$ namreč zaradi začetne predpostavke vedno kažeta v isti polprostor v $\E$,
+	določen s tangentno ravnino, katere normala je $\vek{N}$. Tako dobimo
+	\[ F_k(t)=\int_{S_{\r}(t)}\hat{f}_k^-(\vek{w}_{\r}\cdot\vek{N})\,dS \]
+	in če vsak $F_k(t)$ pomnožimo z $b_k$, nato pa tvorimo vsoto po vseh $k$, dobimo
+	\[
+		\lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}(X,t+h)\,dV =
+		\int_{S_{\r}(t)}\hat{f}^-(\vek{w}_{\r}\cdot\vek{N})\,dS.
+	\]
+	Dokazali smo
+	\begin{equation} \label{e:vmrez}
+		\frac{d}{dt}\int_{B^-(t)} \hat{f}\,dV =
+		\int_{S_{\r}(t)}\hat{f}^-(\vek{w}_{\r}\cdot\vek{N})\,dS +
+		\int_{B^-(t)} \frac{\partial\hat{f}}{\partial t}\,dV.
+	\end{equation}
+	Na popolnoma enak način dobimo še
+	\begin{equation*}
+		\frac{d}{dt}\int_{B^+(t)} \hat{f}\,dV =
+		-\int_{S_{\r}(t)}\hat{f}^+(\vek{w}_{\r}\cdot\vek{N})\,dS +
+		\int_{B^+(t)} \frac{\partial\hat{f}}{\partial t}\,dV.
+	\end{equation*}
+	Ploskev $S_{\r}(t)$ je pri tem orientirana nasprotno, kot v prejšnjem primeru,
+	zato je njena normala $-\vek{N}$ in posledično je ploskovni integral v tem primeru
+	nasprotno predznačen. Če obe dobljeni enačbi seštejemo, dobimo prvo enačbo
+	iz izreka.
+	
+	Drugo enakost bomo dokazali za primer, ko je $f$ skalarno ali pa vektorsko polje.
+	Tudi tu integral najprej razcepimo na vsoto dveh integralov,
+	enega po območju $B_t^-$ in drugega po območju $B_t^+$. Zopet se posvetimo le odvajanju
+	prvega integrala, saj pri računanju odvoda drugega integrala uporabimo povsem enake metode.
+	Z uporabo (\ref{e:dxdX})${}_3$ in malo prej izpeljane enakosti (\ref{e:vmrez}) dobimo
+	\begin{align}
+		\frac{d}{dt}\int_{B_t^-}f\,dV&=\frac{d}{dt}\int_{B^-(t)}\hat{f}J\,dV \nonumber \\
+		&=\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV + \int_{S_{\r}(t)}\hat{f}^-J^-(\vek{w}_{\r}\cdot\vek{N})\,dS. \label{e:vr2}
+	\end{align}
+	Integrand v prvem integralu lahko s pomočjo enačbe (\ref{e:dotJ}) za odvod determinante $J$ razpišemo kot
+	\[ \frac{\partial(\hat{f}J)}{\partial t}=\left(\frac{\partial\hat{f}}{\partial t}+\hat{f}\widehat{\div\vek{v}}\right)J, \]
+	integral pa potem s pomočjo (\ref{e:dxdX}) in (\ref{e:matodv}) transformiramo nazaj v
+	\[
+		\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV =
+		\int_{B_t^-}\left(\frac{\partial f}{\partial t}+(\nabla_{x}f)[\vek{v}]+f\div\vek{v}\right)\,dV.
+	\]
+	Sedaj uporabimo tretjo oz.~četrto enačbo iz trditve \ref{t:divprop} ter nato še drugo oz.~tretjo enakost
+	iz divergenčnega izreka \ref{i:divtheo}, odvisno od tega, ali je $f$ skalarno ali
+	vektorsko polje, ter dobimo
+	\begin{equation} \label{e:vr3}
+		\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV =
+		\int_{B_t^-}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^-}f^-(\vek{v}^-\cdot\vek{n})\,dS.
+	\end{equation}
+	Prevedimo še preostali integral:
+	\begin{multline} \label{e:vr4}
+		\int_{S_{\r}(t)}\hat{f}^-J^-(\vek{w}_{\r}\cdot\vek{N})\,dS =
+		\int_{S_{\r}(t)}\hat{f}^-\big((\ten{F}^{-1})^-\ten{F}^-\vek{w}_{\r}\cdot J^-\vek{N}\big)\,dS= \\
+		=\int_{S_{\r}(t)}\hat{f}^-\big(\ten{F}^-\vek{w}_{\r}\cdot J^-(\ten{F}^{-T})^-\vek{N}\big)\,dS
+		=\int_{S(t)}f^-\big((\vek{w}-\vek{v}^-)\cdot\vek{n}\big)\,dS.
+	\end{multline}
+	Tu smo na zadnjem koraku uporabili (\ref{e:dxdX})${}_2$ in $(\ref{e:w})$. V enačbi (\ref{e:vr3})
+	lahko ploskovni integral po območju $\partial B_t^-$ zapišemo kot vsoto dveh ploskovnih integralov,
+	enega po ploskvi $\partial B_t^-\setminus S(t)$ in drugega po ploskvi $S(t)$.
+	Iz (\ref{e:vr2}), (\ref{e:vr3}) in (\ref{e:vr4}) sedaj dobimo
+	\[
+		\frac{d}{dt}\int_{B_t^-}f\,dV=
+		\int_{B_t^-}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^-\setminus S(t)}f(\vek{v}\cdot\vek{n})\,dS +
+		\int_{S(t)}f^-(\vek{w}\cdot\vek{n})\,dS.
+	\]
+	Na enak način pridemo do
+	\[
+		\frac{d}{dt}\int_{B_t^+}f\,dV=
+		\int_{B_t^+}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^+\setminus S(t)}f(\vek{v}\cdot\vek{n})\,dS -
+		\int_{S(t)}f^+(\vek{w}\cdot\vek{n})\,dS.
+	\]
+	Pri tem je ploskev $S(t)$ orientirana nasprotno, kot v prejšnjem primeru, zato pride ploskovni integral po
+	ploskvi $S(t)$ negativno predznačen. Če sedaj seštejemo dobljeni enakosti, dobimo drugo enakost iz izreka.
 \endproof
 
 

@@ -1,0 +1,438 @@
+\chapter{Hamiltonov princip in variacijske metode}
+
+
+\section{Dopustno gibanje in variacija}
+
+
+V tem poglavju bomo s pomočjo t. i. \emph{Hamiltonovega principa} poiskali potrebne pogoje,
+ki jim mora zadoščati pravo gibanje telesa.
+Recimo, da pravo gibanje iščemo med vsemi $C^2$ gibanji
+$\chi\colon \overline{B}\times [t_0,t_1]\to\E$, ki zadoščajo \emph{začetnim pogojem}
+\[ \chi(X,t_0)=\chi_{t_0}(X)\quad\textrm{in}\quad \chi(X,t_1)=\chi_{t_1}(X), \]
+kjer sta $\chi_{t_0},\chi_{t_1}\colon B\to\E$ znani injektivni $C^2$ preslikavi, ki
+določata položaj telesa ob začetnem in končnem času $t_0$ oz. $t_1$.
+Poleg začetnih pogojev so vnaprej predpisani še robni pogoji. \emph{Geometrijski robni pogoj} je predpis
+\begin{equation*} \label{e:grp}
+	x=\chi(X,t),\quad\mathrm{za}\quad (X,t)\in \partial_g B\times [t_0,t_1],
+\end{equation*}
+kjer je $\partial_g B\subseteq\partial B$ del roba območja $B$.
+Geometrijski robni pogoj torej v naprej določa položaj robnih točk telesa.
+Na preostalem delu $\partial_d B=\partial B \setminus \partial_g B$
+je potem predpisan \emph{dinamični robni pogoj}, ki ga bomo predstavili v naslednjem razdelku.
+Dopuščamo možnost, da je $\partial_g B$ ali $\partial_d B$ prazna množica, torej,
+da imamo le geometrijske ali pa le dinamične robne pogoje. Vendar pa mora vedno veljati
+$\partial_g B\cup\partial_d B=\partial B$ in $\partial_g B\cap\partial_d B=\emptyset$.
+
+Množica $\mathcal{X}$ vseh $C^2$ preslikav $\chi\colon\overline{B}\times [t_0,t_1]\to\E$ tvori vektorski prostor.
+$\mathcal{X}$ lahko naredimo za Banachov prostor, če na njem smiselno definiramo normo. Možna izbira
+predpisa za normo je npr.
+\[ \|\cdot\|\colon\mathcal{X}\to[0,\infty),\quad\|\chi\|=\max\big\{\|\chi(X,t)\|\: ;\ (X,t)\in B\times [t_0,t_1]\big\}. \]
+Pri tem je z normo, ki se pojavi znotraj množice, mišljena Evklidska norma krajevnega vektorja točke $\chi(X,t)$.
+
+\begin{definicija}
+	\begin{enumerate}
+		\item Preslikava $\chi\in\mathcal{X}$, ki zadošča predpisanim začetnim in geometrijskim robnim pogojem,
+			se imenuje \emph{dopustno gibanje}. Množico vseh dopustnih gibanj bomo označili z $\mathcal{A}$.
+		\item Vektorsko polje $\vek{\eta}\colon\overline{B}\times [t_0,t_1]\to\V$, ki je razreda $C^2$ in
+			ustreza pogojem
+			\[ \vek{\eta}(X,t_0)=\vek{0}\quad \textrm{in} \quad\vek{\eta}(X,t_1)=\vek{0}\quad \textrm{za vse}\ X\in\overline{B}\quad\textrm{ter} \]
+			\[ \vek{\eta}(X,t)=\vek{0}\quad \textrm{za vse}\ (X,t)\in \partial_g B\times [t_0,t_1], \]
+			se imenuje \emph{variacija gibanja}. Množico vseh variacij gibanja bomo ozna\-čili s $\mathcal{T}$.
+		\item Za dopustno gibanje $\chi$, variacijo gibanja $\vek{\eta}$ in realno konstanto $\varepsilon$ se gibanje
+			$\chi+\varepsilon\vek{\eta}$ imenuje \emph{bližnje gibanje} gibanja $\chi$.
+	\end{enumerate}
+\end{definicija}
+
+Takoj je potrebno opozoriti, da kljub poimenovanju dopustno gibanje in bližnje gibanje nista nujno gibanji,
+kot smo ju definirali v poglavju REF, ker nismo postavili pogoja o pozitivnosti Jacobijana.
+Ni se težko prepričati, da je $\mathcal{T}$ vektorski podprostor prostora $\mathcal{X}$, če na elemente iz $\mathcal{X}$
+gledamo kot na preslikave iz $\overline{B}\times [t_0,t_1]$ v $\V$.
+Prav tako zlahka ugotovimo, da za poljubni dopustni gibanji $\chi^1$ in $\chi^2$
+velja $\chi^2-\chi^1\in\mathcal{T}$. $\mathcal{A}$ je torej afini podprostor prostora $\mathcal{X}$, saj je
+\[ \mathcal{A}=\big\{ \chi^0+\vek{\eta}\: ;\ \vek{\eta}\in\mathcal{T} \big\}=\chi^0+\mathcal{T}, \]
+kjer je $\chi^0$ poljubno dopustno gibanje.
+
+\begin{definicija}
+	Naj bo $D$ množica, ki je dobljena kot presek neke odprte množice v $\mathcal{X}$ in afinega
+	podprostora $\mathcal{A}$. Naj bo $\mathcal{Y}$ banachov prostor in $F\colon D\to\mathcal{Y}$
+	zvezno odvedljiv operator. Smerni odvod
+	\[
+		\delta F\colon D\to\L(\mathcal{T},\mathcal{Y}),\qquad
+		\big(\delta F(\chi)\big)[\vek{\eta}]=\at{\frac{d}{d\varepsilon}F(\chi+\varepsilon\vek{\eta})}{\varepsilon=0}
+	\]
+	se imenuje tudi \emph{variacija} operatorja $F$.
+\end{definicija}
+
+\begin{notacija}
+	Naj bo operator $F$ definiran kot v prejšnji definiciji. Če velja $F(\chi)=Y$,
+	potem oznaka $Y^*$ pomeni $Y^*=F(\chi+\varepsilon\vek{\eta})$ za neka $\vek{\eta}\in\mathcal{T}$ in $\varepsilon\in\R$,
+	oznaka $\delta Y$ pa pomeni $\delta Y=\big(\delta F(\chi)\big)[\vek{\eta}]$. V tej notaciji velja
+	\[ \delta Y = \at{\left(\frac{dY^*}{d\varepsilon}\right)}{\varepsilon=0}, \]
+	$\delta Y$ pa imenujemo tudi \emph{variacija} količine $Y$.
+\end{notacija}
+
+\begin{primeri}
+	\begin{enumerate}
+		\item
+			Če je $\vek{v}$ polje hitrosti za dopustno gibanje $\chi$, potem je
+			\[ \vek{v}^*=\frac{d}{dt}(\chi+\varepsilon\vek{\eta})=\vek{v}+\varepsilon\dot{\vek{\eta}}, \]
+			variacija polja hitrosti pa je
+			\[ \delta\vek{v}=\dot{\vek{\eta}}. \]
+		\item
+			Če je $\ten{F}$ polje deformacijskega gradienta dopustnega gibanja $\chi$, potem je
+			\[ \ten{F}^*=\Grad(\chi+\varepsilon\vek{\eta})=\ten{F}+\varepsilon\Grad\vek{\eta}, \]
+			njegova variacija pa je
+			\[ \delta\ten{F}=\Grad\vek{\eta}. \]
+		\item
+			Če je $J$ polje jacobijana dopustnega gibanja $\chi$, potem je
+			\[ J^*=\det(\ten{F}^*). \]
+			Pri računanju variacije polja $J$ se uporabi podobne prijeme,
+			kot smo jih uporabili pri računanju enakosti REF v prejšnjem poglavju. Dobimo
+			\begin{align*}
+				\delta J&=(\partial_{\ten{F}}\det\ten{F})[\delta\ten{F}]=J\ten{F}^{-T}\cdot\Grad\vek{\eta}=\\
+				&=J\tr(\ten{F}^{-1}\Grad\vek{\eta})=J\tr(\grad\vek{\eta})=J\div\vek{\eta}.
+			\end{align*}
+			Na zadnjem koraku smo uporabili enakost REF.
+		\item
+			Za masno gostoto $\rho_R$ referenčne konfiguracije se predpostavi, da je znana. Če je
+			$\rho$ polje masne gostote telesa glede na gibanje $\chi$, potem je
+			\[ \rho^*=\frac{\rho_R}{J^*}. \]
+			Izračunajmo še njegovo variacijo:
+			\[
+				\delta\rho=\rho_R\delta\left(\frac{1}{J}\right)=
+				\rho_R\frac{-1}{J^2}(\delta J)=-\frac{\rho_R}{J}\frac{J\div\vek{\eta}}{J}=-\rho\div\vek{\eta}.
+			\]
+	\end{enumerate}
+\end{primeri}
+
+
+\section{Hamiltonov princip}
+
+
+\emph{Kinetična energija} telesa glede na dopustno gibanje $\chi$ je definirana kot
+\begin{equation*}
+	T = \int\limits_{B}\frac{1}{2}\vek{v}\cdot\vek{v}\rho_R\, dV =
+	\int\limits_{B_t}\frac{1}{2}\vek{v}\cdot\vek{v}\rho\, dv
+\end{equation*}
+in je funkcija časa $t\in[t_0,t_1]$. Kinetična energija bližnjega gibanja $\chi+\varepsilon\vek{\eta}$
+je potemtakem
+\begin{equation*}
+	T^* = \int\limits_{B}\frac{1}{2}\vek{v}^*\cdot\vek{v}^*\rho_R\, dV =
+	\int\limits_{\bottop{B}{t}{*}}\frac{1}{2}\vek{v}^*\cdot\vek{v}^*\rho^*\, dv.
+\end{equation*}
+Variacijo kinetične energije je lažje izračunati iz prvega izraza, saj lahko odvajanje prenesemo pod
+integralski znak, ker se integracijsko območje ne spreminja. Skalarni produkt odvajamo
+po pravilu za odvod produkta in dobimo
+\[
+	\delta T =
+	\int\limits_{B}\delta\vek{v}\cdot\vek{v}\rho_R\, dV=
+	\int\limits_{B}\dot{\vek{\eta}}\cdot\vek{v}\rho_R\, dV.
+\]
+Zanimal nas bo še integral kinetične energije od časa $t_0$ do časa $t_1$,
+\[ I=\int_{t_0}^{t_1} T\,dt=\int_{t_0}^{t_1} \int_{B}\frac{1}{2}\vek{v}\cdot\vek{v}\rho_R\, dV \,dt, \]
+katerega variacija je
+\begin{equation}\label{e:varInf}
+	\delta I=\int_{t_0}^{t_1}\int_{B}\dot{\vek{\eta}}\cdot\vek{v}\rho_R\, dV\, dt.
+\end{equation}
+Zapišemo jo lahko še nekoliko drugače, v obliki, ki bo v nadaljevanju za nas bolj pomembna.
+V (\ref{e:varInf}) smemo po Fubinijevem izreku zamenjati vrstni red integriranja.
+Notranji integral, ki je sedaj integral po času, integriramo per-partes:
+\[
+	\int_{t_0}^{t_1}\rho_R\vek{v}\cdot\dot{\vek{\eta}}\, dt =
+	\left.\Big(\rho_R\vek{v}\cdot\vek{\eta}\Big)\right|_{t_0}^{t_1}-
+	\int_{t_0}^{t_1}\rho_R\vek{a}\cdot\vek{\eta}\,dt.
+\]
+Prvi izraz na desni strani je enak 0, saj je $\vek{\eta}(\cdot,t_0)=\vek{\eta}(\cdot,t_1)=\vek{0}$.
+Rezultat vstavimo nazaj v (\ref{e:varInf}) in dobimo
+\begin{equation*}
+	\delta I =
+	-\int_{t_0}^{t_1}\int_{B}\rho_R\vek{a}\cdot\vek{\eta}\, dV\, dt=
+	-\int_{t_0}^{t_1}\int_{B_t}\rho\vek{a}\cdot\vek{\eta}\, dv\, dt.
+\end{equation*}
+Pri tem druga enakost velja zaradi REF.
+
+Rezultanto vseh zunanjih sil, ki delujejo na telo med dopustnim gibanjem $\chi$, lahko zapišemo v obliki
+\begin{equation}\label{e:zunsil}
+	\int\limits_{B_t}\vek{b}\rho\, dv + \int\limits_{\partial B_t}\vek{t}\, da =
+	\int\limits_{B}\vek{b}\rho_R\, dV + \int\limits_{\partial B}\vek{t}_R\, dA.
+\end{equation}
+Vektorsko polje $\vek{b}$ je \emph{gostota prostorninske sile}, njegove vrednosti imajo fizikalno enoto
+pospeška, torej \textit{meter na kvadratno sekundo}, $ms^{-2}$. Primer takega vektorskega polja
+je npr. gravitacijski pospešek. Predpostavili bomo, da je $\vek{b}$ konzervativno vektorsko polje,
+kar pomeni, da obstaja $C^1$ skalarno polje $\phi\colon\E\times [t_0,t_1]\to\R$, da je
+\begin{equation*} \label{e:gps}
+	\vek{b}(x,t)=\nabla_{x}\phi(x,t).
+\end{equation*}
+Vektorsko polje
+\begin{equation*} \label{e:csv}
+	\vek{t}=\vek{t}(x,t),\quad (x,t)\in \big\{\partial B_t\times\{t\}\: ;\ t\in [t_0,t_1]\big\}
+\end{equation*}
+se imenuje \emph{Cauchyjev napetostni vektor}, polje
+\begin{equation*} \label{e:pksv}
+	\vek{t}_R=\vek{t}_R(X,t),\quad (X,t)\in \partial B\times [t_0,t_1]
+\end{equation*}
+pa \emph{Piola-Kirchoffov napetostni vektor}. Oba
+imata fizikalno enoto tlaka, torej \textit{Newton na kvadratni meter}, $Nm^{-2}$.
+Primer napetostnega vektorja je npr. atmosferski tlak.
+Velja zveza
+\begin{equation}\label{e:ttr}
+	\vek{t}\, da=\vek{t}_R\, dA.
+\end{equation}
+Tudi za napetosni vektor bomo predpostavili, da je konzervativno vektorsko polje v smislu,
+da obstaja v času zvezno odvedljiv, v prostoru pa odsekoma zvezno odvedljiv\footnote{Namesto gradienta imamo v tem primeru
+smerni odvod, definiran le v smereh iz tangentne ravnine na ploskev $\partial B_t$; vseeno bomo uporabljali oznako za gradient.}
+skalarni potencial $\psi\colon\E\to\R$, da velja
+\[ \vek{t}_R(x,t)=\nabla_{x}\psi(x,t)\quad\textrm{za}\quad (x,t)\in \big\{\partial B_t\times\{t\}\: ;\ t\in [t_0,t_1]\big\}, \]
+kjer je $\vek{t}_R(x,t)=\vek{t}_R(\chi(X,t),t)$ prostorski opis polja $\vek{t}_R$.
+
+Za polje $\vek{b}$ bomo predpostavili, da je znano. Predpostavili bomo tudi, da poznamo predpis za
+polje $\vek{t}_R$ na območju $(X,t)\in \partial_d B\times [t_0,t_1]$ in ta predpis
+se imenuje dinamični robni pogoj.
+
+Izraz
+\begin{equation*}
+	W = \int\limits_{B}\phi\rho_R\, dV + \int\limits_{\partial_d B}\psi\, dA,
+\end{equation*}
+predstavlja del \emph{potencialne energije} telesa in je prav tako funkcija časa.
+Preostali del potencialne energije tvori \emph{notranja energija}, ki jo bomo označili z $U$.
+Predpis za notranjo energijo je odvisen od materiala. Mi si bomo v tem délu ogledali primer
+idealnih tekočin in elastičnih trdnin. 
+
+Skalarni polji $\phi$ in $\psi$ sta na prostoru $\E\times [t_0,t_1]$ definirani neodvisno od gibanja.
+Seveda to ne velja za njun materialni opis, od gibanja $\chi$ sta odvisni preko zvez
+\[ \hat{\phi}(X,t)=\phi\big(\chi(X,t),t\big)\quad\textrm{in}\quad\hat{\psi}(X,t)=\psi\big(\chi(X,t),t\big) \]
+za $(X,t)\in B\times [t_0,t_1]$.
+Če imamo namesto gibanja $\chi$ njegovo bližnje gibanje $\chi+\varepsilon\vek{\eta}$, potem je
+\[
+	\hat{\phi}^*(X,t)=\phi\big(\chi(X,t)+\varepsilon\vek{\eta}(X,t),t\big)\quad\textrm{in}
+	\quad\hat{\psi}^*(X,t)=\psi\big(\chi(X,t)+\varepsilon\vek{\eta}(X,t),t\big).
+\]
+Če ta dva izraza odvajamo po $\varepsilon$, nato pa postavimo $\varepsilon=0$, dobimo variaciji
+\[
+	\delta\phi=\grad\phi\cdot\vek{\eta}=\vek{b}\cdot\vek{\eta},\quad
+	\delta\psi=\grad\psi\cdot\vek{\eta}=\vek{t}_R\cdot\vek{\eta}.
+\]
+Variacijo izraza $W$ imamo sedaj na dlani:
+\[
+	\delta W = \int\limits_{B}\rho_R\vek{b}\cdot\vek{\eta}\, dV + \int\limits_{\partial_d B}\vek{t}_R\cdot\vek{\eta}\, dA=
+	\int\limits_{B_t}\rho\vek{b}\cdot\vek{\eta}\, dv + \int\limits_{\partial_d B_t}\vek{t}\cdot\vek{\eta}\, da.
+\]
+Tu smo z $\partial_d B_t$ označili $\chi_t(\partial_d B)$ in uporabili zvezo (\ref{e:ttr}).
+Variacija $\delta W$ je sicer splošno znana
+pod imenom \emph{virtualno delo} zunanjih sil (\ref{e:zunsil}). Kot bomo videli v nadaljevanju,
+ni potrebno, da poznamo skalarna potenciala $\phi$ in $\psi$, ker nas bo zanimalo le virtualno delo.
+Pomembno je le, da predpostavimo njun obstoj.
+
+\begin{definicija}
+	Naj bo $D\subseteq\mathcal{A}$ množica, dobljena kot presek afinega podprostora $\mathcal{A}$ in
+	neke odprte množice v prostoru $\mathcal{X}$.
+	Funkcional $F\colon D\to\R$ ima lokalni minimum pri dopustnem gibanju $\chi^{0}\in D$, če obstaja $\varepsilon >0$,
+	da za vsak $\chi\in D$, za katerega je $\|\chi-\chi^{0}\|<\varepsilon$, velja $F(\chi^{0})<F(\chi)$.
+\end{definicija}
+
+\begin{definicija}
+	Funkcional, ki gibanju $\chi\in\mathcal{D}$ s kinetično energijo $T$ in potencialno
+	energijo $W+U$ priredi realno število
+	\[
+		H=\int_{t_0}^{t_1}(T+W+U)\,dt,
+	\]
+	se imenuje \emph{Hamiltonov funkcional}.
+\end{definicija}
+
+\begin{aksiom}[Hamiltonov princip]
+	Za pravo gibanje telesa velja, da je njegov jacobijan pozitiven na
+	celotnem definicijskem območju, Hamiltonov funkcional pa pri pravem gibanju
+	zavzame lokalni minimum.
+\end{aksiom}
+
+Hamiltonov princip zajema načelo minimalnega odpora. Telo se bo gibalo tako, da
+bo za pot porabilo čim manj energije. Omenimo še, da zaradi zveznosti operatorja,
+ki dopustnemu gibanju priredi njegov jacobijan, obstaja okolica pravega gibanja,
+kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
+
+\begin{trditev}
+	Če funkcional $F\colon D\to\R$ zavzame lokalni minimum pri dopustnem gibanju $\chi$, potem velja
+	\[ \big(\delta F(\chi)\big)[\vek{\eta}]=0\quad\textrm{za vsak}\ \vek{\eta}\in\mathcal{T}. \]
+\end{trditev}
+
+\proof
+	Recimo, da $F$ zavzame lokalni minimum pri $\chi\in D$ in naj bo $\eta\in\mathcal{T}$ poljubna.
+	Definirajmo funkcijo $\varphi\colon\R\to\R$ s predpisom
+	\[ \varphi(\varepsilon)=F(\chi+\varepsilon\vek{\eta}). \]
+	$\varphi$ ima lokalni minimum pri $\varepsilon=0$, zato velja $\varphi'(0)=0.$
+	Po drugi strani pa je
+	\[
+		\varphi'(0)=\at{\frac{d}{d\varepsilon}F(\chi+\varepsilon\vek{\eta})}{\varepsilon=0}=
+		\big(\delta F(\chi))[\vek{\eta}].
+	\]
+\endproof
+
+\begin{posledica}
+	Potreben pogoj, ki mu mora pravo gibanje zadoščati, je pozitivnost jacobijana
+	na celotnem definicijskem območju ter
+	\[ \delta H = \int_{t_0}^{t_1}(\delta T+\delta W+\delta U)\,dt = 0. \]
+\end{posledica}
+
+Če poznamo izraz za notranjo energijo in njeno variacijo, potem iz posledice
+dobimo integralsko enačbo. Izraz za variacijo kinetične energije in virtualno delo 
+smo namreč že izpeljali. Iz integralske enačbe se da dobiti sistem lokalnih diferencialnih enačb
+za tenzorska polja. Med rešitvami tega sistema je tudi samo gibanje telesa.
+Da pa dobimo lokalne enačbe, potrebujemo nekaj izrekov, ki so podani v naslednjem razdelku.
+
+
+\section{Osnovne leme variacijskega računa}
+
+
+Skozi ta razdelek naj oznaka $\W$ stoji za
+končnorazsežen vektorski prostor nad poljem realnih števil, opremljen s skalarnim produktom.
+\emph{Nosilec} tenzorskega polja $w\colon\E\times\R\to\W$ je množica
+\[ \mathrm{supp}\,w=\overline{\{ (X,t)\in\E\times\R\; ;\ w(X,t)\neq 0 \}}. \]
+Črta nad množico pomeni zaprtje množice. Če je nosilec od $w$ kompaktna množica, potem rečemo,
+da je $w$ polje s kompaktnim nosilcem. V nadaljevanju bomo pokazali, da obstajajo gladka polja
+s kompaktnim nosilcem, saj jih bomo potrebovali v izrekih, ki jih bomo navedli v tem razdelku.
+
+Prepričajmo se, da je funkcija
+\[
+	g\colon\R\to\R,\quad g(x)=\left\{\begin{array}{ccl}
+	\exp\left(-\frac{1}{x}\right)&;&x>0 \\ 0&;&x\leq 0 \end{array}\right.
+\]
+gladka. Očitno je to res za $x\neq 0$. Očitno je tudi, da je v točki $0$ zvezna. Za $x>0$
+so odvodi funkcije $g$
+\[
+	g'(x)=\exp\left(-\frac{1}{x}\right)\frac{1}{x^2};\quad
+	g^{(k)}(x)=\exp\left(-\frac{1}{x}\right)p_k\left(\frac{1}{x}\right),
+\]
+kjer so $p_k$ neki polinomi, $k=1,2,\dots$ Če naredimo limito teh odvodov, ko
+gre $x$ z desne proti 0, dobimo $g^{(k)}(0)=0$ za vse $k=1,2,\dots$. Leva limita
+odvodov funkcije $g$ je pa očitno vedno 0 in tako smo dokazali, da so vsi odvodi funkcije $g$ zvezni
+v točki 0.
+
+Oglejmo si sedaj funkcijo
+\[
+	h\colon\R\to\R,\quad h(x)=\left\{\begin{array}{ccl}
+	\exp\left(-\frac{1}{1-x^2}\right)&;&|x|<1 \\ 0&;&|x|\geq 1 \end{array}\right. .
+\]
+Zapišemo jo lahko kot kompozitum funkcije $g$ ter funkcije $x\mapsto 1-x^2$. Obe funkciji sta
+gladki povsod in tak je zato je tudi njun kompozitum $h$. Nosilec funkcije $h$ je
+$[-1,1]$, v notranjosti nosilca pa je vrednost funkcije $h$ pozitivna.
+
+Definirajmo skalarno polje $u\colon\E\times\R\to\R$ s predpisom
+\[
+	u(X,t)=\left\{\begin{array}{ccl}
+	\exp\left(-\frac{1}{1-\|(X,t)\|^2}\right)&;&\|(X,t)\|<1 \\ 0&;&\|(X,t)\|\geq 1 \end{array}\right.
+\]
+Zapišemo ga lahko kot kompozitum $(X,t)\mapsto\|(X,t)\|\mapsto h(\|(X,t)\|)$, zato je
+$u$ gladko s kompaktnim nosilcem
+\[ \textrm{supp}\, u=\overline{\big\{(X,t)\in\E\times\R\; ;\ \|(X,t)\|<1 \big\}}. \]
+Naj bo $(X_c,t_c)\in\E\times\R$, $\alpha > 0$ in označimo z
+\begin{equation}\label{e:mnU}
+	U_{\alpha}=\big\{(X,t)\in\E\times\R\; ;\ \|(X,t)-(X_c,t_c)\|<\alpha \big\}
+\end{equation}
+$\alpha$-okolico točke $(X_c,t_c)$. Skalarno polje
+\begin{equation}\label{e:funu}
+	u_{\alpha}(X,t)=u\left(\frac{(X,t)-(X_c,t_c)}{\alpha}\right)
+\end{equation}
+je gladko s kompaktnim nosilcem $\overline{U_{\alpha}}$.
+
+Omenimo še to pomembno dejstvo, da za vsako gladko tenzorska polje $w\colon\E\times\R\to\W$ s kompaktnim
+nosilcem velja, da je $w=0$ na robu nosilca. Komplement nosilca je namreč odprta množica, na kateri
+je $w=0$, in ker je $w$ zvezno, je po zvezni razširitvi $w=0$ tudi na robu komplementa, ki je enak
+robu nosilca.
+
+\begin{lema}\label{l:1}
+	Naj bo $f\colon\overline{B}\times [t_0,t_1]\to\W$ zvezno polje. Če velja
+	\begin{equation}\label{e:lem1}
+		\int_{t_0}^{t_1}\int_B f\cdot w\,dV\,dt = 0
+	\end{equation}
+	za vsako $C^{\infty}$ polje $w\colon\E_R\times\R\to\W$ s kompaktnim nosilcem
+	\[ \mathrm{supp}\, w\subseteq \overline{B}\times[t_0,t_1], \]
+	potem je $f=0$ na $\overline{B}\times [t_0,t_1]$.
+\end{lema}
+
+\proof
+	Glede na ortonormirano bazo $\{b_j\}$ prostora $\W$ lahko $f$ zapišemo v komponentni obliki kot $f=f_jb_j$.
+	Recimo, da obstaja točka $(X_c,t_c)$ v notranjosti območja $B\times(t_0,t_1)$, da je $f_{k}(X_c,t_c)\neq 0$
+	za neki $k$. Potem zaradi zveznosti polja $f$ za neki dovolj majhen
+	$\alpha > 0$ obstaja okolica $U_{\alpha}$ točke $(X_c,t_c)$, definirana kot v (\ref{e:mnU}), kjer je $f_k$
+	vseskozi različen od 0 in enakega predznaka, ter
+	je $U_{\alpha}$ še v celoti vsebovana v notranjosti odprtega območja $B\times(t_0,t_1)$.
+	
+	Naj bo polje
+	$w$ definirano kot polje $u_{\alpha}b_k$, če je $f_{k}(X_c,t_c) > 0$, oz. kot $-u_{\alpha}b_k$,
+	če je $f_{k}(X_c,t_c) < 0$, kjer je $u_{\alpha}$ definirano kot v (\ref{e:funu}). Tak $w$ ima
+	kompaktni nosilec $\overline{U_{\alpha}}$, vsebovan v območju $\overline{B}\times[t_0,t_1]$.
+	Skalarni produkt $f\cdot w$ je pozitiven na množici $U_{\alpha}$ in je 0 drugje, zato je
+	\[ \int_{t_0}^{t_1}\int_B f\cdot w\,dV\,dt > 0, \]
+	kar nasprotuje enačbi (\ref{e:lem1}). Torej mora veljati $f=0$ povsod na na $B\times (t_0,t_1)$,
+	zaradi zveznosti pa tudi na zaprtju $\overline{B}\times [t_0,t_1]$.
+\endproof
+
+\begin{lema}\label{l:2}
+	Naj rob $\partial B$ odprtega območja $B\subset\E_R$ sestoji iz komplementarnih regularnih ploskev
+	$\partial_g B$ in $\partial_d B$. Naj bo polje $f\colon \partial_d B\times[t_0,t_1]\to \W$ odsekoma
+	regularno in zvezno v času. Če velja
+	\begin{equation}\label{e:lem2}
+		\int_{t_0}^{t_1}\int_{\partial_d B} f\cdot w\,dS\,dt = 0
+	\end{equation}
+	za vsako $C^{\infty}$ polje $w\colon\E_R\times\R\to\W$ s kompaktnim nosilcem,
+	ki je vsebovan v $\E_R\times[t_0,t_1]$ in ima prazen presek z množico $\partial_g B\times [t_0,t_1]$,
+	potem je $f=0$ na $\partial_d B\times [t_0,t_1]$.
+\end{lema}
+
+\proof
+	Naj bo $X_c\in\partial_d B$ regularna točka, ki ni na robu ploskve $\partial_d B$ in
+	naj bo $t_c\in (t_0,t_1)$. Predpostavimo, da je $f_{k}(X_c,t_c)\neq 0$ za neki $k$. Potem
+	za neki $\alpha>0$ obstaja okolica $U_{\alpha}$ točke $(X_c,t_c)$, definirana kot v (\ref{e:mnU}),
+	da je $f$ na množici $U_{\alpha}\cap\partial_d B\times[t_0,t_1]$ vseskozi različno od 0 in enakega
+	predznaka. Prav tako je za dovolj majhen $\alpha>0$ presek $\overline{U_{\alpha}}\cap\partial_g B\times[t_0,t_1]$
+	prazen in $\overline{U_{\alpha}}$ je vsebovan v $\E_R\times[t_0,t_1]$.
+	
+	Definirajmo polje $w$ kot $u_{\alpha}b_k$, če je $f_{k}(X_c,t_c) > 0$, oz. kot $-u_{\alpha}b_k$,
+	če je $f_{k}(X_c,t_c) < 0$, kjer je $u_{\alpha}$ definirano kot v (\ref{e:funu}). Tak $w$ ustreza pogojem iz leme.
+	Skalarni produkt $f\cdot w$ je pozitiven na množici $U_{\alpha}\cap\partial_d B\times[t_0,t_1]$
+	in je 0 drugje na $\partial_d B\times [t_0,t_1]$, zato je
+	\[ \int_{t_0}^{t_1}\int_{\partial_d B} f\cdot w\,dS\,dt > 0, \]
+	kar nasprotuje enačbi (\ref{e:lem2}). Torej mora veljati $f=0$ za vse regularne točke območja
+	$\partial_d B\times [t_0,t_1]$.
+\endproof
+
+\begin{lema}
+	Naj bo $\chi\colon\overline{B}\times[t_0,t_1]\to\E$ $C^2$ gibanje s pozitivnim jacobijanom $J$ in
+	$f\colon\overline{B}\times[t_0,t_1]\to\W$ zvezno tenzorsko polje. Če velja
+	\begin{equation}\label{e:lem3}
+		\int_{t_0}^{t_1}\int_{B_t}\bar{f}\cdot \bar{w} \,dv\,dt=0
+	\end{equation}
+	za vsako $C^{\infty}$ polje $w\colon\E_R\times\R\to\W$ s kompaktnim nosilcem
+	\[ \mathrm{supp}\, w\subseteq \overline{B}\times[t_0,t_1], \]
+	potem je $\bar{f}=0$ na $\chi(\overline{B},[t_0,t_1])$.
+\end{lema}
+
+\proof
+	Enačba (\ref{e:lem3}) je ekvivalentna enačbi
+	\[ \int_{t_0}^{t_1}\int_{B}Jf\cdot w \,dV\,dt=0. \]
+	Ker je $Jf$ zvezna na $\overline{B}\times[t_0,t_1]$, je po lemi (\ref{l:1}) $Jf=0$
+	na $\overline{B}\times[t_0,t_1]$. Ker je $J>0$, je $f=0$ na $\overline{B}\times[t_0,t_1]$,
+	torej je tudi $\bar{f}=0$ na $\chi(\overline{B},[t_0,t_1])$.
+\endproof
+
+\begin{lema}
+	Naj rob $\partial B$ odprtega območja $B\subset\E_R$ sestoji iz komplementarnih regularnih ploskev
+	$\partial_g B$ in $\partial_d B$.
+	Naj bo $\chi\colon\overline{B}\times[t_0,t_1]\to\E$ $C^2$ gibanje s pozitivnim jacobijanom $J$ in
+	$f\colon\partial_d B\times[t_0,t_1]\to\R$ odsekoma regularno in v času zvezno skalarno polje.
+	Če velja
+	\begin{equation}\label{e:lem4}
+		\int_{t_0}^{t_1}\int_{\chi_t(\partial_d B)}\bar{f}\vek{n}\cdot\bar{\vek{w}}\,ds\,dt=0
+	\end{equation}
+	za vsako $C^{\infty}$ vektorsko polje $\vek{w}\colon\E_R\times\R\to\V$ s kompaktnim nosilcem,
+	ki je vsebovan v $\E_R\times[t_0,t_1]$ in ima prazen presek z množico $\partial_g B\times [t_0,t_1]$,
+	potem je $\bar{f}=0$ na $\chi(\partial_d B, [t_0,t_1])$.
+\end{lema}
+
+\proof
+	Enačba (\ref{e:lem4}) je ekvivalentna enačbi
+	\[ \int_{t_0}^{t_1}\int_{\partial_d B}fJ\ten{F}^{-T}\vek{N}\cdot\vek{w}\,dS\,dt=0. \]
+	Polje $fJ\ten{F}^{-T}\vek{N}$ je odsekoma regularno in zvezno v času na $\partial_d B\times[t_0,t_1]$,
+	zato je po lemi (\ref{l:2}) $fJ\ten{F}^{-T}\vek{N}=\vek{0}$ na $\partial_d B\times[t_0,t_1]$,
+	iz REF pa nato sledi $\bar{f}=0$ na $\chi(\partial_d B, [t_0,t_1])$.
+\endproof
