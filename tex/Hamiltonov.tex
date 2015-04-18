@@ -436,3 +436,54 @@ robu nosilca.
 	zato je po lemi (\ref{l:2}) $fJ\ten{F}^{-T}\vek{N}=\vek{0}$ na $\partial_d B\times[t_0,t_1]$,
 	iz REF pa nato sledi $\bar{f}=0$ na $\chi(\partial_d B, [t_0,t_1])$.
 \endproof
+
+
+\section{Primera}
+
+
+\subsection{Elastični fluid}
+
+
+Idealni fluid je model tekočine, v katerem zanemarimo učinke viskoznosti. Če je tekočina
+stisljiva, potem je njena notranja energija
+\[ U=\int_{B}\rho_R e(\rho)\,dV=\int_{B_t}\rho e(\rho)\,dv, \]
+kjer je $e(\rho)$ skalarna funkcija, ki je od $(X,t)\in B\times[t_0,t_1]$ oz. od
+$(x,t)\in\chi(B,[t_0,t_1])$ odvisna le preko funkcije masne gostote $\rho$. $e(\rho)$
+se imenuje \emph{gostota notranje energije} in ima fizikalno enoto $m^2s^{-2}$.
+Predpostavili bomo, da ima $e\colon R_+\to\R$ znano funkcijsko obliko in da je
+vsaj dvakrat zvezno odvedljiva.
+
+Variacija notranje energije je
+\begin{align*} 
+	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
+	\int_{B}\rho_R e(\rho^*)\,dV }{\varepsilon=0} =
+	\at{\int_{B}\rho_R e'(\rho^*)\frac{d\rho^*}{d\varepsilon}\,dV }{\varepsilon=0} = \\
+	&= -\int_{B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV.
+\end{align*}
+Z upoštevanjem relacij REF, REF, nato pa še REF, dobimo
+\begin{equation}\label{e:varUbasic}
+	\delta U = -\int_{B}\rho^2e'(\rho)\Div\vek{\eta}\,dV = -\int_{B_t}\rho^2 e'(\rho)\div\vek{\eta}\,dv
+\end{equation}
+Če sedaj na vsakem od teh izrazov posebej uporabimo relacijo REF in nato divergenčni izrek REF,
+lahko (\ref{e:varUbasic}) prepišemo v obliki
+\begin{align*}
+	\delta U &= \int_{B}\Grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dV
+	-\int_{\partial B}\rho^2 e'(\rho)\vek{N}\cdot\vek{\eta}\,dS \\
+	&= \int_{B_t}\grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dv
+	-\int_{\partial B_t}\rho^2 e'(\rho)\vek{n}\cdot\vek{\eta}\,ds
+\end{align*}
+
+Predpostavimo, da imamo podan \emph{zunanji tlak}, t.j. skalarno polje $p\colon\partial B\times[t_0,t_1]$,
+da je $\vek{t}=-p\vek{n}$. Potem je po (\ref{e:ttr}) in REF
+\[ \vek{t}_R=-pJ\ten{F}^{-T}\vek{N}. \]
+Geometrijskih robnih pogojev ni.
+
+\begin{align*}
+	\int_{t_0}^{t_1}\bigg( &\int_{B}\Big(-\rho\vek{a}-\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\Big)\cdot\vek{\eta}\,dv \\
+	&+\int_{\partial B}\big(\rho^2 e'(\rho)-p\big)\vek{n}\cdot\vek{\eta}\,ds\bigg)\,dt=0
+\end{align*}
+
+\begin{align*}
+	\int_{t_0}^{t_1}\bigg( &\int_{B}\Big(-\rho_R\vek{a}-\Grad\big(\rho^2 e'(\rho)\big)+\rho_R\vek{b}\Big)\cdot\vek{\eta}\,dV \\
+	&+\int_{\partial B}\big(\rho^2 e'(\rho)\ten{I}-pJ\ten{F}^{-T}\big)\vek{N}\cdot\vek{\eta}\,dS\bigg)\,dt=0
+\end{align*}
