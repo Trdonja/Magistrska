@@ -52,6 +52,8 @@
 \newcommand{\tr}{\mathrm{tr}} % sled
 \newcommand{\bottop}[3]{{#1}_{#2}^{\phantom{#2}{#3}}}
 \newcommand{\topbot}[3]{{#1}^{#2}_{\phantom{#2}{#3}}}
-\newcommand{\cs}[3]{\Gamma_{#1\phantom{#2}#3}^{\phantom{#1}#2}} % Christoffelov simbol prve vrste
-\newcommand{\at}[2]{\left.\kern-\nulldelimiterspace#1\right|_{#2}} % izvršeno v točki
+\newcommand{\cs}[3]{{\mit\Gamma}_{#1\phantom{#2}#3}^{\phantom{#1}#2}} % Christoffelov simbol prve vrste
+\newcommand{\ks}[2]{{\mit\Gamma}^{#1}_{\phantom{#1}#2}} % Christoffelov simbol druge vrste
+%\newcommand{\at}[2]{\left.\kern-\nulldelimiterspace#1\right|_{#2}} % izvršeno v točki
+\newcommand{\at}[2]{#1\Big|_{#2}} % izvršeno v točki
 \renewcommand{\vec}[1]{\mathop{\textsc{#1}}\limits^{\vbox to -.5ex{\kern-0.75ex\hbox{$\rightharpoonup$}\vss}}}

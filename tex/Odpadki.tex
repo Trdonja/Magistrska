@@ -119,3 +119,69 @@ kjer je $\topbot{S}{ij}{,j}$ kovariantni odvod komponente $S^{ij}$ po koordinati
 Glede na mešano bazo $\{\vek{g}_j(\vek{x})\otimes\vek{g}^k(\vek{X})\}$ prostora $\L(V)$,
 kjer je $\vek{x}=\chi(\vek{X},t)$, ima $F$ preprosto komponentno obliko
 \[ F(\vek{X},t) = \frac{\partial x^j}{\partial X^k}\vek{g}_j(\vek{x})\otimes\vek{g}^k(\vek{X}). \]
+
+
+%---- 7.5.2015 -------
+
+\section{Krivočrtne koordinate 2}
+
+
+\begin{definicija}
+	Naj bo $U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $U$ je bijektivna in
+	gladka preslikava $\psi\colon U\to V$, kjer je $V$ odprta
+	množica v $\R^3$, inverz $\psi^{-1}$ pa je prav tako gladka preslikava.
+\end{definicija}
+
+Naj bo $x\in U$ in
+\[ \psi\colon x\mapsto (\theta^1,\theta^2,\theta^3)=\psi(x). \]
+$(\theta^1,\theta^2,\theta^3)$ so \emph{(krivočrtne) koordinate} točke $x$, funkcije
+\[ \psi^i\colon U\to\R,\qquad \psi^i(x)=\theta^i,\qquad i=1,2,3 \]
+pa se imenujejo \emph{$i$-ta koordinatna funkcija} koordinatnega sistema $\psi$.
+Po dogovoru tudi $(\theta^i)$ rečemo koordinatni sistem na $U$.
+
+Naj bodo $(x_1,x_2,x_3)$ kartezijeve koordinate točke $x\in U$, ki smo jih predstavili
+v razdelku REF. Krivočrtni koordinatni sistem $(\theta^i)$ lahko predstavimo s koordinatno transformacijo
+kartezijevih koordinat:
+\begin{equation}\label{e:kt}
+	\theta^i = \theta^i(x_1,x_2,x_3) \quad \Leftrightarrow \quad x_j=x_j(\theta^1,\theta^2,\theta^3), \quad i,j=1,2,3.
+\end{equation}
+
+Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ standardna baza vektorskega prostora $\V$, kot smo jo
+definirali v razdelku REF v povezavi s kartezijevim koordinatnim sistemom. V povezavi s krivočrtnim
+koordinatnim sistemom lahko definiramo vektorska polja
+\begin{equation} \label{e:ge-rel}
+	\vek{g}_i=\frac{\partial x_j}{\partial\theta^i}\,\vek{e}_j, \qquad
+	\vek{g}^i=\frac{\partial\theta^i}{\partial x_j}\,\vek{e}_j=\nabla\theta^i,
+	\qquad i=1,2,3.
+\end{equation}
+V točki $x\in U$ se vektorji $\vek{g}_i(x)$ imenujejo \emph{tangentni vektorji},
+$\vek{g}^j(x)$ pa \emph{gradienti vektorji}.
+V vsaki točki $x\in U$ tvorita množici $\{\vek{g}_i(x)\}_i$ in $\{\vek{g}^i(x)\}_i$
+vsaka posebej bazo za prostor $\V$ in ti dve bazi sta si dualni. Res:
+\[
+	\vek{g}^i\cdot\vek{g}_j=\frac{\partial\theta^i}{\partial x_k}\,\vek{e}_k\cdot
+	\frac{\partial x_l}{\partial\theta^j}\,\vek{e}_l =
+	\delta_{kl}\frac{\partial\theta^i}{\partial x_k}\frac{\partial x_l}{\partial\theta^j}=
+	\frac{\partial\theta^i}{\partial x_k}\frac{\partial x_k}{\partial\theta^j}=
+	\frac{\partial\theta^i}{\partial\theta^j}=\topbot{\delta}{i}{j}.
+\]
+Koeficienti
+\[ g_{ij}=\vek{g}_i\cdot\vek{g}_j\qquad\textrm{in}\qquad g^{ij}=\vek{g}^i\cdot\vek{g}^j \]
+so \emph{koeficienti metričnega tenzorja} in so seveda odvisni od točke $x\in U$. Hitro vidimo, da velja
+\[ g^{ik}g_{kj}=\topbot{\delta}{i}{j},\qquad \vek{g}^i=g^{ik}\vek{g}_k,\qquad \vek{g}_i=g_{ik}\vek{g}^k. \]
+
+Kot prej naj bo $x\in U$, $(x_1,x_2,x_3)$ naj bodo kartezijeve, $(\theta^1,\theta^2,\theta^3)$ pa
+krivočrtne koordinate točke $x$. Skalarno polje $h\colon U\to\R$ bomo brez posebnih oznak zapisali enako:
+\[ h(x)=h(x_1,x_2,x_3)=h(\theta^1,\theta^2,\theta^3). \]
+Vektorska polja $\vek{h}\colon U\to\V$ ter tenzorska polja $\ten{S}\colon U\to\L(\V)$ bomo zapisali
+v komponentni obliki glede na različne baze prostora $\V$ oz. prostora $\L(\V)$ kot
+\begin{gather*}
+	\vek{h}=h_i\vek{e}_i=\bar{h}_i\vek{g}^i=\bar{h}^i\vek{g}_i,\\
+	\ten{S}=S_{ij}\vek{e}_i\otimes\vek{e}_j=
+	\topbot{\bar{S}}{i}{j}\vek{g}_i\otimes\vek{g}^j=\bottop{\bar{S}}{i}{j}\vek{g}^i\otimes\vek{g}_j=
+	\bar{S}_{ij}\vek{g}^i\otimes\vek{g}^j=\bar{S}^{ij}\vek{g}_i\otimes\vek{g}_j.
+\end{gather*}
+Tu so $h_i$, $\bar{h}_i$, $\bar{h}^i$, $S_{ij}$, $\bottop{\bar{S}}{i}{j}$, $\dots$ skalarna polja.
+Iz (\ref{e:ge-rel}) dobimo naslednje relacije:
+
+	%h^i=\bar{h}^j\frac{\partial\hat{x}_i}{\partial\theta^j}=\frac{\partial\hat{}}{\partial}

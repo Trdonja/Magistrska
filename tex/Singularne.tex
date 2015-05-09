@@ -1,0 +1,286 @@
+\chapter{Singularne ploskve}
+
+
+V tem poglavju naj velja pravilo, da imajo grški indeksi ($\alpha$,$\beta$,$\gamma$,$\dots$) zalogo
+vrednosti $\{1,2\}$, latinski indeksi ($\dots$,$i$,$j$,$k$,$\dots$) pa zalogo vrednosti $\{1,2,3\}$.
+
+
+\section{Krivočrtne koordinate}
+
+
+\subsection{Koordinatni sistem}
+
+
+\begin{definicija}
+	Naj bo $U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $U$ je bijektivna in
+	gladka preslikava $\psi\colon U\to V$, kjer je $V$ odprta
+	množica v $\R^3$, inverz $\psi^{-1}$ pa je prav tako gladka preslikava.
+\end{definicija}
+
+Naj bo $x\in U$ in
+\[ \psi\colon x\mapsto (x^1,x^2,x^3)=\psi(x). \]
+$(x^1,x^2,x^3)$ so \emph{(krivočrtne) koordinate} točke $x$, funkcije
+\[ \psi^i\colon U\to\R,\qquad \psi^i(x)=x^i,\qquad i=1,2,3 \]
+pa se imenujejo \emph{$i$-ta koordinatna funkcija} koordinatnega sistema $\psi$.
+Po dogovoru tudi $(x^i)$ rečemo koordinatni sistem na $U$.
+
+Zopet naj za $x\in U$ velja $\psi(x)=(x^1,x^2,x^3)$. Slika preslikave
+\begin{equation} \label{e:kokri}
+	\gamma_i\colon(-\varepsilon,\varepsilon)\to U,\qquad
+	\gamma_i(t)=\psi^{-1}\big((x^1,x^2,x^3)+te_i\big),\qquad i=1,2,3,
+\end{equation}
+kjer je $e_i$ $i$-ti vektor iz standardne baze za $\R^3$,
+je \emph{$i$-ta koordinatna krivulja} v $U$, ki gre pri $t=0$ skozi točko $x$.
+V točki $x$ lahko definiramo \emph{tangentne vektorje}
+\begin{equation} \label{e:tanvek}
+	\vek{g}_i(x)=\at{\frac{d}{dt}\gamma_i(t)}{t=0}=\dot{\gamma}_i(0)
+	=\at{\frac{\partial\psi^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
+	, \qquad i=1,2,3
+\end{equation}
+in \emph{gradientne vektorje}
+\begin{equation} \label{e:gradvek}
+	\vek{g}^i(x)=\nabla\psi^i(x),\qquad i=1,2,3.
+\end{equation}
+
+\begin{trditev}
+	Množica $\{\vek{g}_i(x)\}_i$ tvori bazo za translacijski prostor $\V$.
+\end{trditev}
+
+\proof
+	Naj bo $\vek{u}\in\V$ poljuben in definirajmo krivuljo skozi $x$ s predpisom
+	\[ \gamma\colon(-\varepsilon,\varepsilon)\to U,\qquad \gamma(t)=x+t\vek{u}. \]
+	Velja
+	\[ \gamma(t)=\psi^{-1}\big(\psi^1(x+t\vek{u}),\psi^2(x+t\vek{u}),\psi^3(x+t\vek{u})\big), \]
+	zato je
+	\[
+		\vek{u}=\at{\frac{d}{dt}\gamma(t)}{t=0}=
+		\at{\frac{\partial\psi^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
+		\at{\frac{d}{dt}\psi^i(x+t\vek{u})}{t=0}=
+		\at{\frac{d}{dt}\psi^i(x+t\vek{u})}{t=0}\vek{g}_i(x).
+	\]
+	Z drugimi besedami, $\{\vek{g}_i(x)\}_{i}$ razpenja prostor $\V$.
+\endproof
+
+Tangentni in gradientni vektorji so definirani v vsaki točki množice $U$, torej
+gre v bistvu za vektorska polja. V vsaki točki $x\in U$ se baza $\{\vek{g}_i(x)\}_i$
+imenuje \emph{naravna baza} koordinatnega sistema $(x^i)$ za prostor $\V$.
+Množica $\{\vek{g}^i(x)\}_i$ pa je prav tako baza za $\V$, ki je dualna bazi $\{\vek{g}_i(x)\}_i$.
+Res, iz zveze
+\[ x^i=\psi^i(\psi^{-1}(x^1,x^2,x^3)) \]
+dobimo s posrednim odvajanjem
+\begin{equation} \label{e:gigj}
+	\topbot{\delta}{i}{j}=\frac{\partial x^i}{\partial x^j}=
+	(\nabla\psi^i)\cdot\frac{\partial\psi^{-1}}{\partial x^j}=\vek{g}^i\cdot\vek{g}_j.
+\end{equation}
+Koeficienti
+\[ g_{ij}=\vek{g}_i\cdot\vek{g}_j\qquad\textrm{in}\qquad g^{ij}=\vek{g}^i\cdot\vek{g}^j \]
+so \emph{koeficienti metričnega tenzorja} in so seveda odvisni od točke $x\in U$. 
+Iz zadnjih treh zvez hitro vidimo, da velja
+\[ g^{ik}g_{kj}=\topbot{\delta}{i}{j},\qquad \vek{g}^i=g^{ik}\vek{g}_k,\qquad \vek{g}_i=g_{ik}\vek{g}^k. \]
+
+
+\subsection{Koordinatna transformacija}
+
+
+Naj bosta $\psi$ in $\bar{\psi}$ oz.~$(x^i)$ in $(\bar{x}^i)$ koordinatna sistema za
+$U\subseteq\E$ z naravnima bazama $\{\vek{g}_i(x)\}_i$ oz.~$\{\bar{\vek{g}}_i(x)\}_i$.
+Koordinatna transformacija je podana z
+\[
+	x^i=x^i(\bar{x}^1,\bar{x}^2,\bar{x}^3)\quad\Longleftrightarrow\quad
+	\bar{x}^k=\bar{x}^k(x^1,x^2,x^3).
+\]
+Za vektorje iz naravne baze velja
+\begin{equation} \label{e:gtog}
+	\vek{g}^i=\frac{\partial x^i}{\partial\bar{x}^k}\bar{\vek{g}}^k,\qquad
+	\vek{g}_i=\frac{\partial\bar{x}^k}{\partial x^i}\bar{\vek{g}}_k.
+\end{equation}
+Prvo enakost dobimo kot gradient funkcije $x^i$ iz koordinatne transformacije,
+drugo enakost pa dobimo s parcialnim odvajanjem enakosti
+\[ 
+	\psi^{-1}(x^1,x^2,x^3)=\bar{\psi}^{-1}(\bar{x}^1(x^1,x^2,x^3),
+	\bar{x}^2(x^1,x^2,x^3),\bar{x}^3(x^1,x^2,x^3)).
+\]
+
+Naj bo $(x^1,x^2,x^3)$ in $(\bar{x}^1,\bar{x}^2,\bar{x}^3)$ dvoje koordinat točke $x\in U\subseteq\E$.
+Če je $f\colon U\to\R$ skalarno polje, potem bomo brez posebnih oznak pisali
+\[ f(x)=f(x^1,x^2,x^3)=f(\bar{x}^1,\bar{x}^2,\bar{x}^3). \]
+Če je $\vek{u}\colon U\to\V$ vektorsko polje, potem ga lahko zapišemo v komponentni
+obliki glede na naravno bazo prostora $\V$:
+\begin{align}
+	\vek{u}&=u_i\,\vek{g}^i=u^i\,\vek{g}_i \nonumber \\
+	&=\bar{u}_i\,\bar{\vek{g}}^i=\bar{u}^i\,\bar{\vek{g}}_i, \label{e:vekkomp}
+\end{align}
+Prav tako lahko tenzorsko polje $\ten{S}\colon U\to\L(\V)$ zapišemo v
+komponentni obliki glede na bazo prostora $\L(\V)$:
+\begin{align}
+	\ten{S}&=S_{ij}\,\vek{g}^i\otimes\vek{g}^j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j \nonumber \\
+	&=\bar{S}_{ij}\,\bar{\vek{g}}^i\otimes\bar{\vek{g}}^j=
+	\topbot{\bar{S}}{i}{j}\,\bar{\vek{g}}_i\otimes\bar{\vek{g}}^j \label{e:tenkomp}
+\end{align}
+S pomočjo (\ref{e:gtog}) dobimo naslednje zveze med posameznimi komponentami:
+\begin{gather*}
+	\bar{u}_i=\frac{\partial x^k}{\partial\bar{x}^i}u_k, \qquad
+	\bar{u}^i=\frac{\partial\bar{x}^i}{\partial x_k}u_k, \\
+	\bar{S}_{ij}=\frac{\partial x^k}{\partial\bar{x}^i}\frac{\partial x^l}{\partial\bar{x}^j}S_{kl}, \qquad
+	\topbot{\bar{S}}{i}{j}=\frac{\partial\bar{x}^i}{\partial x^k}\frac{\partial x^l}{\partial\bar{x}^j}\topbot{S}{k}{l}.
+\end{gather*}
+Posamezne komponente vektorskih in tenzoskih polj dobimo s pomočjo zveze (\ref{e:gigj})
+iz (\ref{e:vekkomp}) in (\ref{e:tenkomp}):
+\begin{gather}
+	u_i=\vek{g}_i\cdot\vek{u},\qquad u^i=\vek{g}^i\cdot\vek{u}, \label{e:kompvek} \\
+	S_{ij}=\vek{g}_i\cdot\ten{S}\vek{g}_j,\qquad\topbot{S}{i}{j}=\vek{g}^i\cdot\ten{S}\vek{g}_j.\label{e:kompten}
+\end{gather}
+
+
+\subsection{Gradient in kovariantni odvod}
+
+
+Naj bo $(x^i)$ koordinatni sistem na $U\subseteq\E$ z naravnima bazama $\{\vek{g}_i\}_i$ in $\{\vek{g}^i\}_i$.
+Gradiente tenzorskih polj lahko zapišemo v komponentni obliki glede na naravno bazo koordinatnega sistema.
+
+Naj bo $\vek{f}\colon U\to\W$ zvezno odvedljivo tenzorsko polje. Če je $\gamma_i$ $i$-ta
+koordinatna krivulja, ki gre pri $t=0$ skozi točko $x$, potem iz (\ref{e:tanvek}) dobimo
+\begin{equation*}
+	\at{\frac{d}{dt}\vek{f}\big(\gamma_i(t)\big)}{t=0}=
+	(\nabla \vek{f}(x))[\dot{\gamma}_i(0)]=(\nabla \vek{f}(x))[\vek{g}_i(x)],
+\end{equation*}
+po drugi strani pa imamo po (\ref{e:kokri})
+\begin{equation*}
+	\at{\frac{d}{dt}\vek{f}\big(\gamma_i(t)\big)}{t=0}=
+	\at{\frac{d}{dt}\vek{f}\big(\psi^{-1}((x^1,x^2,x^3)+te_i)\big)}{t=0}=
+	\at{\frac{\partial(\vek{f}\circ\psi^{-1})}{\partial x^i}}{(x^1,x^2,x^3)}.
+\end{equation*}
+Po našem dogovoru pišemo namesto $\vek{f}\circ\psi^{-1}$ kar $\vek{f}$. Če izenačimo oba rezultata, dobimo
+\begin{equation} \label{e:sotf}
+	\frac{\partial\vek{f}}{\partial x^i}=(\nabla \vek{f}(x))[\vek{g}_i(x)].
+\end{equation}
+V primeru, ko je $f$ skalarno polje, je po (\ref{e:kompvek}) $(\nabla f)\cdot\vek{g}_i=(\nabla f)_i$
+ravno kovariantna komponenta gradienta $\nabla f$, torej je
+\begin{equation} \label{e:gradskal}
+	\nabla f = \frac{\partial f}{\partial x^i}\,\vek{g}^i.
+\end{equation}
+
+Preden nadaljujemo z gradienti vektorskih polj, vpeljimo najprej standardne oznake
+za gradiente vektorjev iz naravne baze:
+\begin{equation} \label{e:gradg}
+	\nabla\vek{g}_i=\ten{\Gamma}_i,\qquad\nabla\vek{g}^i=\ten{\Gamma}^i.
+\end{equation}
+Tu sta $\ten{\Gamma}_i,\ten{\Gamma}^i\colon U\to\L(\V)$ tenzorski polji drugega reda in ju
+v komponentni obliki zapišemo kot
+\begin{equation} \label{e:cs}
+	\ten{\Gamma}_i=\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k,\qquad\ten{\Gamma}^i=\ks{i}{jk}\,\vek{g}^j\otimes\vek{g}^k.
+\end{equation}
+Koeficienti $\cs{i}{j}{k}$ in $\ks{i}{jk}$ se imenujejo \emph{Christoffelovi simboli}
+in ne gre za komponente kakega tenzorja tretjega reda. Če v enačbi (\ref{e:sotf})
+za $\vek{f}$ vstavimo vektorsko polje $\vek{g}_i$ oz.~$\vek{g}^i$ in upoštevamo
+(\ref{e:kompten}), (\ref{e:gradg}) in (\ref{e:cs}), dobimo
+\begin{equation} \label{e:csexplicit}
+	\cs{i}{j}{k}=\vek{g}^j\cdot\frac{\partial\vek{g}_i}{\partial x^k},\qquad
+	\ks{i}{jk}=\vek{g}_j\cdot\frac{\partial\vek{g}_i}{\partial x^k}.
+\end{equation}
+
+Če po pravilu (\ref{t:divprop})$_2$ izračunamo gradient izraza $(\vek{g}^i\cdot\vek{g}_j)$,
+ki je enak 0, in upoštevamo, da velja
+\[(\vek{u}\otimes\vek{v})^{T}=\vek{v}\otimes\vek{u}\]
+za poljubna vektorja $\vek{u}$ in $\vek{v}$ ter da je transponiranje linearna operacija,
+potem dobimo zvezo
+\begin{equation} \label{e:lcs1}
+	\cs{j}{i}{k}=-\ks{i}{jk}.
+\end{equation}
+Nadalje, ker je $\ten{\Gamma}^i=\nabla(\nabla\psi^i)$ in je drugi gradient vedno
+simetrični tenzor, veljata še naslednji zvezi:
+\[ \ks{i}{jk}=\ks{i}{kj},\qquad\cs{j}{i}{k}=\cs{k}{i}{j}. \]
+Ker je zaradi teh zvez možno prehajati iz ene vrste simbolov v drugo vrsto,
+so v uporabi zgolj simboli $\cs{i}{j}{k}$, imenovani Christoffelovi simboli druge vrste.
+
+Naj bo sedaj $\vek{u}\colon U\to\V$ vektorsko polje, v komponentni obliki
+zapisano kot
+\[ \vek{u}=u^j\,\vek{g}_j=u_k\,\vek{g}^k. \]
+Potem iz (\ref{t:divprop}$_1$), (\ref{e:gradskal}), (\ref{e:gradg}) in (\ref{e:cs}) dobimo
+\begin{align*}
+	\nabla\vek{u}&=\nabla(u^i\,\vek{g}_i)=\vek{g}_i\otimes\nabla u^i+u^i\nabla\vek{g}_i\\
+	&=\vek{g}_i\otimes\frac{\partial u^i}{\partial x^k}\vek{g}^k+
+	u^i\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k\\
+	&=\Big(\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}\Big)\vek{g}_j\otimes\vek{g}^k.
+\end{align*}
+Komponentna oblika za $\nabla\vek{u}$ je torej
+\[ \nabla\vek{u}=\topbot{u}{j}{,k}\,\vek{g}_j\otimes\vek{g}^k, \]
+kjer je
+\[
+	\topbot{u}{j}{,k}=\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}
+\]
+t.~i.~\emph{kovariantni odvod} komponentne $u^j$ po spremenljivki $x^k$.
+Če enak postopek ponovimo še za $\nabla(u_i\,\vek{g}^i)$,
+kjer dodatno uporabimo relacijo (\ref{e:lcs1}), dobimo
+\begin{equation} \label{e:nimena1}
+	\nabla\vek{u}=u_{j,k}\,\vek{g}^j\otimes\vek{g}^k,
+\end{equation}
+kjer je
+\begin{equation} \label{e:kov2}
+	u_{j,k}=\frac{\partial u_j}{\partial x^k}-u_i\cs{j}{i}{k}.
+\end{equation}
+\begin{primer}
+	Če v izrazu $\vek{u}=u_j\vek{g}^j$ vstavimo za $u_j=\partial f/\partial x^j$,
+	kar je kovariantna komponenta od $\nabla f$ v izrazu (\ref{e:gradskal}), ter vstavimo v
+	(\ref{e:kov2}), rezultat pa nato v (\ref{e:nimena1}), dobimo
+	\begin{equation} \label{e:dvagrad}
+		%\Big(\frac{\partial f}{\partial x^j}\Big)_{,k}
+		\nabla(\nabla f)=\Big(\frac{\partial^2 f}{\partial x^j\partial x^k}-
+		\frac{\partial f}{\partial x^i}\cs{j}{i}{k}\Big)\vek{g}^j\otimes\vek{g}^k.
+	\end{equation}
+\end{primer}
+
+
+
+\section{Priprave}
+
+
+Naj bo $\Theta\subseteq\R^2$ odprta množica in $I=(t_1,t_2)$ odprti interval.
+Oglejmo si preslikavo
+\[ \varphi\colon\Theta\times I\to\E,\qquad \varphi\colon(\theta^1,\theta^2,t)\mapsto\vek{x}. \]
+Zahtevamo, da je $\varphi$ razreda $C^2$ na svoji domeni, ter da je pri vsakem $t\in I$ 
+odvod preslikave $\varphi(\cdot,t)\colon \Theta\to\E$ linearna preslikava iz $\R^2$ v $\R^3$ ranga 2 v vsaki
+točki $(\theta^1,\theta^2)\in\Theta$. Slednji pogoj je ekvivalenten temu, da na celotni domeni
+$\Theta\times I$ velja
+\[ \frac{\partial\varphi}{\partial\theta^1}\times\frac{\partial\varphi}{\partial\theta^2}\neq \vek{0}. \]
+Pri danem $t\in I$ je preslikava $\varphi(\cdot,t)$ regularna parametrizacija ploskve,
+vložene v $\E$. Označili jo bomo s $\sigma(t)=\varphi(\Theta,t)$. Vse ploskve $\{\sigma(t)\}_{t\in I}$
+skupaj predstavljajo s časom gibajočo se ploskev po prostoru $\E$.
+
+Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ desnosučna ortonormirana baza prostora $\V$. Preslikavo
+$\varphi$ lahko zapišemo v komponentni obliki $\varphi=\varphi_j\vek{e}_j$.
+Vpeljimo oznake
+\[
+	\varphi_{j,\alpha}=\frac{\partial\varphi_j}{\partial\theta^{\alpha}},\quad
+	\vek{a}_{\alpha}=\frac{\partial\varphi}{\partial\theta^{\alpha}}
+	=\varphi_{j,\alpha}\vek{e}_j,\quad
+	a=\|\vek{a}_1\times\vek{a}_2\|,\quad
+	\vek{n}=\frac{1}{a}\vek{a}_1\times\vek{a}_2.
+\]
+Vektorja $\vek{a}_1$ in $\vek{a}_2$ sta tangentna ali kovariantna bazna vektorja ploskve $\sigma(t)$, vektor
+$\vek{n}=n_j\vek{e}_j$ pa je normala na ploskev $\sigma(t)$. Velja
+\[ \vek{a}_{\alpha}\cdot\vek{n}=0,\qquad \vek{n}\cdot\vek{n}=1,\qquad \vek{n}\cdot\frac{\partial\vek{n}}{\partial\theta^{\alpha}}=0. \]
+Tretjo enakost dobimo s parsialnim odvajanjem druge enakosti. Koeficienti
+\[ a_{\alpha\beta}=\vek{a}_{\alpha}\cdot\vek{a}_{\beta}=\varphi_{j,\alpha}\varphi_{j,\beta} \]
+so koeficienti prve fundamentalne forme ploskve,
+\[
+	b_{\alpha\beta}=\frac{\partial^2\varphi}{\partial\theta^{\alpha}\partial\theta^{\beta}}
+	\cdot\vek{n}=\varphi_{j,\alpha\beta}n_j
+\]
+pa so koeficienti druge fundamentalne forme.
+
+Kartezijeve koordinate točke $\vek{x}=x_j\vek{e}_j\in\E$ so $(x_1,x_2,x_3)$. Naj bosta $\theta\in\Theta$
+in $t\in I$ poljubna. Za neko dovolj majhno okolico $U\subseteq\Theta$ točke $\theta$ in neki dovolj
+majhen $c>0$ definirajmo na množici $U\times(-c,c)$ koordinatno transformacijo
+\[
+	x_j(\theta^1,\theta^2,\theta^3)=\varphi_j(\theta^1,\theta^2,t)+\theta^3 n_j(\theta^1,\theta^2,t).
+\]
+Pripadajoči tangentni vektorji so
+\[ \vek{g}_{\alpha}=\vek{a}_{\alpha}+\theta^3\frac{\partial\vek{n}}{\partial\theta^{\alpha}},\qquad \vek{g}_3=\vek{n}. \]
+Pri $\theta^3=0$, torej na ploskvi, imamo
+\begin{align*}
+	\vek{g}_{\alpha}=\vek{a}_{\alpha},\qquad \vek{g}^{\alpha}=\vek{a}^{\alpha},\qquad \vek{g}_3=\vek{g}^3=\vek{n}, \\
+	g_{\alpha\beta}=a_{\alpha\beta},\qquad g^{\alpha\beta}=a^{\alpha\beta},\qquad g_{j 3}=g^{j 3}=\delta_{j 3}, \\
+	\vek{a}^{\alpha}=a^{\alpha\beta}\vek{a}_{\beta},\qquad \vek{a}_{\alpha}=a_{\alpha\beta}\vek{a}^{\beta},
+	\qquad a_{\alpha\beta}a^{\beta\gamma}=\bottop{\delta}{\alpha}{\gamma}.
+\end{align*}
