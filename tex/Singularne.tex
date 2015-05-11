@@ -175,12 +175,15 @@ in ne gre za komponente kakega tenzorja tretjega reda. Če v enačbi (\ref{e:sot
 za $\vek{f}$ vstavimo vektorsko polje $\vek{g}_i$ oz.~$\vek{g}^i$ in upoštevamo
 (\ref{e:kompten}), (\ref{e:gradg}) in (\ref{e:cs}), dobimo
 \begin{equation} \label{e:csexplicit}
-	\cs{i}{j}{k}=\vek{g}^j\cdot\frac{\partial\vek{g}_i}{\partial x^k},\qquad
+	\cs{i}{j}{k}=\vek{g}^j\cdot\frac{\partial\vek{g}_i}{\partial x^k}
+	=-\vek{g}_i\cdot\frac{\partial\vek{g}^j}{\partial x^k},\qquad
 	\ks{i}{jk}=\vek{g}_j\cdot\frac{\partial\vek{g}_i}{\partial x^k}.
 \end{equation}
+Pri tem je drugi izraz za $\cs{i}{j}{k}$ dobljen iz prvega s parcialnim odvajanjem
+enakosti $\vek{g}^i\cdot\vek{g}_j=\topbot{\delta}{i}{j}$ po spremenljivki $x^k$.
 
 Če po pravilu (\ref{t:divprop})$_2$ izračunamo gradient izraza $(\vek{g}^i\cdot\vek{g}_j)$,
-ki je enak 0, in upoštevamo, da velja
+ki je enak 0, in upoštevamo, da velja\footnote{REF I-Shi-Liu str. 241}
 \[(\vek{u}\otimes\vek{v})^{T}=\vek{v}\otimes\vek{u}\]
 za poljubna vektorja $\vek{u}$ in $\vek{v}$ ter da je transponiranje linearna operacija,
 potem dobimo zvezo
@@ -188,34 +191,35 @@ potem dobimo zvezo
 	\cs{j}{i}{k}=-\ks{i}{jk}.
 \end{equation}
 Nadalje, ker je $\ten{\Gamma}^i=\nabla(\nabla\psi^i)$ in je drugi gradient vedno
-simetrični tenzor, veljata še naslednji zvezi:
+simetrični tenzor\footnote{REF I-Shi-Liu str. 271}, veljata še naslednji zvezi:
 \[ \ks{i}{jk}=\ks{i}{kj},\qquad\cs{j}{i}{k}=\cs{k}{i}{j}. \]
 Ker je zaradi teh zvez možno prehajati iz ene vrste simbolov v drugo vrsto,
 so v uporabi zgolj simboli $\cs{i}{j}{k}$, imenovani Christoffelovi simboli druge vrste.
 
 Naj bo sedaj $\vek{u}\colon U\to\V$ vektorsko polje, v komponentni obliki
 zapisano kot
-\[ \vek{u}=u^j\,\vek{g}_j=u_k\,\vek{g}^k. \]
-Potem iz (\ref{t:divprop}$_1$), (\ref{e:gradskal}), (\ref{e:gradg}) in (\ref{e:cs}) dobimo
-\begin{align*}
-	\nabla\vek{u}&=\nabla(u^i\,\vek{g}_i)=\vek{g}_i\otimes\nabla u^i+u^i\nabla\vek{g}_i\\
-	&=\vek{g}_i\otimes\frac{\partial u^i}{\partial x^k}\vek{g}^k+
-	u^i\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k\\
-	&=\Big(\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}\Big)\vek{g}_j\otimes\vek{g}^k.
-\end{align*}
-Komponentna oblika za $\nabla\vek{u}$ je torej
-\[ \nabla\vek{u}=\topbot{u}{j}{,k}\,\vek{g}_j\otimes\vek{g}^k, \]
-kjer je
-\[
-	\topbot{u}{j}{,k}=\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}
-\]
-t.~i.~\emph{kovariantni odvod} komponentne $u^j$ po spremenljivki $x^k$.
-Če enak postopek ponovimo še za $\nabla(u_i\,\vek{g}^i)$,
-kjer dodatno uporabimo relacijo (\ref{e:lcs1}), dobimo
+\[ \vek{u}=u^j\vek{g}_j=u_k\vek{g}^k. \]
+Njegov gradient pripada prostoru $\L(\V)$, zato ga lahko zapišemo v komponentni obliki
+\begin{equation} \label{e:gradukomp}
+	\nabla\vek{u}=\topbot{u}{j}{,k}\,\vek{g}_j\otimes\vek{g}^k.
+\end{equation}
+Poiščimo izraz za komponente $\topbot{u}{j}{,k}$. Z upoštevanjem
+(\ref{e:kompten}) in (\ref{e:sotf}) dobimo
+\begin{align}
+	\topbot{u}{j}{,k}&=\vek{g}^j\cdot\frac{\partial\vek{u}}{\partial x^k}=
+	\vek{g}^j\cdot\frac{\partial(u^i\vek{g}_i)}{\partial x^k} \nonumber \\
+	&=\vek{g}^j\cdot\Big(\frac{\partial u^i}{\partial x^k}\vek{g}_i+
+	u^i\frac{\partial\vek{g}_i}{\partial x^k}\Big) \nonumber \\
+	&=\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}. \label{e:kovod1}
+\end{align}
+Pri tem smo na zadnjem koraku upoštevali relacijo (\ref{e:csexplicit}). Dobljena enakost (\ref{e:kovod1})
+za $\topbot{u}{j}{,k}$ je t.~i.~\emph{kovariantni odvod} komponentne $u^j$ po spremenljivki $x^k$.
+
+Če zapišemo
 \begin{equation} \label{e:nimena1}
 	\nabla\vek{u}=u_{j,k}\,\vek{g}^j\otimes\vek{g}^k,
 \end{equation}
-kjer je
+in ponovimo prejšnji postopek, kjer dodatno uporabimo relacijo (\ref{e:lcs1}), dobimo
 \begin{equation} \label{e:kov2}
 	u_{j,k}=\frac{\partial u_j}{\partial x^k}-u_i\cs{j}{i}{k}.
 \end{equation}
@@ -230,16 +234,86 @@ kjer je
 	\end{equation}
 \end{primer}
 
+Naj bo $\ten{S}\colon U\to\L(\V)$. Potem je $\nabla\ten{S}\colon U\to\L(\V,\L(\V))$
+in ga v komponentni obliki lahko razpišemo glede na bazo prostora $\L(\V,\L(\V))$ kot
+\[ \nabla\ten{S}=\topbot{S}{ij}{,k}\vek{g}_i\otimes\vek{g}_j\otimes\vek{g}^k. \]
+Iz (\ref{e:sotf}) dobimo
+\[
+	\frac{\partial\ten{S}}{\partial x^k}=(\nabla\ten{S})[\vek{g}_k]=
+	(\topbot{S}{ij}{,l}\vek{g}_i\otimes\vek{g}_j\otimes\vek{g}^l)\vek{g}_k=
+	\topbot{S}{ij}{,k}\vek{g}_i\otimes\vek{g}_j.
+\]
+Če na dobljeni enakosti uporabimo (\ref{e:kompten}), dobimo
+\begin{align*}
+	\topbot{S}{ij}{,k}&=\vek{g}^i\cdot\frac{\partial\ten{S}}{\partial x^k}\vek{g}^j=
+	\vek{g}^i\cdot\frac{\partial(S^{lr}\vek{g}_l\otimes\vek{g}_r)}{\partial x^k}\vek{g}^j \\
+	&=\vek{g}^i\cdot\Big(
+	\frac{\partial S^{lr}}{\partial x^k}\vek{g}_l\otimes\vek{g}_r+
+	S^{lr}\frac{\partial\vek{g}_l}{\partial x^k}\otimes\vek{g}_r+
+	S^{lr}\vek{g}_l\otimes\frac{\partial\vek{g}_r}{\partial x^k}
+	\Big)\vek{g}^j \\
+	&=\frac{\partial S^{ij}}{\partial x^k}+S^{lj}\cs{l}{i}{k}+S^{ir}\cs{r}{j}{k}.
+\end{align*}
+Preostale komponente za $\nabla\ten{S}$ dobimo na enak način.
 
 
-\section{Priprave}
+\subsection{Divergenca}
 
+
+Spomnimo se, sled tenzorja $\ten{S}\in\L(\V)$ s komponentno obliko (\ref{e:tenkomp})
+je\footnote{REF I-Shi-Liu str. 249} skalar
+\[ \tr\,\ten{S}=\topbot{S}{i}{i}=g^{ij}S_{ij}. \]
+Če je $\vek{u}$ vektorsko polje, potem iz (\ref{e:gradukomp}) in (\ref{e:nimena1}) dobimo
+\begin{equation} \label{e:divu}
+	\div\vek{u} = \tr(\nabla\vek{u}) = \topbot{u}{i}{,i} = g^{ij}u_{i,j}.
+\end{equation}
+
+Poiščimo še izraz za divergenco tenzorskega polja $\ten{S}\colon U\to\L(\V)$.
+Iz (\ref{e:divu}) dobimo za poljubno vektorsko polje $\vek{u}$
+\[
+	\div(\ten{S}^{T}\vek{u})=\div(S^{ij}\vek{g}_j\otimes\vek{g}_i u_k\vek{g}^k)
+	=\div(S^{ij}u_i\vek{g}_j)=(S^{ij}u_i)_{,\,j}.
+\]
+Bralec se lahko sam prepriča, da tudi za kovariantni odvod produkta velja
+podobno pravilo, kot ga poznamo za običaji odvod, zato imamo
+\[
+	(S^{ij}u_i)_{,j}=\topbot{S}{ij}{,j}u_i+S^{ij}u_{i,j}=
+	\topbot{S}{ij}{,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u})
+\]
+Dobili smo enakost
+\begin{equation} \label{e:divStu}
+	\div(\ten{S}^{T}\vek{u})=\topbot{S}{ij}{,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u}).
+\end{equation}
+Če je $\vek{u}$ konstantno vektorsko polje, potem je $\nabla\vek{u}=\ten{0}$ in v
+enačbi (\ref{e:divStu}) s pomočjo definicije REF prepoznamo izraz za $\div\ten{S}$, ki je
+\[
+	\div\ten{S}=\topbot{S}{ij}{,j}\vek{g}_i.
+\]
+Če dobljeni izraz vstavimo nazaj v enačbo (\ref{e:divStu}) in zamenjamo $\ten{S}$ z
+$\ten{S}^{T}$, dobimo naslednjo trditev.
+\begin{trditev} \label{e:divSu}
+	Za poljubno tenzorsko polje $\ten{S}\colon U\to\L(\V)$ in poljubno
+	vektorsko polje $\vek{u}\colon U\to\V$ velja
+	\[ \div(\ten{S}\vek{u})=\vek{u}\cdot\div\ten{S}^{T}+\tr(\ten{S}\nabla\vek{u}). \]
+\end{trditev}
+
+
+\section{Gibajoča se ploskev}
+
+
+Naj bo $(x_i)$ kartezijev koordinatni sistem za $\E$, kot smo ga prestavili v REF, ter označimo
+njegovo naravno bazo z $\{\vek{e}_i\}_i$. Ta baza je enaka v vsaki točki prostora in je sama
+sebi dualna, $\vek{e}^i\cdot\vek{e}_j=\topbot{\delta}{i}{j}$, zato v kartezijevem
+koordinatnem sistemu ni potrebno uporabljati dvonivojskega indeksiranja.
 
 Naj bo $\Theta\subseteq\R^2$ odprta množica in $I=(t_1,t_2)$ odprti interval.
 Oglejmo si preslikavo
-\[ \varphi\colon\Theta\times I\to\E,\qquad \varphi\colon(\theta^1,\theta^2,t)\mapsto\vek{x}. \]
+\begin{gather*}
+	\varphi\colon\Theta\times I\to\E,\qquad \varphi\colon(\theta^1,\theta^2,t)\mapsto \vek{x}=x_i\vek{e}_i,\\
+	x_i=\varphi_i(\theta^1,\theta^2,t)
+\end{gather*}
 Zahtevamo, da je $\varphi$ razreda $C^2$ na svoji domeni, ter da je pri vsakem $t\in I$ 
-odvod preslikave $\varphi(\cdot,t)\colon \Theta\to\E$ linearna preslikava iz $\R^2$ v $\R^3$ ranga 2 v vsaki
+odvod preslikave $\varphi(\cdot,t)\colon \Theta\to\E$ linearna preslikava iz $\R^2$ v $\V$ ranga 2 v vsaki
 točki $(\theta^1,\theta^2)\in\Theta$. Slednji pogoj je ekvivalenten temu, da na celotni domeni
 $\Theta\times I$ velja
 \[ \frac{\partial\varphi}{\partial\theta^1}\times\frac{\partial\varphi}{\partial\theta^2}\neq \vek{0}. \]
@@ -247,25 +321,26 @@ Pri danem $t\in I$ je preslikava $\varphi(\cdot,t)$ regularna parametrizacija pl
 vložene v $\E$. Označili jo bomo s $\sigma(t)=\varphi(\Theta,t)$. Vse ploskve $\{\sigma(t)\}_{t\in I}$
 skupaj predstavljajo s časom gibajočo se ploskev po prostoru $\E$.
 
-Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ desnosučna ortonormirana baza prostora $\V$. Preslikavo
-$\varphi$ lahko zapišemo v komponentni obliki $\varphi=\varphi_j\vek{e}_j$.
 Vpeljimo oznake
 \[
-	\varphi_{j,\alpha}=\frac{\partial\varphi_j}{\partial\theta^{\alpha}},\quad
 	\vek{a}_{\alpha}=\frac{\partial\varphi}{\partial\theta^{\alpha}}
-	=\varphi_{j,\alpha}\vek{e}_j,\quad
+	=\frac{\partial\varphi_i}{\partial\theta^{\alpha}}\vek{e}_i,\quad
 	a=\|\vek{a}_1\times\vek{a}_2\|,\quad
 	\vek{n}=\frac{1}{a}\vek{a}_1\times\vek{a}_2.
 \]
-Vektorja $\vek{a}_1$ in $\vek{a}_2$ sta tangentna ali kovariantna bazna vektorja ploskve $\sigma(t)$, vektor
+Vektorja $\vek{a}_1$ in $\vek{a}_2$ sta tangentna ali kovariantna bazna vektorja ploskve $\sigma(t)$
+glede na parametrizacijo $\varphi(\cdot,t)$, vektor
 $\vek{n}=n_j\vek{e}_j$ pa je normala na ploskev $\sigma(t)$. Velja
 \[ \vek{a}_{\alpha}\cdot\vek{n}=0,\qquad \vek{n}\cdot\vek{n}=1,\qquad \vek{n}\cdot\frac{\partial\vek{n}}{\partial\theta^{\alpha}}=0. \]
-Tretjo enakost dobimo s parsialnim odvajanjem druge enakosti. Koeficienti
-\[ a_{\alpha\beta}=\vek{a}_{\alpha}\cdot\vek{a}_{\beta}=\varphi_{j,\alpha}\varphi_{j,\beta} \]
+Tretjo enakost dobimo s parcialnim odvajanjem druge enakosti. Koeficienti
+\[
+	a_{\alpha\beta}=\vek{a}_{\alpha}\cdot\vek{a}_{\beta}=
+	\frac{\partial\varphi_i}{\partial\theta^{\alpha}}\frac{\partial\varphi_i}{\partial \theta^{\beta}}
+\]
 so koeficienti prve fundamentalne forme ploskve,
 \[
 	b_{\alpha\beta}=\frac{\partial^2\varphi}{\partial\theta^{\alpha}\partial\theta^{\beta}}
-	\cdot\vek{n}=\varphi_{j,\alpha\beta}n_j
+	\cdot\vek{n}=\frac{\partial\vek{a}_{\alpha}}{\partial\theta^{\beta}}\cdot\vek{n}
 \]
 pa so koeficienti druge fundamentalne forme.
 
@@ -284,3 +359,5 @@ Pri $\theta^3=0$, torej na ploskvi, imamo
 	\vek{a}^{\alpha}=a^{\alpha\beta}\vek{a}_{\beta},\qquad \vek{a}_{\alpha}=a_{\alpha\beta}\vek{a}^{\beta},
 	\qquad a_{\alpha\beta}a^{\beta\gamma}=\bottop{\delta}{\alpha}{\gamma}.
 \end{align*}
+
+\[\frac{\dtd g}{\dtd t}\]

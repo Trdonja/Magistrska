@@ -185,3 +185,32 @@ Tu so $h_i$, $\bar{h}_i$, $\bar{h}^i$, $S_{ij}$, $\bottop{\bar{S}}{i}{j}$, $\dot
 Iz (\ref{e:ge-rel}) dobimo naslednje relacije:
 
 	%h^i=\bar{h}^j\frac{\partial\hat{x}_i}{\partial\theta^j}=\frac{\partial\hat{}}{\partial}
+
+%--------- Gradient vektorskega -------------
+
+Naj bo sedaj $\vek{u}\colon U\to\V$ vektorsko polje, v komponentni obliki
+zapisano kot
+\[ \vek{u}=u^j\,\vek{g}_j=u_k\,\vek{g}^k. \]
+Potem iz (\ref{t:divprop}$_1$), (\ref{e:gradskal}), (\ref{e:gradg}) in (\ref{e:cs}) dobimo
+\begin{align*}
+	\nabla\vek{u}&=\nabla(u^i\,\vek{g}_i)=\vek{g}_i\otimes\nabla u^i+u^i\nabla\vek{g}_i\\
+	&=\vek{g}_i\otimes\frac{\partial u^i}{\partial x^k}\vek{g}^k+
+	u^i\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k\\
+	&=\Big(\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}\Big)\vek{g}_j\otimes\vek{g}^k.
+\end{align*}
+Komponentna oblika za $\nabla\vek{u}$ je torej
+\[ \nabla\vek{u}=\topbot{u}{j}{,k}\,\vek{g}_j\otimes\vek{g}^k, \]
+kjer je
+\[
+	\topbot{u}{j}{,k}=\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}
+\]
+t.~i.~\emph{kovariantni odvod} komponentne $u^j$ po spremenljivki $x^k$.
+Če enak postopek ponovimo še za $\nabla(u_i\,\vek{g}^i)$,
+kjer dodatno uporabimo relacijo (\ref{e:lcs1}), dobimo
+\begin{equation} \label{e:nimena1}
+	\nabla\vek{u}=u_{j,k}\,\vek{g}^j\otimes\vek{g}^k,
+\end{equation}
+kjer je
+\begin{equation} \label{e:kov2}
+	u_{j,k}=\frac{\partial u_j}{\partial x^k}-u_i\cs{j}{i}{k}.
+\end{equation}
