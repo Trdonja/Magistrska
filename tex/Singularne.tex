@@ -76,7 +76,9 @@ Koeficienti
 \[ g_{ij}=\vek{g}_i\cdot\vek{g}_j\qquad\textrm{in}\qquad g^{ij}=\vek{g}^i\cdot\vek{g}^j \]
 so \emph{koeficienti metričnega tenzorja} in so seveda odvisni od točke $x\in U$. 
 Iz zadnjih treh zvez hitro vidimo, da velja
-\[ g^{ik}g_{kj}=\topbot{\delta}{i}{j},\qquad \vek{g}^i=g^{ik}\vek{g}_k,\qquad \vek{g}_i=g_{ik}\vek{g}^k. \]
+\begin{equation} \label{e:relzag}
+	g^{ik}g_{kj}=\topbot{\delta}{i}{j},\qquad \vek{g}^i=g^{ik}\vek{g}_k,\qquad \vek{g}_i=g_{ik}\vek{g}^k.
+\end{equation}
 
 
 \subsection{Koordinatna transformacija}
@@ -308,10 +310,13 @@ koordinatnem sistemu ni potrebno uporabljati dvonivojskega indeksiranja.
 
 Naj bo $\Theta\subseteq\R^2$ odprta množica in $I=(t_1,t_2)$ odprti interval.
 Oglejmo si preslikavo
-\begin{gather*}
-	\varphi\colon\Theta\times I\to\E,\qquad \varphi\colon(\theta^1,\theta^2,t)\mapsto \vek{x}=x_i\vek{e}_i,\\
-	x_i=\varphi_i(\theta^1,\theta^2,t)
-\end{gather*}
+\begin{equation*}
+	\varphi\colon\Theta\times I\to\E,\qquad \varphi\colon(\theta^1,\theta^2,t)\mapsto x,
+\end{equation*}
+ki jo lahko podamo s tremi koordinatnimi funkcijami
+\[
+	x_i=\varphi_i(\theta^1,\theta^2,t).
+\]
 Zahtevamo, da je $\varphi$ razreda $C^2$ na svoji domeni, ter da je pri vsakem $t\in I$ 
 odvod preslikave $\varphi(\cdot,t)\colon \Theta\to\E$ linearna preslikava iz $\R^2$ v $\V$ ranga 2 v vsaki
 točki $(\theta^1,\theta^2)\in\Theta$. Slednji pogoj je ekvivalenten temu, da na celotni domeni
@@ -324,40 +329,140 @@ skupaj predstavljajo s časom gibajočo se ploskev po prostoru $\E$.
 Vpeljimo oznake
 \[
 	\vek{a}_{\alpha}=\frac{\partial\varphi}{\partial\theta^{\alpha}}
-	=\frac{\partial\varphi_i}{\partial\theta^{\alpha}}\vek{e}_i,\quad
-	a=\|\vek{a}_1\times\vek{a}_2\|,\quad
+	=\frac{\partial\varphi_i}{\partial\theta^{\alpha}}\vek{e}_i
+	,\quad a=\|\vek{a}_1\times\vek{a}_2\|,\quad
 	\vek{n}=\frac{1}{a}\vek{a}_1\times\vek{a}_2.
 \]
-Vektorja $\vek{a}_1$ in $\vek{a}_2$ sta tangentna ali kovariantna bazna vektorja ploskve $\sigma(t)$
-glede na parametrizacijo $\varphi(\cdot,t)$, vektor
-$\vek{n}=n_j\vek{e}_j$ pa je normala na ploskev $\sigma(t)$. Velja
-\[ \vek{a}_{\alpha}\cdot\vek{n}=0,\qquad \vek{n}\cdot\vek{n}=1,\qquad \vek{n}\cdot\frac{\partial\vek{n}}{\partial\theta^{\alpha}}=0. \]
-Tretjo enakost dobimo s parcialnim odvajanjem druge enakosti. Koeficienti
+Komponentna oblika za $\vek{a}_1\times\vek{a}_2$ je
 \[
-	a_{\alpha\beta}=\vek{a}_{\alpha}\cdot\vek{a}_{\beta}=
-	\frac{\partial\varphi_i}{\partial\theta^{\alpha}}\frac{\partial\varphi_i}{\partial \theta^{\beta}}
+	\vek{a}_1\times\vek{a}_2=\varepsilon_{ijk}\frac{\partial\varphi_j}{\partial\theta^1}
+	\frac{\partial\varphi_k}{\partial\theta^2},
+\]
+kjer je
+\[
+	\varepsilon_{ijk}=\left\{\begin{array}{rl}
+		1;&(i,j,k)\ \textrm{je soda permutacija od}\ (1,2,3) \\
+		-1;&(i,j,k)\ \textrm{je liha permutacija od}\ (1,2,3) \\
+		0;&\textrm{sicer}
+	\end{array}\right.
+\]
+t.~i.~\emph{permutacijski simbol}.
+Vektorja $\vek{a}_1$ in $\vek{a}_2$ sta tangentna ali kovariantna bazna vektorja ploskve $\sigma(t)$
+glede na parametrizacijo $\varphi(\cdot,t)$,
+vektor $\vek{n}=n_i\vek{e}_i$ pa je normala na ploskev $\sigma(t)$. Velja
+\[ \vek{a}_{\alpha}\cdot\vek{n}=0,\qquad \vek{n}\cdot\vek{n}=1.  \]
+S parcialnim odvajanjem teh enakosti dobimo
+\[
+	\frac{\partial\vek{a}_{\alpha}}{\partial\theta^{\beta}}\cdot\vek{n}=
+	-\vek{a}_{\alpha}\cdot\frac{\partial\vek{n}}{\partial\theta^{\beta}},\qquad
+	\vek{n}\cdot\frac{\partial\vek{n}}{\partial\theta^{\alpha}}=0.
+\]
+Koeficienti
+\[
+	a_{\alpha\beta}=\vek{a}_{\alpha}\cdot\vek{a}_{\beta}
+	%=\frac{\partial\varphi_i}{\partial\theta^{\alpha}}\frac{\partial\varphi_i}{\partial \theta^{\beta}}
 \]
 so koeficienti prve fundamentalne forme ploskve,
 \[
 	b_{\alpha\beta}=\frac{\partial^2\varphi}{\partial\theta^{\alpha}\partial\theta^{\beta}}
 	\cdot\vek{n}=\frac{\partial\vek{a}_{\alpha}}{\partial\theta^{\beta}}\cdot\vek{n}
+	=-\vek{a}_{\alpha}\cdot\frac{\partial\vek{n}}{\partial\theta^{\beta}}
 \]
-pa so koeficienti druge fundamentalne forme.
+pa so koeficienti druge fundamentalne forme. Seveda velja $a_{\alpha\beta}=a_{\beta\alpha}$
+in $b_{\alpha\beta}=b_{\beta\alpha}$.
 
-Kartezijeve koordinate točke $\vek{x}=x_j\vek{e}_j\in\E$ so $(x_1,x_2,x_3)$. Naj bosta $\theta\in\Theta$
-in $t\in I$ poljubna. Za neko dovolj majhno okolico $U\subseteq\Theta$ točke $\theta$ in neki dovolj
-majhen $c>0$ definirajmo na množici $U\times(-c,c)$ koordinatno transformacijo
+Ploskev $\sigma(t)$ lahko ekvivalentno predstavimo tudi v 
+implicitni obliki, kot množico točk $x\in\E$, ki rešijo enačbo
+\begin{equation} \label{e:plimpl}
+	f(x,t)=0\qquad\textrm{oz.}\qquad f(x_1,x_2,x_3,t)=0,
+\end{equation}
+kjer je $f$ skalarna funkcija razreda $C^2$ na svoji domeni,
+za katero je $\grad f$ različen od $\vek{0}$ v vsaki točki ploskve $\sigma(t)$
+(pogoj regularnosti). Normala na ploskev se potem izraža kot
+\begin{equation} \label{e:ngrad}
+	\vek{n}=\frac{\grad f}{\|\grad f\|}.
+\end{equation}
+S totalnim odvodom enačbe (\ref{e:plimpl}) po času dobimo
+\begin{equation} \label{e:fdot0}
+	\frac{\partial f}{\partial t}+\vek{\nu}\cdot\grad f = 0,
+\end{equation}
+kjer je
 \[
-	x_j(\theta^1,\theta^2,\theta^3)=\varphi_j(\theta^1,\theta^2,t)+\theta^3 n_j(\theta^1,\theta^2,t).
+	\vek{\nu}=\frac{\partial\varphi}{\partial t},\qquad
+	\vek{\nu}=\nu_i\vek{e}_i,\qquad \nu_i=\frac{\partial\varphi_i}{\partial t}
 \]
-Pripadajoči tangentni vektorji so
-\[ \vek{g}_{\alpha}=\vek{a}_{\alpha}+\theta^3\frac{\partial\vek{n}}{\partial\theta^{\alpha}},\qquad \vek{g}_3=\vek{n}. \]
-Pri $\theta^3=0$, torej na ploskvi, imamo
-\begin{align*}
-	\vek{g}_{\alpha}=\vek{a}_{\alpha},\qquad \vek{g}^{\alpha}=\vek{a}^{\alpha},\qquad \vek{g}_3=\vek{g}^3=\vek{n}, \\
-	g_{\alpha\beta}=a_{\alpha\beta},\qquad g^{\alpha\beta}=a^{\alpha\beta},\qquad g_{j 3}=g^{j 3}=\delta_{j 3}, \\
-	\vek{a}^{\alpha}=a^{\alpha\beta}\vek{a}_{\beta},\qquad \vek{a}_{\alpha}=a_{\alpha\beta}\vek{a}^{\beta},
-	\qquad a_{\alpha\beta}a^{\beta\gamma}=\bottop{\delta}{\alpha}{\gamma}.
-\end{align*}
+vektorsko polje hitrosti gibanja ploskve $\sigma(t)$. Skalarno polje
+\[ u_n=\vek{\nu}\cdot\vek{n} \]
+je hitrost ploskve v smeri normale oz.~\emph{normalna hitrost}.
+Iz (\ref{e:ngrad}) in (\ref{e:fdot0}) dobimo
+\[ u_n=-\frac{1}{\|\grad f\|}\frac{\partial f}{\partial t}. \]
+
+
+\subsection{Kompatibilnostni pogoji}
+
+
+Naj bo $\Omega$ odprto in povezano območje v prostoru $\N=\E\times\R$ z lastnostjo, da so projekcije
+\[ \B_t=\{x\in\E\;;\ (x,t)\in\Omega\} \]
+neprazne, povezane in regularne za vsak $t\in I$. Nadalje naj velja, da je za vsak $t\in I$
+presek $\sigma(t)\cap\B_t$ neprazen ter da ploskev $\sigma(t)$ razdeljuje območje
+$\B_t$ na dve disjunktni odprti podmnožici, ki ju bomo označili z $\B_t^+$ in $\B_t^-$.
+Podmnožica $\B_t^+$ naj bo tista, v katero je usmerjena normala $\vek{n}$.
+
+Vpeljimo še oznako
+\[
+	\sigma=\{(x,t)\;;\ x\in\sigma(t)\cap \B_t,\ t\in I\}\subset\N,
+\]
+z oznako $\sigma(t)$ pa bomo od tu naprej zaznamovali presek $\sigma(t)\cap\B_t$.
+Naj bo $\vek{w}\colon\Omega\to\W$ neko tenzorsko polje. V tem razdelku se bomo ukvarjali
+z izpeljavo pogojev, ki jim mora tako polje zadoščati na območju $\sigma\subset\Omega$.
+
+Naj bo $x_0=\varphi(\topbot{\theta}{1}{0},\topbot{\theta}{2}{0},t_0)\in\sigma(t_0)$, $t_0\in I$.
+Na neki okolici $U$ točke $x_0$ lahko definiramo koordinatni sistem $\psi$ oz.~$(\theta^i)$
+preko njegovega inverza
+\[
+	\psi^{-1}\colon(\theta^1,\theta^2,\theta^3)\mapsto\varphi(\theta^1,\theta^2,t_0)+
+	\theta^3\vek{n}(\theta^1,\theta^2,t_0)\in U,
+\]
+ali pa preko koordinatne transformacije
+\[
+	x_j(\theta^1,\theta^2,\theta^3)=\varphi_j(\theta^1,\theta^2,t_0)+\theta^3 n_j(\theta^1,\theta^2,t_0).
+\]
+Z enačbo $\theta^3=0$ je določena ploskev $\sigma(t_0)\cap U$.
+Tangentni vektorji koordinatnega sistema $(\theta^i)$ so
+\[
+	\vek{g}_{\alpha}=\vek{a}_{\alpha}+\theta^3\frac{\partial\vek{n}}{\partial\theta^{\alpha}},
+	\qquad \vek{g}_3=\vek{g}^3=\vek{n}.
+\]
+Pri $\theta^3=0$, torej na ploskvi, imamo $\vek{g}_{\alpha}=\vek{a}_{\alpha}$ in
+$g_{\alpha\beta}=a_{\alpha\beta}$. Pri $\theta^3=0$
+bomo označili gradientne vektorje $\vek{g}^{\alpha}$ z $\vek{a}^{\alpha}$
+in metrične koeficiente $g^{\alpha\beta}$ z $a^{\alpha\beta}$.
+
+Ker pri $\theta^3=0$ velja $g_{i3}=0$, je
+\[ \vek{a}_{\alpha}=a_{\alpha\beta}\vek{a}^{\beta}, \]
+in če sedaj to enačbo skalarno pomnožimo z $\vek{a}^{\gamma}$, dobimo
+\[ a_{\alpha\beta}a^{\beta\gamma}=\bottop{\delta}{\alpha}{\gamma}, \]
+torej sta si matriki $[a_{\alpha\beta}]$ in $[a^{\alpha\beta}]$ inverzni.
+Po Lagrangevi identiteti imamo
+\[ a^2=\|\vek{a}_1\times\vek{a}_2\|^2=a_{11}a_{22}-(a_{12})^2=\det[a_{\alpha\beta}]. \]
+in inverz matrike
+\begin{equation*}
+	[a_{\alpha\beta}]=\left[\begin{array}{cc}
+		a_{11}&a_{12}\\a_{12}&a_{22}
+	\end{array}\right] \quad\textrm{je}\quad
+	[a^{\alpha\beta}]=\frac{1}{a^2}\left[\begin{array}{rr}
+		a_{22}&-a_{12}\\-a_{12}&a_{11}
+	\end{array}\right].
+\end{equation*}
+Torej imamo eksplicitno izražavo za koeficiente $a^{\alpha\beta}$.  Iz enačbe
+\[ \vek{n}=g^{3\alpha}\vek{a}_{\alpha}+g^{33}\vek{n} \]
+zaradi linearne neodvisnosti vektorjev $\vek{a}_1,\vek{a}_2$ in $\vek{n}$ sledi
+$g^{3i}=\delta^{3i}$, torej je
+\[ \vek{a}^{\alpha}=a^{\alpha\beta}\vek{a}_{\beta} \]
+in gradientna vektorja $\vek{a}^1$ in $\vek{a}^2$ lahko dobimo iz tangentnih
+vektorjev $\vek{a}_1$ in $\vek{a}_2$.
+%\begin{equation*}
+	
+%\end{equation*}
 
 \[\frac{\dtd g}{\dtd t}\]
