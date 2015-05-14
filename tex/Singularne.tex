@@ -307,6 +307,7 @@ Naj bo $(x_i)$ kartezijev koordinatni sistem za $\E$, kot smo ga prestavili v RE
 njegovo naravno bazo z $\{\vek{e}_i\}_i$. Ta baza je enaka v vsaki točki prostora in je sama
 sebi dualna, $\vek{e}^i\cdot\vek{e}_j=\topbot{\delta}{i}{j}$, zato v kartezijevem
 koordinatnem sistemu ni potrebno uporabljati dvonivojskega indeksiranja.
+Christoffelovi simboli za kartezijev koordinatni sistem so vsi enaki 0.
 
 Naj bo $\Theta\subseteq\R^2$ odprta množica in $I=(t_1,t_2)$ odprti interval.
 Oglejmo si preslikavo
@@ -387,12 +388,14 @@ S totalnim odvodom enačbe (\ref{e:plimpl}) po času dobimo
 	\frac{\partial f}{\partial t}+\vek{\nu}\cdot\grad f = 0,
 \end{equation}
 kjer je
-\[
+\begin{equation} \label{e:nu}
 	\vek{\nu}=\frac{\partial\varphi}{\partial t},\qquad
 	\vek{\nu}=\nu_i\vek{e}_i,\qquad \nu_i=\frac{\partial\varphi_i}{\partial t}
-\]
+\end{equation}
 vektorsko polje hitrosti gibanja ploskve $\sigma(t)$. Skalarno polje
-\[ u_n=\vek{\nu}\cdot\vek{n} \]
+\begin{equation} \label{e:un}
+	u_n=\vek{\nu}\cdot\vek{n}
+\end{equation}
 je hitrost ploskve v smeri normale oz.~\emph{normalna hitrost}.
 Iz (\ref{e:ngrad}) in (\ref{e:fdot0}) dobimo
 \[ u_n=-\frac{1}{\|\grad f\|}\frac{\partial f}{\partial t}. \]
@@ -413,21 +416,21 @@ Vpeljimo še oznako
 	\sigma=\{(x,t)\;;\ x\in\sigma(t)\cap \B_t,\ t\in I\}\subset\N,
 \]
 z oznako $\sigma(t)$ pa bomo od tu naprej zaznamovali presek $\sigma(t)\cap\B_t$.
-Naj bo $\vek{w}\colon\Omega\to\W$ neko tenzorsko polje. V tem razdelku se bomo ukvarjali
-z izpeljavo pogojev, ki jim mora tako polje zadoščati na območju $\sigma\subset\Omega$.
+V tem razdelku se bomo ukvarjali
+z izpeljavo pogojev, ki jim morajo zadoščati tenzorska polja na območju $\sigma\subset\Omega$.
 
-Naj bo $x_0=\varphi(\topbot{\theta}{1}{0},\topbot{\theta}{2}{0},t_0)\in\sigma(t_0)$, $t_0\in I$.
-Na neki okolici $U$ točke $x_0$ lahko definiramo koordinatni sistem $\psi$ oz.~$(\theta^i)$
+Na neki okolici $U_t$ ploskve $\sigma(t)$ lahko definiramo koordinatni sistem $\psi_t$ oz.~$(\theta^i)$
 preko njegovega inverza
 \[
-	\psi^{-1}\colon(\theta^1,\theta^2,\theta^3)\mapsto\varphi(\theta^1,\theta^2,t_0)+
-	\theta^3\vek{n}(\theta^1,\theta^2,t_0)\in U,
+	\psi_t^{-1}\colon(\theta^1,\theta^2,\theta^3)\mapsto x=\varphi(\theta^1,\theta^2,t)+
+	\theta^3\vek{n}(\theta^1,\theta^2,t)\in U_t,
 \]
 ali pa preko koordinatne transformacije
 \[
-	x_j(\theta^1,\theta^2,\theta^3)=\varphi_j(\theta^1,\theta^2,t_0)+\theta^3 n_j(\theta^1,\theta^2,t_0).
+	x_j(\theta^1,\theta^2,\theta^3)=\varphi_j(\theta^1,\theta^2,t)+\theta^3 n_j(\theta^1,\theta^2,t).
 \]
-Z enačbo $\theta^3=0$ je določena ploskev $\sigma(t_0)\cap U$.
+Ta koordinatni sistem je odvisen od $t\in I$.
+Z enačbo $\theta^3=0$ je določena ploskev $\sigma(t)$.
 Tangentni vektorji koordinatnega sistema $(\theta^i)$ so
 \[
 	\vek{g}_{\alpha}=\vek{a}_{\alpha}+\theta^3\frac{\partial\vek{n}}{\partial\theta^{\alpha}},
@@ -459,10 +462,122 @@ Torej imamo eksplicitno izražavo za koeficiente $a^{\alpha\beta}$.  Iz enačbe
 zaradi linearne neodvisnosti vektorjev $\vek{a}_1,\vek{a}_2$ in $\vek{n}$ sledi
 $g^{3i}=\delta^{3i}$, torej je
 \[ \vek{a}^{\alpha}=a^{\alpha\beta}\vek{a}_{\beta} \]
-in gradientna vektorja $\vek{a}^1$ in $\vek{a}^2$ lahko dobimo iz tangentnih
-vektorjev $\vek{a}_1$ in $\vek{a}_2$.
-%\begin{equation*}
-	
-%\end{equation*}
+in gradientna vektorja $\vek{a}^{\alpha}$ lahko dobimo iz tangentnih vektorjev $\vek{a}_{\alpha}$.
 
-\[\frac{\dtd g}{\dtd t}\]
+Christoffelove simbole koordinatnega sistema $(\theta^i)$ dobimo iz
+enačb (\ref{e:csexplicit}). Na ploskvi $\theta^3=0$ so
+\begin{gather}
+	\cs{\alpha}{\beta}{\gamma}=\vek{a}^{\beta}\cdot\frac{\partial\vek{a}_{\alpha}}{\partial\theta^{\gamma}},\quad
+	\cs{\alpha}{3}{\beta}=\vek{a}_{\alpha}\cdot\frac{\partial\vek{n}}{\partial\theta^{\beta}}=b_{\alpha\beta},\nonumber\\
+	\cs{3}{\alpha}{\beta}=\vek{a}^{\alpha}\cdot\frac{\partial\vek{n}}{\partial\theta^{\beta}}
+	=a^{\alpha\varrho}\vek{a}_{\varrho}\cdot\frac{\partial\vek{n}}{\partial\theta^{\beta}}
+	=-a^{\alpha\varrho}b_{\varrho\beta},\nonumber\\
+	\cs{3}{3}{\alpha}=\vek{n}\cdot\frac{\partial\vek{n}}{\partial\theta^{\alpha}}=0,\quad
+	\cs{3}{i}{3}=0. \label{e:csnasi}
+\end{gather}
+
+Naj bo $g\colon\Omega\to\R$ skalarno polje s funkcijsko obliko
+\[ g=g(x,t)=g(\kappa^{-1}(x_1,x_2,x_3),t)=:g(x_1,x_2,x_3,t), \]
+kjer je $\kappa$ kartezijev koordinatni sistem na $\E$. Na območju hiperploskve $\sigma$
+je lahko polje $g$ podano v parametrični obliki $g=\tilde{g}(\theta^1,\theta^2,t)$ kot
+\begin{equation} \label{e:totog}
+	\tilde{g}(\theta^1,\theta^2,t)=g(\varphi(\theta^1,\theta^2,t),t).
+\end{equation}
+Za začetek naj bo $g$ razreda $C^1$ na $\Omega$.
+
+Naj bo $t_0\in I$ poljuben in naj bo $U_{t_0}$ neka okolica ploskve $\sigma(t_0)$,
+na kateri lahko definiramo poprej predstavljeni koordinatni sistem $(\theta^i)$ oz. $\psi_{t_0}$.
+Od tu dalje se bomo ukvarjali z analizo odvodov polja $g$ na ploskvi $\sigma(t_0)$.
+Dobljeni rezultati bodo potem seveda veljali za vse $t\in I$, torej na celotnem
+območju $\sigma$.
+
+Na $U_{t_0}$ lahko torej $g$ predstavimo še v funkcijski obliki
+\[ g=g(\psi_{t_0}^{-1}(\theta^1,\theta^2,\theta^3),t_0)=:g(\theta^1,\theta^2,\theta^3,t_0). \]
+Na $\sigma(t_0)$ velja
+\begin{gather}
+	\tilde{g}(\theta^1,\theta^2,t_0)=g(\theta^1,\theta^2,\theta^3=0,t_0), \nonumber\\
+	\frac{\partial \tilde{g}}{\partial\theta^{\alpha}}=\frac{\partial g}{\partial\theta^{\alpha}},
+	\qquad\frac{\partial \tilde{g}}{\partial t}(\cdot,t_0)=
+	\frac{\partial g}{\partial t}(\cdot,t_0). \label{e:gingtilde}
+\end{gather}
+
+\emph{Normalni odvod} $\partial g/\partial n$ polja $g$ na območju $\sigma$
+je smerni odvod polja $g$ v smeri normale, torej
+\[ \frac{\partial g}{\partial n}=(\grad g)\cdot\vek{n}=\frac{\partial g}{\partial x^i}n_i. \]
+Ker je $\vek{n}$ tretji tangetni vektor koordinatnega sistema $(\theta^i)$,
+dobimo iz (\ref{e:sotf})
+\[ \frac{\partial g}{\partial n}=\frac{\partial g}{\partial \theta^3}. \]
+
+Gradient funkcije $g$ na ploskvi $\sigma(t_0)$ lahko iz enačbe
+(\ref{e:gradskal}) zapišemo v komponentni obliki z obzirom na kartezijev koordinatni
+sistem $(x^i)$ in na koordinatni sistem $(\theta^i)$. Z dodatnim upoštevanjem (\ref{e:gingtilde}) dobimo
+\begin{equation} \label{e:ojej}
+ \grad g = \frac{\partial g}{\partial x_j}\vek{e}_j
+ =\frac{\partial \tilde{g}}{\partial\theta^{\alpha}}a^{\alpha\beta}\vek{a}_{\beta}+
+ \frac{\partial g}{\partial n}\vek{n}.
+\end{equation}
+Če enačbo pomnožimo skalarno z $\vek{e}_i$, dobimo
+\begin{equation} \label{e:kpspace}
+ \frac{\partial g}{\partial x_i}=
+ a^{\alpha\beta}\frac{\partial\varphi_i}{\partial\theta^{\beta}}
+ \frac{\partial \tilde{g}}{\partial\theta^{\alpha}}+
+ n_i\frac{\partial g}{\partial n}.
+\end{equation}
+
+Iz enačbe (\ref{e:totog}) dobimo
+\[ \frac{d\tilde{g}}{dt}=\frac{\partial g}{\partial t}+(\grad g)\cdot\vek{\nu}, \]
+iz (\ref{e:ojej}), (\ref{e:nu}) in (\ref{e:un}) pa nato
+\begin{equation} \label{e:padofg}
+	\frac{\partial g}{\partial t}=\frac{d\tilde{g}}{dt}-
+	a^{\alpha\beta}\frac{\partial\varphi_i}{\partial\theta^{\beta}}
+ \frac{\partial \tilde{g}}{\partial\theta^{\alpha}}\nu_i-
+	u_n\frac{\partial g}{\partial n}.
+\end{equation}
+Za skalarne funkcije na $\Omega$ lahko na podobmočju $\sigma$ vpeljimo diferencialni operator
+\[ \frac{\dtd}{\dtd t}=\frac{\partial}{\partial t}+u_n\frac{\partial}{\partial n}. \]
+Iz (\ref{e:padofg}) vidimo, da je
+\begin{equation} \label{e:dtdofg}
+	\frac{\dtd g}{\dtd t}=\frac{d\tilde{g}}{d t}-
+	a^{\alpha\beta}\frac{\partial\varphi_i}{\partial\theta^{\beta}}
+	\frac{\partial \tilde{g}}{\partial\theta^{\alpha}}\nu_i
+\end{equation}
+in
+\begin{equation} \label{e:kptime}
+	\frac{\partial g}{\partial t}=\frac{\dtd g}{\dtd t}-u_n\frac{\partial g}{\partial n}.
+\end{equation}
+
+Če je $\tilde{g}$ znana funkcija na $\sigma$, potem je mogoče izračunati odvode
+$\partial\tilde{g}/\partial\theta^{\alpha}$ in $\partial\tilde{g}/\partial t$,
+iz (\ref{e:dtdofg}) pa lahko potem izračunamo tudi $\dtd g/\dtd t$.
+Enačbi (\ref{e:kpspace}) in (\ref{e:kptime}) sta \emph{kompatibilnostna pogoja za prve parcialne odvode}
+funkcije $g$ na $\sigma$.
+Če poznamo $\tilde{g}$ in $\partial g/\partial n$ na $\sigma$, potem enačbi
+(\ref{e:kpspace}) in (\ref{e:kptime}) določata prve parcialne odvode polja $g$ na $\sigma$.
+
+Naj bo sedaj $g$ razreda $C^2$ na $\Omega$. Tudi drugi gradient funkcije $g$ na ploskvi $\sigma(t_0)$
+lahko zapišemo v komponentni obliki z obzirom na kartezijev koordinatni
+sistem $(x^i)$ in na koordinatni sistem $(\theta^i)$. Iz (\ref{e:dvagrad})
+z upoštevanjem (\ref{e:gingtilde}) in Christoffelovih simbolov (\ref{e:csnasi}) dobimo
+\begin{align*}
+	\grad(\grad g) &=\frac{\partial^2 g}{\partial x_k\partial x_l}\vek{e}_k\otimes\vek{e}_l\\
+	&=\Big( \frac{\partial^2\tilde{g}}{\partial\theta^{\alpha}\partial\theta^{\beta}}-
+	\frac{\partial\tilde{g}}{\partial\theta^{\gamma}}\cs{\alpha}{\gamma}{\beta}-
+	\frac{\partial g}{\partial n}b_{\alpha\beta}\Big)\vek{a}^{\alpha}\otimes\vek{a}^{\beta}+\\
+	&+\Big(\frac{\partial}{\partial\theta^{\beta}}\Big(\frac{\partial g}{\partial n}\Big)+
+	a^{\gamma\varrho}b_{\varrho\beta}\frac{\partial\tilde{g}}{\partial\theta^{\gamma}}\Big)
+	(\vek{n}\otimes\vek{a}^{\beta}+\vek{a}^{\beta}\otimes\vek{n})+\\
+	&+\frac{\partial^2 g}{\partial n^2}\vek{n}\otimes\vek{n}.
+\end{align*}
+Če enačbo z desne pomnožimo z $\vek{e}_j$, nato pa še skalarno z $\vek{e}_i$, dobimo
+\begin{align*}
+	\frac{\partial^2 g}{\partial x_i\partial x_j}
+	&=a^{\alpha\varrho}a^{\beta\mu}\Big( \frac{\partial^2\tilde{g}}{\partial\theta^{\alpha}\partial\theta^{\beta}}-
+	\frac{\partial\tilde{g}}{\partial\theta^{\gamma}}\cs{\alpha}{\gamma}{\beta}-
+	\frac{\partial g}{\partial n}b_{\alpha\beta}\Big)
+	\frac{\partial\varphi_i}{\partial\theta^{\varrho}}\frac{\partial\varphi_j}{\partial\theta^{\mu}}+\\
+	&+a^{\beta\mu}\Big(\frac{\partial}{\partial\theta^{\beta}}\Big(\frac{\partial g}{\partial n}\Big)+
+	a^{\gamma\varrho}b_{\varrho\beta}\frac{\partial\tilde{g}}{\partial\theta^{\gamma}}\Big)
+	(n_i\frac{\partial\varphi_j}{\partial\theta^{\mu}}+n_j\frac{\partial\varphi_i}{\partial\theta^{\mu}})+\\
+	&+\frac{\partial^2 g}{\partial n^2}n_in_j.
+\end{align*}
+
