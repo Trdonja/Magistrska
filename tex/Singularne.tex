@@ -319,9 +319,9 @@ Christoffelovi simboli za kartezijev koordinatni sistem so vsi enaki 0.
 
 Naj bo $\Theta\subseteq\R^2$ odprta množica in $I=(t_1,t_2)$ odprti interval.
 Oglejmo si preslikavo
-\begin{equation*}
+\begin{equation} \label{e:pargip}
 	\varphi\colon\Theta\times I\to\E,\qquad \varphi\colon(\theta^1,\theta^2,t)\mapsto x,
-\end{equation*}
+\end{equation}
 ki jo lahko podamo s tremi koordinatnimi funkcijami
 \[
 	x_i=\varphi_i(\theta^1,\theta^2,t).
@@ -387,13 +387,13 @@ implicitni obliki, kot množico točk $x\in\E$, ki rešijo enačbo
 \begin{equation} \label{e:plimpl}
 	f(x,t)=0\qquad\textrm{oz.}\qquad f(x_1,x_2,x_3,t)=0,
 \end{equation}
-kjer je $f$ skalarna funkcija razreda $C^2$ na svoji domeni,
-za katero je $\grad f$ različen od $\vek{0}$ v vsaki točki ploskve $\sigma(t)$
+kjer je $f$ skalarna funkcija razreda $C^2$ na $\E\times I$,
+za katero velja, da je $\grad f$ različen od $\vek{0}$ na $\sigma$
 (pogoj regularnosti). Normala na ploskev se potem izraža kot
 \begin{equation} \label{e:ngrad}
 	\vek{n}=\frac{\grad f}{\|\grad f\|}.
 \end{equation}
-S totalnim odvodom enačbe (\ref{e:plimpl}) po času dobimo
+S totalnim odvodom enačbe (\ref{e:plimpl}) po času dobimo na $\sigma$
 \begin{equation} \label{e:fdot0}
 	\frac{\partial f}{\partial t}+\vek{\nu}\cdot\grad f = 0,
 \end{equation}
@@ -406,12 +406,14 @@ vektorsko polje hitrosti gibanja ploskve $\sigma(t)$. Skalarno polje
 \begin{equation} \label{e:un}
 	u_n=\vek{\nu}\cdot\vek{n}
 \end{equation}
-je hitrost ploskve v smeri normale oz.~\emph{normalna hitrost}.
-Iz (\ref{e:ngrad}) in (\ref{e:fdot0}) dobimo
-\[ u_n=-\frac{1}{\|\grad f\|}\frac{\partial f}{\partial t}. \]
+je hitrost ploskve v smeri normale oz.~\emph{normalna hitrost ploskve}.
+Če (\ref{e:ngrad}) vstavimo v (\ref{e:un}) in upoštevamo (\ref{e:fdot0}), dobimo
+\begin{equation} \label{e:nohit}
+	u_n=-\frac{1}{\|\grad f\|}\frac{\partial f}{\partial t}.
+\end{equation}
 
 
-\section{Spremljajoči koordinatni sistem}
+\section{Spremljajoči koordinatni sistem} \label{s:sks}
 
 
 Naj bo $\Omega$ odprto in povezano območje v prostoru $\N=\E\times\R$ z lastnostjo, da so projekcije
@@ -686,7 +688,7 @@ zapišemo kot
 	\Big(\frac{\dtd g}{\dtd t}-u_n\frac{\partial g}{\partial n}\Big)+ \nonumber \\
 	&+\Big(\frac{\dtd}{\dtd t}\Big(\frac{\partial g}{\partial n}\Big)+
 	a^{\alpha\beta}\frac{\partial\tilde{g}}{\partial\theta^{\alpha}}
-	\frac{\partial u_n}{\partial\theta^{\beta}}-u_n\frac{\partial^2 g}{\partial n^2}\Big).
+	\frac{\partial u_n}{\partial\theta^{\beta}}-u_n\frac{\partial^2 g}{\partial n^2}\Big)n_i.
 	\label{e:kpzdpo2}
 \end{align}
 
@@ -703,3 +705,231 @@ in upoštevamo še (\ref{e:katastrophe}), dobimo
 
 Enačbe (\ref{e:kpzdpo1}), (\ref{e:kpzdpo2}) in (\ref{e:kpzdpo3}) se imenujejo
 \emph{kompatibilnostni pogoji za druge parcialne odvode} funkcije $g$ na $\sigma$.
+
+
+\section{Singularna ploskev}
+
+
+Spomnimo se oznak iz začetka razdelka (\ref{s:sks}).
+Območje $\Omega$ je s hiperploskvijo $\sigma$ razdeljeno na odprti podobmočji
+\[
+	\Omega^+=\{(x,t)\;;\ x\in\B_t^+,\ t\in I\}\quad\textrm{in}\quad
+	\Omega^-=\{(x,t)\;;\ x\in\B_t^-,\ t\in I\}.
+\]
+$\Omega$ lahko torej zapišemo kot disjunktno unijo
+\[ \Omega=\Omega^-\cup\sigma\cup\Omega^+. \]
+Hiperploskev $\sigma$ je del roba območja $\Omega^-$, kot tudi $\Omega^+$.
+
+Naj bo $\vek{f}\colon\Omega\to\W$ tenzorsko polje.
+Recimo, da je $\vek{f}$ zvezno na $\Omega^-$ in na $\Omega^+$, ni pa zvezno na $\sigma$.
+Če obstajata zvezni razširitvi
+\[ \vek{f}^-\colon\Omega^-\cup\sigma\to\W\quad\textrm{in}\quad \vek{f}^+\colon\Omega^+\cup\sigma\to\W \]
+polja $\vek{f}$ iz območja $\Omega^-$ na območje $\Omega^-\cup\sigma$ ter iz območja $\Omega^+$ na
+območje $\Omega^+\cup\sigma$, potem funkcijo
+\[
+	\jump{\vek{f}}\colon\sigma\to\W,\qquad \jump{\vek{f}}=\vek{f}^+-\vek{f}^-
+\]
+imenujemo \emph{skok} polja $\vek{f}$.
+Zvezni razširitvi $\vek{f}^-$ in $\vek{f}^+$ ter posledično skok $\jump{\vek{f}}$ zagotovo obstajajo,
+kadar je $\vek{f}$ po normi omejeno na $\Omega^-\cup\Omega^+$. Če zvezni razširitvi obstajata,
+sta tudi enolični, saj gre za razširitev na del robu območja.
+
+Če je pri nekem $t\in I$ $\jump{\vek{f}}\neq\vek{0}$ skoraj povsod na $\sigma(t)$,
+potem se $\sigma(t)$ imenuje \emph{singularna ploskev} za $\vek{f}$. Če je
+$\jump{\vek{f}}\neq\vek{0}$ skoraj povsod na $\sigma$, potem se
+$\sigma$ imenuje \emph{singularna hiperploskev} za $\vek{f}$.
+
+Če je $\vek{f}$ razreda $C^{r-1}$ na $\Omega$ za neki $r\geq 1$ in je hkrati tudi razreda $C^r$
+na $\Omega^-$ ter na $\Omega^+$, potem, če obstaja $\jump{D^r\vek{f}}$ in je različen od nič
+skoraj povsod na $\sigma(t)$ oz.~na $\sigma$, je $\sigma(t)$ oz.~$\sigma$ \emph{singularna
+ploskev oz.~hiperploskev reda $r$} za $\vek{f}$.
+
+Naj bo $g$ skalarno polje razreda $C^1$ na $\Omega^-$ in na $\Omega^+$ in naj
+obstaja skok odvoda, $\jump{Dg}$, na $\sigma$.
+Za $g^+$ in $g^-$ lahko na $\sigma$ zapišemo kompatibilnostna
+pogoja (\ref{e:kpspace}) in (\ref{e:kptime}). Če potem upoštevamo še
+\[
+	\frac{\partial\jump{g}}{\partial\theta^{\alpha}}=
+	\frac{\partial g^+}{\partial\theta^{\alpha}}-\frac{\partial g^-}{\partial\theta^{\alpha}}
+	\quad\textrm{in}\quad
+	\frac{\dtd\jump{g}}{\dtd t}=\frac{\dtd g^+}{\dtd t}-\frac{\dtd g^-}{\dtd t},
+\]
+kar sledi neposredno iz $\jump{g}=g^+-g^-$, dobimo
+\begin{align}
+	\jump{\frac{\partial g}{\partial x_i}}&=
+	a^{\alpha\beta}\frac{\partial\varphi_i}{\partial\theta^{\beta}}
+	\frac{\partial \jump{g}}{\partial\theta^{\alpha}}+
+	n_i\jump{\frac{\partial g}{\partial n}}\nonumber\\
+	\textrm{in}\quad\jump{\frac{\partial g}{\partial t}}&=
+	\frac{\dtd \jump{g}}{\dtd t}-u_n\jump{\frac{\partial g}{\partial n}}.\label{e:jpd1}
+\end{align}
+Pri tem je seveda% za $x\in\sigma(t)$
+%\begin{gather*}
+%	\frac{\partial g^+}{\partial n}(x,t)=\lim_{\varepsilon\searrow 0}
+%	\frac{g(x+\varepsilon\vek{n},t)}{\varepsilon},\qquad
+%	\frac{\partial g^-}{\partial n}(x,t)=\lim_{\varepsilon\searrow 0}
+%	\frac{g(x-\varepsilon\vek{n},t)}{\varepsilon}\\
+%	\textrm{in}\quad\jump{\frac{\partial g}{\partial n}}=\frac{\partial g^+}{\partial n}-
+%	\frac{\partial g^-}{\partial n}.
+%\end{gather*}
+\[
+	\jump{\frac{\partial g}{\partial n}}=\frac{\partial g^+}{\partial n}-
+	\frac{\partial g^-}{\partial n}=(\grad g)^+\vek{n}-(\grad g)^-\vek{n}.
+\]
+Če je $\sigma(t)$ singularna ploskev reda 1 za $g$, potem je $\jump{g}=0$ in enačbi
+(\ref{e:jpd1}) se zreducirata na
+\[
+	\jump{\frac{\partial g}{\partial x_i}}=\jump{\frac{\partial g}{\partial n}}n_i\quad\textrm{in}
+	\quad \jump{\frac{\partial g}{\partial t}}=-u_n\jump{\frac{\partial g}{\partial n}}.
+\]
+
+Naj bo sedaj $g$ skalarno polje razreda $C^2$ na $\Omega^-$ in na $\Omega^+$ in naj
+obstaja $\jump{D^2g}$ na $\sigma$.
+Iz kompatibilnostnih pogojev (\ref{e:kpzdpo1}), (\ref{e:kpzdpo2}) in (\ref{e:kpzdpo3})
+za $g^+$ in $g^-$ na $\sigma$ sledi
+\begin{align}
+	\jump{\frac{\partial^2 g}{\partial x_i\partial x_j}}=\;&
+	a^{\alpha\varrho}a^{\beta\mu}\Big( \frac{\partial^2\jump{g}}{\partial\theta^{\alpha}\partial\theta^{\beta}}-
+	\frac{\partial\jump{g}}{\partial\theta^{\gamma}}\cs{\alpha}{\gamma}{\beta}-
+	\jump{\frac{\partial g}{\partial n}}b_{\alpha\beta}\Big)
+	\frac{\partial\varphi_i}{\partial\theta^{\varrho}}\frac{\partial\varphi_j}{\partial\theta^{\mu}}+ \nonumber \\
+	&+a^{\beta\mu}\Big(\frac{\partial}{\partial\theta^{\beta}}\jump{\frac{\partial g}{\partial n}}+
+	a^{\gamma\varrho}b_{\varrho\beta}\frac{\partial\jump{g}}{\partial\theta^{\gamma}}\Big)
+	\Big(n_i\frac{\partial\varphi_j}{\partial\theta^{\mu}}+n_j\frac{\partial\varphi_i}{\partial\theta^{\mu}}\Big)+
+	\nonumber\\&+\jump{\frac{\partial^2 g}{\partial n^2}}n_in_j,\nonumber\\
+	\jump{\frac{\partial^2 g}{\partial x_i\partial t}}=\;&
+	a^{\alpha\beta}\frac{\partial\varphi_i}{\partial\theta^{\beta}}
+	\frac{\partial}{\partial\theta^{\alpha}}
+	\Big(\frac{\dtd \jump{g}}{\dtd t}-u_n\jump{\frac{\partial g}{\partial n}}\Big)+ \nonumber \\
+	&+\Big(\frac{\dtd}{\dtd t}\jump{\frac{\partial g}{\partial n}}+
+	a^{\alpha\beta}\frac{\partial\jump{g}}{\partial\theta^{\alpha}}
+	\frac{\partial u_n}{\partial\theta^{\beta}}-u_n\jump{\frac{\partial^2 g}{\partial n^2}}\Big)n_i,\nonumber\\
+	\jump{\frac{\partial^2 g}{\partial t^2}}=\;&
+	\frac{\dtd}{\dtd t}\Big(\frac{\dtd \jump{g}}{\dtd t}-u_n\jump{\frac{\partial g}{\partial n}}\Big)- \nonumber \\
+	&-u_n\Big(\frac{\dtd}{\dtd t}\jump{\frac{\partial g}{\partial n}}+
+	a^{\alpha\beta}\frac{\partial\jump{g}}{\partial\theta^{\alpha}}
+	\frac{\partial u_n}{\partial\theta^{\beta}}-u_n\jump{\frac{\partial^2 g}{\partial n^2}}\Big).\label{e:jpd2}
+\end{align}
+Če je $\sigma(t)$ singularna ploskev reda 2 za $g$, potem sta $\jump{g}$ in
+$\jump{\partial g/\partial n}$ enaka 0 in enačbe (\ref{e:jpd2}) se reducirajo na
+\begin{gather*}
+	\jump{\frac{\partial^2 g}{\partial x_i\partial x_j}}=
+	\jump{\frac{\partial^2 g}{\partial n^2}}n_in_j,\qquad
+	\jump{\frac{\partial^2 g}{\partial x_i\partial t}}=
+	-u_n\jump{\frac{\partial^2 g}{\partial n^2}}n_i \\ \mathrm{in}\quad
+	\jump{\frac{\partial^2 g}{\partial t^2}}=u_n^2\jump{\frac{\partial^2 g}{\partial n^2}}.
+\end{gather*}
+
+Enačbi (\ref{e:jpd1}) sta kompatibilnostna pogoja za nezveznost prvih parcialnih odvodov,
+enačbe (\ref{e:jpd2}) pa so kompatibilnostni pogoji za nezveznost drugih parcialnih odvodov
+polja $g$ na $\sigma$. Enačbi (\ref{e:jpd1})$_1$ in (\ref{e:jpd2})$_1$ se imenujeta
+\emph{geometrijski kompatibilnostni pogoj}, enačbe (\ref{e:jpd1})$_2$, (\ref{e:jpd2})$_{2,3}$
+pa \emph{kinematični kompatibilnostni pogoj}.
+
+
+\section{Valovi}
+
+
+Imejmo Evklidski prostor $\E_R$, ki služi referenčni konfiguraciji $B$ nekega telesa,
+ter za množice $\B_t$ vzamemo kar $B$ pri vsakem $t\in I$. Telo naj se giblje po Evklidskem
+prostoru $\E$. V tem prostoru za množice $\B_t$ vzamemo $B_t=\chi_t(B)$. Naj bo $\sigma(t)$
+iz prejšnjih razdelkov gibajoča se ploskev v prostoru $\E$. Za domeno $\Omega$ imamo tako
+v $\E_R$ kar $\Omega_R=B\times I$, v $\E$ pa
+\[ \Omega=\{(x,t)\;;\ x\in\chi_t(B),\ t\in I\}. \]
+
+Glede na gibanje $\chi$ telesa je
+\[
+	\varPhi\colon\Theta\times I\to\E_R,\qquad\varPhi=\chi^{-1}\circ\varphi,
+\]
+regularna parametrizacija gibajoče se ploskve $\Sigma(t)$ po prostoru $\E_R$
+s komponentno obliko
+\[ X_K=\varPhi_K(\theta^1,\theta^2,t), \]
+kjer so $X_K$ kartezijeve koordinate točke $X\in\Sigma(t)$. Pripadajoča
+hiperploskev je
+\[ \Sigma = \{ (X,t)\;;\ X\in\Sigma(t),\ t\in I \}. \]
+Metrične koeficiente ploskve $\Sigma(t)$ bomo označili
+z $A_{\alpha\beta}$ oz.~$A^{\alpha\beta}$, koeficiente druge fundamentalne forme
+pa z $B_{\alpha\beta}$. Christoffelove simbole spremljajočega koordinatnega
+sistema za $\Sigma(t)$ bomo označili z $\tics{\alpha}{\beta}{\gamma}$.
+
+V implicitni obliki je $\Sigma(t)$ predstavljena z enačbo
+\[
+	\hat{f}(X,t)=f\big(\chi(X,t),t\big)=0.
+\]
+Pri tem je seveda $\hat{f}$ materialni opis skalarnega polja $f$.
+Enako, kot v (\ref{e:ngrad}) in (\ref{e:nohit}), sta
+normala $\vek{N}=N_K\vek{e}_K$ in normalna hitrost $U_N$ ploskve $\Sigma(t)$
+\begin{equation} \label{e:ninun}
+	\vek{N}=\frac{\Grad f}{\|\Grad f\|}\quad\textrm{in}
+	\quad U_N=-\frac{1}{\|\Grad f\|}\frac{\partial \hat{f}}{\partial t}
+	=-\frac{\dot{f}}{\|\Grad f\|}.
+\end{equation}
+\emph{Lokalna hitrost širjenja oz.~propagiranja ploskve} je
+\[ U=u_n-\vek{v}\cdot\vek{n}. \]
+\begin{trditev}
+	Če je $\chi$ razreda $C^1$ na $B\times I$ (torej obstajata $\ten{F}$ in $\vek{v}$
+	in sta zvezna {\color[rgb]{1,0,0} Kaj pa, če nista?}), potem velja
+	\begin{equation}
+		\vek{N}=\frac{\ten{F}^{T}\vek{n}}{\|\ten{F}^{T}\vek{n}\|}\quad\textrm{in}
+		\quad U_N=\frac{U}{\|\ten{F}^{T}\vek{n}\|}.
+	\end{equation} 
+\end{trditev}
+\proof
+	Če v (\ref{e:ninun})$_1$ števec in imenovalec delimo z $\|\grad f\|$ ter
+	upoštevamo relacijo (\ref{e:gz}) za $f$ in enačbo (\ref{e:ngrad}) za $\vek{n}$,
+	dokažemo enačbo za $\vek{N}$. Če zapišemo relacijo (\ref{e:matodv}) za $f$ in
+	jo delimo z $\|\grad f\|$, dobimo z upoštevanjem (\ref{e:ngrad}) in (\ref{e:nohit})
+	\[
+		\frac{\dot{f}}{\|\grad f\|}=-u_n+\vek{n}\cdot\vek{v}=-U.
+	\]
+	Če v dobljeni enačbi upoštevamo
+	\[
+		\|\Grad f\|=\|\ten{F}^{T}\grad f\|=\|\ten{F}^{T}\vek{n}\|\|\grad f\|
+	\]
+	in (\ref{e:ninun})$_2$, dobimo še enačbo za $U_N$.
+\endproof
+
+Skalarno polje $g\colon\Omega\to\R$ ima na $\Omega_R$ pripadajoči materialni opis
+\[ G(X,t)=g(\chi(x,t),t). \]
+Kompatibilnostni pogoji (\ref{e:jpd1}) in (\ref{e:jpd2}) za polje $G(X,t)$ na $\Sigma$ so
+\begin{align}
+	\jump{\frac{\partial G}{\partial X_K}}=\;&
+	A^{\alpha\beta}\frac{\partial\varPhi_K}{\partial\theta^{\beta}}
+	\frac{\partial \jump{G}}{\partial\theta^{\alpha}}+
+	N_K\jump{\frac{\partial G}{\partial N}},\nonumber\\
+	\jump{\frac{\partial G}{\partial t}}=\;&
+	\frac{\gdtd \jump{G}}{\dtd t}-U_N\jump{\frac{\partial G}{\partial N}},\nonumber\\
+	\jump{\frac{\partial^2 G}{\partial X_K\partial X_L}}=\;&
+	A^{\alpha\varrho}A^{\beta\mu}\Big( \frac{\partial^2\jump{G}}{\partial\theta^{\alpha}\partial\theta^{\beta}}-
+	\frac{\partial\jump{G}}{\partial\theta^{\Gamma}}\tics{\alpha}{\Gamma}{\beta}-
+	\jump{\frac{\partial G}{\partial N}}B_{\alpha\beta}\Big)
+	\frac{\partial\varPhi_K}{\partial\theta^{\varrho}}\frac{\partial\varPhi_L}{\partial\theta^{\mu}}+ \nonumber \\
+	&+A^{\beta\mu}\Big(\frac{\partial}{\partial\theta^{\beta}}\jump{\frac{\partial G}{\partial N}}+
+	A^{\Gamma\varrho}B_{\varrho\beta}\frac{\partial\jump{G}}{\partial\theta^{\Gamma}}\Big)
+	\Big(N_K\frac{\partial\varPhi_L}{\partial\theta^{\mu}}+N_L\frac{\partial\varPhi_K}{\partial\theta^{\mu}}\Big)
+	\nonumber\\&+\jump{\frac{\partial^2 G}{\partial N^2}}N_K N_L,\nonumber\\
+	\jump{\frac{\partial^2 G}{\partial X_K\partial t}}=\;&
+	A^{\alpha\beta}\frac{\partial\varPhi_K}{\partial\theta^{\beta}}
+	\frac{\partial}{\partial\theta^{\alpha}}
+	\Big(\frac{\gdtd \jump{G}}{\dtd t}-U_N\jump{\frac{\partial G}{\partial N}}\Big)+ \nonumber \\
+	&+\Big(\frac{\gdtd}{\dtd t}\jump{\frac{\partial G}{\partial N}}+
+	A^{\alpha\beta}\frac{\partial\jump{G}}{\partial\theta^{\alpha}}
+	\frac{\partial U_N}{\partial\theta^{\beta}}-U_N\jump{\frac{\partial^2 G}{\partial N^2}}\Big)N_K,\nonumber\\
+	\jump{\frac{\partial^2 G}{\partial t^2}}=\;&
+	\frac{\gdtd}{\dtd t}\Big(\frac{\gdtd \jump{G}}{\dtd t}-U_N\jump{\frac{\partial G}{\partial N}}\Big)- \nonumber \\
+	&-U_N\Big(\frac{\gdtd}{\dtd t}\jump{\frac{\partial G}{\partial N}}+
+	A^{\alpha\beta}\frac{\partial\jump{G}}{\partial\theta^{\alpha}}
+	\frac{\partial U_N}{\partial\theta^{\beta}}-U_N\jump{\frac{\partial^2 G}{\partial N^2}}\Big).
+\end{align}
+Pri tem je
+\[
+	\frac{\gdtd}{\dtd t}=\frac{\partial}{\partial t}+U_N\frac{\partial}{\partial N}
+\]
+in
+\[
+	\frac{\partial G}{\partial N}=(\Grad G)\cdot\vek{N}=
+	(\ten{F}^{T}\grad g)\cdot\frac{\ten{F}^{T}\vek{n}}{\|\ten{F}^{T}\vek{n}\|}=
+	(\grad g)\cdot\frac{\ten{F}\ten{F}^{T}\vek{n}}{\|\ten{F}^{T}\vek{n}\|}.
+\]
+
+Singularna ploskev se imenuje \emph{val}, če je $U_N$ različna od nič.

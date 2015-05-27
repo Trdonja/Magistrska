@@ -1,9 +1,113 @@
-\chapter{Sredstva iz tenzorske analize}
+\chapter{Predhodna sredstva}
 
 
-V tem razdelku bomo navedli nekaj bistvenih pojmov in rezultatov iz tenzorske analize. Predpostavlja
-se, da bralec že pozna osnove tenzorske analize. Razdelek služi bolj predstavitvi oznak, ki jih
+V tem poglavju bomo navedli nekaj bistvenih pojmov in rezultatov iz matematične analize
+in mehanike kontinuuma, ki so potrebni za razumevanje nadaljnje vsebine. Predpostavlja
+se, da bralec te pojme in rezultate že pozna, zato večine izrekov in trditev
+tu ne bomo dokazovali. Razdelek služi bolj predstavitvi oznak, ki jih
 bomo uporabljali v nadaljevanju.
+
+
+\section{Odvod na Banachovem prostoru}
+
+
+\begin{definicija}
+	Naj bosta $(V,\|\cdot\|_V)$, $(W,\|\cdot\|_W)$ Banachova prostora, $U\subseteq V$ odprta
+	množica in $F\colon U\to W$ preslikava. $F$ je \emph{diferenciabilna} (v smislu Frécheta)
+	v točki $u\in U$, če obstaja omejena (ekvivalentno: zvezna) linearna preslikava
+	\[ DF(u)\colon V\to W, \]
+	da za vsak $v\in V$ velja
+	\begin{equation} \label{e:frede}
+		\lim_{v\to 0}\frac{\|F(u+v)-F(u)-DF(u)(v)\|_W}{\|v\|_V}=0.
+	\end{equation}
+	$F$ je \emph{diferenciabilna na $U$}, če je diferenciabilna v vsaki točki $u\in U$.
+	$DF(u)$ imenujemo \emph{(krepki ali Fréchetov) odvod} preslikave $F$.
+	
+	$F$ \emph{je razreda $C^1$} na $U$ (pišemo tudi: $F\in C^1(U,W)$ ali pa $F\in C^1(U)$,
+	če je kodomena jasna iz konteksta), če je preslikava $u\mapsto DF(u)$ zvezna.
+	$F$ \emph{je razreda $C^2$} na $U$ ($F\in C^2(U,W)$ ali $F\in C^2(U)$),
+	če je preslikava $u\mapsto D^2F(u)=D(DF)(u)$ zvezna. Podobno definiramo pojem
+	$F$ \emph{je razreda $C^r$} za poljuben $r\in\mathbb{N}$. $F$ je \emph{gladka} na $U$,
+	če je $F\in C^r(U,W)$ za vsak $r\in\mathbb{N}$.
+\end{definicija}
+
+Če odvod odbstaja, je enoličen. Diferenciabilna preslikava je hkrati tudi zvezna.
+Linearna preslikava med končnorazsežnima Banachovima prostoroma je vedno omejena
+oz.~zvezna. Pogoj (\ref{e:frede}) je ekvivalenten pogoju
+\[
+	F(u+v)=F(u)+DF(u)(v)+o(v)\quad\textrm{in}\quad
+	\lim_{v\to 0}\frac{\|o(v)\|_W}{\|v\|_V}=0.
+\]
+
+\begin{definicija}
+	Naj bosta $V$, $W$ Banachova prostora, $U\subseteq V$ odprta
+	množica in $F\colon U\to W$ preslikava. \emph{Šibki odvod} (tudi: \emph{Gâteauxov} ali
+	\emph{smerni odvod}) preslikave $F$ v $u\in U$ in v smeri $v\in V$ je
+	\[
+		\delta F(u)(v) =
+		\lim_{\varepsilon\to 0}\frac{F(u+\varepsilon v)-F(u)}{\varepsilon}
+		=\at{\frac{d}{d\varepsilon}F(u+\varepsilon v)}{\varepsilon = 0},
+	\]
+	če obstaja.
+\end{definicija}
+
+\begin{trditev}
+	Naj bo $F$ kot v prejšnjih definicijah. Če je $F$ odvedljiva v $u\in U$,
+	potem obstaja šibki odvod preslikave $F$ v $u$ v smeri vsakega vektorja $v\in V$
+	in velja
+	\[
+		\delta F(u)(v)=DF(u)(v).
+	\]
+\end{trditev}
+
+\begin{izrek}[Odvod kompozituma]
+	Naj bodo $V$, $W$, $Y$ Banachovi prostori, $U\subseteq V$ in $\Omega\subseteq W$ odprti
+	množici in $F\colon U\to W$ ter $G\colon\Omega\to Y$ odvedljivi preslikavi,
+	tako da je $F(U)\subseteq\Omega$.
+	Potem je $G\circ F\colon U\to Z$ odvedljiva in za vsak $u\in U$ velja
+	\begin{equation} \label{e:odkompo}
+		D(G\circ F)(u)=DG(F(u))\circ DF(u).
+	\end{equation}
+\end{izrek}
+Če je $v\in V$, potem (\ref{e:odkompo}) pomeni
+\[
+	D(G\circ F)(u)(v)=DG(F(u))(DF(u)(v)).
+\]
+Ta izrek je poznan tudi pod imenom \emph{verižno pravilo}.
+
+\begin{izrek}[Odvod produkta]
+	Naj bodo $V$, $W_1$, $W_2$, $Y$ \textcolor[rgb]{1,0,0}{končnorazsežni} Banachovi prostori,
+	$U\subseteq V$ odprta množica,
+	\[
+		F\colon U\to W_1,\qquad G\colon U\to W_2
+	\]
+	odvedljivi preslikavi in
+	\[ \pi\colon W_1\times W_2\to Y \]
+	bilinearna preslikava. Potem je produkt
+	\[
+		H\colon U\to Y, \qquad H(u)=\pi(F(u),G(u))
+	\]
+	odvedljiv v vsakem $u\in U$ in za vsak $v\in V$ velja
+	\[
+		DH(u)(v)=\pi\big(DF(u)(v),G(u)\big)+\pi\big(F(u),DG(u)(v)\big).
+	\]
+\end{izrek}
+Pri tem bilinearna preslikava $\pi$ predstavlja katerikoli produkt, ki je bilinearen,
+npr.~produkt vektorja s skalarjem, skalarni produkt vektorjev, vektorski produkt vektorjev,
+tenzorski produkt vektorjev, produkt linearne prelikave in vektorja (aplikacija), itd.
+
+Naj bosta $(V_1,\|\cdot\|_1)$, $(V_2,\|\cdot\|_2)$ Banachova prostora. $V=V_1\times V_2$
+je vektorski prostor, z ustrezno definirano normo $\|\cdot\|_V$, porojeno iz norm $\|\cdot\|_1$ in $\|\cdot\|_2$,
+pa postane Banachov prostor. Naj bo $F\colon U\to W$, kjer je $U\subseteq V$ odprta množica, in naj bosta
+\[ U_1=\{x\in V_1\;;\ (x,y_0)\in U\}\quad\textrm{ter}\quad U_2=\{y\in V_2\;;\ (x_0,y)\in U\}. \]
+Če v točki $(x_0,y_0)\in U$ obstajata
+\begin{itemize}
+\item odvod preslikave $F(\cdot,y_0)\colon U_1\to W$, ki ga označimo z $\partial_1 F(x_0,y_0)$ in
+\item odvod preslikave $F(x_0,\cdot)\colon U_2\to W$, ki ga označimo z $\partial_2 F(x_0,y_0)$
+\end{itemize}
+in sta oba zvezna, potem je $F$ odvedljiva v $(x_0,y_0)$ in velja
+\[ DF(x_0,y_0)(u,v)=\partial_1 F(x_0,y_0)(u)+\partial_2 F(x_0,y_0)(v). \]
+
 
 
 \section{Evklidski prostor}
@@ -14,7 +118,7 @@ trirazsežnega Evklidskega prostora ter prostora realnih števil $\R$. Evklidski
 za opis položaja in geometrije objektov, prostor $\R$ pa predstavlja časovno os.
 
 \begin{definicija} \label{d:ep}
-	Množica točk $\E$ je \emph{Evklidski točkovni prostor} in trirazsežni Evklidski vektorski prostor $V$ je
+	Množica točk $\E$ je \emph{Evklidski točkovni prostor} in trirazsežni Evklidski vektorski prostor $\V$ je
 	\emph{translacijski prostor} za $\E$, če poljubnemu paru točk $p,q\in\E$ pripada vektor iz $V$,
 	ki ga zapišemo kot $q-p$, tako da velja:
 	\begin{enumerate}
