@@ -1,37 +1,370 @@
-\chapter{Kinematika kontinuuma}
+\section{Krivočrtne koordinate} \label{s:koordinate}
 
 
-Materialno telo je določeno z izbrano množico točk $\B\subseteq\E$. Tej določitvi rečemo
-\emph{referenčna konfiguracija} materialnega telesa in služi zgolj označbi telesa; ni nujno,
-da se telo dejansko kadarkoli nahaja v tem položaju. Oznaka $\B$ bo odslej vedno prestavljala
-referenčno konfiguracijo telesa.
-
-
-\section{Gibanje}
+\subsection{Koordinatni sistem}
 
 
 \begin{definicija}
-	\emph{Gibanje} materialnega telesa v časovnem
-	intervalu $I=(t_0,t_1)$ je zvezno, časovno odvisno vektorsko polje
-	\begin{equation}\label{e:chi}
-		\chi\colon\B\times I\to\E,\qquad \chi\colon (\vek{X},t)\mapsto\vek{x},
-	\end{equation}
-	za katerega je za vsak $t\in I$ preslikava
-	\[ \chi_t\colon\B\to\B_t, \qquad \chi_t\colon\vek{X}\mapsto\chi(\vek{X},t)=\vek{x} \]
-	bijektivna. Slika $\B_t$ se imenuje \emph{trenutna konfiguracija} materialnega
-	telesa \emph{ob času} $t$.
+	Naj bo $U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $U$ je bijektivna in
+	preslikava $\psi\colon U\to V$ razreda $C^r$ (običajno je $r$ vsaj 2), kjer je $V$ odprta
+	množica v $\R^3$, inverz $\psi^{-1}$ pa je prav tako razreda $C^r$.
 \end{definicija}
-Gibanje (\ref{e:chi}) ni bijektivna preslikava, zato nima inverza. Kljub temu na smiselen
-način definiramo \emph{inverzno gibanje}
-\[ \chi^{-1}(\vek{x},t)\equiv\bottop{\chi}{t}{-1}(\vek{x}), \]
-za katerega zahtevamo, da je zvezno na domeni $\{\B_t\times\{t\}\,|\,t\in I\}$.
-Dodatno bomo predpostavili, da sta gibanje in inverzno gibanje razreda $C^1$, razen če ne bo navedeno drugače.
 
-%V predstavitvi gibanja (\ref{e:chi}) se krajevni vektor $\vek{X}$ imenuje \emph{materialni vektor},
-%točka $X$, ki jo $\vek{X}$ predstavlja, se imenuje \emph{materialna točka} in njene koordinate
-%$(X^1,X^2,X^3)$ se imenujejo \emph{materialne koordinate}. Krajevni vektor $\vek{x}$ se imenuje
-%\emph{prostorski vektor}, točka $x$, ki jo predstavlja, se imenuje \emph{prostorska točka},
-%njene koordinate $(x^1,x^2,x^3)$ pa se imenujejo \emph{prostorske koordinate}.
+Naj bo $x\in U$ in
+\[ \psi\colon x\mapsto (x^1,x^2,x^3)=\psi(x). \]
+$(x^1,x^2,x^3)$ so \emph{(krivočrtne) koordinate} točke $x$.
+Za $i\in\{1,2,3\}$ se funkcija
+\[ \psi^i\colon U\to\R,\qquad \psi^i(x)=x^i \]
+imenuje \emph{$i$-ta koordinatna funkcija} koordinatnega sistema $\psi$.
+Po dogovoru tudi oznaki $(x^i)$ rečemo koordinatni sistem na $U$.
+
+Naj bodo $(x^1,x^2,x^3)$ koordinate točke $x\in U$. Z $\vek{j}_i$ označimo
+$i$-ti vektor iz standardne baze za $\R^3$,
+\[ \vek{j}_1=(1,0,0),\quad\vek{j}_2=(0,1,0),\quad\vek{j}_3=(0,0,1). \]
+Za neki $\varepsilon>0$ je slika preslikave
+\begin{equation} \label{e:kokri}
+	\gamma_i\colon(-\varepsilon,\varepsilon)\to U,\qquad
+	\gamma_i(t)=\psi^{-1}\big((x^1,x^2,x^3)+t\vek{j}_i\big),\qquad i=1,2,3,
+\end{equation}
+\emph{$i$-ta koordinatna krivulja} v $U$, ki gre pri $t=0$ skozi točko $x$.
+V točki $x$ lahko definiramo \emph{tangentne vektorje}
+\begin{equation} \label{e:tanvek}
+	\vek{g}_i(x)=\at{\frac{d}{dt}\gamma_i(t)}{t=0}=\dot{\gamma}_i(0)
+	=\at{\frac{\partial\psi^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
+	, \qquad i=1,2,3
+\end{equation}
+in \emph{gradientne vektorje}
+\begin{equation} \label{e:gradvek}
+	\vek{g}^i(x)=\nabla\psi^i(x),\qquad i=1,2,3.
+\end{equation}
+
+\begin{trditev}
+	Množica $\{\vek{g}_i(x)\}_i$ tvori bazo za translacijski prostor $\V$.
+\end{trditev}
+
+\proof
+	Naj bo $\vek{u}\in\V$ poljuben in definirajmo krivuljo skozi $x$ s predpisom
+	\[ \gamma\colon(-\varepsilon,\varepsilon)\to U,\qquad \gamma(t)=x+t\vek{u}. \]
+	Velja
+	\[
+		\vek{u}=\at{\frac{d}{dt}\gamma(t)}{t=0}\quad\textrm{in}\quad
+		\gamma(t)=\psi^{-1}\big(\psi^1(x+t\vek{u}),\psi^2(x+t\vek{u}),\psi^3(x+t\vek{u})\big),
+	\]
+	zato je
+	\[
+		\vek{u}=
+		\at{\frac{\partial\psi^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
+		\at{\frac{d}{dt}\psi^i(x+t\vek{u})}{t=0}=
+		\at{\frac{d}{dt}\psi^i(x+t\vek{u})}{t=0}\vek{g}_i(x).
+	\]
+	Z drugimi besedami, $\{\vek{g}_i(x)\}_{i}$ razpenja prostor $\V$.
+\endproof
+
+Tangentni in gradientni vektorji so definirani v vsaki točki množice $U$, torej
+gre v bistvu za vektorska polja. V vsaki točki $x\in U$ se baza $\{\vek{g}_i(x)\}_i$
+imenuje \emph{naravna baza} koordinatnega sistema $(x^i)$ za prostor $\V$.
+Množica $\{\vek{g}^i(x)\}_i$ pa je prav tako baza za $\V$, ki je dualna bazi $\{\vek{g}_i(x)\}_i$.
+Res, iz zveze
+\[ x^i=\psi^i(\psi^{-1}(x^1,x^2,x^3)) \]
+dobimo po verižnem pravilu
+\begin{equation} \label{e:gigj}
+	\topbot{\delta}{i}{j}=\frac{\partial x^i}{\partial x^j}=
+	(\nabla\psi^i)\cdot\frac{\partial\psi^{-1}}{\partial x^j}=\vek{g}^i\cdot\vek{g}_j.
+\end{equation}
+Skalarna polja
+\[ g_{ij}=\vek{g}_i\cdot\vek{g}_j\qquad\textrm{in}\qquad g^{ij}=\vek{g}^i\cdot\vek{g}^j \]
+imenujemo \emph{koeficienti metričnega tenzorja}. 
+Iz zadnjih treh zvez hitro vidimo, da velja
+\begin{equation} \label{e:relzag}
+	g^{ik}g_{kj}=\topbot{\delta}{i}{j},\qquad \vek{g}^i=g^{ik}\vek{g}_k,\qquad \vek{g}_i=g_{ik}\vek{g}^k.
+\end{equation}
+
+
+\subsection{Koordinatna transformacija}
+
+
+Naj bosta $\psi$ in $\bar{\psi}$ oz.~$(x^i)$ in $(\bar{x}^i)$ koordinatna sistema za
+$U\subseteq\E$ z naravnima bazama $\{\vek{g}_i(x)\}_i$ oz.~$\{\bar{\vek{g}}_i(x)\}_i$.
+Koordinatna transformacija je podana s preslikavami
+\[
+	x^i=x^i(\bar{x}^1,\bar{x}^2,\bar{x}^3)\quad\Longleftrightarrow\quad
+	\bar{x}^k=\bar{x}^k(x^1,x^2,x^3).
+\]
+Za vektorje iz naravne baze velja
+\begin{equation} \label{e:gtog}
+	\vek{g}^i=\frac{\partial x^i}{\partial\bar{x}^k}\bar{\vek{g}}^k,\qquad
+	\vek{g}_i=\frac{\partial\bar{x}^k}{\partial x^i}\bar{\vek{g}}_k.
+\end{equation}
+Prvo enakost dobimo kot gradient funkcije $x^i$ iz koordinatne transformacije,
+drugo enakost pa dobimo s parcialnim odvajanjem enakosti
+\[ 
+	\psi^{-1}(x^1,x^2,x^3)=\bar{\psi}^{-1}(\bar{x}^1(x^1,x^2,x^3),
+	\bar{x}^2(x^1,x^2,x^3),\bar{x}^3(x^1,x^2,x^3)).
+\]
+
+%Naj bo $(x^1,x^2,x^3)$ in $(\bar{x}^1,\bar{x}^2,\bar{x}^3)$ dvoje koordinat točke $x\in U\subseteq\E$.
+%Če je $f\colon U\to\R$ skalarno polje, potem bomo brez posebnih oznak pisali
+%\[ f(x)=f(x^1,x^2,x^3)=f(\bar{x}^1,\bar{x}^2,\bar{x}^3). \]
+Če je $\vek{u}\colon U\to\V$ vektorsko polje, potem ga lahko zapišemo v komponentni
+obliki glede na naravno bazo prostora $\V$:
+\begin{align}
+	\vek{u}&=u_i\,\vek{g}^i=u^i\,\vek{g}_i \nonumber \\
+	&=\bar{u}_i\,\bar{\vek{g}}^i=\bar{u}^i\,\bar{\vek{g}}_i, \label{e:vekkomp}
+\end{align}
+Pri tem so komponente $u_i,u^i,\dots$ skalarna polja.
+Prav tako lahko tenzorsko polje $\ten{S}\colon U\to\L(\V)$ zapišemo v
+komponentni obliki glede na bazo prostora $\L(\V)$:
+\begin{align}
+	\ten{S}&=S_{ij}\,\vek{g}^i\otimes\vek{g}^j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j \nonumber \\
+	&=\bar{S}_{ij}\,\bar{\vek{g}}^i\otimes\bar{\vek{g}}^j=
+	\topbot{\bar{S}}{i}{j}\,\bar{\vek{g}}_i\otimes\bar{\vek{g}}^j \label{e:tenkomp}
+\end{align}
+Tudi tu so $S_{ij},\topbot{S}{i}{j},\dots$ skalarna polja.
+Posamezne komponente vektorskih in tenzoskih polj dobimo s pomočjo zveze (\ref{e:gigj})
+iz (\ref{e:vekkomp}) in (\ref{e:tenkomp}):
+\begin{gather}
+	u_i=\vek{g}_i\cdot\vek{u},\qquad u^i=\vek{g}^i\cdot\vek{u}, \label{e:kompvek} \\
+	S_{ij}=\vek{g}_i\cdot\ten{S}\vek{g}_j,\qquad\topbot{S}{i}{j}=\vek{g}^i\cdot\ten{S}\vek{g}_j.\label{e:kompten}
+\end{gather}
+S pomočjo (\ref{e:gtog}) dobimo naslednje zveze med posameznimi komponentami:
+\begin{gather*}
+	\bar{u}_i=\frac{\partial x^k}{\partial\bar{x}^i}u_k, \qquad
+	\bar{u}^i=\frac{\partial\bar{x}^i}{\partial x_k}u_k, \\
+	\bar{S}_{ij}=\frac{\partial x^k}{\partial\bar{x}^i}\frac{\partial x^l}{\partial\bar{x}^j}S_{kl}, \qquad
+	\topbot{\bar{S}}{i}{j}=\frac{\partial\bar{x}^i}{\partial x^k}\frac{\partial x^l}{\partial\bar{x}^j}\topbot{S}{k}{l}.
+\end{gather*}
+
+Če je $\vek{u}=u_k\vek{g}^k$ poljubno vektorsko polje, je
+\begin{equation} \label{e:iten}
+	(\vek{g}^i\otimes\vek{g}_i)\vek{u}=(\vek{g}^i\otimes\vek{g}_i)u_k\vek{g}^k=
+	u_k\bottop{\delta}{i}{k}\vek{g}^i=u_k\vek{g}^k=\vek{u},
+\end{equation}
+torej je $\vek{g}^i\otimes\vek{g}_i=\ten{1}$, identična linearna preslikava, in to
+v vsaki točki množice $U$. Seveda velja tudi $\vek{g}_i\otimes\vek{g}^i=\ten{1}$.
+
+
+\subsection{Gradient in kovariantni odvod}
+
+
+Do konca tega razdelka naj velja, da so vsa obravnavan tenzorska polja razreda
+$C^{1}$ ali $C^{2}$, kar bo razvidno samo po sebi.
+
+Naj bo $(x^i)$ koordinatni sistem na $U\subseteq\E$ z naravnima bazama $\{\vek{g}_i\}_i$ in $\{\vek{g}^i\}_i$.
+Gradiente tenzorskih polj lahko zapišemo v komponentni obliki glede na naravno bazo.
+
+Naj bo $\vek{f}\colon U\to\W$ tenzorsko polje. Če je $\gamma_i$ $i$-ta
+koordinatna krivulja, ki gre pri $t=0$ skozi točko $x$, potem iz (\ref{e:tanvek}) dobimo
+\begin{equation*}
+	\at{\frac{d}{dt}\vek{f}(\gamma_i(t))}{t=0}=
+	\nabla \vek{f}(x)(\dot{\gamma}_i(0))=\nabla \vek{f}(x)(\vek{g}_i(x)),
+\end{equation*}
+po drugi strani pa imamo po (\ref{e:kokri})
+\begin{equation*}
+	\at{\frac{d}{dt}\vek{f}(\gamma_i(t))}{t=0}=
+	\at{\frac{d}{dt}\vek{f}\big(\psi^{-1}((x^1,x^2,x^3)+t\vek{j}_i)\big)}{t=0}=
+	\at{\frac{\partial(\vek{f}\circ\psi^{-1})}{\partial x^i}}{(x^1,x^2,x^3)}.
+\end{equation*}
+Po našem dogovoru pišemo namesto $\vek{f}\circ\psi^{-1}$ kar $\vek{f}$. Če izenačimo oba rezultata, dobimo
+\begin{equation} \label{e:sotf}
+	\frac{\partial\vek{f}}{\partial x^i}(x^1,x^2,x^3)=\nabla \vek{f}(x)(\vek{g}_i(x)).
+\end{equation}
+V primeru, ko je $f$ skalarno polje, iz enačbe (\ref{e:kompvek}) in iz pravkar izpeljane enačbe
+dobimo $(\nabla f)_i=(\nabla f)\cdot\vek{g}_i=\partial f/\partial x^i$, torej je
+\begin{equation} \label{e:gradskal}
+	\nabla f = \frac{\partial f}{\partial x^i}\,\vek{g}^i.
+\end{equation}
+
+Preden nadaljujemo z gradienti vektorskih polj, vpeljimo najprej standardne oznake
+za gradiente vektorskih polj naravne baze:
+\begin{equation} \label{e:cs} %former label: e:gradg
+	\nabla\vek{g}_i=\ten{\Gamma}_i=\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k,\qquad
+	\nabla\vek{g}^i=\ten{\Gamma}^i=\ks{i}{jk}\,\vek{g}^j\otimes\vek{g}^k.
+\end{equation}
+Tu sta $\ten{\Gamma}_i,\ten{\Gamma}^i\colon U\to\L(\V)$ tenzorski polji drugega reda,
+komponente $\cs{i}{j}{k}$ in $\ks{i}{jk}$ pa se imenujejo \emph{Christoffelovi simboli}
+in ne gre za komponente kakega tenzorja tretjega reda. Če v enačbi (\ref{e:sotf})
+za $\vek{f}$ vstavimo vektorsko polje $\vek{g}_i$ oz.~$\vek{g}^i$ in upoštevamo
+(\ref{e:kompten}) in (\ref{e:cs}), dobimo
+\begin{equation} \label{e:csexplicit}
+	\cs{i}{j}{k}=\vek{g}^j\cdot\frac{\partial\vek{g}_i}{\partial x^k}
+	=-\vek{g}_i\cdot\frac{\partial\vek{g}^j}{\partial x^k},\qquad
+	\ks{i}{jk}=\vek{g}_j\cdot\frac{\partial\vek{g}_i}{\partial x^k}.
+\end{equation}
+Pri tem je drugi izraz za $\cs{i}{j}{k}$ dobljen iz prvega s parcialnim odvajanjem
+enakosti $\vek{g}^i\cdot\vek{g}_j=\topbot{\delta}{i}{j}$ po spremenljivki $x^k$.
+
+Če po pravilu (\ref{t:divprop})$_2$ izračunamo gradient izraza $(\vek{g}^i\cdot\vek{g}_j)$,
+ki je $\vek{0}$, in upoštevamo, da velja\footnote{
+$(\vek{u}\otimes\vek{v})\vek{a}\cdot\vek{b}=(\vek{v}\cdot\vek{a})(\vek{u}\cdot\vek{b})=
+\vek{a}\cdot(\vek{v}\otimes\vek{u})\vek{b}$}
+$(\vek{u}\otimes\vek{v})^{T}=\vek{v}\otimes\vek{u}$
+za poljubna vektorja $\vek{u}$ in $\vek{v}$ ter da je transponiranje linearna operacija,
+potem dobimo zvezo
+\begin{equation} \label{e:lcs1}
+	\cs{j}{i}{k}=-\ks{i}{jk}.
+\end{equation}
+Nadalje, ker je $\ten{\Gamma}^i=\nabla(\nabla\psi^i)$ in je drugi gradient vedno
+simetrični tenzor\footnote{$(\nabla(\nabla\psi^i))^T=\nabla(\nabla\psi^i)$ \cite[str.~271]{liu}},
+veljata še naslednji zvezi:
+\[ \ks{i}{jk}=\ks{i}{kj},\qquad\cs{j}{i}{k}=\cs{k}{i}{j}. \]
+Ker je zaradi teh zvez možno prehajati iz ene vrste simbolov v drugo vrsto,
+so v uporabi zgolj simboli $\cs{i}{j}{k}$, imenovani Christoffelovi simboli druge vrste.
+
+Naj bo sedaj $\vek{u}\colon U\to\V$ vektorsko polje, v komponentni obliki
+zapisano kot
+\[ \vek{u}=u^j\vek{g}_j=u_k\vek{g}^k. \]
+Njegov gradient zavzema vrednosti v prostoru $\L(\V)$, zato ga lahko zapišemo v komponentni obliki
+\begin{equation} \label{e:gradukomp}
+	\nabla\vek{u}=\topbot{u}{j}{,k}\,\vek{g}_j\otimes\vek{g}^k.
+\end{equation}
+Poiščimo izraz za komponente $\topbot{u}{j}{,k}$. Z upoštevanjem
+(\ref{e:kompten}) in (\ref{e:sotf}) dobimo
+\begin{align}
+	\topbot{u}{j}{,k}&=\vek{g}^j\cdot\frac{\partial\vek{u}}{\partial x^k}=
+	\vek{g}^j\cdot\frac{\partial(u^i\vek{g}_i)}{\partial x^k} \nonumber \\
+	&=\vek{g}^j\cdot\Big(\frac{\partial u^i}{\partial x^k}\vek{g}_i+
+	u^i\frac{\partial\vek{g}_i}{\partial x^k}\Big) \nonumber \\
+	&=\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}. \label{e:kovod1}
+\end{align}
+Pri tem smo na zadnjem koraku upoštevali relacijo (\ref{e:csexplicit}). Dobljena enakost (\ref{e:kovod1})
+za $\topbot{u}{j}{,k}$ je t.~i.~\emph{kovariantni odvod} komponentne $u^j$ po spremenljivki $x^k$.
+
+Če zapišemo
+\begin{equation} \label{e:nimena1}
+	\nabla\vek{u}=u_{j,k}\,\vek{g}^j\otimes\vek{g}^k,
+\end{equation}
+in ponovimo prejšnji postopek, kjer dodatno uporabimo relacijo (\ref{e:lcs1}), dobimo
+\begin{equation} \label{e:kov2}
+	u_{j,k}=\frac{\partial u_j}{\partial x^k}-u_i\cs{j}{i}{k}.
+\end{equation}
+\begin{primer}
+	Če v izrazu $\vek{u}=u_j\vek{g}^j$ vstavimo za $u_j=\partial f/\partial x^j$,
+	kar so komponente od $\nabla f$ v izrazu (\ref{e:gradskal}), ter vstavimo v
+	(\ref{e:kov2}), rezultat pa nato v (\ref{e:nimena1}), dobimo
+	\begin{equation} \label{e:dvagrad}
+		%\Big(\frac{\partial f}{\partial x^j}\Big)_{,k}
+		\nabla(\nabla f)=\Big(\frac{\partial^2 f}{\partial x^j\partial x^k}-
+		\frac{\partial f}{\partial x^i}\cs{j}{i}{k}\Big)\vek{g}^j\otimes\vek{g}^k.
+	\end{equation}
+\end{primer}
+
+Naj bo $\ten{S}\colon U\to\L(\V)$. Potem je $\nabla\ten{S}\colon U\to\L(\V,\L(\V))$
+in ga v komponentni obliki lahko razpišemo glede na bazo prostora $\L(\V,\L(\V))$ kot
+\[ \nabla\ten{S}=\topbot{S}{ij}{,k}\vek{g}_i\otimes\vek{g}_j\otimes\vek{g}^k. \]
+Iz (\ref{e:sotf}) dobimo
+\[
+	\frac{\partial\ten{S}}{\partial x^k}=(\nabla\ten{S})(\vek{g}_k)=
+	(\topbot{S}{ij}{,l}\vek{g}_i\otimes\vek{g}_j\otimes\vek{g}^l)\vek{g}_k=
+	\topbot{S}{ij}{,k}\vek{g}_i\otimes\vek{g}_j.
+\]
+Če na dobljeni enakosti uporabimo (\ref{e:kompten}), dobimo
+\begin{align*}
+	\topbot{S}{ij}{,k}&=\vek{g}^i\cdot\frac{\partial\ten{S}}{\partial x^k}\vek{g}^j=
+	\vek{g}^i\cdot\frac{\partial(S^{lr}\vek{g}_l\otimes\vek{g}_r)}{\partial x^k}\vek{g}^j \\
+	&=\vek{g}^i\cdot\Big(
+	\frac{\partial S^{lr}}{\partial x^k}\vek{g}_l\otimes\vek{g}_r+
+	S^{lr}\frac{\partial\vek{g}_l}{\partial x^k}\otimes\vek{g}_r+
+	S^{lr}\vek{g}_l\otimes\frac{\partial\vek{g}_r}{\partial x^k}
+	\Big)\vek{g}^j \\
+	&=\frac{\partial S^{ij}}{\partial x^k}+S^{lj}\cs{l}{i}{k}+S^{ir}\cs{r}{j}{k}.
+\end{align*}
+Preostale komponente za $\nabla\ten{S}$ dobimo na enak način.
+
+
+\subsection{Divergenca}
+
+
+Sled tenzorja $\ten{S}\in\L(\V)$ s komponentno obliko (\ref{e:tenkomp})
+je\footnote{$\tr\ten{S}=\topbot{S}{i}{j}\tr(\vek{g}_i\otimes\vek{g}^j)=
+\topbot{S}{i}{j}\vek{g}_i\cdot\vek{g}^j=\topbot{S}{i}{i}$ \cite[str.~249]{liu}}
+\[ \tr\,\ten{S}=\topbot{S}{i}{i}=g^{ij}S_{ij}. \]
+Če je $\vek{u}$ vektorsko polje, potem iz (\ref{e:gradukomp}) in (\ref{e:nimena1}) dobimo
+\begin{equation} \label{e:divu}
+	\div\vek{u} = \tr(\nabla\vek{u}) = \topbot{u}{i}{,i} = g^{ij}u_{i,j}.
+\end{equation}
+
+Poiščimo še izraz za divergenco tenzorskega polja $\ten{S}\colon U\to\L(\V)$.
+Iz (\ref{e:divu}) dobimo za poljubno vektorsko polje $\vek{u}=u_k\vek{g}^k$
+\[
+	\div(\ten{S}^{T}\vek{u})=\div(S^{ij}\vek{g}_j\otimes\vek{g}_i u_k\vek{g}^k)
+	=\div(S^{ij}u_i\vek{g}_j)=(S^{ij}u_i)_{,\,j}.
+\]
+Bralec se lahko sam prepriča, da tudi za kovariantni odvod produkta velja
+podobno pravilo, kot ga poznamo za običaji odvod, zato imamo
+\[
+	(S^{ij}u_i)_{,\,j}=\topbot{S}{ij}{\,,j}u_i+S^{ij}u_{i,\,j}=
+	\topbot{S}{ij}{,\,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u})
+\]
+Dobili smo enakost
+\begin{equation} \label{e:divStu}
+	\div(\ten{S}^{T}\vek{u})=\topbot{S}{ij}{,\,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u}).
+\end{equation}
+Če je $\vek{u}$ konstantno vektorsko polje, potem je $\nabla\vek{u}=\ten{0}$ in v
+enačbi (\ref{e:divStu}) s pomočjo definicije \ref{def:div} prepoznamo izraz za $\div\ten{S}$, ki je
+\[
+	\div\ten{S}=\topbot{S}{ij}{,\,j}\vek{g}_i.
+\]
+Če dobljeni izraz vstavimo nazaj v enačbo (\ref{e:divStu}) in zamenjamo $\ten{S}$ z
+$\ten{S}^{T}$, dobimo naslednjo trditev.
+\begin{trditev} \label{e:divSu}
+	Za poljubno tenzorsko polje $\ten{S}\in C^1(U,\L(\V))$ in poljubno
+	vektorsko polje $\vek{u}\in C^1(U,\V)$ velja
+	\[ \div(\ten{S}\vek{u})=\vek{u}\cdot\div\ten{S}^{T}+\tr(\ten{S}\nabla\vek{u}). \]
+\end{trditev}
+
+
+
+\section{Kinematika kontinuuma}
+
+
+\subsection{Konfiguracije in gibanje telesa}
+
+
+Naj bosta $\E_R$ in $\E$ Evklidska točkovna prostora, ki imata sicer enake lastnosti,
+vendar ju bomo kljub temu razlikovali. Prostor $\E_R$ bo služil določitvi materialnega
+telesa: z množico točk izbranega regularnega območja $B\subset\E_R$ je določeno \emph{materialno
+telo} ali \emph{kontinuum}. Množici $B$ bomo rekli \emph{referenčna} ali \emph{sklicna konfiguracija}
+materialnega telesa. Privzeli bomo, da je $B$ zaprta.
+Prostor $\E$ pa bo služil opisu dejanskega položaja materialnega telesa v prostoru.
+
+Točke prostora $\E_R$, njihove koordinate ter njihove krajevne vektorje bomo označevali
+z velikimi simboli: $X$, $(X_1,X_2,X_3)$, $\vek{X}$, in jih bomo imenovali
+\emph{materialne točke oz.~koordinate oz.~vektorji}.
+Točke prostora $\E$, njihove koordinate ter njihove krajevne vektorje bomo,
+kot doslej, označevali z malimi simboli: $x$, $(x_1,x_2,x_3)$, $\vek{x}$, in jih bomo imenovali
+\emph{prostorske točke oz.~koordinate oz.~vektorji}.
+
+\begin{definicija}
+	\emph{Konfiguracija (materialnega) telesa} je zvezna in injektivna preslikava
+	\[ \kappa\colon B\to\E,\qquad \kappa\colon X\mapsto x=\kappa(X). \]
+	Tudi sliki preslikave $\kappa$, tj.~$\kappa(B)$, rečemo \emph{konfiguracija telesa}.
+\end{definicija}
+S konfiguracijo torej določamo položaj telesa v prostoru $\E$. Ker je $B$ kompaktna
+množica, je tudi inverz konfiguracije zvezna preslikava.
+
+Naj bo $I=[t_1,t_2]\subset\R$ časovni interval, torej je $B\times I\subset\N$.
+\begin{definicija}
+	\emph{Gibanje (materialnega) telesa} je zvezna preslikava
+	\begin{equation}\label{e:chi}
+		\chi\colon B\times I\to\E,\qquad \chi\colon(X,t)\mapsto x=\chi(X,t)
+	\end{equation}
+	z lastnostjo, da je za vsak $t\in I$ preslikava
+	\[ \chi_t\colon B\to\E, \qquad \chi_t(X):=\chi(X,t) \]
+	konfiguracija. Preslikava $\chi_t$ in množica $ B_t:=\chi_t(B)$ se imenujeta
+	\emph{trenutna konfiguracija} telesa \emph{ob času} $t$.
+\end{definicija}
+
+Z oznako $\Omega$ bomo, dokler ne bo povedano drugače, označili množico
+\[ \Omega=\{(x,t)\;;\ x\in\chi_t(B),\ t\in I\}\subset\N. \]
+Gibanje (\ref{e:chi}) ni injektivna preslikava, zato nima inverza. Kljub temu na smiselen
+način definiramo \emph{inverzno gibanje}
+\[
+	\chi^{-1}\colon\Omega\to B,\qquad
+	\chi^{-1}(x,t):=\bottop{\chi}{t}{-1}(x),
+\]
+ki je tudi zvezno. S $\chi^{-1}$ smo torej označili inverz preslikave
+$(X,t)\mapsto(x,t)=(\chi(X,t),t)$. Dodatno bomo do nadaljnjega predpostavili, da sta gibanje
+in inverzno gibanje razreda $C^2$.
 
 \emph{Hitrost} $\vek{v}$ in \emph{pospešek} $\vek{a}$ gibanja $\chi$ v časovnem intervalu $I$ sta vektorski polji
 \begin{align}
@@ -44,7 +377,7 @@ tenzorsko polje
 Za determinanto $J=\det F$ se predpostavi, da je pozitivna.
 
 
-\section{Materialni in prostorski opis}
+\subsection{Materialni in prostorski opis}
 
 
 Materialno telo spremljajo različne fizikalne lastnosti, katerih vrednosti predstavimo z elementi nekega
@@ -110,7 +443,7 @@ definicijo hitrosti (\ref{e:v}) ter zvezo (\ref{e:mpo-zveza}).
 \end{primer}
 
 
-\section{Površinski in prostorninski element}
+\subsection{Površinski in prostorninski element}
 
 
 Gladka krivulja znotraj telesa je podana kot slika gladke preslikave
@@ -177,7 +510,7 @@ kjer sta
 \emph{ploščinska elementa}.
 
 
-\section{Singularna ploskev}
+\subsection{Singularna ploskev}
 
 
 Naj bo $\Theta$ odprta podmnožica v $\R^2$ in $\zeta\colon\Theta\times I\to\E$ preslikava
@@ -264,7 +597,7 @@ parcialni odvod po času nista nujno. Zato smo dobili dve enačbi, iz katerih, �
 \[ \llbracket \ten{F}^{-1}(\vek{w}-\vek{v}) \rrbracket = \vek{0}. \]
 
 
-\section{Transportni izrek}
+\subsection{Transportni izrek}
 
 
 V tem razdelku bomo podali transportni izrek, ki je v bistvu posplošitev izreka o odvajanju
@@ -486,7 +819,7 @@ ter enačbe (\ref{e:L}) dobimo pravilo za materialni odvod determinante deformac
 \endproof
 
 
-\section{Zakon o ohranitvi mase}
+\subsection{Zakon o ohranitvi mase}
 
 
 Če je $\mathcal{P}\subseteq\B$ poljuben del materialnega telesa, ki v trenutni konfiguraciji pri času $t$

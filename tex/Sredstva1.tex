@@ -180,6 +180,9 @@ Imamo torej bijektivno korespondenco med naslednjimi objekti:
 \end{itemize}
 Zato bomo točke iz prostora $\E$ v bodoče identificirali z njihovimi krajevnimi
 vektorji ali pa z njihovimi koordinatami.
+Vsako preslikavo $F\colon U\to \E$, kjer je $U\subseteq V$ in $V$ neki Banachov prostor,
+bomo, še posebej, kadar bomo imeli opravka z odvodi, zaradi izomorfnosti prostorov
+$\E$ in $\V$ obravnavali kot preslikavo $F\colon U\to\V$.
 
 Newtonov prostor čas $\mathcal{N}=\E\times\R$ lahko naredimo za vektorski prostor s skalarnim produktom
 \[ (x,t_1)\cdot(y,t_2) = \vek{x}\cdot\vek{y} + t_1 t_2. \]
@@ -199,7 +202,7 @@ Iz skalarnega produkta dobimo tudi normo in metriko.
 		na to ploskev v tej točki, sicer je \emph{neregularna}.
 	\end{itemize}
 \end{definicija}
-Množica vseh neregularnih točk na robu regularnega območja ima ploščinsko mero oz.~ploščino enako 0.
+Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko mero oz.~ploščino enako 0.
 
 
 \subsection{Tenzorska polja, gradient in divergenca}
@@ -225,14 +228,15 @@ v primeru $\W=\V$ pa \emph{vektorsko polje}.
 
 Naj bo $\psi\colon U\to\R^3$ bijektivna preslikava razreda $C^1$, katere inverz je prav tako
 razreda $C^1$. $\psi$ priredi točki v $U$ njene koordinate, torej gre za koordinatni sistem.
-Funkciji $\vek{f}\circ\psi$ in $\vek{f}\circ\iota$ bomo z zlorabo notacije pogosto označevali
-enako, kot $\vek{f}$, torej
+Funkciji $\vek{f}\circ\psi^{-1}$ in $\vek{f}\circ\iota^{-1}$ bomo z zlorabo notacije pogosto
+označevali enako, kot $\vek{f}$, torej
 \[
-	\vek{f}(x_1,x_2,x_3):=\vek{f}(\psi(x)),\qquad\vek{f}(\vek{x}):=\vek{f}(\iota(x)).
+	\vek{f}(x_1,x_2,x_3):=\vek{f}(\psi^{-1}(x_1,x_2,x_3)),\qquad
+	\vek{f}(\vek{x}):=\vek{f}(\iota^{-1}(\vek{x})).
 \]
 
 \begin{definicija}
-	\emph{Gradient} tenzorskega polja $\vek{f}$ je odvod funkcije $\vek{f}\circ\iota$,
+	\emph{Gradient} tenzorskega polja $\vek{f}$ je odvod funkcije $\vek{f}\circ\iota^{-1}$,
 	in ga pišemo kot $\nabla\vek{f}$ ali $\grad\vek{f}$.
 \end{definicija}
 Uporabljali bomo obe oznaki. V skladu s to definicijo je gradient preslikava
@@ -240,7 +244,7 @@ $\nabla\vek{f}\colon\iota(U)\to\L(\V,\W)$, vendar ga dojemamo tudi kot tenzorsko
 $\nabla\vek{f}\colon U\to\L(\V,\W)$ na očiten način: za $x\in U$,
 $\vek{x}=\iota(x)$ in $\vek{v}\in\V$ je
 \[
-	\nabla\vek{f}(x)(\vek{v})=D(\vek{f}\circ\iota)(\vek{x})(\vek{v}).
+	\nabla\vek{f}(x)(\vek{v})=D(\vek{f}\circ\iota^{-1})(\vek{x})(\vek{v}).
 \]
 
 Če je $f\colon U\to\R$ skalarno polje, potem v $x\in U$ vrednost gradienta $\nabla f(x)$
@@ -265,7 +269,7 @@ bomo imenovali \emph{časovni odvod} in ga bomo označili kot parcialni odvod
 $\partial\vek{f}/\partial t$.
 
 Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
-\begin{definicija}
+\begin{definicija} \label{def:div}
 	\emph{Divergenca vektorskega polja} $\vek{u}\colon U\to\V$ je skalarno polje
 	\begin{equation} \label{e:div1}
 		\div\vek{u}=\tr(\nabla\vek{u}).
