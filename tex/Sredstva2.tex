@@ -5,7 +5,7 @@
 
 
 \begin{definicija}
-	Naj bo $U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $U$ je bijektivna in
+	Naj bo $U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $U$ je bijektivna
 	preslikava $\psi\colon U\to V$ razreda $C^r$ (običajno je $r$ vsaj 2), kjer je $V$ odprta
 	množica v $\R^3$, inverz $\psi^{-1}$ pa je prav tako razreda $C^r$.
 \end{definicija}
@@ -366,85 +366,197 @@ ki je tudi zvezno. S $\chi^{-1}$ smo torej označili inverz preslikave
 $(X,t)\mapsto(x,t)=(\chi(X,t),t)$. Dodatno bomo do nadaljnjega predpostavili, da sta gibanje
 in inverzno gibanje razreda $C^2$.
 
-\emph{Hitrost} $\vek{v}$ in \emph{pospešek} $\vek{a}$ gibanja $\chi$ v časovnem intervalu $I$ sta vektorski polji
+Tenzorsko polje
+\[
+	\ten{F}\colon B\times I\to\L(\V),\qquad \ten{F}=\Grad\chi(X,t)=\Grad\chi_t(X)
+\]
+se imenuje \emph{deformacijski gradient} gibanja. Determinanti $J=\det\ten{F}$ 
+rečemo \emph{Jacobian}. Ker so konfiguracije $\chi_t$
+injektivne oz.~bijektivne na svojo sliko, mora biti $J\neq 0$ povsod na $B\times I$.
+Zaradi zveznosti tenzorskega polja $\ten{F}$ mora biti potem skalarno polje $J$,
+ki je potem takem tudi zvezno, vseskozi
+enakega predznaka. Po dogovoru je $J>0$. Po izreku o inverzni funkciji velja
+\[
+	\ten{F}^{-1}(x,t)=\grad\chi_t^{-1}(x)=\grad\chi^{-1}(x,t).
+\]
+
+\emph{Hitrost} $\vek{v}$ in \emph{pospešek} $\vek{a}$ gibanja $\chi$ sta vektorski polji
 \begin{align}
-	\vek{v}\colon\B\times I\to V \qquad & \vek{v} = \frac{\partial}{\partial t}\chi(\vek{X},t), \label{e:v} \\
-	\vek{a}\colon\B\times I\to V \qquad & \vek{a} = \frac{\partial^2}{\partial t^2}\chi(\vek{X},t). \label{e:a}
+	\vek{v}\colon B\times I\to \V \qquad & \vek{v}(X,t) = \frac{\partial\chi}{\partial t}(X,t), \label{e:v} \\
+	\vek{a}\colon B\times I\to \V \qquad & \vek{a}(X,t) = \frac{\partial^2\chi}{\partial t^2}(X,t). \label{e:a}
 \end{align}
-Pri tem mora biti $\chi$ vsaj dvakrat odvedljivo po času. \emph{Deformacijski gradient} gibanja $\chi$ je
-tenzorsko polje
-\begin{equation} \label{e:F} F=\Grad\chi(\vek{X},t). \end{equation}
-Za determinanto $J=\det F$ se predpostavi, da je pozitivna.
+Alternativna oznaka za $\vek{v}$ je tudi $\dot{\vek{x}}$, za $\vek{a}$ pa $\ddot{\vek{x}}$.
 
 
 \subsection{Materialni in prostorski opis}
 
 
-Materialno telo spremljajo različne fizikalne lastnosti, katerih vrednosti predstavimo z elementi nekega
-normiranega prostora $W$. Vrednosti fizikalnih količin
-se med gibanjem v časovnem intervalu $I\subseteq\R$ spreminjajo, opišemo pa jih lahko na
-dva različna načina.
-\begin{definicija}
-	\emph{Materialni} ali \emph{Lagrangejev opis} je predstavitev fizikalne količine $f$, ki spremlja materialno telo
-	med gibanjem $\chi$, s tenzorskim poljem
-	\[ \hat{f}\colon\B\times I \to W, \qquad \hat{f}\colon (\vek{X},t)\mapsto w. \]
-	\emph{Prostorski} ali \emph{Eulerjev opis} je pri vsakem $t\in I$ predstavitev taiste fizikalne količine s tenzorskim poljem
-	\[ \bar{f}(\cdot,t)\colon\B_t\to W, \qquad \bar{f}\colon (\vek{x},t)\mapsto w. \]
-\end{definicija}
-Med materialnim in prostorskim opisom veljata zvezi
-\begin{equation}\label{e:mpo-zveza}
-	\hat{f}(\vek{X},t) = \bar{f}\big(\chi(\vek{X},t),t\big),\qquad \bar{f}(\vek{x},t) = \hat{f}\big(\chi^{-1}(\vek{x},t),t\big).
+Vsakemu tenzorskemu polju $\vek{f}\colon B\times I\to\W$ pripada glede na gibanje
+(\ref{e:chi}) enakovreden predpis
+\[
+	\bar{\vek{f}}\colon\Omega\to\W,\qquad
+	\bar{\vek{f}}(x,t):=\vek{f}(\chi^{-1}(x,t),t)=\vek{f}(X,t)
+\]
+Tenzorsko polje $\bar{\vek{f}}$ se imenuje \emph{prostorski opis} tenzorskega polja $\vek{f}$.
+
+Na enak način pripada vsakemu tenzorskemu polju $\vek{f}\colon\Omega\to\W$
+glede na gibanje (\ref{e:chi}) enakovreden predpis
+\begin{equation} \label{e:matopi}
+	\hat{\vek{f}}\colon B\times I\to\W,\qquad
+	\hat{\vek{f}}(X,t):=\vek{f}(\chi(X,t),t)=\vek{f}(x,t).
 \end{equation}
-Kasneje bomo strešico ali črtico v oznaki za polje izpustili, če bo jasno iz konteksta, kateri opis uporabljamo.
-Veliki $\vek{X}$ v argumentu polja bo vedno ponazarjal materialni opis, mali $\vek{x}$ pa prostorski opis.
-Do dvomov lahko pride, kadar ne pišemo argumentov polja, še posebej, če so vključeni odvodi. Temu dvomu se izognemo tako,
-da uporabljamo različno notacijo za odvode. V materialnem opisu pišemo oznaki za gradient in divergenco z
-veliko začetnico
-\[ \Grad f\equiv\grad \hat{f}(\vek{X},t),\qquad \Div f \equiv \div \hat{f}(\vek{X},t), \]
+$\hat{\vek{f}}$ imenujemo \emph{materialni opis} tenzorskega polja $\vek{f}$.
+
+Pogosto bomo strešico ali črtico v oznakah za materialni ali prostorski opis opustili,
+če to ne bo pustilo dvomov o tem, na kateri domeni je definirano polje.
+Pri integraciji bo že iz integracijske domene razvidno, za katero polje gre.
+Če poleg polja pišemo še argumente, potem mali $x$ v argumentu nakazuje na prostorski,
+veliki $X$ pa na materialni opis.
+Pri gradientu in divergenci se dvomom izognemo z uporabo različnih notacij
+za ta dva diferencialna operatorja.
+V materialnem opisu pišemo oznaki za gradient in divergenco z veliko začetnico
+\[ \Grad\vek{f}:=\nabla\hat{\vek{f}},\qquad \Div\vek{f}:=\div\hat{\vek{f}}, \]
 v prostorskem opisu pa z malo
-\[ \grad f\equiv\grad \bar{f}(\vek{x},t),\qquad \div f \equiv \div \bar{f}(\vek{x},t). \]
+\[ \grad\vek{f}:=\nabla\bar{\vek{f}},\qquad \div\vek{f}:=\div\bar{\vek{f}}. \]
+
 Če je $\phi$ skalarno, $\vek{u}$ pa vektorsko polje, potem je zveza med gradientoma
 \begin{equation}\label{e:gz}
-	\Grad\phi=F^{\,T}\grad\phi,\qquad \Grad\vek{u}=(\grad\vek{u})F.
+	\Grad\phi=\ten{F}^{T}\grad\phi,\qquad \Grad\vek{u}=(\grad\vek{u})\ten{F}.
 \end{equation}
-Res, če je $\vek{w}$ poljubno vektorsko polje, s posrednim odvajanjem dobimo
-\begin{align*}
-	&\Grad\phi\cdot\vek{w}=\grad\phi\cdot(\Grad\chi)\vek{w}=
-	\grad\phi\cdot F\vek{w}=F^{\,T}\grad\phi\cdot\vek{w}, \\
-	&(\Grad\vek{u})\vek{w}=(\grad\vek{u})(\Grad\chi)\vek{w}
-	=(\grad\vek{u})F\vek{w}.
-\end{align*}
+Res, če je $\vek{w}$ poljubno vektorsko polje, dobimo iz (\ref{e:matopi})
+z uporabo verižnega pravila
+\begin{gather*}
+	\Grad\phi\cdot\vek{w}=\grad\phi\cdot(\Grad\chi)\vek{w}=
+	\grad\phi\cdot \ten{F}\vek{w}=\ten{F}^{T}\grad\phi\cdot\vek{w}, \\
+	(\Grad\vek{u})\vek{w}=(\grad\vek{u})(\Grad\chi)\vek{w}
+	=(\grad\vek{u})\ten{F}\vek{w}.
+\end{gather*}
 
 \begin{definicija}
-	Časovni odvod
-	\[ \dot{f}=\frac{d}{dt}f \]
-	fizikalne količine $f$ imenujemo \emph{materialni odvod}.
+	Časovni odvod tenzorskega polja $\vek{f}\colon B\times I\to\W$ označimo z
+	$\dot{\vek{f}}$ ali $d\vek{f}/dt$ in ga imenujemo \emph{materialni odvod};
+	\[ \dot{\vek{f}}(X,t)=\frac{d\vek{f}}{dt}(X,t)=\frac{\partial\vek{f}}{\partial t}(X,t). \]
 \end{definicija}
-Materialno odvod meri naglost spreminjanja fizikalne količine v dani materialni točki tekom
-časa. Od tod tudi tako poimenovanje. V prostorskem opisu fizikalne količine $f$ je materialni
-odvod kar parcialni odvod po času
-\[ \dot{\hat{f}}=\frac{\partial}{\partial t}\hat{f}(\vek{X},t). \]
-Ker v prostorskem opisu določeno točko prostora tekom časa zavzemajo različne
-materialne točke, dobimo materialni odvod v prostorskem opisu s totalnim odvodom po času,
-\begin{equation} \label{e:matodv}
-	\dot{\bar{f}} = \frac{\partial}{\partial t}\bar{f}(\vek{x},t) +
-	\grad \bar{f}(\vek{x},t)\,[\bar{\vek{v}}(\vek{x},t)].
-\end{equation}
-Pri izpeljavi te enakosti se uporabi še pravilo za posredno odvajanje,
-definicijo hitrosti (\ref{e:v}) ter zvezo (\ref{e:mpo-zveza}).
-\begin{primer}
-	Hitrost in pospešek sta prvi in drugi materialni odvod krajevnega vektorja,
-	\[ \vek{v}=\dot{\vek{x}},\qquad \vek{a}=\ddot{\vek{x}}. \]
+Iz (\ref{e:matopi}) dobimo z uporabo verižnega pravila še materialni odvod za prostorski opis:
+\[
+	\dot{\vek{f}}=\frac{d\vek{f}}{dt}=
+	\frac{\partial\vek{f}}{\partial t}+(\grad\vek{f})(\vek{v}),
+\]
+kjer je $\vek{v}$ hitrost gibanja (\ref{e:v}), $\partial\vek{f}/\partial t$ pa
+časovni dvod polja $\vek{f}(x,t)$. Kadar poleg tenzorskega polja ne bomo pisali argumentov,
+bo oznaka $\partial\vek{f}/\partial t$ vedno pomenila časovni odvod prostorskega opisa.
+
+\begin{primer} %\label{e:L}
+	Hitrost in pospešek sta prvi in drugi materialni odvod gibanja $\vek{x}(X,t)=\chi(X,t)$,
+	$\vek{v}=\dot{\vek{x}}$, $\vek{a}=\ddot{\vek{x}}$.
 	Pospešek je materialni odvod hitrosti in se v prostorskem opisu izraža kot
-	\[ \vek{a}=\dot{\vek{v}}=\frac{\partial}{\partial t}\vek{v}+L\vek{v}, \]
-	kjer je $L=\grad\vek{v}$ t.~i.~\emph{hitrostni gradient}. Iz $\Grad\vek{v}=\Grad{\dot{\vek{x}}}=\dot{F}$ in
-	zveze (\ref{e:gz}) dobimo
-	\begin{equation} \label{e:L} L=\grad\vek{v}=\dot{F}F^{-1}. \end{equation}
+	\[ \vek{a}=\dot{\vek{v}}=\frac{\partial\vek{v}}{\partial t}+(\grad\vek{v})\vek{v}. \]
+	Tenzorsko polje $\ten{L}=\grad\vek{v}$ se imenuje \emph{hitrostni gradient}.
+	Če je gibanje $\chi$ razreda $C^1$, potem je
+	\[
+		\frac{d}{dt}\Grad\chi=\Grad\frac{d\chi}{dt}\qquad\textrm{oziroma}\qquad
+		\dot{\ten{F}}=\Grad\vek{v},
+	\]
+	iz česar z uporabo zveze (\ref{e:gz}) dobimo $\ten{L}=\dot{\ten{F}}\ten{F}^{-1}$.
 \end{primer}
 
 
 \subsection{Površinski in prostorninski element}
 
+
+Naj bo $\varepsilon>0$ in $\gamma\colon(-\varepsilon,\varepsilon)\to B$ preslikava
+razreda $C^1$. Slika preslikave $\gamma$ je krivulja v referenčni konfiguraciji telesa,
+slika preslikave $\chi_t\circ\gamma$ pa je krivulja v trenutni konfiguraciji.
+V točki $X=\gamma(0)$ oz.~$x=\chi_t(\gamma(0))$ se tangentni vektor
+\[
+	d\vek{X}:=\gamma\,'(0)\,d\alpha\qquad\textrm{oz.}\qquad d\vek{x}=(\chi_t\circ\gamma)'(0)\,d\alpha
+\]
+imenuje \emph{dolžinski element v referenčni} oz.~\emph{trenutni konfiguraciji}. Pri tem
+je $d\alpha$ majhno (infinitezimalno) realno število. Po verižnem pravilu je
+\[ d\vek{x}=\Grad\chi_t(\gamma(0))(\gamma\,'(0)\,d\alpha)=\ten{F}(X,t)d\vek{X}. \]
+
+Naj bosta $d\vek{X}_1$ in $d\vek{X}_2$ dolžinska elementa v točki $X\in B$ in
+naj bosta $d\vek{x}_1=\ten{F}\vek{X}_1$ in $d\vek{x}_2=\ten{F}\vek{X}_2$ pripadajoča
+dolžinska elementa v točki $x=\chi_t(X)$. Vektor
+\[
+	d\vek{S}=d\vek{X}_1\times d\vek{X}_2\qquad\textrm{oz.}
+	d\vek{s}=d\vek{x}_1\times d\vek{x}_2
+\]
+se imenuje \emph{ploščinski element v referenčni} oz.~\emph{trenutni konfiguraciji}.
+Velja
+
+Naj bo $\Theta\subset\R^2$ odprta in $r\in C^1(\Theta,B)$ regularna parametrizacija
+neke ploskve $S\subset B$, lahko je del robu $\partial B$. Normalni vektor
+na ploskev $S$ glede na parametrizacijo $r(\vartheta_1,\vartheta_2)$ je
+Vrednost vektorske funkcije
+\[
+	\vek{S}=\frac{\partial r}{\partial\vartheta_1}\times
+	\frac{\partial r}{\partial\vartheta_2}.
+\]
+pri danem $(\vartheta_1,\vartheta_2)$ je normalni vektor na ploskev $S$
+v točki $X=r(\vartheta_1,\vartheta_2)\in S$.
+Preslikava $\chi_t\circ r$ je parametrizacija ploskve $s\subset B_t$, pripadajoča
+vektorska funkcija normalnih vektorjev je
+\[
+	\vek{s}=\frac{\partial(\chi_t\circ r)}{\partial\vartheta_1}\times
+	\frac{\partial(\chi_t\circ r)}{\partial\vartheta_2}=
+	(\Grad\chi)\frac{\partial r}{\partial\vartheta_1}\times
+	(\Grad\chi)\frac{\partial r}{\partial\vartheta_2}=
+	\ten{F}\frac{\partial r}{\partial\vartheta_1}\times
+	\ten{F}\frac{\partial r}{\partial\vartheta_2}.
+\]
+Če so $\vek{u}_1$, $\vek{u}_2$, $\vek{w}$ poljubni vektorji in $\ten{A}\in\L(V)$, potem je
+\begin{align*}
+	\vek{w}\cdot\ten{A}\vek{u}_1\times\ten{A}\vek{u}_2&=
+	\ten{A}(\ten{A}^{-1}\vek{w})\cdot\ten{A}\vek{u}_1\times\ten{A}\vek{u}_2=
+	(\det\ten{A})\ten{A}^{-1}\vek{w}\cdot\vek{u}_1\times\vek{u}_2 \\
+	&=\vek{w}\cdot (\det\ten{A})\ten{A}^{-T}(\vek{u}_1\times\vek{u}_2),
+\end{align*}
+od koder sledi $\ten{A}\vek{u}_1\times\ten{A}\vek{u}_2=
+(\det\ten{A})\ten{A}^{-T}(\vek{u}_1\times\vek{u}_2)$, zato je
+\begin{equation} \label{e:nsns}
+	\vek{s}=J\ten{F}^{-T}\vek{S}\qquad\textrm{oz.}\qquad
+	\vek{n}\|\vek{s}\|=J\ten{F}^{-T}\vek{N}\|\vek{S}\|.
+\end{equation}
+kjer sta $\vek{N}=\|\vek{S}\|^{-1}\vek{S}$ in $\vek{n}=\|\vek{s}\|^{-1}\vek{s}$
+%\[ \vek{N}=\frac{\vek{S}}{\|\vek{S}\|}\qquad\textrm{in}\qquad\vek{n}=\frac{\vek{s}}{\|\vek{s}\|} \]
+vektorski funkciji enotskih normal.
+
+\begin{izrek}
+	Naj bo $\vek{f}\colon S\times I\to\W$ zvezno tenzorsko polje. Potem velja
+	\begin{align*}
+		\int_s\vek{f}[\vek{n}]\,ds=\int_S\vek{f}[J\ten{F}^{-T}\vek{N}]\,dS ,\\
+		\int_S\vek{f}[\vek{N}]\,dS=\int_s\vek{f}[J^{-1}\ten{F}^{T}\vek{n}]\,ds,
+	\end{align*}
+	kjer izraz $\vek{f}[\,\cdot\,]$ nadomestimo z ustreznim produktom
+	polja $\vek{f}$ in vsebine $[\,\cdot\,]$.
+\end{izrek}
+
+\proof
+	\begin{align*}
+		\int_s\vek{f}(x,t)[\vek{n}]\,ds&=
+		\int_{\Theta}\vek{f}(\chi_t(r(\vartheta_1,\vartheta_2)),t)
+		[\vek{n}]\|\vek{s}\|\,d\vartheta_1d\vartheta_2\\
+		&=\int_{\Theta}\vek{f}(r(\vartheta_1,\vartheta_2),t)
+		[J\ten{F}^{-T}\vek{N}]\|\vek{S}\|\,d\vartheta_1d\vartheta_2\\
+		&=\int_S\vek{f}(X,t)[J\ten{F}^{-T}\vek{N}]\,dS.
+	\end{align*}
+	Pri tem smo uporabili enakost (\ref{e:nsns}) in dejstvo, da je
+	\[ \bar{\vek{f}}(\chi_t(r(\vartheta_1,\vartheta_2)),t)=\hat{\vek{f}}(r(\vartheta_1,\vartheta_2),t). \]
+	Drugo enakost dokažemo na podoben način.
+\endproof
+
+Ploščinska elementa, ki nastopata v ploskovnih integralih, sta
+\[
+	dS=\|\vek{S}\|\,d\vartheta_1d\vartheta_2\qquad\textrm{in}\qquad
+	ds=\|\vek{s}\|\,d\vartheta_1d\vartheta_2.
+\]
+Posledica izpeljane enakosti (\ref{e:nsns}) je, da za poljubno zvezno tenzorsko polje
+$\vek{f}\colon S\to\W$ velja
+\[
+	\int_s\vek{f}[\vek{n}]\,ds=\int_S\vek{f}[J\ten{F}^{-T}\vek{N}]\,dS\quad\textrm{in}\quad
+	\int_S\vek{f}[\vek{N}]\,dS=\int_s\vek{f}[J^{-1}\ten{F}^{T}\vek{n}]\,ds.
+\]
 
 Gladka krivulja znotraj telesa je podana kot slika gladke preslikave
 \[\vek{C}\colon \Theta\to\Br, \quad \vek{C}\colon\alpha\mapsto\vek{C}(\alpha),\]
@@ -464,7 +576,8 @@ S posrednim odvajanjem dobimo zvezo
 \end{definicija}
 
 \begin{definicija}
-	Če sta $d\vek{X}_1$, $d\vek{X}_2$ in $d\vek{x}_1$, $d\vek{x}_2$ materialna dolžinska elementa,
+	Če sta $d\vek{X}_1$, $d\vek{X}_2$ dolžinska elementa v referenčni
+	in $d\vek{x}_1$, $d\vek{x}_2$ materialna dolžinska elementa,
 	potem infinitezimalna vektorja
 	\[ d\vek{S}= d\vek{X}_1\times d\vek{X}_2\quad\mathrm{in}\quad d\vek{s}= d\vek{x}_1\times d\vek{x}_2 \]
 	imenujemo \emph{materialni površinski element} v referenčni oz. trenutni konfiguraciji.

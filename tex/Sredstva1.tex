@@ -34,20 +34,25 @@ bomo uporabljali v nadaljevanju.
 Če odvod odbstaja, je enoličen. Diferenciabilna preslikava je hkrati tudi zvezna.
 Linearna preslikava med končnorazsežnima Banachovima prostoroma je vedno omejena
 oz.~zvezna. Pogoj (\ref{e:frede}) je ekvivalenten pogoju
-\begin{equation*} \label{e:odekvi}
+\begin{equation*} %\label{e:odekvi}
 	F(u+v)=F(u)+DF(u)(v)+o(v)\quad\textrm{in}\quad
 	\lim_{v\to 0}\frac{\|o(v)\|_W}{\|v\|_V}=0.
 \end{equation*}
+
+Če je v definiciji \ref{def:odvod} $V=\R$, potem namesto $DF(u)$ pišemo $F'(u)$.
+V tem primeru je, striktno gledano, $F'(u)$ linearna preslikava iz $\R$ v $W$, kar je
+množenje nekega elementa $w\in W$ z realnim številom, vendar pa zato
+enačimo $F'(u)$ s tem elementom $w$.
 
 \begin{definicija}
 	Naj bosta $V$, $W$ Banachova prostora, $U\subseteq V$ odprta
 	množica in $F\colon U\to W$ preslikava. \emph{Šibki odvod} (tudi: \emph{Gâteauxov} ali
 	\emph{smerni odvod}) preslikave $F$ v $u\in U$ in v smeri $v\in V$ je
-	\[
+	\begin{equation*} %\label{e:smero}
 		\delta F(u)(v) =
 		\lim_{\varepsilon\to 0}\frac{F(u+\varepsilon v)-F(u)}{\varepsilon}
 		=\at{\frac{d}{d\varepsilon}F(u+\varepsilon v)}{\varepsilon = 0},
-	\]
+	\end{equation*}
 	če obstaja.
 \end{definicija}
 
@@ -101,8 +106,7 @@ tenzorski produkt vektorjev, produkt linearne prelikave in vektorja (aplikacija)
 	$F\colon U\to W$ razreda $C^1$ in predpostavimo, da je $DF(x_0)$ obrnljiva in
 	ima zvezni inverz. Potem obstajata okolici $U_1\subseteq U$ točke $x_0$ in
 	$U_2\subseteq W$ točke $y_0=F(x_0)$, tako da $F$ preslika $U_1$ bijektivno na
-	$U_2$, inverz $\phi:=F^{-1}\colon U_2\to U_1$ je \textcolor[rgb]{1,0,0}{zvezno?} odvedljiv
-	in velja
+	$U_2$, inverz $\phi:=F^{-1}\colon U_2\to U_1$ je razreda $C^1$ in velja
 	\[ D\phi(y_0)=(DF(x_0))^{-1}. \]
 \end{izrek}
 
@@ -139,11 +143,11 @@ za opis položaja in geometrije objektov, prostor $\R$ pa predstavlja časovno o
 
 \begin{definicija} \label{d:ep}
 	Množica točk $\E$ je \emph{Evklidski točkovni prostor} in trirazsežni Evklidski vektorski prostor $\V$ je
-	\emph{translacijski prostor} za $\E$, če poljubnemu paru točk $x,y\in\E$ pripada vektor iz $V$,
+	\emph{translacijski prostor} za $\E$, če poljubnemu paru točk $x,y\in\E$ pripada vektor iz $\V$,
 	ki ga zapišemo kot $y-x$, tako da velja:
 	\begin{enumerate}
 		\item Za vsak $x\in\E$ je $x-x=\vek{0}$, ničelni vektor.
-		\item Za vsak $x\in\E$ in vsak $\vek{v}\in V$ obstaja natanko ena točka $y\in\E$, da je
+		\item Za vsak $x\in\E$ in vsak $\vek{v}\in\V$ obstaja natanko ena točka $y\in\E$, da je
 		$\vek{v}=y-x$. Pišemo: $y=x+\vek{v}$.
 		\item Za vse $x,y,z\in\E$ velja $(y-x)+(z-y)=(z-x)$.
 	\end{enumerate}
@@ -154,55 +158,33 @@ vektorskem prostoru $V$, porojeno iz standardnega skalarnega produkta. $(\E,d)$ 
 
 V prostoru $\E$ si izberimo točko, jo označimo z $o$ in jo imenujmo \emph{izhodišče}.
 V skladu z aksiomi iz definicije pripada vsaki točki $p\in\E$ glede na izhodišče $o$ \emph{krajevni vektor}
-$\vek{x}=x-o\in V$. Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ neka ortonormirana baza prostora $V$,
+$\vek{x}=x-o\in \V$. Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ neka ortonormirana baza prostora $\V$,
 ki je desnosučna, tj.~$\vek{e}_3=(\vek{e}_1\times\vek{e}_2)$. Krajevni vektor $\vek{x}$
 ima enoličen razvoj po bazi, $\vek{x}=x_i\vek{e}_i$, koeficientom $x_i$ tega razvoja pa rečemo
 \emph{kartezijeve koordinate}. Te so odvisne od izbire izhodišča in ortonormirane baze.
+Imamo bijektivno korespondenco med naslednjimi objekti:
+\begin{itemize}
+	\item točka $x\in\E$,
+	\item krajevni vektor $\vek{x}=x_i\vek{e}_i\in \V$,
+	\item kartezijeve koordinate $(x_1,x_2,x_3)\in\R^3$.
+\end{itemize}
 
-Z izbiro izhodišča postane $\E$ vektorski prostor, preslikava
+Z izbiro izhodišča je preslikava
 \[
 	\iota\colon\E\to\V,\qquad\iota\colon x\mapsto x-o=\vek{x}
 \]
-pa je izomorfizem vektorskih prostorov. $\E$ torej lahko smatramo kot $\V\cong\R^3$.
+bijektivna vložitev prostora $\E$ v vektorski prostor $\V$. Točke
+prostora $\E$ identificiramo z njihovimi krajevnimi vektorji in prostor $\E$
+lahko obravnavamo kot vektorski prostor $\V$. Zaradi tega bomo še posebej, kadar bomo imeli opravka
+z odvodi, vsako preslikavo $F\colon U\to \E$, kjer je $U\subseteq V$ in $V$ neki Banachov prostor,
+obravnavali kot preslikavo $F\colon U\to\V$. Na ta način so vsi odvodi preslikave $F$
+smiselno definirani. Za $x\in U$ je odvod $DF(x)$ linearna preslikava iz prostora $V$ v prostor $\V$.
 
-Včasih si želimo prostor $\E$ opremiti s kakšnim drugim koordinatnim sistemom, ki ga podamo
-s koordinatno transformacijo kartezijevih koordinat
-\begin{equation}\label{e:kt}
-	\theta^j = \theta^j(x_1,x_2,x_3) \ \Leftrightarrow \ x_i=x_i(\theta^1,\theta^2,\theta^3), \quad i,j=1,2,3.
-\end{equation}
-Koordinatnim sistemom se bomo bolj podrobno posvetili v razredlku \ref{s:koordinate}.
-
-Imamo torej bijektivno korespondenco med naslednjimi objekti:
-\begin{itemize}
-	\item točka $x\in\E$,
-	\item krajevni vektor $\vek{x}=x_i\vek{e}_i\in V$,
-	\item koordinate $(x_1,x_2,x_3)$ ali $(\theta^1,\theta^2,\theta^3)\in\R^3$.
-\end{itemize}
-Zato bomo točke iz prostora $\E$ v bodoče identificirali z njihovimi krajevnimi
-vektorji ali pa z njihovimi koordinatami.
-Vsako preslikavo $F\colon U\to \E$, kjer je $U\subseteq V$ in $V$ neki Banachov prostor,
-bomo, še posebej, kadar bomo imeli opravka z odvodi, zaradi izomorfnosti prostorov
-$\E$ in $\V$ obravnavali kot preslikavo $F\colon U\to\V$.
-
-Newtonov prostor čas $\mathcal{N}=\E\times\R$ lahko naredimo za vektorski prostor s skalarnim produktom
+Newtonov prostor-čas $\mathcal{N}=\E\times\R$ lahko preko vložitve $\iota$ prostora $\E$ v $\V$
+identificiramo z vektorskim prostorom $\V\times\R\cong\R^4$. Običajni skalarni produkt na $\N$ je
 \[ (x,t_1)\cdot(y,t_2) = \vek{x}\cdot\vek{y} + t_1 t_2. \]
-kjer sta $\vek{x}$ in $\vek{y}$ krajevna vektorja točk $x$ in $y$.
-Iz skalarnega produkta dobimo tudi normo in metriko.
-
-\begin{definicija}
-	\begin{itemize}
-		\item
-		Za krivuljo ali ploskev v prostoru $\E$ bomo rekli, da je razreda $C^r$, $r\in\mathbb{N}$, če se jo da
-		parametrizirati s preslikavo, ki je razreda $C^r$.
-		\item
-		Območje $B\subset\E$ je \emph{regularno}, če je omejeno in je njegov rob $\partial B$
-		orientabilna ploskev, sestavljena iz končnega števila ploskev razreda $C^r$ za neki $r\geq 1$.
-		\item
-		Točka na ploskvi v prostoru $\E$ je \emph{regularna}, če obstaja enotska normala
-		na to ploskev v tej točki, sicer je \emph{neregularna}.
-	\end{itemize}
-\end{definicija}
-Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko mero oz.~ploščino enako 0.
+kjer sta $\vek{x}$ in $\vek{y}$ krajevna vektorja točk $x$ in $y$ iz $\E$.
+Iz skalarnega produkta dobimo tudi normo.
 
 
 \subsection{Tenzorska polja, gradient in divergenca}
@@ -227,11 +209,12 @@ Naj bo $U\subseteq\E$, običajno odprta. Funkciji $\vek{f}\colon U\to\W$ rečemo
 v primeru $\W=\V$ pa \emph{vektorsko polje}.
 
 Naj bo $\psi\colon U\to\R^3$ bijektivna preslikava razreda $C^1$, katere inverz je prav tako
-razreda $C^1$. $\psi$ priredi točki v $U$ njene koordinate, torej gre za koordinatni sistem.
+razreda $C^1$. $\psi$ priredi točki v $U$ njene krivočrtne koordinate, torej gre za koordinatni sistem.
+Več o krivočrtnih koordinatah bomo govorili v razdelku \ref{s:koordinate}.
 Funkciji $\vek{f}\circ\psi^{-1}$ in $\vek{f}\circ\iota^{-1}$ bomo z zlorabo notacije pogosto
 označevali enako, kot $\vek{f}$, torej
 \[
-	\vek{f}(x_1,x_2,x_3):=\vek{f}(\psi^{-1}(x_1,x_2,x_3)),\qquad
+	\vek{f}(x^1,x^2,x^3):=\vek{f}(\psi^{-1}(x^1,x^2,x^3)),\qquad
 	\vek{f}(\vek{x}):=\vek{f}(\iota^{-1}(\vek{x})).
 \]
 
@@ -264,7 +247,7 @@ $\vek{f}\colon U\times I\to\W$ bomo rekli \emph{(časovno odvisno) tenzorsko pol
 Gradient časovno odvisnega tenzorskega polja je definiran kot gradient polja
 $\vek{f}(\cdot,t)\colon U\to\W$, v katerem je spremenljivka $t$ fiksna. Označimo
 ga enako, torej $\nabla\vek{f}=\nabla\vek{f}(x,t)$ ali $\grad\vek{f}=\grad\vek{f}(x,t)$.
-Odvod funkcije $\vek{f}(x,\cdot)\colon U\to\W$, v kateri je spremenljivka $x$ fiksna,
+Odvod funkcije $\vek{f}(x,\cdot)\colon I\to\W$, v kateri je spremenljivka $x$ fiksna,
 bomo imenovali \emph{časovni odvod} in ga bomo označili kot parcialni odvod
 $\partial\vek{f}/\partial t$.
 
@@ -330,10 +313,6 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 \subsection{Integralski izreki}
 
 
-Ploščinsko mero objektov v prostoru $\E$ bomo označili z $s$ ali $S$, volumsko
-mero pa z $v$ ali $V$. Pripadajoča infinitezimalna elementa sta $ds$ in $dv$ oz.~$dS$
-in $dV$.
-
 \begin{trditev}\label{t:oiz}
 	Naj bo $U\subseteq\E$ odprta množica ter $f\colon U\to \R$ zvezno skalarno polje.
 	Če za vsako podmnožico $N\subseteq U$ velja
@@ -347,6 +326,21 @@ in $dV$.
 	\[ \int_{N}f\,dv=v(N)f(\xi)> 0, \]
 	kar nasprotuje predpostavki iz izreka, torej take točke $x_0\in U$ ni.
 \endproof
+
+\begin{definicija}
+	\begin{itemize}
+		\item
+		Za krivuljo ali ploskev v prostoru $\E$ bomo rekli, da je razreda $C^r$, $r\in\mathbb{N}$, če se jo da
+		parametrizirati s preslikavo, ki je razreda $C^r$.
+		\item
+		Območje $B\subset\E$ je \emph{regularno}, če je omejeno in je njegov rob $\partial B$
+		orientabilna ploskev, sestavljena iz končnega števila ploskev razreda $C^r$ za neki $r\geq 1$.
+		\item
+		Točka na ploskvi v prostoru $\E$ je \emph{regularna}, če obstaja enotska normala
+		na to ploskev v tej točki, sicer je \emph{neregularna}.
+	\end{itemize}
+\end{definicija}
+Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko mero oz.~ploščino enako 0.
 
 \begin{izrek}[Divergenčni izrek] \label{i:divtheo}
 	Naj bo $B$ regularno območje v $\E$ in $\vek{n}(x)\in\V$ zunanja enotska normala
