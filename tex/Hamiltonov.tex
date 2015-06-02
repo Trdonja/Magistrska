@@ -4,18 +4,18 @@
 \section{Dopustno gibanje in variacija}
 
 
-V tem poglavju bomo s pomočjo t. i. \emph{Hamiltonovega principa} poiskali potrebne pogoje,
+V tem poglavju bomo s pomočjo t.~i.~\emph{Hamiltonovega principa} poiskali potrebne pogoje,
 ki jim mora zadoščati pravo gibanje telesa.
-Recimo, da pravo gibanje iščemo med vsemi $C^2$ gibanji
-$\chi\colon \overline{B}\times [t_0,t_1]\to\E$, ki zadoščajo \emph{začetnim pogojem}
-\[ \chi(X,t_0)=\chi_{t_0}(X)\quad\textrm{in}\quad \chi(X,t_1)=\chi_{t_1}(X), \]
-kjer sta $\chi_{t_0},\chi_{t_1}\colon B\to\E$ znani injektivni $C^2$ preslikavi, ki
-določata položaj telesa ob začetnem in končnem času $t_0$ oz. $t_1$.
+Recimo, da pravo gibanje iščemo med vsemi gibanji
+$\chi\colon \overline{B}\times [t_1,t_2]\to\E$ razreda $C^2$, ki zadoščajo \emph{začetnim pogojem}
+\[ \chi(X,t_1)=\chi_{t_1}(X)\quad\textrm{in}\quad \chi(X,t_2)=\chi_{t_2}(X), \]
+kjer sta $\chi_{t_1},\chi_{t_2}\colon B\to\E$ znani konfiguraciji razreda $C^2$, ki
+določata položaj telesa ob začetnem in končnem času $t_1$ oz.~$t_2$.
 Poleg začetnih pogojev so vnaprej predpisani še robni pogoji. \emph{Geometrijski robni pogoj} je predpis
 \begin{equation*} \label{e:grp}
-	x=\chi(X,t),\quad\mathrm{za}\quad (X,t)\in \partial_g B\times [t_0,t_1],
+	\chi(X,t)=\chi_g(X,t)\quad\mathrm{za}\quad (X,t)\in \partial_g B\times [t_1,t_2],
 \end{equation*}
-kjer je $\partial_g B\subseteq\partial B$ del roba območja $B$.
+kjer je $\partial_g B\subseteq\partial B$ del robu območja $B$.
 Geometrijski robni pogoj torej v naprej določa položaj robnih točk telesa.
 Na preostalem delu $\partial_d B=\partial B \setminus \partial_g B$
 je potem predpisan \emph{dinamični robni pogoj}, ki ga bomo predstavili v naslednjem razdelku.
@@ -23,20 +23,24 @@ Dopuščamo možnost, da je $\partial_g B$ ali $\partial_d B$ prazna množica, t
 da imamo le geometrijske ali pa le dinamične robne pogoje. Vendar pa mora vedno veljati
 $\partial_g B\cup\partial_d B=\partial B$ in $\partial_g B\cap\partial_d B=\emptyset$.
 
-Množica $\mathcal{X}$ vseh $C^2$ preslikav $\chi\colon\overline{B}\times [t_0,t_1]\to\E$ tvori vektorski prostor.
-$\mathcal{X}$ lahko naredimo za Banachov prostor, če na njem smiselno definiramo normo. Možna izbira
+Množica $\mathcal{X}$ vseh preslikav $\chi\colon\overline{B}\times [t_1,t_2]\to\E$
+razreda $C^2$ tvori vektorski prostor.
+$\mathcal{X}$ postane Banachov prostor, če na njem smiselno definiramo normo. Možna izbira
 predpisa za normo je npr.
-\[ \|\cdot\|\colon\mathcal{X}\to[0,\infty),\quad\|\chi\|=\max\big\{\|\chi(X,t)\|\: ;\ (X,t)\in B\times [t_0,t_1]\big\}. \]
+\[
+	\|\cdot\|\colon\mathcal{X}\to[0,\infty),\quad
+	\|\chi\|=\max\big\{\|\chi(X,t)\|\: ;\ (X,t)\in B\times [t_1,t_2]\big\}.
+\]
 Pri tem je z normo, ki se pojavi znotraj množice, mišljena Evklidska norma krajevnega vektorja točke $\chi(X,t)$.
 
 \begin{definicija}
 	\begin{enumerate}
 		\item Preslikava $\chi\in\mathcal{X}$, ki zadošča predpisanim začetnim in geometrijskim robnim pogojem,
 			se imenuje \emph{dopustno gibanje}. Množico vseh dopustnih gibanj bomo označili z $\mathcal{A}$.
-		\item Vektorsko polje $\vek{\eta}\colon\overline{B}\times [t_0,t_1]\to\V$, ki je razreda $C^2$ in
+		\item Vektorsko polje $\vek{\eta}\colon\overline{B}\times [t_1,t_2]\to\V$, ki je razreda $C^2$ in
 			ustreza pogojem
-			\[ \vek{\eta}(X,t_0)=\vek{0}\quad \textrm{in} \quad\vek{\eta}(X,t_1)=\vek{0}\quad \textrm{za vse}\ X\in\overline{B}\quad\textrm{ter} \]
-			\[ \vek{\eta}(X,t)=\vek{0}\quad \textrm{za vse}\ (X,t)\in \partial_g B\times [t_0,t_1], \]
+			\[ \vek{\eta}(X,t_1)=\vek{0}\quad \textrm{in} \quad\vek{\eta}(X,t_2)=\vek{0}\quad \textrm{za vse}\ X\in\overline{B}\quad\textrm{ter} \]
+			\[ \vek{\eta}(X,t)=\vek{0}\quad \textrm{za vse}\ (X,t)\in \partial_g B\times [t_1,t_2], \]
 			se imenuje \emph{variacija gibanja}. Množico vseh variacij gibanja bomo ozna\-čili s $\mathcal{T}$.
 		\item Za dopustno gibanje $\chi$, variacijo gibanja $\vek{\eta}$ in realno konstanto $\varepsilon$ se gibanje
 			$\chi+\varepsilon\vek{\eta}$ imenuje \emph{bližnje gibanje} gibanja $\chi$.
@@ -44,60 +48,64 @@ Pri tem je z normo, ki se pojavi znotraj množice, mišljena Evklidska norma kra
 \end{definicija}
 
 Takoj je potrebno opozoriti, da kljub poimenovanju dopustno gibanje in bližnje gibanje nista nujno gibanji,
-kot smo ju definirali v poglavju REF, ker nismo postavili pogoja o pozitivnosti Jacobijana.
+kot smo ju definirali v poglavju \ref{chp:kinkon}, ker nismo postavili pogoja o pozitivnosti jacobijana.
 Ni se težko prepričati, da je $\mathcal{T}$ vektorski podprostor prostora $\mathcal{X}$, če na elemente iz $\mathcal{X}$
-gledamo kot na preslikave iz $\overline{B}\times [t_0,t_1]$ v $\V$.
-Prav tako zlahka ugotovimo, da za poljubni dopustni gibanji $\chi^1$ in $\chi^2$
-velja $\chi^2-\chi^1\in\mathcal{T}$. $\mathcal{A}$ je torej afini podprostor prostora $\mathcal{X}$, saj je
-\[ \mathcal{A}=\big\{ \chi^0+\vek{\eta}\: ;\ \vek{\eta}\in\mathcal{T} \big\}=\chi^0+\mathcal{T}, \]
-kjer je $\chi^0$ poljubno dopustno gibanje.
+gledamo kot na vektorska polja s kodomeno $\V$ namesto $\E$.
+Prav tako zlahka ugotovimo, da za poljubni dopustni gibanji $\chi_1$ in $\chi_2$
+velja $\chi_2-\chi_1\in\mathcal{T}$. $\mathcal{A}$ je torej afini podprostor prostora $\mathcal{X}$, saj je
+\[ \mathcal{A}=\big\{ \chi_0+\vek{\eta}\: ;\ \vek{\eta}\in\mathcal{T} \big\}=\chi_0+\mathcal{T}, \]
+kjer je $\chi_0$ poljubno dopustno gibanje.
 
 \begin{definicija}
-	Naj bo $D$ množica, ki je dobljena kot presek neke odprte množice v $\mathcal{X}$ in afinega
-	podprostora $\mathcal{A}$. Naj bo $\mathcal{Y}$ banachov prostor in $F\colon D\to\mathcal{Y}$
-	zvezno odvedljiv operator. Smerni odvod
+	Naj bo $U$ množica, ki je dobljena kot presek neke odprte množice v $\mathcal{X}$ in afinega
+	podprostora $\mathcal{A}$. Naj bo $\mathcal{Y}$ Banachov prostor in $F\colon U\to\mathcal{Y}$
+	odvedljiva preslikava. Smerni odvod
 	\[
-		\delta F\colon D\to\L(\mathcal{T},\mathcal{Y}),\qquad
-		\big(\delta F(\chi)\big)[\vek{\eta}]=\at{\frac{d}{d\varepsilon}F(\chi+\varepsilon\vek{\eta})}{\varepsilon=0}
+		\delta F\colon U\to\L(\mathcal{T},\mathcal{Y}),\qquad
+		\delta F(\chi)(\vek{\eta})=\at{\frac{d}{d\varepsilon}F(\chi+\varepsilon\vek{\eta})}{\varepsilon=0}
 	\]
 	se imenuje tudi \emph{variacija} operatorja $F$.
 \end{definicija}
 
 \begin{notacija}
-	Naj bo operator $F$ definiran kot v prejšnji definiciji. Če velja $F(\chi)=Y$,
+	Naj bo preslikava $F$ definirana kot v prejšnji definiciji. Če velja $F(\chi)=Y$,
 	potem oznaka $Y^*$ pomeni $Y^*=F(\chi+\varepsilon\vek{\eta})$ za neka $\vek{\eta}\in\mathcal{T}$ in $\varepsilon\in\R$,
-	oznaka $\delta Y$ pa pomeni $\delta Y=\big(\delta F(\chi)\big)[\vek{\eta}]$. V tej notaciji velja
-	\[ \delta Y = \at{\left(\frac{dY^*}{d\varepsilon}\right)}{\varepsilon=0}, \]
+	oznaka $\delta Y$ pa pomeni $\delta Y=\delta F(\chi)(\vek{\eta})$. V tej notaciji velja
+	\[ \delta Y = \at{\Big(\frac{dY^*}{d\varepsilon}\Big)}{\varepsilon=0}, \]
 	$\delta Y$ pa imenujemo tudi \emph{variacija} količine $Y$.
 \end{notacija}
 
 \begin{primeri}
+	Poglejmo si nekaj posebnih primerov za preslikavo $F$ iz zadnje definicije.
 	\begin{enumerate}
 		\item
-			Če je $\vek{v}$ polje hitrosti za dopustno gibanje $\chi$, potem je
+			Če $F$ dopustnemu gibanju $\chi$ priredi vektorsko polje hitrosti $\vek{v}$,
+			$F(\chi)=d\chi/dt=\dot{\chi}=\vek{v}$, potem je
 			\[ \vek{v}^*=\frac{d}{dt}(\chi+\varepsilon\vek{\eta})=\vek{v}+\varepsilon\dot{\vek{\eta}}, \]
 			variacija polja hitrosti pa je
 			\[ \delta\vek{v}=\dot{\vek{\eta}}. \]
 		\item
-			Če je $\ten{F}$ polje deformacijskega gradienta dopustnega gibanja $\chi$, potem je
+			Če $F$ dopustnemu gibanju $\chi$ priredi polje deformacijskega gradienta $\ten{F}$,
+			$F(\chi)=\Grad{\chi}=\ten{F}$, potem je
 			\[ \ten{F}^*=\Grad(\chi+\varepsilon\vek{\eta})=\ten{F}+\varepsilon\Grad\vek{\eta}, \]
-			njegova variacija pa je
+			variacija pa je
 			\[ \delta\ten{F}=\Grad\vek{\eta}. \]
 		\item
 			Če je $J$ polje jacobijana dopustnega gibanja $\chi$, potem je
-			\[ J^*=\det(\ten{F}^*). \]
+			\[ J^*=\det(\Grad(\chi+\varepsilon\vek{\eta}))=\det(\ten{F}^*). \]
 			Pri računanju variacije polja $J$ se uporabi podobne prijeme,
-			kot smo jih uporabili pri računanju enakosti REF v prejšnjem poglavju. Dobimo
+			kot smo jih uporabili pri računanju enakosti (\ref{e:dotJ}). Dobimo
 			\begin{align*}
-				\delta J&=(\partial_{\ten{F}}\det\ten{F})[\delta\ten{F}]=J\ten{F}^{-T}\cdot\Grad\vek{\eta}=\\
+				\delta J&=D\det(\ten{F})(\delta\ten{F})=J\ten{F}^{-T}\cdot\Grad\vek{\eta}\\
 				&=J\tr(\ten{F}^{-1}\Grad\vek{\eta})=J\tr(\grad\vek{\eta})=J\div\vek{\eta}.
 			\end{align*}
-			Na zadnjem koraku smo uporabili enakost REF.
+			Na predzadnjem koraku smo uporabili enakost (\ref{e:gz}).
 		\item
 			Za masno gostoto $\rho_R$ referenčne konfiguracije se predpostavi, da je znana. Če je
-			$\rho$ polje masne gostote telesa glede na gibanje $\chi$, potem je
+			$\rho$ polje masne gostote trenutne konfiguracije glede na gibanje $\chi$,
+			dobimo iz relacije (\ref{e:rojror})
 			\[ \rho^*=\frac{\rho_R}{J^*}. \]
-			Izračunajmo še njegovo variacijo:
+			Izračunajmo še variacijo:
 			\[
 				\delta\rho=\rho_R\delta\left(\frac{1}{J}\right)=
 				\rho_R\frac{-1}{J^2}(\delta J)=-\frac{\rho_R}{J}\frac{J\div\vek{\eta}}{J}=-\rho\div\vek{\eta}.

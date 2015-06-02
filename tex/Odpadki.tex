@@ -1,216 +1,138 @@
-\section{Rezerve}
+% ----- Transportni izrek v splošni obliki -----
 
-Včasih si želimo prostor $\E$ opremiti s kakšnim drugim koordinatnim sistemom.
-\begin{definicija}\label{d:ks}
-	Naj bosta $\mathcal{D}\subseteq\E$ in $U\subseteq\R^3$ odprti množici. Bijektivno preslikavo
-	$\psi\colon\mathcal{D}\to U$ z lastnostjo, da sta preslikavi $\psi\circ\kappa$ in njen inverz
-	$\kappa^{-1}\circ\psi^{-1}$ gladki (na svojih domenah), imenujemo \emph{koordinatni sistem}
-	za $\mathcal{D}\subseteq\E$.
-\end{definicija}
-Inverz od $\psi$ bomo označili s $\varphi=\psi^{-1}$.
-Koordinatni sistem lahko podamo kot koordinatno transformacijo kartezijevih koordinat $y_k$ s funkcijami
-\begin{equation*}
-	x_k = \psi_k(y_1,y_2,y_3) \ \Leftrightarrow \ y_k=\varphi_k(x_1,x_2,x_3), \quad k=1,2,3.
-\end{equation*}
-
-\[
-	(x_1,x_2,x_3)\in \R^3\ \xrightleftharpoons[\ \psi\ ]{\ \varphi\ }\ 
-	x\in\E\ \xrightleftharpoons[\ \phantom{\varphi}\ ]{\ \phantom{\psi}\ }\ 
-	\vek{r}(x)=y_i\vek{e}_i \in V
-\]
-
-\subsection{Zapis v naravni bazi}
-
-Označimo z $y_k$ kartezijeve, z $x_k$ pa krivočrtne koordinate točke $x\in\E$.
-Preko koordinatne transformacije (\ref{e:kt}) lahko definiramo vektorje
-\begin{align*}
-	\vek{g}_k(x)=\frac{\partial}{\partial x^k}\hat{y}_j(x^1,x^2,x^3)\,\vek{e}_j, \qquad
-	\vek{g}^k(x)=\frac{\partial}{\partial y_j}\hat{x}^k(y_1,y_2,y_3)\,\vek{e}_j.
-\end{align*}
-$\vek{g}_k$ imenujemo \emph{tangentni}, $\vek{g}^k$ pa \emph{gradientni vektorji}.
-Množici $\{\vek{g^k(x)}\}$ in $\{\vek{g_k(x)}\}$ tvorita bazi za $V$, imenovani \emph{naravni bazi} v točki $x$,
-in sta si dualni, tj.~$\vek{g}^i(x)\cdot\vek{g}_j(x)=\topbot{\delta}{i}{j}$.
-Če uporabljamo kartezijev koordinatni sistem, potem je naravna baza kar $\{\vek{e}_k\}$, ki je dualna sama sebi
-in je neodvisna od točke $x$.
-\emph{Metrični koeficienti} so definirani kot
-\begin{equation}\label{e:g}
-	g^{ij}(x)=\vek{g}^i(x)\cdot\vek{g}^j(x) \quad\mathrm{in}\quad g_{ij}(x)=\vek{g}_i(x)\cdot\vek{g}_j(x).
-\end{equation}
-
-Vektorsko polje običajno zapišemo v komponentni obliki glede na naravno bazo kot
-\[ \vek{u}=u^j\vek{g}_j=u_k\vek{g}^k. \]
-Tenzorsko polje z vrednostmi iz prostora $\L(V)$ pa običajno zapišemo v komponentni obliki
-glede na eno od baz prostora $\L(V)$, ki je izpeljana iz naravnih baz za $V$:
-\[
-	S=\bottop{S}{i}{j}\,\vek{g}^i\otimes\vek{g}_j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j=
-	S^{ij}\,\vek{g}_i\otimes\vek{g}_j=S_{ij}\,\vek{g}^i\otimes\vek{g}^j.
-\]
-
-Za polje $f$ rečemo, da \emph{je razreda $C^n$} na neki odprti domeni, če je obstaja $n$-ti odvod polja $f$
-na tej domeni in je zvezen.
-Polje je razreda $C^n$ na zaprtju neke domene, če je razreda $C^n$ v notranjosti te domene in obstaja zvezna razširitev
-$n$-tega odvoda na zaprtje domene.
-
-\[
-	\frac{\partial^n}{\partial t^n}f = \underbrace{\frac{\partial}{\partial t}
-	\bigg(\frac{\partial}{\partial t}\bigg(\cdots \bigg(\frac{\partial}{\partial t}}_{n-\mathrm{krat}}f\bigg)\cdots\bigg)\bigg).
-\]
-Za tako polje $f$ pravimo, da \emph{je razreda $C^N$} na neki odprti domeni prostora $\E\times\R$, če na tej domeni obstajajo odvodi
-\begin{equation}\label{e:Nodv}
-	\frac{\partial^m}{\partial t^m}D^n f,\quad \textrm{za vse}\quad 0\leq m,n\leq N,\quad m+n=N,
-\end{equation}
-in so zvezni. Polje je razreda $C^n$ na zaprtju neke domene v $\E\times\R$, če je razreda $C^N$
-v notranjosti te domene in obstajajo zvezne razširitve polj (\ref{e:Nodv}) na zaprtje domene.
-
-\subsection{Gradient in divergenca}
-
-Naj bo $f$ skalarno polje. V dani točki $x\in\E$ je $Df$ linearna preslikava iz $V$ v $\R$, torej linearen
-funkcional, ki mu po Riezsovem izreku pripada enolično določen vektor $\nabla f$, imenovan
-\emph{gradient skalarnega polja} $f$ v točki $x$, tako da velja
-\[
-	Df[\vek{h}]=\nabla f \cdot \vek{h}.
-\]
-V komponentni obliki je
-\[
-	\nabla f = \frac{\partial f}{\partial x^k}\,\vek{g}^k.
-\]
-\emph{Gradient vektorskega polja} $\vek{u}$ v točki $x\in\E$ je zgolj drugo ime za linearno preslikavo
-$D\vek{u}\in\L(V)$ v točki $x$. Označili ga bomo z $\nabla\vek{u}$. Gradiente vektorjev iz naravne baze
-v dani točki zapišemo v komponentni obliki glede na naravno bazo:
-\begin{align*}
-	\nabla \vek{g}_i&=\Gamma_i=\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k\\
-	\nabla \vek{g}^i&=\Gamma^i=\topbot{\Gamma}{i}{jk}\,\vek{g}^j\otimes\vek{g}^k.
-\end{align*}
-Koeficienti $\cs{i}{j}{k}$ in $\topbot{\Gamma}{i}{jk}$ se imenujejo \emph{Christoffelovi simboli} in
-ne predstavljajo koeficientov tenzorja tretjega reda. Navedimo nekaj lastnosti Christoffelovih
-simbolov (izpeljavo lahko najdemo npr. v \cite[str. 275--277]{liu} ali \cite[str. 59]{haupt}):
-\begin{equation*}
-	\cs{j}{i}{k}=-\topbot{\Gamma}{i}{jk},\quad \topbot{\Gamma}{i}{jk}=\topbot{\Gamma}{i}{kj},\quad
-	\cs{j}{i}{k}=\cs{k}{i}{j},
-\end{equation*}
-\begin{equation*}
-	\cs{i}{j}{k}=\frac{1}{2}\,g^{jl}\left(\frac{\partial g_{li}}{\partial x^k}+
-	\frac{\partial g_{lk}}{\partial x^i}-\frac{\partial g_{ik}}{\partial x^l}\right).
-\end{equation*}
-Komponentna oblika gradienta vektorskega polja $\vek{u}$ je
-\begin{equation*}
-	\nabla\vek{u}= \topbot{u}{j}{,k}\:\vek{g}_j\otimes\vek{g}^k,\quad
-	\topbot{u}{j}{,k}=\frac{\partial u^j}{\partial x^k}+u^i\,\cs{i}{j}{k}.
-\end{equation*}
-Izraz $\topbot{u}{j}{,k}$ označuje t.~i.~\emph{kovariantni odvod} komponente $u^j$
-po koordinati $x^k$. V kartezijevih koordinatah so vsi Christoffelovi simboli enaki 0 in
-kovariantni odvod je kar običajni parcialni odvod.
-
-Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
-\emph{Divergenca vektorskega polja} $\vek{u}$ je skalarno polje
-\begin{equation*}
-	\div\vek{u}=\tr(\nabla\vek{u})=\topbot{u}{j}{,j}=\frac{\partial u^j}{\partial x^j}+u^k\,\cs{k}{j}{j}.
-\end{equation*}
-\emph{Divergenca tenzorskega polja} $S\in\L(V)$ je vektorsko polje $\div S$ z lastnostjo,
-da za vsako konstantno vektorsko polje $\vek{v}$ velja
-\[ \vek{v}\cdot\div S = \div(S^T\vek{v}). \]
-V komponentni obliki je
-\[ \div S = \topbot{S}{ij}{,j}\,\vek{g}_i, \]
-kjer je $\topbot{S}{ij}{,j}$ kovariantni odvod komponente $S^{ij}$ po koordinati $x^j$,
-\[ \topbot{S}{ij}{,j} = \frac{\partial S^{ij}}{\partial x^j}+S^{ik}\,\cs{k}{j}{j}. \]
-
-\emph{Deformacijski gradient} gibanja $\chi$ je
-\[ F\colon\B\times I\to \L(V) \qquad F=\nabla\chi(\vek{X},t). \]
-Glede na mešano bazo $\{\vek{g}_j(\vek{x})\otimes\vek{g}^k(\vek{X})\}$ prostora $\L(V)$,
-kjer je $\vek{x}=\chi(\vek{X},t)$, ima $F$ preprosto komponentno obliko
-\[ F(\vek{X},t) = \frac{\partial x^j}{\partial X^k}\vek{g}_j(\vek{x})\otimes\vek{g}^k(\vek{X}). \]
-
-
-%---- 7.5.2015 -------
-
-\section{Krivočrtne koordinate 2}
-
-
-\begin{definicija}
-	Naj bo $U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $U$ je bijektivna in
-	gladka preslikava $\psi\colon U\to V$, kjer je $V$ odprta
-	množica v $\R^3$, inverz $\psi^{-1}$ pa je prav tako gladka preslikava.
-\end{definicija}
-
-Naj bo $x\in U$ in
-\[ \psi\colon x\mapsto (\theta^1,\theta^2,\theta^3)=\psi(x). \]
-$(\theta^1,\theta^2,\theta^3)$ so \emph{(krivočrtne) koordinate} točke $x$, funkcije
-\[ \psi^i\colon U\to\R,\qquad \psi^i(x)=\theta^i,\qquad i=1,2,3 \]
-pa se imenujejo \emph{$i$-ta koordinatna funkcija} koordinatnega sistema $\psi$.
-Po dogovoru tudi $(\theta^i)$ rečemo koordinatni sistem na $U$.
-
-Naj bodo $(x_1,x_2,x_3)$ kartezijeve koordinate točke $x\in U$, ki smo jih predstavili
-v razdelku REF. Krivočrtni koordinatni sistem $(\theta^i)$ lahko predstavimo s koordinatno transformacijo
-kartezijevih koordinat:
-\begin{equation}\label{e:kt}
-	\theta^i = \theta^i(x_1,x_2,x_3) \quad \Leftrightarrow \quad x_j=x_j(\theta^1,\theta^2,\theta^3), \quad i,j=1,2,3.
-\end{equation}
-
-Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ standardna baza vektorskega prostora $\V$, kot smo jo
-definirali v razdelku REF v povezavi s kartezijevim koordinatnim sistemom. V povezavi s krivočrtnim
-koordinatnim sistemom lahko definiramo vektorska polja
-\begin{equation} \label{e:ge-rel}
-	\vek{g}_i=\frac{\partial x_j}{\partial\theta^i}\,\vek{e}_j, \qquad
-	\vek{g}^i=\frac{\partial\theta^i}{\partial x_j}\,\vek{e}_j=\nabla\theta^i,
-	\qquad i=1,2,3.
-\end{equation}
-V točki $x\in U$ se vektorji $\vek{g}_i(x)$ imenujejo \emph{tangentni vektorji},
-$\vek{g}^j(x)$ pa \emph{gradienti vektorji}.
-V vsaki točki $x\in U$ tvorita množici $\{\vek{g}_i(x)\}_i$ in $\{\vek{g}^i(x)\}_i$
-vsaka posebej bazo za prostor $\V$ in ti dve bazi sta si dualni. Res:
-\[
-	\vek{g}^i\cdot\vek{g}_j=\frac{\partial\theta^i}{\partial x_k}\,\vek{e}_k\cdot
-	\frac{\partial x_l}{\partial\theta^j}\,\vek{e}_l =
-	\delta_{kl}\frac{\partial\theta^i}{\partial x_k}\frac{\partial x_l}{\partial\theta^j}=
-	\frac{\partial\theta^i}{\partial x_k}\frac{\partial x_k}{\partial\theta^j}=
-	\frac{\partial\theta^i}{\partial\theta^j}=\topbot{\delta}{i}{j}.
-\]
-Koeficienti
-\[ g_{ij}=\vek{g}_i\cdot\vek{g}_j\qquad\textrm{in}\qquad g^{ij}=\vek{g}^i\cdot\vek{g}^j \]
-so \emph{koeficienti metričnega tenzorja} in so seveda odvisni od točke $x\in U$. Hitro vidimo, da velja
-\[ g^{ik}g_{kj}=\topbot{\delta}{i}{j},\qquad \vek{g}^i=g^{ik}\vek{g}_k,\qquad \vek{g}_i=g_{ik}\vek{g}^k. \]
-
-Kot prej naj bo $x\in U$, $(x_1,x_2,x_3)$ naj bodo kartezijeve, $(\theta^1,\theta^2,\theta^3)$ pa
-krivočrtne koordinate točke $x$. Skalarno polje $h\colon U\to\R$ bomo brez posebnih oznak zapisali enako:
-\[ h(x)=h(x_1,x_2,x_3)=h(\theta^1,\theta^2,\theta^3). \]
-Vektorska polja $\vek{h}\colon U\to\V$ ter tenzorska polja $\ten{S}\colon U\to\L(\V)$ bomo zapisali
-v komponentni obliki glede na različne baze prostora $\V$ oz. prostora $\L(\V)$ kot
-\begin{gather*}
-	\vek{h}=h_i\vek{e}_i=\bar{h}_i\vek{g}^i=\bar{h}^i\vek{g}_i,\\
-	\ten{S}=S_{ij}\vek{e}_i\otimes\vek{e}_j=
-	\topbot{\bar{S}}{i}{j}\vek{g}_i\otimes\vek{g}^j=\bottop{\bar{S}}{i}{j}\vek{g}^i\otimes\vek{g}_j=
-	\bar{S}_{ij}\vek{g}^i\otimes\vek{g}^j=\bar{S}^{ij}\vek{g}_i\otimes\vek{g}_j.
-\end{gather*}
-Tu so $h_i$, $\bar{h}_i$, $\bar{h}^i$, $S_{ij}$, $\bottop{\bar{S}}{i}{j}$, $\dots$ skalarna polja.
-Iz (\ref{e:ge-rel}) dobimo naslednje relacije:
-
-	%h^i=\bar{h}^j\frac{\partial\hat{x}_i}{\partial\theta^j}=\frac{\partial\hat{}}{\partial}
-
-%--------- Gradient vektorskega -------------
-
-Naj bo sedaj $\vek{u}\colon U\to\V$ vektorsko polje, v komponentni obliki
-zapisano kot
-\[ \vek{u}=u^j\,\vek{g}_j=u_k\,\vek{g}^k. \]
-Potem iz (\ref{t:divprop}$_1$), (\ref{e:gradskal}), (\ref{e:gradg}) in (\ref{e:cs}) dobimo
-\begin{align*}
-	\nabla\vek{u}&=\nabla(u^i\,\vek{g}_i)=\vek{g}_i\otimes\nabla u^i+u^i\nabla\vek{g}_i\\
-	&=\vek{g}_i\otimes\frac{\partial u^i}{\partial x^k}\vek{g}^k+
-	u^i\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k\\
-	&=\Big(\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}\Big)\vek{g}_j\otimes\vek{g}^k.
-\end{align*}
-Komponentna oblika za $\nabla\vek{u}$ je torej
-\[ \nabla\vek{u}=\topbot{u}{j}{,k}\,\vek{g}_j\otimes\vek{g}^k, \]
-kjer je
-\[
-	\topbot{u}{j}{,k}=\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}
-\]
-t.~i.~\emph{kovariantni odvod} komponentne $u^j$ po spremenljivki $x^k$.
-Če enak postopek ponovimo še za $\nabla(u_i\,\vek{g}^i)$,
-kjer dodatno uporabimo relacijo (\ref{e:lcs1}), dobimo
-\begin{equation} \label{e:nimena1}
-	\nabla\vek{u}=u_{j,k}\,\vek{g}^j\otimes\vek{g}^k,
-\end{equation}
-kjer je
-\begin{equation} \label{e:kov2}
-	u_{j,k}=\frac{\partial u_j}{\partial x^k}-u_i\cs{j}{i}{k}.
-\end{equation}
+\begin{izrek}[Transportni izrek]
+	Naj bo $S(t)$ singularna ploskev glede na polje $f\colon\Omega\to\W$. Velja
+	\begin{equation*}
+		\frac{d}{dt}\int_B \hat{f}\,dV = \int_B \frac{\partial \hat{f}}{\partial t}\,dV -
+		\int_{S_{\r}(t)} \llbracket\hat{f}\rrbracket(\vek{w}_{\r}\cdot\vek{N})\,dS\quad\textrm{in}
+	\end{equation*}
+	\[
+		\frac{d}{dt}\int_{B_t} f\,dV = \int_{B_t} \frac{\partial f}{\partial t}\,dV +
+		\int_{\partial B_t} f(\vek{v}\cdot\vek{n})\,dS - \int_{S(t)} \llbracket f\rrbracket(\vek{w}\cdot\vek{n})\,dS.
+	\]
+\end{izrek}
+\proof
+	Izrek bomo dokazali za primer, ko je gibanje singularne ploskve $S(t)$ nepovratno, tj.~parametrizacija
+	$\omega$ je injektivna preslikava. Izrek velja tudi sicer, le dokaz je bolj zapleten.
+	Najprej dokažimo prvo enakost. Opazimo, da velja
+	\[
+		\frac{d}{dt}\int_B \hat{f}(X,t)\,dV = \frac{d}{dt}\left(
+		\int_{B^-(t)} \hat{f}(X,t)\,dV + \int_{B^+(t)} \hat{f}(X,t)\,dV \right).
+	\]
+	Posvetimo se le odvajanju prvega integrala, odvajanja drugega integrala poteka na enak način.
+	Po definiciji odvoda je
+	\begin{gather*}
+		\frac{d}{dt}\int_{B^-(t)} \hat{f}(X,t)\,dV =\\ =\lim_{h\to 0} \frac{1}{h}\left(
+		\int_{B^-(t+h)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t)\,dV \right) \\
+		=\lim_{h\to 0} \frac{1}{h}\left( \int_{B^-(t+h)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t+h)\,dV \right) + \\
+		+ \lim_{h\to 0} \frac{1}{h}\left( \int_{B^-(t)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t)\,dV \right) \\
+		= \lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}(X,t+h)\,dV +
+		\int_{B^-(t)} \frac{\partial\hat{f}}{\partial t}(X,t)\,dV.
+	\end{gather*}
+	Območje $B^-(t)\setminus B^-(t+h)$ je po začetni predpostavki o nepovratnosti singularne ploskve prazno,
+	zato smo integral po tem območju izpustili. Limito bomo računali po komponentah. Polje $\hat{f}$
+	lahko namreč zapišemo v komponentni obliki glede na neko fiksno bazo $\{b_k\}_{k=1}^m$ prostora $\W$ kot
+	\[ \hat{f}(X,t)=\sum_{k=1}^m \hat{f}_k(X,t)b_k. \]
+	Zaradi začetne predpostavke lahko
+	območje $B^-(t+h)\setminus B^-(t)$ regularno parametriziramo kar s skrčeno bijektivno parametrizacijo
+	\[
+		\omega(\theta,\tau)\colon\Theta_{\tau}\times [t,t+h]\to B^-(t+h)\setminus B^-(t),\quad
+		\Theta_{\tau}=\{\theta\in \Theta\: ;\: \omega(\theta,\tau)\in B\},
+	\]
+	zato je
+	\begin{multline*}
+		F_k(t)=\lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}_k(X,t+h)\,dV=\\
+		=\lim_{h\to 0} \frac{1}{h}\int_{t}^{t+h}\iint_{\Theta_{\tau}}\hat{f}_k\big(\omega(\theta,\tau),t+h\big)
+		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot\frac{\partial\omega}{\partial\tau}\right|
+		(\theta,\tau)\,d\theta^1 d\theta^2 d\tau.
+	\end{multline*}
+	Po Lagrangevem izreku o srednji vrednosti obstaja $\xi\in [t,t+h]$, da je
+	\[
+		F_k(t)=\lim_{h\to 0} \frac{1}{h}h\iint_{\Theta_{\xi}}\hat{f}_k\big(\omega(\theta,\xi),t+h\big)
+		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot\frac{\partial\omega}{\partial\tau}\right|
+		(\theta,\xi)\,d\theta^1 d\theta^2.
+	\]
+	Ko gre $h$ proti $0$, gre $\xi$ proti $t$ in
+	\[ \hat{f}_k\big(\omega(\theta,\xi),t+h\big)\to\hat{f}^-_k\big(\omega(\theta,t),t\big). \]
+	Upoštevamo še
+	\[
+		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot
+		\frac{\partial\omega}{\partial\tau}\right|\,d\theta^1 d\theta^2=
+		\vek{N}\cdot\vek{w}_{\r}
+		\left\|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\right\|\,d\theta^1 d\theta^2=
+		\vek{N}\cdot\vek{w}_{\r}\,dS,
+	\]
+	pri čemer je skalarni produkt $\vek{w}_{\r}\cdot\vek{N}$ pozitiven, zato smo absolutno vrednost izspustili.
+	Hitrost $\vek{w}_{\r}$ in normala $\vek{N}$ namreč zaradi začetne predpostavke vedno kažeta v isti polprostor v $\E$,
+	določen s tangentno ravnino, katere normala je $\vek{N}$. Tako dobimo
+	\[ F_k(t)=\int_{S_{\r}(t)}\hat{f}_k^-(\vek{w}_{\r}\cdot\vek{N})\,dS \]
+	in če vsak $F_k(t)$ pomnožimo z $b_k$, nato pa tvorimo vsoto po vseh $k$, dobimo
+	\[
+		\lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}(X,t+h)\,dV =
+		\int_{S_{\r}(t)}\hat{f}^-(\vek{w}_{\r}\cdot\vek{N})\,dS.
+	\]
+	Dokazali smo
+	\begin{equation} \label{e:vmrez}
+		\frac{d}{dt}\int_{B^-(t)} \hat{f}\,dV =
+		\int_{S_{\r}(t)}\hat{f}^-(\vek{w}_{\r}\cdot\vek{N})\,dS +
+		\int_{B^-(t)} \frac{\partial\hat{f}}{\partial t}\,dV.
+	\end{equation}
+	Na popolnoma enak način dobimo še
+	\begin{equation*}
+		\frac{d}{dt}\int_{B^+(t)} \hat{f}\,dV =
+		-\int_{S_{\r}(t)}\hat{f}^+(\vek{w}_{\r}\cdot\vek{N})\,dS +
+		\int_{B^+(t)} \frac{\partial\hat{f}}{\partial t}\,dV.
+	\end{equation*}
+	Ploskev $S_{\r}(t)$ je pri tem orientirana nasprotno, kot v prejšnjem primeru,
+	zato je njena normala $-\vek{N}$ in posledično je ploskovni integral v tem primeru
+	nasprotno predznačen. Če obe dobljeni enačbi seštejemo, dobimo prvo enačbo
+	iz izreka.
+	
+	Drugo enakost bomo dokazali za primer, ko je $f$ skalarno ali pa vektorsko polje.
+	Tudi tu integral najprej razcepimo na vsoto dveh integralov,
+	enega po območju $B_t^-$ in drugega po območju $B_t^+$. Zopet se posvetimo le odvajanju
+	prvega integrala, saj pri računanju odvoda drugega integrala uporabimo povsem enake metode.
+	Z uporabo (\ref{e:dxdX})${}_3$ in malo prej izpeljane enakosti (\ref{e:vmrez}) dobimo
+	\begin{align}
+		\frac{d}{dt}\int_{B_t^-}f\,dV&=\frac{d}{dt}\int_{B^-(t)}\hat{f}J\,dV \nonumber \\
+		&=\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV + \int_{S_{\r}(t)}\hat{f}^-J^-(\vek{w}_{\r}\cdot\vek{N})\,dS. \label{e:vr2}
+	\end{align}
+	Integrand v prvem integralu lahko s pomočjo enačbe (\ref{e:dotJ}) za odvod determinante $J$ razpišemo kot
+	\[ \frac{\partial(\hat{f}J)}{\partial t}=\left(\frac{\partial\hat{f}}{\partial t}+\hat{f}\widehat{\div\vek{v}}\right)J, \]
+	integral pa potem s pomočjo (\ref{e:dxdX}) in (\ref{e:matodv}) transformiramo nazaj v
+	\[
+		\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV =
+		\int_{B_t^-}\left(\frac{\partial f}{\partial t}+(\nabla_{x}f)[\vek{v}]+f\div\vek{v}\right)\,dV.
+	\]
+	Sedaj uporabimo tretjo oz.~četrto enačbo iz trditve \ref{t:divprop} ter nato še drugo oz.~tretjo enakost
+	iz divergenčnega izreka \ref{i:divtheo}, odvisno od tega, ali je $f$ skalarno ali
+	vektorsko polje, ter dobimo
+	\begin{equation} \label{e:vr3}
+		\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV =
+		\int_{B_t^-}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^-}f^-(\vek{v}^-\cdot\vek{n})\,dS.
+	\end{equation}
+	Prevedimo še preostali integral:
+	\begin{multline} \label{e:vr4}
+		\int_{S_{\r}(t)}\hat{f}^-J^-(\vek{w}_{\r}\cdot\vek{N})\,dS =
+		\int_{S_{\r}(t)}\hat{f}^-\big((\ten{F}^{-1})^-\ten{F}^-\vek{w}_{\r}\cdot J^-\vek{N}\big)\,dS= \\
+		=\int_{S_{\r}(t)}\hat{f}^-\big(\ten{F}^-\vek{w}_{\r}\cdot J^-(\ten{F}^{-T})^-\vek{N}\big)\,dS
+		=\int_{S(t)}f^-\big((\vek{w}-\vek{v}^-)\cdot\vek{n}\big)\,dS.
+	\end{multline}
+	Tu smo na zadnjem koraku uporabili (\ref{e:dxdX})${}_2$ in $(\ref{e:w})$. V enačbi (\ref{e:vr3})
+	lahko ploskovni integral po območju $\partial B_t^-$ zapišemo kot vsoto dveh ploskovnih integralov,
+	enega po ploskvi $\partial B_t^-\setminus S(t)$ in drugega po ploskvi $S(t)$.
+	Iz (\ref{e:vr2}), (\ref{e:vr3}) in (\ref{e:vr4}) sedaj dobimo
+	\[
+		\frac{d}{dt}\int_{B_t^-}f\,dV=
+		\int_{B_t^-}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^-\setminus S(t)}f(\vek{v}\cdot\vek{n})\,dS +
+		\int_{S(t)}f^-(\vek{w}\cdot\vek{n})\,dS.
+	\]
+	Na enak način pridemo do
+	\[
+		\frac{d}{dt}\int_{B_t^+}f\,dV=
+		\int_{B_t^+}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^+\setminus S(t)}f(\vek{v}\cdot\vek{n})\,dS -
+		\int_{S(t)}f^+(\vek{w}\cdot\vek{n})\,dS.
+	\]
+	Pri tem je ploskev $S(t)$ orientirana nasprotno, kot v prejšnjem primeru, zato pride ploskovni integral po
+	ploskvi $S(t)$ negativno predznačen. Če sedaj seštejemo dobljeni enakosti, dobimo drugo enakost iz izreka.
+\endproof

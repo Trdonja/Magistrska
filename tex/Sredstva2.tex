@@ -314,7 +314,7 @@ $\ten{S}^{T}$, dobimo naslednjo trditev.
 
 
 
-\section{Kinematika kontinuuma}
+\section{Kinematika kontinuuma} \label{chp:kinkon}
 
 
 \subsection{Konfiguracije in gibanje telesa}
@@ -371,7 +371,7 @@ Tenzorsko polje
 	\ten{F}\colon B\times I\to\L(\V),\qquad \ten{F}=\Grad\chi(X,t)=\Grad\chi_t(X)
 \]
 se imenuje \emph{deformacijski gradient} gibanja. Determinanti $J=\det\ten{F}$ 
-rečemo \emph{Jacobian}. Ker so konfiguracije $\chi_t$
+rečemo \emph{jacobijan}. Ker so konfiguracije $\chi_t$
 injektivne oz.~bijektivne na svojo sliko, mora biti $J\neq 0$ povsod na $B\times I$.
 Zaradi zveznosti tenzorskega polja $\ten{F}$ mora biti potem skalarno polje $J$,
 ki je potem takem tudi zvezno, vseskozi
@@ -438,10 +438,10 @@ z uporabo verižnega pravila
 	\[ \dot{\vek{f}}(X,t)=\frac{d\vek{f}}{dt}(X,t)=\frac{\partial\vek{f}}{\partial t}(X,t). \]
 \end{definicija}
 Iz (\ref{e:matopi}) dobimo z uporabo verižnega pravila še materialni odvod za prostorski opis:
-\[
+\begin{equation} \label{e:matodv}
 	\dot{\vek{f}}=\frac{d\vek{f}}{dt}=
 	\frac{\partial\vek{f}}{\partial t}+(\grad\vek{f})(\vek{v}),
-\]
+\end{equation}
 kjer je $\vek{v}$ hitrost gibanja (\ref{e:v}), $\partial\vek{f}/\partial t$ pa
 časovni dvod polja $\vek{f}(x,t)$. Kadar poleg tenzorskega polja ne bomo pisali argumentov,
 bo oznaka $\partial\vek{f}/\partial t$ vedno pomenila časovni odvod prostorskega opisa.
@@ -457,33 +457,15 @@ bo oznaka $\partial\vek{f}/\partial t$ vedno pomenila časovni odvod prostorskeg
 		\frac{d}{dt}\Grad\chi=\Grad\frac{d\chi}{dt}\qquad\textrm{oziroma}\qquad
 		\dot{\ten{F}}=\Grad\vek{v},
 	\]
-	iz česar z uporabo zveze (\ref{e:gz}) dobimo $\ten{L}=\dot{\ten{F}}\ten{F}^{-1}$.
+	iz česar z uporabo zveze (\ref{e:gz}) dobimo
+	\begin{equation} \label{e:L}
+		\ten{L}:=\grad\vek{v}=\dot{\ten{F}}\ten{F}^{-1}
+	\end{equation}
 \end{primer}
 
 
-\subsection{Površinski in prostorninski element}
+\subsection{Transformacija ploskovnih in volumskih integralov}
 
-
-Naj bo $\varepsilon>0$ in $\gamma\colon(-\varepsilon,\varepsilon)\to B$ preslikava
-razreda $C^1$. Slika preslikave $\gamma$ je krivulja v referenčni konfiguraciji telesa,
-slika preslikave $\chi_t\circ\gamma$ pa je krivulja v trenutni konfiguraciji.
-V točki $X=\gamma(0)$ oz.~$x=\chi_t(\gamma(0))$ se tangentni vektor
-\[
-	d\vek{X}:=\gamma\,'(0)\,d\alpha\qquad\textrm{oz.}\qquad d\vek{x}=(\chi_t\circ\gamma)'(0)\,d\alpha
-\]
-imenuje \emph{dolžinski element v referenčni} oz.~\emph{trenutni konfiguraciji}. Pri tem
-je $d\alpha$ majhno (infinitezimalno) realno število. Po verižnem pravilu je
-\[ d\vek{x}=\Grad\chi_t(\gamma(0))(\gamma\,'(0)\,d\alpha)=\ten{F}(X,t)d\vek{X}. \]
-
-Naj bosta $d\vek{X}_1$ in $d\vek{X}_2$ dolžinska elementa v točki $X\in B$ in
-naj bosta $d\vek{x}_1=\ten{F}\vek{X}_1$ in $d\vek{x}_2=\ten{F}\vek{X}_2$ pripadajoča
-dolžinska elementa v točki $x=\chi_t(X)$. Vektor
-\[
-	d\vek{S}=d\vek{X}_1\times d\vek{X}_2\qquad\textrm{oz.}
-	d\vek{s}=d\vek{x}_1\times d\vek{x}_2
-\]
-se imenuje \emph{ploščinski element v referenčni} oz.~\emph{trenutni konfiguraciji}.
-Velja
 
 Naj bo $\Theta\subset\R^2$ odprta in $r\in C^1(\Theta,B)$ regularna parametrizacija
 neke ploskve $S\subset B$, lahko je del robu $\partial B$. Normalni vektor
@@ -522,7 +504,7 @@ kjer sta $\vek{N}=\|\vek{S}\|^{-1}\vek{S}$ in $\vek{n}=\|\vek{s}\|^{-1}\vek{s}$
 %\[ \vek{N}=\frac{\vek{S}}{\|\vek{S}\|}\qquad\textrm{in}\qquad\vek{n}=\frac{\vek{s}}{\|\vek{s}\|} \]
 vektorski funkciji enotskih normal.
 
-\begin{izrek}
+\begin{izrek} \label{i:suittra}
 	Naj bo $\vek{f}\colon S\times I\to\W$ zvezno tenzorsko polje. Potem velja
 	\begin{align*}
 		\int_s\vek{f}[\vek{n}]\,ds=\int_S\vek{f}[J\ten{F}^{-T}\vek{N}]\,dS ,\\
@@ -546,437 +528,215 @@ vektorski funkciji enotskih normal.
 	Drugo enakost dokažemo na podoben način.
 \endproof
 
-Ploščinska elementa, ki nastopata v ploskovnih integralih, sta
+Naj bo sedaj $\Theta\subset\R^3$ odprta in $r\in C^1(\Theta,B)$ regularna parametrizacija
+nekega območja $P\subset B$, lahko je notranjost od $B$. Prostorninski element je
+skalarna funkcija
 \[
-	dS=\|\vek{S}\|\,d\vartheta_1d\vartheta_2\qquad\textrm{in}\qquad
-	ds=\|\vek{s}\|\,d\vartheta_1d\vartheta_2.
+	V=\Big|\frac{\partial r}{\partial\vartheta_1}\cdot
+	\frac{\partial r}{\partial\vartheta_2}\times\frac{\partial r}{\partial\vartheta_3}\Big|
 \]
-Posledica izpeljane enakosti (\ref{e:nsns}) je, da za poljubno zvezno tenzorsko polje
-$\vek{f}\colon S\to\W$ velja
-\[
-	\int_s\vek{f}[\vek{n}]\,ds=\int_S\vek{f}[J\ten{F}^{-T}\vek{N}]\,dS\quad\textrm{in}\quad
-	\int_S\vek{f}[\vek{N}]\,dS=\int_s\vek{f}[J^{-1}\ten{F}^{T}\vek{n}]\,ds.
-\]
+Preslikava $\chi_t\circ r$ je v tem primeru parametrizacija območja $P_t=\chi_t(P)\subset B_t$.
+Pripadajoči prostorninski element je
+\begin{align*}
+	v&=\Big|\frac{\partial(\chi_t\circ r)}{\partial\vartheta_1}\cdot
+	\frac{\partial(\chi_t\circ r)}{\partial\vartheta_2}\times\frac{\partial(\chi_t\circ r)}{\partial\vartheta_3}\Big|
+	=\Big|\ten{F}\frac{\partial r}{\partial\vartheta_1}\cdot
+	\ten{F}\frac{\partial r}{\partial\vartheta_2}\times\ten{F}\frac{\partial r}{\partial\vartheta_3}\Big| \\
+	&=\det\ten{F}\Big|\frac{\partial r}{\partial\vartheta_1}\cdot
+	\frac{\partial r}{\partial\vartheta_2}\times\frac{\partial r}{\partial\vartheta_3}\Big|.
+\end{align*}
+Pri tem smo upoštevali, da je $J=\det\ten{F}>0$.
+Relacija med prostorninskima elementoma $v$ in $V$ je torej $v=JV$.
+%\begin{equation*}
+%	v=JV.
+%\end{equation*}
 
-Gladka krivulja znotraj telesa je podana kot slika gladke preslikave
-\[\vek{C}\colon \Theta\to\Br, \quad \vek{C}\colon\alpha\mapsto\vek{C}(\alpha),\]
-kjer je $\Theta$ odprti interval v $\R$.
-V trenutni konfiguraciji telesa se ta krivulja nahaja na lokaciji, ki je določena s sliko pripadajoče preslikave
-\[ \vek{c}\colon \Theta\to\B_t,\quad \vek{c}\colon\alpha\mapsto\chi\big(\vek{C}(\alpha),t\big). \]
-S posrednim odvajanjem dobimo zvezo
-\begin{equation} \label{e:3101}
-	\vek{c}'(\alpha) = \big( \Grad\chi\big(\vek{C}(\alpha),t\big)\big)\vek{C}'(\alpha).
-\end{equation}
-\begin{definicija}
-	Naj bosta $\vek{C}$ in $\vek{c}$ definirana kot v prejšnjem odstavku.
-	Pri danem $\vek{X}=\vek{C}(\alpha_0)$ in $\vek{x}=\vek{c}(\alpha_0)$, $\alpha_0\in\Theta$, imenujemo
-	infinitezimalna tangentna vektorja
-	\[ d\vek{X}=\vek{C}'(\alpha_0)d\alpha \quad \mathrm{in} \quad d\vek{x}=\vek{c}'(\alpha_0)d\alpha \]
-	\emph{materialni dolžinski element} v referenčni oziroma trenutni konfiguraciji.
-\end{definicija}
-
-\begin{definicija}
-	Če sta $d\vek{X}_1$, $d\vek{X}_2$ dolžinska elementa v referenčni
-	in $d\vek{x}_1$, $d\vek{x}_2$ materialna dolžinska elementa,
-	potem infinitezimalna vektorja
-	\[ d\vek{S}= d\vek{X}_1\times d\vek{X}_2\quad\mathrm{in}\quad d\vek{s}= d\vek{x}_1\times d\vek{x}_2 \]
-	imenujemo \emph{materialni površinski element} v referenčni oz. trenutni konfiguraciji.
-	Za materialne dolžinske elemente $d\vek{X}_1$, $d\vek{X}_2$, $d\vek{X}_3$
-	in $d\vek{x}_1$, $d\vek{x}_2$, $d\vek{x}_3$ se infinitezimalni števili
-	\[ dV= d\vek{X}_1\times d\vek{X}_2\cdot d\vek{X}_3\quad\mathrm{in}\quad dv= d\vek{x}_1\times d\vek{x}_2\cdot d\vek{x}_3 \]
-	imenujeta \emph{materialni prostorninski element} v referenčni oziroma trenutni konfiguraciji.
-\end{definicija}
-\begin{trditev}
-	Za pare materialnih dolžinskih, površinskih in volumskih elementov $(d\vek{X},d\vek{x})$, $(d\vek{S},d\vek{s})$ in $(dV,dv)$ velja
-	\begin{equation}\label{e:dxdX}
-		d\vek{x}=\ten{F}d\vek{X},\quad d\vek{s}=J\ten{F}^{-T}d\vek{S}\quad\mathrm{in}\quad
-		dv=JdV,
-	\end{equation}
-	kjer je $\ten{F}$ deformacijski gradient (\ref{e:F}) z determinanto $J>0$.
-\end{trditev}
-\proof
-	Prva enakost sledi neposredno iz (\ref{e:3101}). Tretja enakost sledi iz lastnosti determinante,
-	\begin{align*}
-		dv&=d\vek{x}_1\times d\vek{x}_2\cdot d\vek{x}_3=
-		\ten{F}d\vek{X}_1\times \ten{F}d\vek{X}_2\cdot \ten{F}d\vek{X}_3=\\
-		&=Jd\vek{X}_1\times d\vek{X}_2\cdot d\vek{X}_3 = JdV.
-	\end{align*}
-	Za poljuben vektor $\vek{u}$ je
-	\begin{align*}
-		d\vek{s}\cdot\vek{u}&=\ten{F}d\vek{X}_1\times\ten{F}d\vek{X}_2\cdot\vek{u}=
-		\ten{F}d\vek{X}_1\times\ten{F}d\vek{X}_2\cdot\ten{F}(\ten{F}^{-1}\vek{u})=\\
-		&=J d\vek{X}_1\times d\vek{X}_2 \cdot \ten{F}^{-1}\vek{u} =J d\vek{S}\cdot\ten{F}^{-1}\vek{u}=\\
-		&=J\ten{F}^{-T}d\vek{S}\cdot\vek{u},
-	\end{align*}
-	iz česar sledi druga enakost. 
-\endproof
-
-Površinski element se običajno piše kot
-\[ d\vek{S}=\vek{N}dS \quad\mathrm{oziroma}\quad d\vek{s}=\vek{n}ds, \]
-kjer sta
-\[
-	\vek{N}=\frac{d\vek{X}_1\times d\vek{X}_2}{\|d\vek{X}_1\times d\vek{X}_2\|} \quad\mathrm{in}\quad
-	\vek{n}=\frac{d\vek{x}_1\times d\vek{x}_2}{\|d\vek{x}_1\times d\vek{x}_2\|}
-\]
-\emph{enotski normali} ter
-\[ dS=\|d\vek{X}_1\times d\vek{X}_2\| \quad\mathrm{in}\quad ds=\|d\vek{x}_1\times d\vek{x}_2\| \]
-\emph{ploščinska elementa}.
-
-
-\subsection{Singularna ploskev}
-
-
-Naj bo $\Theta$ odprta podmnožica v $\R^2$ in $\zeta\colon\Theta\times I\to\E$ preslikava
-razreda $C^2$ na $\Theta\times I$, za katero zahtevamo, da je pri vsakem $t\in I$ parcialni
-odvod $D_{\theta}\zeta(\theta,t)\colon\R^2\to\V$ linearna preslikava ranga 2
-v vsaki točki $\theta=(\theta^1,\theta^2)\in\Theta$, ter da je $\zeta(\cdot,t)\colon\Theta\to\E$
-injektivna. Pri danem $t\in I$ je $S(t)=\zeta(\Theta, t)$ ploskev
-v $\E$ in $\zeta(\cdot, t)$ je njena regularna parametrizacija. Odslej bomo uporabljali
-oznako $S(t)$ za $S(t)\cap B_t$ ter $I_c$ za podinterval v $I$, v katerem je $S(t)\cap B_t$ neprazen.
-
-Dodatno naj velja, da pri vsakem $t\in I_c$ ploskev $S(t)$ razdeljuje materialno telo $B_t$
-na disjunktna, med seboj nepovezana dela $B_t^+$ in $B_t^-$. Velja
-\[ B_t^+\cup B_t^- = B_t\setminus S(t)\quad\mathrm{in}\quad \overline{B_t^+}\cap \overline{B_t^-}=S(t). \]
-Vpeljimo še oznake
-\[ \Omega^+=\{(x, t)\: ; \: x\in B_t^+,\ t\in I_c\},\quad\Omega^-=\{(x, t)\: ; \: x\in B_t^-,\ t\in I_c\} \]
-\begin{equation*} \textrm{in}\quad\Sigma = \{(x, t)\: ; \: x\in S(t),\ t\in I_c\}. \end{equation*}
-
-\begin{definicija}
-	Pravimo, da je gibajoča se ploskev $S(t)$ \emph{singularna} glede na tenzorsko polje
-	$f\colon\Omega\to\W$, če je $f$ zvezno na $\Omega^+$ in $\Omega^-$, a ni zvezno na $\Sigma$.
-\end{definicija}
-\begin{definicija}
-	Naj bo $S(t)$ singularna glede na polje $f$. Naj bo $f|_{\Omega^+}$
-	skrčitev $f$ na $\Omega^+$ in $f|_{\Omega^-}$ skrčitev $f$ na $\Omega^-$. Označimo z
-	$f^+$ zvezno razširitev $f|_{\Omega^+}$ na $\overline{\Omega^+}=\Omega^+\cup\Sigma$ in z
-	$f^-$ zvezno razširitev $f|_{\Omega^-}$ na $\overline{\Omega^-}=\Omega^-\cup\Sigma$. \emph{Skok} polja $f$
-	je funkcija
-	\[ \llbracket f\rrbracket\colon\Sigma\to\W,\qquad \llbracket f\rrbracket=f^+-f^-. \]
-\end{definicija}
-Kot opombo velja omeniti, da je tako definiran $\llbracket f\rrbracket$ zvezen na $\Sigma$,
-če sta normi od $f^+$ in $f^-$ končni na $\Sigma$.
-Singularne ploskve predstavljajo širjenje vala skozi prostor v določenem časovnem intervalu.
-
-Označimo parcialne odvode parametrizacije $\zeta$ z
-\[
-	\zeta_{,\alpha}(\theta^1,\theta^2,t)=\frac{\partial\zeta}{\partial\theta^{\alpha}}(\theta^1,\theta^2,t),\ \alpha=1,2,\qquad
-	\zeta_{,t}(\theta^1,\theta^2,t)=\frac{\partial\zeta}{\partial t}(\theta^1,\theta^2,t).
-\]
-Označimo z $\vek{n}(x,t)$ enotsko normalo na ploskev $S(t)$ v točki $x$, za katero predpostavimo,
-da je usmerjena v območje $B_t^+$. Glede na parametrizacijo $\zeta$ je v točki $x=\zeta(\theta^1,\theta^2,t)$
-enotska normala
-\[
-	\vek{n}(x,t)=
-	\frac{\zeta_{,1}\times\zeta_{,2}}{\displaystyle\left\| \zeta_{,1}\times\zeta_{,2} \right\|}(\theta^1,\theta^2,t)
-\]
-in predpostaviti smemo, da je usmerjena v območje $B_t^+$. Če temu ni tako, lahko to
-dosežemo z reparametrizacijo. Hitrost točke $(\theta^1,\theta^2)\in\Theta$, ki
-ob času $t\in I$ zavzema prostorsko točko $x=\zeta(\theta^1,\theta^2,t)$, je
-\[
-	\vek{w}(x,t)=\zeta_{,t}(\theta^1,\theta^2,t).
-\] 
-V splošnem je $\vek{w}(x,t)\neq\vek{v}(x,t)$. Čeprav v obeh primerih $x$ predstavlja isto točko
-v prostoru, jo ob času $t$ hkrati zavzemata ploskovna in materialna točka.
-$\vek{w}(x,t)$ je hitrost ploskovne točke, $\vek{v}(x,t)$ pa hitrost materialne točke.
-
-Parametrizaciji $\zeta$ pripada parametrizacija $\omega\colon\Theta\times I\to\E_{\r}$, definirana kot
-\[ \omega(\theta,t)=\chi^{-1}\big(\zeta(\theta,t),t\big). \]
-S $S_{\r}(t)$ označimo sliko $\omega(\Theta, t)$ oz.~kar $\omega(\Theta, t)\cap B$, kar
-je ploskev, ki se s časom širi po referenčni konfiguraciji materialnega telesa, in
-v časovnem intervalu $I_c$ razdeljuje materialno telo $B$ na disjunktna, med seboj nepovezana
-dela. Vpeljimo še oznake
-\[ \Omega_{\r}^+=\chi^{-1}(\Omega^+),\quad\Omega_{\r}^-=\chi^{-1}(\Omega^-),\quad\Sigma_{\r}=\chi^{-1}(\Sigma). \]
-Za gibanje $\chi$ bomo predpostavili, da je zvezno na $B\times I_c$ ter da je razreda $C^2$ na $\Omega_{\r}^+$
-ter $\Omega_{\r}^+$. \textcolor[rgb]{1,0,0}{Zunaj intervala $I_c$ je $\chi$ še vedno razreda $C^2$.}
-
-Če je $f\colon B\to\W$ tenzorsko polje, zvezno na $\Omega_{\r}^+$ in $\Omega_{\r}^-$, ni pa zvezno na
-$\Sigma_{\r}$, potem zvezno razširitev skrčitve $f|_{\Omega_{\r}^+}$ na $\overline{\Omega_{\r}^+}=\Omega_{\r}^+\cup\Sigma_{\r}$
-označimo z $f^+$. Podobno definiramo še $f^-$. Skok polja $f$ je funkcija
-\[ \llbracket f\rrbracket\colon\Sigma_{\r}\to\W,\qquad \llbracket f\rrbracket=f^+-f^-. \]
-
-Hitrost ploskovne točke $\theta\in\Theta$, ki v referenčni konfiguraciji zavzema materialno točko
-$X=\omega(\theta,t)$, je
-\[
-	\vek{w}_{\r}(X,t)=\frac{d}{dt}\omega(\theta, t)=\frac{d}{dt}\chi^{-1}\big(\zeta(\theta,t),t\big).
-\]
-Če uporabimo verižno pravilo za odvajanje in upoštevamo ? ter ?, dobimo
-\begin{align}
-	\vek{w}_{\r}&=(\nabla_{x}\chi^{-1})^{\pm}\zeta_{,t}+\left(\frac{\partial}{\partial t}\chi^{-1}\right)^{\pm} \nonumber \\
-	&=(\ten{F}^{-1})^+(\vek{w}-\vek{v}^+) \label{e:w} \\
-	&=(\ten{F}^{-1})^-(\vek{w}-\vek{v}^-). \nonumber
-\end{align}
-Čeprav je inverzno gibanje $\chi^{-1}$ zvezno v točkah hiperploskve $\Sigma$, njegov gradient in
-parcialni odvod po času nista nujno. Zato smo dobili dve enačbi, iz katerih, če ju med seboj odštejemo, dobimo pogoj
-\[ \llbracket \ten{F}^{-1}(\vek{w}-\vek{v}) \rrbracket = \vek{0}. \]
+Na podoben način, kot smo dokazali izrek \ref{i:suittra}, se s pomočjo pravkar dobljene
+enakosti dokaže še naslednji izrek.
+\begin{izrek} \label{i:prointrel}
+	Naj bo $\vek{f}\colon P\times I\to\W$ zvezno tenzorsko polje. Potem velja
+	\begin{equation*}
+		\int_{P_t}\vek{f}\,dv=\int_P\vek{f}J\,dV \qquad\textrm{in}\qquad
+		\int_P\vek{f}\,dV=\int_{P_t}\vek{f}J^{-1}\,dv.
+	\end{equation*}
+\end{izrek}
 
 
 \subsection{Transportni izrek}
 
 
-V tem razdelku bomo podali transportni izrek, ki je v bistvu posplošitev izreka o odvajanju
-integrala s parametrom, ki ga poznamo iz matematične analize. S transportnim izrekom
-bomo dobili enačbo za časovni odvod integrala po območju trenutne konfiguracije materialnega telesa.
+V tem razdelku bomo podali transportni izrek, katerega vsebina je
+enačba za časovni odvod integrala po območju trenutne konfiguracije materialnega telesa.
 Še prej pa potrebujemo formulo za materialni odvod determinante deformacijskega gradienta.
 
-Najprej poiščimo odvod za determinanto $\det\colon\L(V)\to\R$, kjer naj bo tokrat $V$
-realni $n$-razsežni vektorski prostor. Naj bo $\omega\colon V^n\to\R$ netrivialna
-alternirajoča $n$-linearna forma. Spomnimo, za determinanto in sled velja
+Naj bo $\W$ vektorski prostor nad obsegom $\R$ dimenzije $n\in\mathbb{N}$.
+Najprej poiščimo odvod za determinanto $\det\colon\L(\W)\to\R$.
+Naj bo $\omega\colon \W^n\to\R$ netrivialna alternirajoča $n$-linearna forma\footnote{
+Alternirajoča $n$-linearna forma je definirana npr.~v \cite[str.~246]{liu}.}
+in naj bo $A\in\L(\W)$ linearna preslikava.
+Spomnimo, determinanta in sled linearne preslikave $A$ sta definirani kot
+\begin{gather*}
+	\omega(A\vek{u}_1,\dots,A\vek{u}_n)=(\det A)\,\omega(\vek{u}_1,\dots,\vek{u}_n), \\
+	\sum_{j=1}^n\omega(\vek{u}_1,\dots,A\vek{u}_j,\dots,\vek{u}_n)=(\tr A)\,\omega(\vek{u}_1,\dots,\vek{u}_n)
+\end{gather*}
+in definicija je neodvisna od izbire netrivialne forme $\omega$.
+
+Naj bo $S\in\L(\W)$ še ena linearna preslikava in $\varepsilon>0$. Potem je
 \begin{align*}
-	&\omega(A\vek{u}_1,\dots,A\vek{u}_n)=(\det A)\,\omega(\vek{u}_1,\dots,\vek{u}_n), \\
-	&\sum_{j=1}^n\omega(\vek{u}_1,\dots,A\vek{u}_j,\dots,\vek{u}_n)=(\tr A)\,\omega(\vek{u}_1,\dots,\vek{u}_n).
+	\det&(A+\varepsilon S)\,\omega(\vek{u}_1,\dots,\vek{u}_n)=
+	\omega((A+\varepsilon S)\vek{u}_1,\dots,(A+\varepsilon S)\vek{u}_n)\\
+	&=\omega(A\vek{u}_1,\dots,A\vek{u}_n)+
+	\sum_{j=1}^n\varepsilon\,\omega(A\vek{u}_1,\dots,S\vek{u}_j,\dots,A\vek{u}_n)+o(\varepsilon)\\
+	&=(\det A)\,\omega(\vek{u}_1,\dots,\vek{u}_n)+\varepsilon
+	\sum_{j=1}^n\omega(A\vek{u}_1,\dots,AA^{-1}S\vek{u}_j,\dots,A\vek{u}_n)+o(\varepsilon)\\
+	&=(\det A)\Big(\omega(\vek{u}_1,\dots,\vek{u}_n)+\varepsilon
+	\sum_{j=1}^n\omega(\vek{u}_1,\dots,A^{-1}S\vek{u}_j,\dots,\vek{u}_n)\Big)+o(\varepsilon)\\
+	&=(\det A)(1+\varepsilon\,\tr(A^{-1}S))\,\omega(\vek{u}_1,\dots,\vek{u}_n)+o(\varepsilon).
 \end{align*}
-Po definiciji krepkega odvoda na Banachovih prostorih velja za odvod determinante
-\[ (\partial_{A}\det A)[S] = \det(A+S) - \det A + o(S). \]
-%kjer je $o(S)$ količina, za katero velja \[ \lim_{\|S\|\to 0}\frac{|o(S)|}{\|S\|}=0. \]
-Torej imamo
+Pri tem smo člene, kjer nastopajo potence števila $\varepsilon$, spravili
+v izraz $o(\varepsilon)$. Od tu sedaj lahko izračunamo smerni odvod
 \begin{multline*}
-	(\partial_{A}\det A)[S]\,\omega(\vek{u}_1,\dots,\vek{u}_n)=\\
-	\omega\big((A+S)\vek{u}_1,\dots,(A+S)\vek{u}_n\big) -
-	\omega(A\vek{u}_1,\dots,A\vek{u}_n) + o(S).
+	\at{\frac{d}{d\varepsilon}\det(A+\varepsilon S)}{\varepsilon=0}
+	\,\omega(\vek{u}_1,\dots,\vek{u}_n)=
+	\at{\frac{d}{d\varepsilon}\Big[\det(A+\varepsilon S)
+	\,\omega(\vek{u}_1,\dots,\vek{u}_n)\Big]}{\varepsilon=0}\\
+	=(\det A)\tr(A^{-1}S)\,\omega(\vek{u}_1,\dots,\vek{u}_n)=
+	\big[(\det A)A^{-T}\cdot S\big]\,\omega(\vek{u}_1,\dots,\vek{u}_n).
 \end{multline*}
-Nadalje uporabimo linearnost forme $\omega$, člene, v katerih nastopa $S$ vsaj dvakrat,
-pa vključimo v izraz $o(S)$, in tako iz desne strani zadnje enakosti dobimo
-\begin{align*}
-	&= \sum_{j=1}^n\omega(A\vek{u}_1,\dots,S\vek{u}_j,\dots,A\vek{u}_n) + o(S) = \\
-	&= \sum_{j=1}^n\omega(A\vek{u}_1,\dots,AA^{-1}S\vek{u}_j,\dots,A\vek{u}_n) + o(S) = \\
-	&= (\det A)\sum_{j=1}^n\omega(\vek{u}_1,\dots,A^{-1}S\vek{u}_j,\dots,\vek{u}_n) + o(S) = \\
-	&= (\det A\big)\tr(A^{-1}S)\,\omega(\vek{u}_1,\dots,\vek{u}_n) + o(S),
-\end{align*}
-iz česar sledi
+Pri tem smo na zdanjem koraku uporabili definicijo skalarnega produkta na prostoru $\L(\W)$.
+Determinanta je odvedljiva preslikava, zato je krepki odvod enak pravkar izračunanemu
+smernemu odvodu, torej imamo
 \[
-	(\partial_{A}\det A)[S] = (\det A)\tr(A^{-1}S) = (\det A)A^{-T}\cdot S=(\det A)A^{-T}[S],
+	D\det(A)(S)=(\det A)A^{-T}\cdot S\qquad\textrm{oz.}\qquad D\det(A)=(\det A)A^{-T}
 \]
-Pravilo za odvod determinante je torej
-\[ \partial_{A}\det A=(\det A)A^{-T}. \]
-Z uporabo verižnega pravila za odvajanje, pravkar izpeljane enakosti za odvod determinante
-ter enačbe (\ref{e:L}) dobimo pravilo za materialni odvod determinante deformacijskega gradienta:
+Druga enačba sledi iz prve, ker je skalarni produkt linearna preslikava.
+
+Sedaj imamo pripravljeno vse, da izračunamo materialni odvod jacobijana:
 \begin{align}
-	\dot{J}&=(\det\ten{F})\dot{}=(\partial_{\ten{F}}\det\ten{F})\big[\dot{\ten{F}}\big]=J\ten{F}^{-T}\cdot\dot{\ten{F}}=
-	\nonumber \\ &= J\tr(\ten{F}^{-1}\dot{\ten{F}}) = J\tr(\grad\vek{v})=J\div\vek{v}. \label{e:dotJ}
+	\dot{J}&=(\det\ten{F})\,\dot{}=D\det(\ten{F})(\dot{\ten{F}})=J\ten{F}^{-T}\cdot\dot{\ten{F}}
+	\nonumber \\ &= J\tr(\dot{\ten{F}}\ten{F}^{-1}) = J\tr(\grad\vek{v})=J\div\vek{v}. \label{e:dotJ}
 \end{align}
+Pri tem smo uporabili verižno pravilo, malo prej izpeljano pravilo za odvod determinante
+(kjer vzamemo $\W=\V$), komutativnost skalarnega produkta ter zvezo (\ref{e:L}).
 
 \begin{izrek}[Transportni izrek] \label{i:transport}
-	Naj bo $\mathcal{P}\subseteq\B$ del materialnega telesa v referenčni konfiguraciji in naj
-	$\mathcal{P}_t=\chi(\mathcal{P},t)\subseteq\B$ označuje njegovo trenutno konfiguracijo ob času $t$.
-	Naj bosta $\hat{f}\colon\mathcal{P}\to W$ in $\bar{f}\colon\mathcal{P}_t\to W$
-	materialni oziroma prostorski opis neke fizikalne količine, ki sta razreda $C^1$. Potem velja
+	Naj bo $P\subseteq B$ regularno območje znotraj referenčne konfiguracije in naj
+	$P_t=\chi(P,t)\subseteq B_t$ označuje njegovo trenutno konfiguracijo ob času $t$.
+	Naj bo $\vek{f}\colon P\times I\to W$ razreda $C^1$ na zaprtju $\overline{P}\times I$.
+	Potem velja
 	\begin{equation*}
-		\frac{d}{dt}\int_{\mathcal{P}_t}\bar{f}\,dv =
-		\int_{\mathcal{P}_t}(\dot{\bar{f}}+\bar{f}\div\vek{v})\,dv.
-	\end{equation*}
-	Nadalje, če je območje $\mathcal{P}_t$ omejeno ter je njegov rob sestavljen iz končnega števila
-	gladkih ploskev in če sta $\hat{f}$ in $\bar{f}$ skalarno ali pa vektorsko polje
-	razreda $C^1$ na zaprtju $\overline{\mathcal{P}}$ oz.~$\overline{\mathcal{P}_t}$, potem velja
-	\begin{equation*}
-		\frac{d}{dt}\int_{\mathcal{P}_t}\bar{f}\,dv =
-		\int_{\mathcal{P}_t}\frac{\partial\bar{f}}{\partial t}\,dv +
-		\int_{\partial\mathcal{P}_t}(\vek{v}\cdot\vek{n})\bar{f}\,ds.
+		\frac{d}{dt}\int_{P_t}\vek{f}\,dv =
+		\int_{P_t}(\dot{\vek{f}}+\vek{f}\div\vek{v})\,dv=
+		\int_{P_t}\frac{\partial\vek{f}}{\partial t}\,dv +
+		\int_{\partial P_t}(\vek{v}\cdot\vek{n})\vek{f}\,ds.
 	\end{equation*}
 \end{izrek}
-\proof
-	Z uporabo (\ref{e:dxdX})${}_3$ in (\ref{e:dotJ}) pridemo do
-	\begin{align*}
-		\frac{d}{dt}\int_{\mathcal{P}_t}\bar{f}\,dv &= \frac{d}{dt}\int_{\mathcal{P}}\hat{f}J\,dV =
-		\int_{\mathcal{P}}\frac{d}{dt}(\hat{f}J)\,dV = \int_{\mathcal{P}}(\dot{\hat{f}}J+\hat{f}\dot{J})\,dV =\\
-		&=\int_{\mathcal{P}}(\dot{\hat{f}}+\hat{f}\div\vek{v})J\,dV = \int_{\mathcal{P}_t}(\dot{\bar{f}}+\bar{f}\div\vek{v})\,dv.
-	\end{align*}
-	S čimer je dokazan prvi del izreka.
-	Pri tem smo na drugem koraku smeli zamenjati vrstni red odvajanja in integriranja, ker se referenčna konfiguracija
-	s časom ne spreminja. Formalno to utemeljimo tako, da odvod zapišemo kot limito diferenčnega kvocienta,
-	dejstvo, da se v obeh integralih v diferenčnem kvocientu integrira po enakem območju, izkoristimo za uporabo
-	linearnosti integrala in tako celoten diferenčni kvocient spravimo pod en sam integral, nazadnje pa še zamenjamo
-	limito in integral, kar tudi smemo po Lebesguevem izreku o dominantni konvergenci, saj je $\dot{\hat{f}}$
-	po predpostavki zvezen \textcolor[rgb]{1,0,0}{na kompaktnem območju}, torej omejen.
-	
-	Če sedaj na desni strani prve enačbe iz izreka razpišemo $\dot{\bar{f}}$ v skladu z enačbo (\ref{e:matodv}),
-	nato pa upoštevamo tretjo oz.~četrto enačbo iz trditve \ref{t:divprop} ter nato še drugo oz.~tretjo enakost
-	iz divergenčnega izreka \ref{i:divtheo}, odvisno glede na to, ali je $\bar{f}$ skalarno ali
-	vektorsko polje, dobimo enačbo iz drugega dela izreka.
-\endproof
+Ne pozabimo, da pri tem $\partial\vek{f}/\partial t$ pomeni časovni (parcialni)
+odvod prostorskega opisa polja $\vek{f}$.
 
-\begin{izrek}[Transportni izrek]
-	Naj bo $S(t)$ singularna ploskev glede na polje $f\colon\Omega\to\W$. Velja
-	\begin{equation*}
-		\frac{d}{dt}\int_B \hat{f}\,dV = \int_B \frac{\partial \hat{f}}{\partial t}\,dV -
-		\int_{S_{\r}(t)} \llbracket\hat{f}\rrbracket(\vek{w}_{\r}\cdot\vek{N})\,dS\quad\textrm{in}
-	\end{equation*}
-	\[
-		\frac{d}{dt}\int_{B_t} f\,dV = \int_{B_t} \frac{\partial f}{\partial t}\,dV +
-		\int_{\partial B_t} f(\vek{v}\cdot\vek{n})\,dS - \int_{S(t)} \llbracket f\rrbracket(\vek{w}\cdot\vek{n})\,dS.
-	\]
-\end{izrek}
 \proof
-	Izrek bomo dokazali za primer, ko je gibanje singularne ploskve $S(t)$ nepovratno, tj.~parametrizacija
-	$\omega$ je injektivna preslikava. Izrek velja tudi sicer, le dokaz je bolj zapleten.
-	Najprej dokažimo prvo enakost. Opazimo, da velja
-	\[
-		\frac{d}{dt}\int_B \hat{f}(X,t)\,dV = \frac{d}{dt}\left(
-		\int_{B^-(t)} \hat{f}(X,t)\,dV + \int_{B^+(t)} \hat{f}(X,t)\,dV \right).
-	\]
-	Posvetimo se le odvajanju prvega integrala, odvajanja drugega integrala poteka na enak način.
-	Po definiciji odvoda je
-	\begin{gather*}
-		\frac{d}{dt}\int_{B^-(t)} \hat{f}(X,t)\,dV =\\ =\lim_{h\to 0} \frac{1}{h}\left(
-		\int_{B^-(t+h)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t)\,dV \right) \\
-		=\lim_{h\to 0} \frac{1}{h}\left( \int_{B^-(t+h)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t+h)\,dV \right) + \\
-		+ \lim_{h\to 0} \frac{1}{h}\left( \int_{B^-(t)} \hat{f}(X,t+h)\,dV - \int_{B^-(t)} \hat{f}(X,t)\,dV \right) \\
-		= \lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}(X,t+h)\,dV +
-		\int_{B^-(t)} \frac{\partial\hat{f}}{\partial t}(X,t)\,dV.
-	\end{gather*}
-	Območje $B^-(t)\setminus B^-(t+h)$ je po začetni predpostavki o nepovratnosti singularne ploskve prazno,
-	zato smo integral po tem območju izpustili. Limito bomo računali po komponentah. Polje $\hat{f}$
-	lahko namreč zapišemo v komponentni obliki glede na neko fiksno bazo $\{b_k\}_{k=1}^m$ prostora $\W$ kot
-	\[ \hat{f}(X,t)=\sum_{k=1}^m \hat{f}_k(X,t)b_k. \]
-	Zaradi začetne predpostavke lahko
-	območje $B^-(t+h)\setminus B^-(t)$ regularno parametriziramo kar s skrčeno bijektivno parametrizacijo
-	\[
-		\omega(\theta,\tau)\colon\Theta_{\tau}\times [t,t+h]\to B^-(t+h)\setminus B^-(t),\quad
-		\Theta_{\tau}=\{\theta\in \Theta\: ;\: \omega(\theta,\tau)\in B\},
-	\]
-	zato je
-	\begin{multline*}
-		F_k(t)=\lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}_k(X,t+h)\,dV=\\
-		=\lim_{h\to 0} \frac{1}{h}\int_{t}^{t+h}\iint_{\Theta_{\tau}}\hat{f}_k\big(\omega(\theta,\tau),t+h\big)
-		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot\frac{\partial\omega}{\partial\tau}\right|
-		(\theta,\tau)\,d\theta^1 d\theta^2 d\tau.
-	\end{multline*}
-	Po Lagrangevem izreku o srednji vrednosti obstaja $\xi\in [t,t+h]$, da je
-	\[
-		F_k(t)=\lim_{h\to 0} \frac{1}{h}h\iint_{\Theta_{\xi}}\hat{f}_k\big(\omega(\theta,\xi),t+h\big)
-		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot\frac{\partial\omega}{\partial\tau}\right|
-		(\theta,\xi)\,d\theta^1 d\theta^2.
-	\]
-	Ko gre $h$ proti $0$, gre $\xi$ proti $t$ in
-	\[ \hat{f}_k\big(\omega(\theta,\xi),t+h\big)\to\hat{f}^-_k\big(\omega(\theta,t),t\big). \]
-	Upoštevamo še
-	\[
-		\left|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\cdot
-		\frac{\partial\omega}{\partial\tau}\right|\,d\theta^1 d\theta^2=
-		\vek{N}\cdot\vek{w}_{\r}
-		\left\|\frac{\partial\omega}{\partial\theta^1}\times\frac{\partial\omega}{\partial\theta^2}\right\|\,d\theta^1 d\theta^2=
-		\vek{N}\cdot\vek{w}_{\r}\,dS,
-	\]
-	pri čemer je skalarni produkt $\vek{w}_{\r}\cdot\vek{N}$ pozitiven, zato smo absolutno vrednost izspustili.
-	Hitrost $\vek{w}_{\r}$ in normala $\vek{N}$ namreč zaradi začetne predpostavke vedno kažeta v isti polprostor v $\E$,
-	določen s tangentno ravnino, katere normala je $\vek{N}$. Tako dobimo
-	\[ F_k(t)=\int_{S_{\r}(t)}\hat{f}_k^-(\vek{w}_{\r}\cdot\vek{N})\,dS \]
-	in če vsak $F_k(t)$ pomnožimo z $b_k$, nato pa tvorimo vsoto po vseh $k$, dobimo
-	\[
-		\lim_{h\to 0} \frac{1}{h}\int_{B^-(t+h)\setminus B^-(t)} \hat{f}(X,t+h)\,dV =
-		\int_{S_{\r}(t)}\hat{f}^-(\vek{w}_{\r}\cdot\vek{N})\,dS.
-	\]
-	Dokazali smo
-	\begin{equation} \label{e:vmrez}
-		\frac{d}{dt}\int_{B^-(t)} \hat{f}\,dV =
-		\int_{S_{\r}(t)}\hat{f}^-(\vek{w}_{\r}\cdot\vek{N})\,dS +
-		\int_{B^-(t)} \frac{\partial\hat{f}}{\partial t}\,dV.
-	\end{equation}
-	Na popolnoma enak način dobimo še
-	\begin{equation*}
-		\frac{d}{dt}\int_{B^+(t)} \hat{f}\,dV =
-		-\int_{S_{\r}(t)}\hat{f}^+(\vek{w}_{\r}\cdot\vek{N})\,dS +
-		\int_{B^+(t)} \frac{\partial\hat{f}}{\partial t}\,dV.
-	\end{equation*}
-	Ploskev $S_{\r}(t)$ je pri tem orientirana nasprotno, kot v prejšnjem primeru,
-	zato je njena normala $-\vek{N}$ in posledično je ploskovni integral v tem primeru
-	nasprotno predznačen. Če obe dobljeni enačbi seštejemo, dobimo prvo enačbo
-	iz izreka.
+	Z uporabo izreka \ref{i:prointrel} in enačbe (\ref{e:dotJ}) pridemo do
+	\begin{align*}
+		\frac{d}{dt}\int_{P_t}\vek{f}\,dv &= \frac{d}{dt}\int_{P}\vek{f}J\,dV =
+		\int_{P}\frac{d}{dt}(\vek{f}J)\,dV = \int_{P}(\dot{\vek{f}}J+\vek{f}\dot{J})\,dV =\\
+		&=\int_{P}(\dot{\vek{f}}+\vek{f}\div\vek{v})J\,dV = \int_{P_t}(\dot{\vek{f}}+\vek{f}\div\vek{v})\,dv,
+	\end{align*}
+	s čimer je dokazan prvi del enačbe iz ireka.
+	Pri tem smo na drugem koraku smeli zamenjati vrstni red odvajanja in integriranja,
+	ker se referenčna konfiguracija s časom ne spreminja.
 	
-	Drugo enakost bomo dokazali za primer, ko je $f$ skalarno ali pa vektorsko polje.
-	Tudi tu integral najprej razcepimo na vsoto dveh integralov,
-	enega po območju $B_t^-$ in drugega po območju $B_t^+$. Zopet se posvetimo le odvajanju
-	prvega integrala, saj pri računanju odvoda drugega integrala uporabimo povsem enake metode.
-	Z uporabo (\ref{e:dxdX})${}_3$ in malo prej izpeljane enakosti (\ref{e:vmrez}) dobimo
-	\begin{align}
-		\frac{d}{dt}\int_{B_t^-}f\,dV&=\frac{d}{dt}\int_{B^-(t)}\hat{f}J\,dV \nonumber \\
-		&=\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV + \int_{S_{\r}(t)}\hat{f}^-J^-(\vek{w}_{\r}\cdot\vek{N})\,dS. \label{e:vr2}
-	\end{align}
-	Integrand v prvem integralu lahko s pomočjo enačbe (\ref{e:dotJ}) za odvod determinante $J$ razpišemo kot
-	\[ \frac{\partial(\hat{f}J)}{\partial t}=\left(\frac{\partial\hat{f}}{\partial t}+\hat{f}\widehat{\div\vek{v}}\right)J, \]
-	integral pa potem s pomočjo (\ref{e:dxdX}) in (\ref{e:matodv}) transformiramo nazaj v
-	\[
-		\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV =
-		\int_{B_t^-}\left(\frac{\partial f}{\partial t}+(\nabla_{x}f)[\vek{v}]+f\div\vek{v}\right)\,dV.
-	\]
-	Sedaj uporabimo tretjo oz.~četrto enačbo iz trditve \ref{t:divprop} ter nato še drugo oz.~tretjo enakost
-	iz divergenčnega izreka \ref{i:divtheo}, odvisno od tega, ali je $f$ skalarno ali
-	vektorsko polje, ter dobimo
-	\begin{equation} \label{e:vr3}
-		\int_{B^-(t)}\frac{\partial(\hat{f}J)}{\partial t}\,dV =
-		\int_{B_t^-}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^-}f^-(\vek{v}^-\cdot\vek{n})\,dS.
-	\end{equation}
-	Prevedimo še preostali integral:
-	\begin{multline} \label{e:vr4}
-		\int_{S_{\r}(t)}\hat{f}^-J^-(\vek{w}_{\r}\cdot\vek{N})\,dS =
-		\int_{S_{\r}(t)}\hat{f}^-\big((\ten{F}^{-1})^-\ten{F}^-\vek{w}_{\r}\cdot J^-\vek{N}\big)\,dS= \\
-		=\int_{S_{\r}(t)}\hat{f}^-\big(\ten{F}^-\vek{w}_{\r}\cdot J^-(\ten{F}^{-T})^-\vek{N}\big)\,dS
-		=\int_{S(t)}f^-\big((\vek{w}-\vek{v}^-)\cdot\vek{n}\big)\,dS.
-	\end{multline}
-	Tu smo na zadnjem koraku uporabili (\ref{e:dxdX})${}_2$ in $(\ref{e:w})$. V enačbi (\ref{e:vr3})
-	lahko ploskovni integral po območju $\partial B_t^-$ zapišemo kot vsoto dveh ploskovnih integralov,
-	enega po ploskvi $\partial B_t^-\setminus S(t)$ in drugega po ploskvi $S(t)$.
-	Iz (\ref{e:vr2}), (\ref{e:vr3}) in (\ref{e:vr4}) sedaj dobimo
-	\[
-		\frac{d}{dt}\int_{B_t^-}f\,dV=
-		\int_{B_t^-}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^-\setminus S(t)}f(\vek{v}\cdot\vek{n})\,dS +
-		\int_{S(t)}f^-(\vek{w}\cdot\vek{n})\,dS.
-	\]
-	Na enak način pridemo do
-	\[
-		\frac{d}{dt}\int_{B_t^+}f\,dV=
-		\int_{B_t^+}\frac{\partial f}{\partial t}\,dV + \int_{\partial B_t^+\setminus S(t)}f(\vek{v}\cdot\vek{n})\,dS -
-		\int_{S(t)}f^+(\vek{w}\cdot\vek{n})\,dS.
-	\]
-	Pri tem je ploskev $S(t)$ orientirana nasprotno, kot v prejšnjem primeru, zato pride ploskovni integral po
-	ploskvi $S(t)$ negativno predznačen. Če sedaj seštejemo dobljeni enakosti, dobimo drugo enakost iz izreka.
+	Preostalo enakost bomo dokazali za primer, ko je $\vek{f}$ skalarno ali vektorsko
+	polje, za katero lahko uporabimo tretjo oz.~četrto enačbo iz trditve \ref{t:divprop}.
+	Izrek sicer velja tudi za splošna tenzorska polja, le dokaz je bolj zapleten.
+	
+	V nadaljevanju z uporabo enačbe (\ref{e:matodv}), trditve \ref{t:divprop}$_{3,4}$
+	in divergenčnega izreka \ref{i:divtheo} pridemo še do
+	\begin{multline*}
+		\int_{P_t}(\dot{\vek{f}}+\vek{f}\div\vek{v})\,dv
+		=\int_{P_t}\Big(\frac{\partial\vek{f}}{\partial t}+
+		(\grad\vek{f})(\vek{v})+\vek{f}\div\vek{v}\Big)\,dv \\
+		=\int_{P_t}\Big(\frac{\partial\vek{f}}{\partial t}+\div(\vek{f}[\vek{v}])\Big)\,dv
+		=\int_{P_t}\frac{\partial\vek{f}}{\partial t}\,dv+
+		\int_{\partial P_t}(\vek{v}\cdot\vek{n})\vek{f}\,ds.
+	\end{multline*}
+	Pri tem oznaka $\vek{f}[\vek{v}]$ pomeni $f\vek{v}$, če je $\vek{f}=f$ skalarno polje,
+	oz.~$\vek{f}\otimes\vek{v}$, če je $\vek{f}$ vektorsko polje.
 \endproof
 
 
 \subsection{Zakon o ohranitvi mase}
 
 
-Če je $\mathcal{P}\subseteq\B$ poljuben del materialnega telesa, ki v trenutni konfiguraciji pri času $t$
-zavzema območje $\mathcal{P}_t=\chi(\mathcal{P},t)\subseteq\B_t$, potem je \emph{masa} tega déla telesa
-ob času $t$ podana z integralom
-\[ m(\mathcal{P},t)=\int_{\mathcal{P}_t}\rho\,dv, \]
-kjer je
-\[ \rho(\cdot,t)\colon\B_t\to(0,\infty) \]
-pozitivno integrabilno skalarno polje, imenovano
-\emph{masna gostota trenutne konfiguracije}. V klasični mehaniki se prepostavi naslednji zakon.
-\begin{aksiom}[Zakon o ohranitvi mase]
-	Masa katerega koli déla telesa $\mathcal{P}\subseteq\B$ se z gibanjem telesa ne spreminja, t.j.
-	\[ \frac{d}{dt}m(\mathcal{P},t)=\frac{d}{dt}\int_{\mathcal{P}_t}\rho\,dv=0. \]
-\end{aksiom}
-V skladu z zakonom o ohranitvi mase pripada materialnemu telesu \emph{masna gostota referenčne konfiguracije}
-\[ \rho_{\r}\colon\B\to(0,\infty), \]
-tako da velja
-\[ m(\mathcal{P},t)\equiv m(\mathcal{P})=\int_{\mathcal{P}}\rho_{\r}\,dV=\int_{\mathcal{P}_t}\rho\,dv. \]
-Ker to velja za kateri koli del telesa $\mathcal{P}\subseteq\B$, lahko iz lastnosti (\ref{e:dxdX})${}_3$ in trditve \ref{t:oiz}
-za masni gostoti $\rho_{\r}$ in $\rho$, če sta zvezni, dobimo zvezo
-\[ \rho_{\r}(\vek{X})=J(\vek{X},t)\hat{\rho}(\vek{X},t). \]
+\emph{Masa} poljubne podmnožice $P\subseteq B$ je definirana kot vrednost integrala
+\[ M(P)=\int_P\rho_R\,dV, \]
+kjer je $\rho_R\colon B\to(0,\infty)$ integrabilno skalarno polje, imenovano
+\emph{masna gostota referenčne konfiguracije}.
+Za $\rho_R$ se običajno predpostavi še dodatne pogoje o zveznosti ali odvedljivosti.
 
-\begin{izrek}[Lokalna oblika zakona o ohranitvi mase]
-	\textcolor[rgb]{1,0,0}{Predpostavke o $\rho$.} Potem velja
-	\begin{equation} \label{e:lozom} \dot{\bar{\rho}}+\rho\div\vek{v}=0. \end{equation}
-\end{izrek}
-\proof
-	Sledi neposredno iz globalne oblike zakona o ohranitvi mase, če uporabimo transportni izrek \ref{i:transport}
-	in nato trditev \ref{t:oiz}.
-\endproof
+\begin{comment}
+Poljubni konfiguraciji materialnega telesa $\kappa\colon B\to\E$ pripada
+integrabilno skalarno polje $\rho_{\kappa}\colon B\to(0,\infty)$, imenovano
+\emph{masna gostota konfiguracije $\kappa$}, tako da za vsako množico $P\subseteq B$ velja
+\[ M(P)=\int_{\kappa(P)}\rho_{\kappa}\,dv. \]
+\end{comment}
+
+V mehaniki kontinuuma se predpostavi naslednji zakon.
+\begin{aksiom}[Zakon o ohranitvi mase]
+	Gibanju $\chi(X,t)=\chi_t(X)$ pripada integrabilno, časovno odvisno skalarno polje
+	$\rho\colon\Omega\to(0,\infty)$, imenovano \emph{masna gostota trenutne konfiguracije},
+	tako da za vsako množico $P\subseteq B$ velja
+	\[ M(P)=\int_{\chi_t(P)}\rho\,dv\qquad\textrm{za vsak}\ t\in I. \]
+\end{aksiom}
+
+Iz tega zakona z uporabo izreka \ref{i:prointrel} dobimo
+\[ \int_{P}(\rho_R-\rho J)\,dV=0 \qquad\textrm{za vsak}\ t\in I, \]
+in ker to velja za vsako množico $P\subseteq B$, dobimo po trditvi \ref{t:oiz}
+naslednjo relacijo za masni gostoti:
+\begin{equation} \label{e:rojror}
+	\rho_R(X)=\rho(X,t)J(X,t)\qquad\textrm{za vsak}\ X\in B,\ t\in I.
+\end{equation}
+Seveda potem velja $\rho_R=\rho J$ tudi v prostorskem opisu na $\Omega$.
+
+\begin{posledica} \label{p:roji}
+	Za integrabilno tenzorsko polje $\vek{f}\colon B\to\W$ velja
+	\[
+		\int_{P}\vek{f}\rho_R\,dV=\int_{\chi_t(P)}\vek{f}\rho\,dv.
+	\]
+\end{posledica}
+
+Še ena takojšnja posledica zakona o ohranitvi mase je ta, da se masa katerega koli
+dela delesa med gibanjem ne spreminja, torej velja
+\[ \frac{d}{dt}\int_{\chi_t(P)}\rho(x,t)\,dv = 0\quad\textrm{za vsak}\ t\in I. \]
+Če je $\rho$ razreda $C^1$, potem z uporabo transportnega izreka \ref{i:transport}
+pridem do
+\[ \int_{\chi_t(P)}(\dot{\rho}+\rho\div\vek{v})\,dv=0, \]
+in ker to velja za poljubno množico $\chi_t(P)\subseteq\chi_t(B)$, je po trditvi \ref{t:oiz}
+\begin{equation} \label{e:lozom}
+	\dot{\rho}+\rho\div\vek{v}=0
+\end{equation}
+na celotnem območju $\chi_t(B)$ in za vsak $t\in I$, torej na celotnem območju $\Omega$,
+enako pa potem velja tudi v materialnem opisu na $B\times I$.
+Enačba (\ref{e:lozom}) je znana pod imenom \emph{lokalna oblika zakona o ohranitvi mase}.
 
 \begin{izrek}
-	Če je $f$ fizikalna količina materialnega telesa, podana na masno enoto, in je $\bar{f}\colon\B_t\to W$ njen
-	prostorski opis, potem za vsak $\mathcal{P}\subseteq\B$ velja
-	\[ \frac{d}{dt}\int_{\chi_t(\mathcal{P})}\bar{f}\rho\,dv=\int_{\chi_t(\mathcal{P})}\dot{\bar{f}}\rho\,dv. \]
+	Naj bo tenzorsko polje $\vek{f}\colon B\times I\to W$ razreda $C^1$ in naj bo masna gostota
+	$\rho\colon\Omega\to(0,\infty)$ prav tako razreda $C^1$.
+	Potem za vsak $P\subseteq\B$ velja
+	\[
+		\frac{d}{dt}\int_{\chi_t(P)}\vek{f}\rho\,dv=
+		\int_{\chi_t(P)}\dot{\vek{f}}\rho\,dv.
+	\]
 \end{izrek}
 \proof
 	Iz transportnega izreka \ref{i:transport} dobimo
 	\begin{align*}
-		\frac{d}{dt}\int_{\chi_t(\mathcal{P})}\bar{f}\rho\,dv
-		&= \int_{\chi_t(\mathcal{P})}\big((\bar{f}\rho)\dot{}+\bar{f}\rho\div\vek{v}\big)\,dv= \\
-		&= \int_{\chi_t(\mathcal{P})}(\dot{\bar{f}}\rho+\bar{f}\dot{\rho}+\bar{f}\rho\div\vek{v})\,dv=\\
-		&= \int_{\chi_t(\mathcal{P})}\dot{\bar{f}}\rho\,dv+
-		\int_{\chi_t(\mathcal{P})}\bar{f}(\dot{\rho}+\rho\div\vek{v})\,dv,
+		\frac{d}{dt}\int_{\chi_t(P)}\vek{f}\rho\,dv
+		&= \int_{\chi_t(P)}\big((\vek{f}\rho)\,\dot{}+\vek{f}\rho\div\vek{v}\big)\,dv \\
+		&= \int_{\chi_t(P)}(\dot{\vek{f}}\rho+\vek{f}\dot{\rho}+\vek{f}\rho\div\vek{v})\,dv\\
+		&= \int_{\chi_t(P)}\dot{\vek{f}}\rho\,dv+
+		\int_{\chi_t(P)}\vek{f}(\dot{\rho}+\rho\div\vek{v})\,dv,
 	\end{align*}
 	od koder sledi enakost iz izreka, če upoštevamo (\ref{e:lozom}).
 \endproof
+Druga možnost za dokaz izreka je uporaba posledice \ref{p:roji} in
+izreka \ref{i:prointrel}.
