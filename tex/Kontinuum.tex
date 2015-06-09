@@ -93,7 +93,7 @@ $\hat{\vek{f}}$ imenujemo \emph{materialni opis} tenzorskega polja $\vek{f}$.
 
 Pogosto bomo strešico ali črtico v oznakah za materialni ali prostorski opis opustili,
 če to ne bo pustilo dvomov o tem, na kateri domeni je definirano polje.
-Pri integraciji bo že iz integracijske domene razvidno, za katero polje gre.
+Pri integraciji bo že iz integracijske domene razvidno, za kateri opis gre.
 Če poleg polja pišemo še argumente, potem mali $x$ v argumentu nakazuje na prostorski,
 veliki $X$ pa na materialni opis.
 Pri gradientu in divergenci se dvomom izognemo z uporabo različnih notacij
@@ -156,7 +156,7 @@ bo oznaka $\partial\vek{f}/\partial t$ vedno pomenila časovni odvod prostorskeg
 Naj bo $\Theta\subset\R^2$ odprta in $r\in C^1(\Theta,B)$ regularna parametrizacija
 neke ploskve $S\subset B$, lahko je del robu $\partial B$. Normalni vektor
 na ploskev $S$ glede na parametrizacijo $r(\vartheta_1,\vartheta_2)$ je
-Vrednost vektorske funkcije
+vrednost vektorske funkcije
 \[
 	\vek{S}=\frac{\partial r}{\partial\vartheta_1}\times
 	\frac{\partial r}{\partial\vartheta_2}.
@@ -191,7 +191,7 @@ kjer sta $\vek{N}=\|\vek{S}\|^{-1}\vek{S}$ in $\vek{n}=\|\vek{s}\|^{-1}\vek{s}$
 vektorski funkciji enotskih normal.
 
 \begin{izrek} \label{i:suittra}
-	Naj bo $\vek{f}\colon S\times I\to\W$ zvezno tenzorsko polje. Potem velja
+	Naj bo $\vek{f}\colon S\times I\to\W$ integrabilno tenzorsko polje. Potem velja
 	\begin{align*}
 		\int_s\vek{f}[\vek{n}]\,ds=\int_S\vek{f}[J\ten{F}^{-T}\vek{N}]\,dS ,\\
 		\int_S\vek{f}[\vek{N}]\,dS=\int_s\vek{f}[J^{-1}\ten{F}^{T}\vek{n}]\,ds,
@@ -210,8 +210,8 @@ vektorski funkciji enotskih normal.
 		&=\int_S\vek{f}(X,t)[J\ten{F}^{-T}\vek{N}]\,dS.
 	\end{align*}
 	Pri tem smo uporabili enakost (\ref{e:nsns}) in dejstvo, da je
-	\[ \bar{\vek{f}}(\chi_t(r(\vartheta_1,\vartheta_2)),t)=\hat{\vek{f}}(r(\vartheta_1,\vartheta_2),t). \]
-	Drugo enakost dokažemo na podoben način.
+	\[ \bar{\vek{f}}(\chi_t(r(\vartheta_1,\vartheta_2)),t)=\hat{\vek{f}}(r(\vartheta_1,\vartheta_2),t), \]
+	kar sledi iz (\ref{e:matopi}). Drugo enakost dokažemo na podoben način.
 \endproof
 
 Naj bo sedaj $\Theta\subset\R^3$ odprta in $r\in C^1(\Theta,B)$ regularna parametrizacija
@@ -240,7 +240,7 @@ Relacija med prostorninskima elementoma $v$ in $V$ je torej $v=JV$.
 Na podoben način, kot smo dokazali izrek \ref{i:suittra}, se s pomočjo pravkar dobljene
 enakosti dokaže še naslednji izrek.
 \begin{izrek} \label{i:prointrel}
-	Naj bo $\vek{f}\colon P\times I\to\W$ zvezno tenzorsko polje. Potem velja
+	Naj bo $\vek{f}\colon P\times I\to\W$ integrabilno tenzorsko polje. Potem velja
 	\begin{equation*}
 		\int_{P_t}\vek{f}\,dv=\int_P\vek{f}J\,dV \qquad\textrm{in}\qquad
 		\int_P\vek{f}\,dV=\int_{P_t}\vek{f}J^{-1}\,dv.
@@ -384,11 +384,16 @@ naslednjo relacijo za masni gostoti:
 Seveda potem velja $\rho_R=\rho J$ tudi v prostorskem opisu na $\Omega$.
 
 \begin{posledica} \label{p:roji}
-	Za integrabilno tenzorsko polje $\vek{f}\colon B\to\W$ velja
+	Za vsak $P\subseteq B$ in vsako
+	integrabilno tenzorsko polje $\vek{f}\colon P\times I\to\W$ velja
 	\[
 		\int_{P}\vek{f}\rho_R\,dV=\int_{\chi_t(P)}\vek{f}\rho\,dv.
 	\]
 \end{posledica}
+
+\proof
+	Uporabimo relacijo ({e:rojror}) in izrek \ref{i:prointrel}.
+\endproof
 
 Še ena takojšnja posledica zakona o ohranitvi mase je ta, da se masa katerega koli
 dela delesa med gibanjem ne spreminja, torej velja

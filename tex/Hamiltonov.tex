@@ -31,7 +31,7 @@ $\mathcal{X}$ postane Banachov prostor, če na njem smiselno definiramo normo. M
 predpisa za normo je npr.
 \[
 	\|\cdot\|\colon\mathcal{X}\to[0,\infty),\quad
-	\|\chi\|=\max\big\{\|\chi(X,t)\|\: ;\ (X,t)\in B\times I\big\}.
+	\|\chi\|=\sup\big\{\|\chi(X,t)\|\: ;\ (X,t)\in B\times I\big\}.
 \]
 Pri tem je z normo, ki se pojavi znotraj množice, mišljena Evklidska norma krajevnega vektorja točke $\chi(X,t)$.
 
@@ -108,10 +108,10 @@ kjer je $\chi_0$ poljubno dopustno gibanje.
 			dobimo iz relacije (\ref{e:rojror})
 			\[ \rho^*=\frac{\rho_R}{J^*}. \]
 			Izračunajmo še variacijo:
-			\[
+			\begin{equation} \label{e:deltarho}
 				\delta\rho=\rho_R\delta\left(\frac{1}{J}\right)=
 				\rho_R\frac{-1}{J^2}(\delta J)=-\frac{\rho_R}{J}\frac{J\div\vek{\eta}}{J}=-\rho\div\vek{\eta}.
-			\]
+			\end{equation}
 	\end{enumerate}
 \end{primeri}
 
@@ -167,11 +167,11 @@ Notranji integral, ki je sedaj integral po času, integriramo per-partes:
 \]
 Prvi izraz na desni strani je enak 0, saj je $\vek{\eta}(\cdot,t_1)=\vek{\eta}(\cdot,t_2)=\vek{0}$.
 Rezultat vstavimo nazaj v (\ref{e:varInf}) in dobimo
-\begin{equation*}
+\begin{equation}\label{e:varkin}
 	\delta \mathcal{I} =
 	-\int_{t_1}^{t_2}\int_{B}\rho_R\vek{a}\cdot\vek{\eta}\, dV\, dt=
 	-\int_{t_1}^{t_2}\int_{B_t}\rho\vek{a}\cdot\vek{\eta}\, dv\, dt.
-\end{equation*}
+\end{equation}
 Pri tem druga enakost velja zaradi REF.
 
 Rezultanto vseh zunanjih sil, ki delujejo na telo med dopustnim gibanjem $\chi$, lahko zapišemo v obliki
@@ -236,10 +236,10 @@ za $(X,t)\in B\times I$.
 	\delta\psi=\grad\psi\cdot\vek{\eta}=\vek{t}_R\cdot\vek{\eta}.
 \]
 Variacijo izraza $W$ imamo sedaj na dlani:
-\[
+\begin{equation} \label{e:varvide}
 	\delta W = \int\limits_{B}\rho_R\vek{b}\cdot\vek{\eta}\, dV + \int\limits_{\partial_d B}\vek{t}_R\cdot\vek{\eta}\, dA=
 	\int\limits_{B_t}\rho\vek{b}\cdot\vek{\eta}\, dv + \int\limits_{\partial_d B_t}\vek{t}\cdot\vek{\eta}\, da.
-\]
+\end{equation}
 Tu smo z $\partial_d B_t$ označili $\chi_t(\partial_d B)$ in uporabili zvezo (\ref{e:ttr}).
 Variacija $\delta W$ je sicer splošno znana
 pod imenom \emph{virtualno delo} zunanjih sil (\ref{e:zunsil}). Kot bomo videli v nadaljevanju,
@@ -291,7 +291,7 @@ kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
 	\]
 \endproof
 
-\begin{posledica}
+\begin{posledica} \label{p:varham0}
 	Potreben pogoj, ki mu mora pravo gibanje zadoščati, je pozitivnost jacobijana
 	na celotnem definicijskem območju ter
 	\[ \delta H = \int_{t_0}^{t_1}(\delta T+\delta W+\delta U)\,dt = 0. \]
@@ -311,11 +311,12 @@ Da pa dobimo lokalne enačbe, potrebujemo nekaj izrekov, ki so podani v naslednj
 
 Skozi ta razdelek naj oznaka $\W$ stoji za
 končnorazsežen vektorski prostor nad poljem realnih števil, opremljen s skalarnim produktom.
-\emph{Nosilec} tenzorskega polja $\vek{w}\colon\E\times\R\to\W$ je množica
-\[ \mathrm{supp}\,\vek{w}=\overline{\{ (X,t)\in\E\times\R\; ;\ \vek{w}(X,t)\neq\vek{0} \}}. \]
+Naj bo $U$ podmnožica nekega metričnega prostora.
+\emph{Nosilec} preslikave $\vek{w}\colon U\to\W$ je množica
+\[ \mathrm{supp}\,\vek{w}=\overline{\{ x\in U\,;\ \vek{w}(x)\neq\vek{0} \}}. \]
 Črta nad množico pomeni zaprtje množice. Če je $\mathrm{supp}\,\vek{w}$ kompaktna množi\-ca, potem rečemo,
-da je $\vek{w}$ \emph{polje s kompaktnim nosilcem}. V nadaljevanju bomo pokazali, da obstajajo gladka polja
-s kompaktnim nosilcem, saj jih bomo potrebovali v izrekih, ki jih bomo navedli v tem razdelku.
+da je $\vek{w}$ \emph{preslikava s kompaktnim nosilcem}. V nadaljevanju bomo pokazali, da obstajajo gladka
+tenzorska polja s kompaktnim nosilcem, saj jih bomo potrebovali v izrekih, ki jih bomo navedli v tem razdelku.
 
 Prepričajmo se, da je funkcija
 \[
@@ -335,38 +336,40 @@ funkcije $g$ zvezni v točki 0.
 
 Oglejmo si sedaj funkcijo
 \[
-	h\colon\R\to\R,\quad h(x)=\left\{\begin{array}{ccl}
+	\beta\colon\R\to\R,\quad \beta(x)=\left\{\begin{array}{ccl}
 	\exp\left(-\dfrac{1}{1-x^2}\right)&;&|x|<1 \\ 0&;&|x|\geq 1 \end{array}\right. .
 \]
 Zapišemo jo lahko kot kompozitum funkcije $g$ ter funkcije $x\mapsto 1-x^2$. Obe funkciji sta
-gladki povsod in tak je zato je tudi njun kompozitum $h$. Nosilec funkcije $h$ je
-$[-1,1]$, v notranjosti nosilca pa je vrednost funkcije $h$ pozitivna.
+gladki povsod in tak je zato je tudi njun kompozitum $\beta$. Nosilec funkcije $\beta$ je
+$[-1,1]$, v notranjosti nosilca pa je vrednost funkcije $\beta$ pozitivna.
 
-Definirajmo skalarno polje $u\colon\E\times\R\to\R$ s predpisom
+Definirajmo skalarno polje $\gamma\colon\E_R\to\R$ s predpisom
 \[
-	u(X,t)=\left\{\begin{array}{ccl}
-	\exp\left(-\dfrac{1}{1-\|(X,t)\|^2}\right)&;&\|(X,t)\|<1 \\ 0&;&\|(X,t)\|\geq 1 \end{array}\right.
+	\gamma(X)=\left\{\begin{array}{ccl}
+	\exp\left(-\dfrac{1}{1-\|X\|^2}\right)&;&\|X\|<1 \\ 0&;&\|X\|\geq 1 \end{array}\right.
 \]
-Zapišemo ga lahko kot kompozitum $(X,t)\mapsto\|(X,t)\|\mapsto h(\|(X,t)\|)$, zato je
-$u$ gladko s kompaktnim nosilcem
-\[ \textrm{supp}\, u=\overline{\big\{(X,t)\in\E\times\R\; ;\ \|(X,t)\|<1 \big\}}. \]
-Naj bo $(X_0,t_0)\in\E\times\R$, $\alpha > 0$ in označimo z
-\begin{equation}\label{e:mnU}
-	U_{\alpha}=\big\{(X,t)\in\E\times\R\; ;\ \|(X,t)-(X_0,t_0)\|<\alpha \big\}
-\end{equation}
-$\alpha$-okolico točke $(X_0,t_0)$. Skalarno polje
-\begin{equation}\label{e:funu}
-	u_{\alpha}(X,t)=u\left(\frac{(X,t)-(X_0,t_0)}{\alpha}\right)
-\end{equation}
-je gladko s kompaktnim nosilcem $\overline{U_{\alpha}}$.
+Zapišemo ga lahko kot kompozitum $X\mapsto\|X\|\mapsto \beta(\|X\|)$, zato je polje
+$\gamma$ gladko s kompaktnim nosilcem
+\[ \textrm{supp}\,\gamma=\overline{\big\{X\in\E_R\,;\ \|X\|<1 \big\}}=\overline{K}(0,1). \]
 
-Iz skalarnega polja $u_{\alpha}$ lahko s pomočjo neke fiksne baze $\{\vek{b}_j\}_{j=1}^{n}$
-prostora $\W$ tvorimo npr.~tenzorsko polje $\vek{w}=u_{\alpha}\vek{b}_k$ za neki $1\leq k\leq n$
-in $\vek{w}$ ima kompaktni nosilec $\overline{U_{\alpha}}$.
+Naj bo $\{\vek{b}_j\}_{j=1}^{n}$ baza prostora $\W$. Za neki $1\leq k\leq n$, neki $\alpha>0$ in
+za neka $X_0\in\E_R$ ter $t_0\in\R$ definirajmo tenzorsko polje
+\begin{equation} \label{e:funiw}
+	\vek{w}\colon\E_R\times\R\to\W,\qquad\vek{w}(X,t)=\beta\left(\frac{t-t_0}{\alpha}\right)
+	\gamma\left(\frac{X-X_0}{\alpha}\right)\vek{b}_k.
+\end{equation}
+Hitro se lahko prepričamo, da je
+\begin{equation} \label{e:supaw}
+	\mathrm{supp}\,\vek{w}=\overline{K}(X_0,\alpha)\times[t_0-\alpha,t_0+\alpha],
+\end{equation}
+kjer je $\overline{K}(X_0,\alpha)=\{X\in\E_R\,;\ \|X-X_0\|\leq\alpha\}$ zaprta krogla
+s središčem v $X_0$ in radijem $\alpha$. Tako definirano polje $\vek{w}$ je
+tudi gladko, saj je produkt gladkih polj. V notranjosti nosilca je njegova 
+edina neničelna (t.j.~$k$-ta) komponenta glede na bazo $\{\vek{b}_j\}_{j=1}^{n}$ pozitivna.
 
-Omenimo še to pomembno dejstvo, da za vsako gladko tenzorska polje $\vek{w}\colon\E\times\R\to\W$ s kompaktnim
+Omenimo še to pomembno dejstvo, da za vsako zvezno preslikavo $\vek{w}$ s kompaktnim
 nosilcem velja, da je $\vek{w}={0}$ na robu nosilca. Komplement nosilca je namreč odprta množica, na kateri
-je $\vek{w}={0}$, in ker je $\vek{w}$ zvezno, je po zvezni razširitvi $\vek{w}={0}$ tudi na robu komplementa,
+je $\vek{w}={0}$, in ker je $\vek{w}$ zvezna, je po zvezni razširitvi $\vek{w}={0}$ tudi na robu komplementa,
 ki je enak robu nosilca.
 
 \begin{lema}\label{l:1}
@@ -374,8 +377,11 @@ ki je enak robu nosilca.
 	\begin{equation}\label{e:lem1}
 		\int_{t_1}^{t_2}\int_B\vek{f}\cdot\vek{w}\,dV\,dt = 0
 	\end{equation}
-	za vsako gladko polje $\vek{w}\colon\E_R\times\R\to\W$ s kompaktnim nosilcem
-	\[ \mathrm{supp}\, \vek{w}\subseteq B\times[t_1,t_2], \]
+	za vsako gladko polje $\vek{w}\colon B\times[t_1,t_2]\to\W$, za katerega velja
+	\[
+		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial B\times[t_1,t_2],
+	\]
 	potem je $\vek{f}=\vek{0}$ na $B\times [t_1,t_2]$.
 \end{lema}
 
@@ -383,17 +389,21 @@ ki je enak robu nosilca.
 	Glede na fiksno bazo $\{\vek{b}_j\}_{j=1}^n$ prostora $\W$ lahko $\vek{f}$
 	zapišemo v komponentni obliki kot $\vek{f}=f_j\vek{b}_j$.
 	Recimo, da obstaja točka $(X_0,t_0)$ v notranjosti območja $B\times[t_1,t_2]$, da je $f_{k}(X_0,t_0)\neq 0$
-	za neki $1\leq k\leq n$. Potem zaradi zveznosti polja $\vek{f}$ za neki dovolj majhen
-	$\alpha > 0$ obstaja okolica $U_{\alpha}$ točke $(X_0,t_0)$, definirana kot v (\ref{e:mnU}), na kateri je $f_k$
+	za neki $1\leq k\leq n$. Potem zaradi zveznosti polja $\vek{f}$
+	obstaja okolica $U$ točke $(X_0,t_0)$, na kateri je $f_k$
 	vseskozi različen od 0 in enakega predznaka, ter
-	je $U_{\alpha}$ še v celoti vsebovana v notranjosti območja $B\times[t_1,t_2]$.
+	je $U$ še v celoti vsebovana v notranjosti območja $B\times[t_1,t_2]$.
 	
-	Naj bo polje
-	$\vek{w}$ definirano kot polje $u_{\alpha}\vek{b}_k$, če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-u_{\alpha}\vek{b}_k$,
-	če je $f_{k}(X_0,t_0) < 0$, kjer je $u_{\alpha}$ definirano kot v (\ref{e:funu}). Tak $\vek{w}$ ima
-	kompaktni nosilec $\overline{U_{\alpha}}$, vsebovan v območju $B\times[t_1,t_2]$.
-	Skalarni produkt $\vek{f}\cdot\vek{w}$ je pozitiven na množici $U_{\alpha}$ in je 0 drugje, zato je
-	\[ \int_{t_1}^{t_2}\int_B \vek{f}\cdot \vek{w}\,dV\,dt > 0, \]
+	Za dovolj majhen $\alpha>0$ lahko definiramo polje
+	$\vek{w}$ kot v (\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$ v (\ref{e:funiw}),
+	če je $f_{k}(X_0,t_0) < 0$, tako da je množica (\ref{e:supaw}) v celoti vsebovana v okolici $U$.
+	Skrčitev polja $\vek{w}$ na domeno $B\times[t_0,t_1]$ tako ustreza vsem pogojem iz leme.
+	Skalarni produkt $\vek{f}\cdot\vek{w}$ je pozitiven na notranjosti množice
+	$\mathrm{supp}\,\vek{w}$ in je 0 drugje, zato je
+	\[
+		\int_{t_1}^{t_2}\int_B \vek{f}\cdot \vek{w}\,dV\,dt=
+		\int_{t_0-\alpha}^{t_0+\alpha}\int_{\overline{K}(X_0,\alpha)} \vek{f}\cdot \vek{w}\,dV\,dt> 0,
+	\]
 	kar nasprotuje enačbi (\ref{e:lem1}). Torej mora veljati $f_k=0$ za vsak $k$,
 	tj.~$\vek{f}=\vek{0}$ povsod v notranjosti območja $B\times [t_1,t_2]$,
 	zaradi zveznosti pa tudi na zaprtju.
@@ -408,53 +418,58 @@ ki je enak robu nosilca.
 	\begin{equation}\label{e:lem2}
 		\int_{t_1}^{t_2}\int_{\partial_d B} \vek{f}\cdot \vek{w}\,dS\,dt = 0
 	\end{equation}
-	za vsako gladko polje $\vek{w}\colon\E_R\times\R\to\W$, za katero je
+	za vsako gladko polje $\vek{w}\colon B\times[t_1,t_2]\to\W$, za katero je
 	\[
-		\vek{w}=\vek{0}\ \textrm{na}\ \partial_g B\times \R\quad\textrm{in}\quad
-		\vek{w}(X,t)=\vek{0}\ \textrm{za}\ t\in(t_1,t_2)^{\mathsf C},
+		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial_g B\times[t_1,t_2],
 	\]
 	potem je $\vek{f}=\vek{0}$ na $V\times [t_1,t_2]$.
 \end{lema}
 
 \proof
 	Podobno, kot v prejšnjem dokazu, zapišemo $\vek{f}=f_j\vek{b}_j$ in predpostavimo
-	$f_{k}(X_0,t_0)\neq 0$ za neki $1\leq k\leq n$, $t_0\in (t_1,t_2)$ in $X_0\in V$.
-	Naj bo $U_{\alpha}$ okolica točke $(X_0,t_0)$, definirana kot v (\ref{e:mnU}),
-	pri čemer je $\alpha>0$ dovolj majhen, da velja:
-	\begin{itemize}
-		\item $U_{\alpha}\,\cap\, \partial_g B\times [t_1,t_2]=\emptyset$,
-		$U_{\alpha}\subset \E_R\times [t_1,t_2]$ in
-		\item $f_k$ je različen od 0 in vseskozi enakega predznaka na
-		$U_{\alpha}\cap V\times [t_1,t_2]$.
-	\end{itemize}
+	$f_{k}(X_0,t_0)\neq 0$ za neke $1\leq k\leq n$, $t_0\in (t_1,t_2)$ in $X_0\in V$.
 	
-	Definirajmo polje $\vek{w}$ kot $u_{\alpha}\vek{b}_k$, če je $f_{k}(X_0,t_0) > 0$, oz.~kot
-	$-u_{\alpha}\vek{b}_k$ sicer, kjer je $u_{\alpha}$ definirano kot v (\ref{e:funu}).
-	Polje $\vek{w}$ je gladko in ustreza pogoju iz leme.
-	Skalarni produkt $\vek{f}\cdot\vek{w}$ je pozitiven na množici $U_{\alpha}\cap V\times [t_1,t_2]$
-	in je 0 drugje na $V\times [t_1,t_2]$, zato je\footnote{Ploščina množice $\partial_dB\setminus V$ je 0.}
+	Ker točka $X_0$ ni na robu in je regularna, obstaja odprta okolica $U\subset\E_R$ točke
+	$X_0$, ki ne seka ploskve $\partial_g B$ in so vse točke iz množice $U\cap\partial_d B$
+	regularne ter niso na robu.
+	Za dovolj majhen $\alpha>0$ je $\overline{K}(X_0,\alpha)$ vsebovana v $U$ in
+	hkrati je $f_k$ zaradi zveznosti $\vek{f}$ ves čas različna od 0 in enakega predznaka
+	na območju $(K(X_0,\alpha)\cap\partial_dB)\times(t_1,t_2)$.
+	
+	Definirajmo polje $\vek{w}$ kot v
+	(\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$ v (\ref{e:funiw}),
+	če je $f_{k}(X_0,t_0) < 0$. Skrčitev tako definiranega polja $\vek{w}$ na območje
+	$B\times[t_1,t_2]$ ustreza predpostavkam iz leme.
+	Skalarni produkt $\vek{f}\cdot\vek{w}$ je pozitiven na
+	$(K(X_0,\alpha)\cap\partial_dB)\times(t_1,t_2)$ in je 0 drugje na $V\times[t_1,t_2]$,
+	zato je\footnote{Ploščina množice $\partial_dB\setminus V$ je 0.}
 	\[
-		\int_{t_1}^{t_2}\int_{\partial_d B} \vek{f}\cdot \vek{w}\,dS\,dt > 0,
+		\int_{t_1}^{t_2}\int_{\partial_d B} \vek{f}\cdot \vek{w}\,dS\,dt=
+		\int_{t_0-\alpha}^{t_0+\alpha}\int_{K(X_0,\alpha)\cap\partial_dB} \vek{f}\cdot \vek{w}\,dS\,dt> 0,
 	\]
-	kar nasprotuje enačbi (\ref{e:lem2}). Torej mora veljati $\vek{f}=\vek{0}$ za vse regularne točke območja
-	$\partial_d B\times [t_1,t_2]$.
+	kar nasprotuje enačbi (\ref{e:lem2}). Torej mora veljati $\vek{f}=\vek{0}$ na
+	$V\times [t_1,t_2]$.
 \endproof
 
-\begin{lema}
+\begin{lema} \label{lema3}
 	Naj bo $\chi\colon B\times[t_1,t_2]\to\E$ gibanje razreda $C^1$ s pozitivnim jacobijanom $J$ in
 	$\vek{f}\colon B\times[t_1,t_2]\to\W$ zvezno tenzorsko polje. Če velja
 	\begin{equation} \label{e:lem3}
 		\int_{t_1}^{t_2}\int_{\chi_t(B)}\vek{f}\cdot \vek{w} \,dv\,dt=0
 	\end{equation}
-	za vsako gladko polje $\vek{w}\colon\E_R\times\R\to\W$ s kompaktnim nosilcem
-	\[ \mathrm{supp}\,\vek{w}\subseteq B\times[t_1,t_2], \]
+	za vsako gladko polje $\vek{w}\colon B\times[t_1,t_2]\to\W$, za katerega velja
+	\[
+		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial B\times[t_1,t_2],
+	\]
 	potem je $\vek{f}=\vek{0}$ na $B\times[t_1,t_2]$ oz.~na $\Omega$.
 \end{lema}
 V enačbi (\ref{e:lem3}) nastopata polji $\vek{f}$ in $\vek{w}$ v prostorskem opisu.
 
 \proof
 	Enačba (\ref{e:lem3}) je po izreku \ref{i:prointrel} ekvivalentna enačbi
-	\[ \int_{t_0}^{t_1}\int_{B}J\vek{f}\cdot \vek{w} \,dV\,dt=0. \]
+	\[ \int_{t_1}^{t_2}\int_{B}J\vek{f}\cdot \vek{w} \,dV\,dt=0. \]
 	
 	Ker je polje $J\vek{f}$ zvezno na $B\times[t_1,t_2]$, je
 	po lemi (\ref{l:1}) $J\vek{f}=\vek{0}$
@@ -462,31 +477,31 @@ V enačbi (\ref{e:lem3}) nastopata polji $\vek{f}$ in $\vek{w}$ v prostorskem op
 	v prostorskem opisu pa je potem tudi $\vek{f}=\vek{0}$ na $\Omega$.
 \endproof
 
-\begin{lema}
+\begin{lema} \label{lema4}
 	Naj rob $\partial B$ sestoji iz komplementarnih ploskev $\partial_g B$ in $\partial_d B$.
 	Naj bo $\chi\colon B\times[t_1,t_2]\to\E$ gibanje razreda $C^1$ s pozitivnim jacobijanom $J$ in
-	$f\colon\partial_d B\times[t_1,t_2]\to\R$ skalarno polje, zvezno na podobmočju $V$, ki je definirano
-	enako, kot v lemi \ref{l:2}.
+	$f\colon\partial_d B\times[t_1,t_2]\to\R$ skalarno polje, zvezno na podobmočju $V\times[t_1,t_2]$,
+	ki je definirano enako, kot v lemi \ref{l:2}.
 	Če velja
 	\begin{equation}\label{e:lem4}
 		\int_{t_1}^{t_2}\int_{\chi_t(\partial_d B)}f\vek{n}\cdot\vek{w}\,ds\,dt=0
 	\end{equation}
-	za vsako gladko vektorsko polje $\vek{w}\colon\E_R\times\R\to\V$, za katero je
+	za vsako gladko vektorsko polje $\vek{w}\colon B\times[t_1,t_2]\to\V$, za katero je
 	\[
-		\vek{w}=\vek{0}\ \textrm{na}\ \partial_g B\times \R\quad\textrm{in}\quad
-		\vek{w}(X,t)=\vek{0}\ \textrm{za}\ t\in(t_1,t_2)^{\mathsf C},
+		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial_g B\times[t_1,t_2],
 	\]
-	potem je $f=0$ na $V\times[t_1,t_2]$ oz.~na $\{(x,t)\;;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}$.
+	potem je $f=0$ na $V\times[t_1,t_2]$ oz.~na $\{(x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}$.
 \end{lema}
 
 \proof
 	Enačba (\ref{e:lem4}) je po izreku \ref{i:suittra} ekvivalentna enačbi
-	\[ \int_{t_0}^{t_1}\int_{\partial_d B}fJ\ten{F}^{-T}\vek{N}\cdot\vek{w}\,dS\,dt=0. \]
+	\[ \int_{t_1}^{t_2}\int_{\partial_d B}fJ\ten{F}^{-T}\vek{N}\cdot\vek{w}\,dS\,dt=0. \]
 	Polje $fJ\ten{F}^{-T}\vek{N}$ je zvezno na $V\times[t_1,t_2]$,
 	zato je po lemi (\ref{l:2}) $fJ\ten{F}^{-T}\vek{N}=\vek{0}$ na $V\times[t_1,t_2]$.
 	Ker so točke iz $V$ regularne, je $\vek{N}\neq \vek{0}$, hkrati je po predpostavki $J>0$,
 	zato je tudi $\ten{F}^{-T}$ nesingularno. Od tod sledi, da je $f=0$ na $V\times[t_1,t_2]$,
-	v prostorskem opisu pa $f=0$ na $\{(x,t)\;;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}$.
+	v prostorskem opisu pa $f=0$ na $\{(x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}$.
 \endproof
 
 
@@ -502,44 +517,66 @@ potem le še za uporabo že vsega izpeljanega.}
 
 Idealni fluid je model tekočine, v katerem zanemarimo učinke viskoznosti. Če je tekočina
 stisljiva, potem je njena notranja energija
-\[ U=\int_{B}\rho_R e(\rho)\,dV=\int_{B_t}\rho e(\rho)\,dv, \]
-kjer je $e(\rho)$ skalarna funkcija, ki je od $(X,t)\in B\times[t_0,t_1]$ oz. od
-$(x,t)\in\chi(B,[t_0,t_1])$ odvisna le preko funkcije masne gostote $\rho$. $e(\rho)$
-se imenuje \emph{gostota notranje energije} in ima fizikalno enoto $m^2s^{-2}$.
-Predpostavili bomo, da ima $e\colon R_+\to\R$ znano funkcijsko obliko in da je
-vsaj dvakrat zvezno odvedljiva.
+\[ U=\int_{B}\rho_R e(\rho)\,dV=\int_{\chi_t(B)}\rho e(\rho)\,dv, \]
+kjer je $e\colon[0,\infty)\to\R$ funkcija razreda $C^2$, imenovana
+\emph{gostota notranje energije} in ima fizikalno enoto $m^2s^{-2}$.
+Predpostavili bomo, da ima $e$ znano funkcijsko obliko.
 
-Variacija notranje energije je
+Izračunajmo variacijo notranje energije:
 \begin{align*} 
 	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
 	\int_{B}\rho_R e(\rho^*)\,dV }{\varepsilon=0} =
 	\at{\int_{B}\rho_R e'(\rho^*)\frac{d\rho^*}{d\varepsilon}\,dV }{\varepsilon=0} = \\
-	&= -\int_{B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV.
+	&= -\int_{B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV
+	= -\int_{\chi_t(B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv
 \end{align*}
-Z upoštevanjem relacij REF, REF, nato pa še REF, dobimo
-\begin{equation}\label{e:varUbasic}
-	\delta U = -\int_{B}\rho^2e'(\rho)\Div\vek{\eta}\,dV = -\int_{B_t}\rho^2 e'(\rho)\div\vek{\eta}\,dv
+Pri tem smo smeli zamenjati vrstni red odvajanja in integriranja, ker se referenčna
+konfiguracija $B$ ne spreminja, nato pa smo uporabili verižno pravilo, enačbo
+(\ref{e:deltarho}) in posledico \ref{p:roji}.
+Če sedaj na dobljenem rezultatu uporabimo relacijo 3 iz trditve \ref{t:divprop} in
+nato divergenčni izrek \ref{i:divtheo}$_3$, dobimo
+\begin{equation} \label{e:varpot}
+	\delta U=\int_{\chi_t(B)}\grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dv
+	-\int_{\chi_t(\partial B)}\rho^2 e'(\rho)\vek{n}\cdot\vek{\eta}\,ds.
 \end{equation}
-Če sedaj na vsakem od teh izrazov posebej uporabimo relacijo REF in nato divergenčni izrek REF,
-lahko (\ref{e:varUbasic}) prepišemo v obliki
-\begin{align*}
-	\delta U &= \int_{B}\Grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dV
-	-\int_{\partial B}\rho^2 e'(\rho)\vek{N}\cdot\vek{\eta}\,dS \\
-	&= \int_{B_t}\grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dv
-	-\int_{\partial B_t}\rho^2 e'(\rho)\vek{n}\cdot\vek{\eta}\,ds
-\end{align*}
 
-Predpostavimo, da imamo podan \emph{zunanji tlak}, t.j. skalarno polje $p\colon\partial B\times[t_0,t_1]$,
-da je $\vek{t}=-p\vek{n}$. Potem je po (\ref{e:ttr}) in REF
-\[ \vek{t}_R=-pJ\ten{F}^{-T}\vek{N}. \]
-Geometrijskih robnih pogojev ni.
+Geometrijskih robnih pogojev ni, zato imamo zgolj dinamične robne pogoje.
+Naj bo $V\subseteq\partial B$ množica regularnih točk ploskve $\partial B$ in
+predpostavimo, da imamo podan \emph{zunanji tlak}, t.j.~zvezno skalarno polje
+$p\colon \E\times[t_1,t_2]\to\R$, da je $\vek{t}=-p\vek{n}$ na
+$\{(x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2]\}$.
 
-\begin{align*}
-	\int_{t_0}^{t_1}\bigg( &\int_{B}\Big(-\rho\vek{a}-\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\Big)\cdot\vek{\eta}\,dv \\
-	&+\int_{\partial B}\big(\rho^2 e'(\rho)-p\big)\vek{n}\cdot\vek{\eta}\,ds\bigg)\,dt=0
-\end{align*}
-
-\begin{align*}
-	\int_{t_0}^{t_1}\bigg( &\int_{B}\Big(-\rho_R\vek{a}-\Grad\big(\rho^2 e'(\rho)\big)+\rho_R\vek{b}\Big)\cdot\vek{\eta}\,dV \\
-	&+\int_{\partial B}\big(\rho^2 e'(\rho)\ten{I}-pJ\ten{F}^{-T}\big)\vek{N}\cdot\vek{\eta}\,dS\bigg)\,dt=0
-\end{align*}
+Če sedaj upoštevamo rezultate (\ref{e:varkin}), (\ref{e:varvide}) in (\ref{e:varpot}),
+mora po posledici \ref{p:varham0} pravo gibanje zadoščati enačbi
+\begin{multline} \label{e:elflupog}
+	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(B)}\Big(-\rho\vek{a}-
+	\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\Big)\cdot\vek{\eta}\,dv+ \\
+	+\int_{\chi_t(\partial B)}\big(\rho^2 e'(\rho)-p\big)\vek{n}\cdot\vek{\eta}\,ds\bigg)\,dt=0
+\end{multline}
+za vsako variacijo gibanja $\vek{\eta}\in\mathcal{T}$. Med drugim mora to veljati za
+vsako variacijo gibanja iz množice
+\[
+	\big\{ \vek{\eta}\in C^{\infty}(B\times[t_1,t_2],\V)\,;\ \vek{\eta}(\cdot,t_1)=
+	\vek{\eta}(\cdot,t_2)=\vek{0},\ \vek{\eta}=\vek{0}\ \textrm{na}\ \partial B\times[t_1,t_2]
+	\big\}\subset\mathcal{T};
+\]
+pri teh variacijah je vrednost drugega integrala enaka 0, na preostali enačbi
+pa lahko potem uporabimo lemo \ref{lema3} in dobimo
+\begin{equation*}
+	\rho\vek{a}=\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\quad
+	\textrm{na}\ \Omega.
+\end{equation*}
+Če ta rezultat sedaj upoštevamo v (\ref{e:elflupog}), dobimo, da mora
+za vsako variacijo gibanja $\vek{\eta}$ veljati
+\[
+	\int_{t_1}^{t_2}\int_{\chi_t(\partial B)}\big(\rho^2 e'(\rho)-p\big)\vek{n}\cdot\vek{\eta}\,ds\,dt=0,
+\]
+med drugim tudi za vsako variacijo iz množice
+\[
+	\big\{ \vek{\eta}\in C^{\infty}(B\times[t_1,t_2],\V)\,;\ \vek{\eta}(\cdot,t_1)=
+	\vek{\eta}(\cdot,t_2)=\vek{0} \big\}\subset\mathcal{T},
+\]
+zato lahko uporabimo lemo \ref{lema4} (v tem primeru je $\partial_gB=\emptyset$) in dobimo še pogoj
+\[
+	\rho^2 e'(\rho)=p \quad\textrm{na}\ \{ (x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}.
+\]
