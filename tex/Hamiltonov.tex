@@ -91,7 +91,9 @@ kjer je $\chi_0$ poljubno dopustno gibanje.
 			$F(\chi)=\Grad{\chi}=\ten{F}$, potem je
 			\[ \ten{F}^*=\Grad(\chi+\varepsilon\vek{\eta})=\ten{F}+\varepsilon\Grad\vek{\eta}, \]
 			variacija pa je
-			\[ \delta\ten{F}=\Grad\vek{\eta}. \]
+			\begin{equation} \label{e:deltaF}
+				\delta\ten{F}=\Grad\vek{\eta}.
+			\end{equation}
 		\item
 			Če je $J$ polje jacobijana dopustnega gibanja $\chi$, potem je
 			\[ J^*=\det(\Grad(\chi+\varepsilon\vek{\eta}))=\det(\ten{F}^*). \]
@@ -280,7 +282,7 @@ kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
 \end{trditev}
 
 \proof
-	Recimo, da $F$ zavzame lokalni minimum pri $\chi\in U$ in naj bo $\eta\in\mathcal{T}$ poljubna.
+	Recimo, da $F$ zavzame lokalni minimum pri $\chi\in U$ in naj bo $\vek{\eta}\in\mathcal{T}$ poljubna.
 	Definirajmo funkcijo $\varphi\colon\R\to\R$ s predpisom
 	\[ \varphi(\varepsilon)=F(\chi+\varepsilon\vek{\eta}). \]
 	$\varphi$ ima lokalni minimum pri $\varepsilon=0$, zato velja $\varphi'(0)=0.$
@@ -512,6 +514,7 @@ V enačbi (\ref{e:lem3}) nastopata polji $\vek{f}$ in $\vek{w}$ v prostorskem op
 manjka še primer za elastični solid. To bom še dopisal brez težav, ker tu gre
 potem le še za uporabo že vsega izpeljanega.}
 
+
 \subsection{Elastični fluid}
 
 
@@ -526,7 +529,7 @@ Izračunajmo variacijo notranje energije:
 \begin{align*} 
 	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
 	\int_{B}\rho_R e(\rho^*)\,dV }{\varepsilon=0} =
-	\at{\int_{B}\rho_R e'(\rho^*)\frac{d\rho^*}{d\varepsilon}\,dV }{\varepsilon=0} = \\
+	\at{\int_{B}\rho_R e'(\rho^*)\frac{d\rho^*}{d\varepsilon}\,dV }{\varepsilon=0} \\
 	&= -\int_{B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV
 	= -\int_{\chi_t(B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv
 \end{align*}
@@ -580,3 +583,92 @@ zato lahko uporabimo lemo \ref{lema4} (v tem primeru je $\partial_gB=\emptyset$)
 \[
 	\rho^2 e'(\rho)=p \quad\textrm{na}\ \{ (x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}.
 \]
+
+
+\subsection{Elastična trdnina}
+
+
+\emph{Elastična trdnina} je model telesa iz trdnega materiala, v katerem se predpostavi,
+da je notranja energija telesa podana kot
+\[ U=\int_{B}\rho_R e(\ten{F})\,dV=\int_{\chi_t(B)}\rho e(\ten{F})\,dv, \]
+kjer je $e\colon\L(\V)\to\R$ \emph{gostota notranje energije}, vrednost katere je odvisna od
+deformacijskega gradienta $\ten{F}$. Za funkcijo $e$ bomo predpostavili, da je znana in da je
+razreda $C^1$ na svoji domeni.
+
+Pri danem $\ten{F}$ je $De(\ten{F})$ linearen funkcional
+na vektorskem prostoru $\L(\V)$ s svojim skalarnim produktom, zato po Riezsovem izreku
+o reprezentaciji linearnih funkcionalov pripada funkcionalu $De(\ten{F})$ natanko
+določen tenzor $\tilde{\ten{S}}\in\L(\V)$, da za vsak $\ten{A}\in\L(\V)$ velja
+\[ De(\ten{F})(\ten{A})=\tilde{\ten{S}}\cdot\ten{A}=\tr(\tilde{\ten{S}}^{T}\ten{A}). \]
+Zato bomo v bodoče kar enačili odvod $De(\ten{F})$ s pripadajočim tenzorjem $\tilde{\ten{S}}$.
+Definirajmo tenzorsko polje
+\[
+	\ten{S}\colon B\times I\to\L(\V),\qquad
+	\ten{S}(X,t)=\rho_R(X)De(\ten{F}(X,t)).%\quad\textrm{oz.~krajše}\quad
+	%\ten{S}=\rho_RDe(\ten{F}).
+\]
+$\ten{S}(X,t)$ se imenuje \emph{prvi Piola-Kirchoffov napetostni tenzor}.
+
+Izračunajmo variacijo notranje energije:
+\begin{align*} 
+	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
+	\int_{B}\rho_R e(\ten{F}^*)\,dV }{\varepsilon=0} =
+	\at{\int_{B}\rho_R De(\ten{F}^*)\cdot\frac{d\ten{F}^*}{d\varepsilon}\,dV }{\varepsilon=0} \\
+	&= \int_{B}\rho_R De(\ten{F})\cdot\Grad\vek{\eta}\,dV
+	=\int_{B}\ten{S}\cdot\Grad\vek{\eta}\,dV.
+	%= -\int_{\chi_t(B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv
+\end{align*}
+Pri tem smo uporabili enakost (\ref{e:deltaF}). Če sedaj upoštevamo zvezi (\ref{e:gz}) in
+(\ref{e:skatra}) ter izrek \ref{i:prointrel}, dobimo
+\begin{align*} 
+	\delta U = \int_{B}J\frac{1}{J}\ten{S}\ten{F}^{T}\cdot\grad\vek{\eta}\,dV =
+	\int_{\chi_t(B)}\ten{T}\cdot\grad\vek{\eta}\,dv,
+\end{align*}
+kjer se vrednost tenzorskega polja
+\[
+	\ten{T}=\frac{1}{J}\ten{S}\ten{F}^{T}
+\]
+imenuje \emph{Cauchyjev napetostni tenzor}. Obe dobljeni enačbi za $\delta U$ lahko
+s pomočjo izrekov \ref{e:divSu} in \ref{i:divtheo} zapišemo v obliki
+\begin{align}
+	\delta U &= \int_{\partial_dB}\ten{S}\vek{N}\cdot\vek{\eta}\,dS-
+	\int_B\Div\ten{S}\cdot\vek{\eta}\,dV \label{e:vapoesr} \\
+	&= \int_{\chi_t(\partial_dB)}\ten{T}\vek{n}\cdot\vek{\eta}\,dS-
+	\int_{\chi_t(B)}\div\ten{T}\cdot\vek{\eta}\,dV. \label{e:vapoesp}
+\end{align}
+Pri tem smo upoštevali, da sta ploskovna integrala po ploskvah $\partial_gB$ in
+$\chi_t(\partial_gB)$ enaka 0, saj je tam zaradi geometrijskega robnega pogoja $\vek{\eta}=\vek{0}$.
+
+Po posledici \ref{p:varham0} mora pravo gibanje zadoščati enačbama
+\begin{multline} \label{e:globoref}
+	\int_{t_1}^{t_2}\bigg( \int_{B}(-\rho_R\vek{a}+
+	\Div\ten{S}+\rho_R\vek{b})\cdot\vek{\eta}\,dV+ \\
+	+\int_{\partial_d B}(\vek{t}_R-\ten{S}\vek{N})\cdot\vek{\eta}\,dS\bigg)\,dt=0
+\end{multline}
+in
+\begin{multline} \label{e:globoprost}
+	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(B)}(-\rho\vek{a}+
+	\div\ten{T}+\rho\vek{b})\cdot\vek{\eta}\,dv+ \\
+	+\int_{\chi_t(\partial_d B)}(\vek{t}-\ten{T}\vek{n})\cdot\vek{\eta}\,ds\bigg)\,dt=0
+\end{multline}
+za vsa dopustna gibanja $\vek{\eta}\in\mathcal{T}$. Pri tem smo zopet upoštevali
+že prej izpeljana rezultata (\ref{e:varkin}) in (\ref{e:varvide}) ter
+variaciji notranje energije (\ref{e:vapoesr}) oz.~(\ref{e:vapoesp}).
+Od tu dalje postopamo na enak način, kot smo pri primeru za elastični fluid.
+Iz enačbe (\ref{e:globoref}) dobimo z uporabo leme \ref{l:1}
+\begin{equation*}
+	\rho_R\vek{a}=\Div\ten{S}+\rho_R\vek{b}\quad\textrm{na}\ B\times[t_1,t_2],
+\end{equation*}
+iz enačbe (\ref{e:globoprost}) pa z uporabo leme \ref{lema3} dobimo
+\begin{equation*}
+	\rho\vek{a}=\div\ten{T}+\rho\vek{b}\quad\textrm{na}\ \Omega.
+\end{equation*}
+Če dobljena rezultata upoštevamo v (\ref{e:globoref}) oz.~v (\ref{e:globoprost}) in
+nato uporabimo lemo \ref{l:2} oz.~lemo \ref{lema4}, dobimo še
+\begin{equation*}
+	\ten{S}\vek{N}=\vek{t}_R\quad\textrm{na}\ \partial_dB\times[t_1,t_2]
+\end{equation*}
+oziroma
+\begin{equation*}
+	\ten{T}\vek{n}=\vek{t}\quad\textrm{na}\ \{(x,t)\,;\ x\in\chi_t(\partial_dB),\ t\in[t_1,t_2] \}.
+\end{equation*}
