@@ -13,14 +13,14 @@ bomo uporabljali v nadaljevanju.
 
 \begin{definicija} \label{def:odvod}
 	Naj bosta $(V,\|\cdot\|_V)$, $(W,\|\cdot\|_W)$ Banachova prostora, $U\subseteq V$ odprta
-	množica in $F\colon U\to W$ preslikava. $F$ je \emph{diferenciabilna} oz.~\emph{odvedljiva}
+	množica in $F\colon U\to W$ preslikava. $F$ je \emph{odvedljiva}
 	(v smislu Frécheta) v točki $u\in U$, če obstaja omejena (ekvivalentno: zvezna) linearna preslikava
 	\[ DF(u)\colon V\to W, \]
 	da za vsak $v\in V$ velja
 	\begin{equation} \label{e:frede}
 		\lim_{v\to 0}\frac{\|F(u+v)-F(u)-DF(u)(v)\|_W}{\|v\|_V}=0.
 	\end{equation}
-	$F$ je \emph{diferenciabilna na $U$}, če je diferenciabilna v vsaki točki $u\in U$.
+	$F$ je \emph{odvedljiva na $U$}, če je odvedljiva v vsaki točki $u\in U$.
 	$DF(u)$ imenujemo \emph{(krepki ali Fréchetov) odvod} preslikave $F$.
 	
 	$F$ \emph{je razreda $C^1$} na $U$ (pišemo tudi: $F\in C^1(U,W)$ ali pa $F\in C^1(U)$,
@@ -31,7 +31,7 @@ bomo uporabljali v nadaljevanju.
 	če je $F\in C^r(U,W)$ za vsak $r\in\mathbb{N}$.
 \end{definicija}
 
-Če odvod odbstaja, je enoličen. Diferenciabilna preslikava je hkrati tudi zvezna.
+Če odvod odbstaja, je enoličen. Odvedljiva preslikava je hkrati tudi zvezna.
 Linearna preslikava med končnorazsežnima Banachovima prostoroma je vedno omejena
 oz.~zvezna. Pogoj (\ref{e:frede}) je ekvivalenten pogoju
 \begin{equation*} %\label{e:odekvi}
@@ -41,7 +41,7 @@ oz.~zvezna. Pogoj (\ref{e:frede}) je ekvivalenten pogoju
 
 Če je v definiciji \ref{def:odvod} $V=\R$, potem namesto $DF(u)$ pišemo $F'(u)$.
 V tem primeru je, striktno gledano, $F'(u)$ linearna preslikava iz $\R$ v $W$, kar je
-množenje nekega elementa $w\in W$ z realnim številom, vendar pa zato
+množenje nekega elementa $w\in W$ z realnim številom, zato kar
 enačimo $F'(u)$ s tem elementom $w$.
 
 \begin{definicija}
@@ -81,7 +81,7 @@ enačimo $F'(u)$ s tem elementom $w$.
 Ta izrek je poznan tudi pod imenom \emph{verižno pravilo}.
 
 \begin{izrek}[Odvod produkta]
-	Naj bodo $V$, $W_1$, $W_2$, $Y$ \textcolor[rgb]{1,0,0}{končnorazsežni} Banachovi prostori,
+	Naj bodo $V$, $W_1$, $W_2$, $Y$ Banachovi prostori,
 	$U\subseteq V$ odprta množica,
 	\[
 		F\colon U\to W_1,\qquad G\colon U\to W_2
@@ -116,7 +116,6 @@ tenzorski produkt vektorjev, produkt linearne prelikave in vektorja (aplikacija)
 	obstaja zvezna razširitev preslikave $x\mapsto D^rF(x)$ na $\overline{U}$.
 \end{definicija}
 
-\textcolor[rgb]{1,0,0}{Morda bo potrebno dodati še kaj o parcialnih odvodih.}
 \begin{comment}
 Naj bosta $(V_1,\|\cdot\|_1)$, $(V_2,\|\cdot\|_2)$ Banachova prostora. $V=V_1\times V_2$
 je vektorski prostor, z ustrezno definirano normo $\|\cdot\|_V$, porojeno iz norm $\|\cdot\|_1$ in $\|\cdot\|_2$,
@@ -135,7 +134,7 @@ in sta oba zvezna, potem je $F$ odvedljiva v $(x_0,y_0)$ in velja
 \section{Tenzorska analiza}
 
 
-\subsection{Evklidski prostor}
+\subsection{Evklidski prostor} \label{s:evklipro}
 
 
 V klasični mehaniki opisujemo dogodke v \emph{Newtonovem prostor-času}, kar je produkt
@@ -155,7 +154,7 @@ za opis položaja in geometrije objektov, prostor $\R$ pa predstavlja časovno o
 \end{definicija}
 
 Razdalja med točkama $x,y\in\E$ je definirana kot $d(x,y)=\|y-x\|$, kjer $\|.\|$ označuje normo na
-vektorskem prostoru $V$, porojeno iz standardnega skalarnega produkta. $(\E,d)$ je metrični prostor.
+vektorskem prostoru $\V$, porojeno iz standardnega skalarnega produkta. $(\E,d)$ je metrični prostor.
 
 V prostoru $\E$ si izberimo točko, jo označimo z $o$ in jo imenujmo \emph{izhodišče}.
 V skladu z aksiomi iz definicije pripada vsaki točki $p\in\E$ glede na izhodišče $o$ \emph{krajevni vektor}
@@ -178,8 +177,10 @@ bijektivna vložitev prostora $\E$ v vektorski prostor $\V$. Točke
 prostora $\E$ identificiramo z njihovimi krajevnimi vektorji in prostor $\E$
 lahko obravnavamo kot vektorski prostor $\V$. Zaradi tega bomo še posebej, kadar bomo imeli opravka
 z odvodi, vsako preslikavo $F\colon U\to \E$, kjer je $U\subseteq V$ in $V$ neki Banachov prostor,
-obravnavali kot preslikavo $F\colon U\to\V$. Na ta način so vsi odvodi preslikave $F$
+obravnavali kot vektorsko preslikavo $F\colon U\to\V$. Na ta način so vsi odvodi preslikave $F$
 smiselno definirani. Za $x\in U$ je odvod $DF(x)$ linearna preslikava iz prostora $V$ v prostor $\V$.
+Če bomo želeli poudariti, da gre za vektorsko preslikavo, jo bomo označili s krepkim simbolom,
+npr.~$\vek{F}$ namesto $F$.
 
 Newtonov prostor-čas $\mathcal{N}=\E\times\R$ lahko preko vložitve $\iota$ prostora $\E$ v $\V$
 identificiramo z vektorskim prostorom $\V\times\R\cong\R^4$. Običajni skalarni produkt na $\N$ je
@@ -210,17 +211,17 @@ Za poljubne $\ten{A},\ten{B},\ten{C}\in\L(\V)$ velja
 \end{equation}
 kar je takojšnja posledica multiplikativne lastnosti, ki velja za sled.
 
-Naj bo $U\subseteq\E$, običajno odprta. Funkciji $\vek{f}\colon U\to\W$ rečemo \emph{tenzorsko polje} ali pa
+Naj bo $\U\subseteq\E$, običajno odprta. Funkciji $\vek{f}\colon \U\to\W$ rečemo \emph{tenzorsko polje} ali pa
 \emph{tenzorska funkcija}. V posebnem primeru, ko je $\W=\R$, ji rečemo \emph{skalarno polje},
 v primeru $\W=\V$ pa \emph{vektorsko polje}.
 
-Naj bo $\psi\colon U\to\R^3$ bijektivna preslikava razreda $C^1$, katere inverz je prav tako
-razreda $C^1$. $\psi$ priredi točki v $U$ njene krivočrtne koordinate, torej gre za koordinatni sistem.
+Naj bo $\psi\colon \U\to\R^3$ bijektivna preslikava razreda $C^1$, katere inverz je prav tako
+razreda $C^1$. $\psi$ priredi točki v $\U$ njene krivuljne koordinate, torej gre za koordinatni sistem.
 Več o krivočrtnih koordinatah bomo govorili v razdelku \ref{s:koordinate}.
 Funkciji $\vek{f}\circ\psi^{-1}$ in $\vek{f}\circ\iota^{-1}$ bomo z zlorabo notacije pogosto
 označevali enako, kot $\vek{f}$, torej
 \[
-	\vek{f}(x^1,x^2,x^3):=\vek{f}(\psi^{-1}(x^1,x^2,x^3)),\qquad
+	\vek{f}(x_1,x_2,x_3):=\vek{f}(\psi^{-1}(x_1,x_2,x_3)),\qquad
 	\vek{f}(\vek{x}):=\vek{f}(\iota^{-1}(\vek{x})).
 \]
 
@@ -229,29 +230,29 @@ označevali enako, kot $\vek{f}$, torej
 	in ga pišemo kot $\nabla\vek{f}$ ali $\grad\vek{f}$.
 \end{definicija}
 Uporabljali bomo obe oznaki. V skladu s to definicijo je gradient preslikava
-$\nabla\vek{f}\colon\iota(U)\to\L(\V,\W)$, vendar ga dojemamo tudi kot tenzorsko polje
-$\nabla\vek{f}\colon U\to\L(\V,\W)$ na očiten način: za $x\in U$,
+$\nabla\vek{f}\colon\iota(\U)\to\L(\V,\W)$, vendar ga dojemamo tudi kot tenzorsko polje
+$\nabla\vek{f}\colon\U\to\L(\V,\W)$ na očiten način: za $x\in \U$,
 $\vek{x}=\iota(x)$ in $\vek{v}\in\V$ je
 \[
 	\nabla\vek{f}(x)(\vek{v})=D(\vek{f}\circ\iota^{-1})(\vek{x})(\vek{v}).
 \]
 
-Če je $f\colon U\to\R$ skalarno polje, potem v $x\in U$ vrednost gradienta $\nabla f(x)$
+Če je $f\colon \U\to\R$ skalarno polje, potem v $x\in \U$ vrednost gradienta $\nabla f(x)$
 pripada prostoru $\L(\V,\R)$, kar je linearni funkcional na prostoru $\V$. Po Riezsovem
 izreku o reprezentaciji mu enolično pripada vektor $\vek{u}\in\V$, da za vsak
 $\vek{v}\in\V$ velja $\nabla f(x)(\vek{v})=\vek{u}\cdot\vek{v}$. V tem primeru velja
 dogovor, da identificiramo $\nabla f$ s pripadajočim vektorskim poljem in pišemo
 \[ \nabla f(x)(\vek{v})=\nabla f(x)\cdot\vek{v}. \]
 
-Če je $\vek{f}\colon U\to\V$ vektorsko polje, potem je v $x\in U$ vrednost gradienta $\nabla\vek{f}(x)$
+Če je $\vek{f}\colon \U\to\V$ vektorsko polje, potem je v $x\in \U$ vrednost gradienta $\nabla\vek{f}(x)$
 linearna preslikava iz $\V$ v $\V$ in pišemo
 \[ \nabla\vek{f}(x)(\vek{v})=\nabla\vek{f}(x)\vek{v}, \]
 torej oklepaj opustimo, kot je to tudi sicer v navadi za linearne preslikave.
 
 Oznaka $I$ bo praviloma služila za odprti interval $I=(t_1,t_2)\subset\R$. Tudi funkciji
-$\vek{f}\colon U\times I\to\W$ bomo rekli \emph{(časovno odvisno) tenzorsko polje}.
+$\vek{f}\colon \U\times I\to\W$ bomo rekli \emph{(časovno odvisno) tenzorsko polje}.
 Gradient časovno odvisnega tenzorskega polja je definiran kot gradient polja
-$\vek{f}(\cdot,t)\colon U\to\W$, v katerem je spremenljivka $t$ fiksna. Označimo
+$\vek{f}(\cdot,t)\colon \U\to\W$, v katerem je spremenljivka $t$ fiksna. Označimo
 ga enako, torej $\nabla\vek{f}=\nabla\vek{f}(x,t)$ ali $\grad\vek{f}=\grad\vek{f}(x,t)$.
 Odvod funkcije $\vek{f}(x,\cdot)\colon I\to\W$, v kateri je spremenljivka $x$ fiksna,
 bomo imenovali \emph{časovni odvod} in ga bomo označili kot parcialni odvod
@@ -259,11 +260,11 @@ $\partial\vek{f}/\partial t$.
 
 Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
 \begin{definicija} \label{def:div}
-	\emph{Divergenca vektorskega polja} $\vek{u}\colon U\to\V$ je skalarno polje
+	\emph{Divergenca vektorskega polja} $\vek{u}\colon \U\to\V$ je skalarno polje
 	\begin{equation} \label{e:div1}
 		\div\vek{u}=\tr(\nabla\vek{u}).
 	\end{equation}
-	\emph{Divergenca tenzorskega polja} $\ten{S}\colon U\to\L(\V)$ je vektorsko polje $\div\ten{S}$ z lastnostjo,
+	\emph{Divergenca tenzorskega polja} $\ten{S}\colon \U\to\L(\V)$ je vektorsko polje $\div\ten{S}$ z lastnostjo,
 	da za vsako konstantno vektorsko polje $\vek{v}$ velja
 	\begin{equation} \label{e:div2}
 		\vek{v}\cdot\div\ten{S} = \div(\ten{S}^{T}\vek{v}).
@@ -285,7 +286,7 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 	\begin{align*}
 		\nabla(\phi\vek{v})\vek{h}&=
 		(\nabla\phi\cdot\vek{h})\vek{v}+\phi(\nabla\vek{v})\vek{h}=
-		=(\vek{v}\otimes\nabla\phi)\vek{h}+\phi(\nabla\vek{v})\vek{h}\\
+		(\vek{v}\otimes\nabla\phi)\vek{h}+\phi(\nabla\vek{v})\vek{h}\\
 		&=\big(\vek{v}\otimes\nabla\phi+\phi\nabla\vek{v}\big)\vek{h},
 	\end{align*}
 	iz česar sledi prva enakost, ter
@@ -320,26 +321,26 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 
 
 \begin{trditev}\label{t:oiz}
-	Naj bo $U\subseteq\E$ odprta množica ter $f\colon U\to \R$ zvezno skalarno polje.
-	Če za vsako podmnožico $N\subseteq U$ velja
-	\[ \int_{N} f\,dv=0, \]
-	potem je $f(x)=0$ za vsak $x\in U$.
+	Naj bo $\U\subseteq\E$ odprta množica ter $f\colon \U\to \R$ zvezno skalarno polje.
+	Če za vsako podmnožico $\mathcal{N}\subseteq \U$ velja
+	\[ \int_{\mathcal{N}} f\,dv=0, \]
+	potem je $f(x)=0$ za vsak $x\in \U$.
 \end{trditev}
 \proof
-	Recimo, da obstaja $x_0\in U$, da je $f(x_0)> 0$. Če je $f(x_0)< 0$, potem gledamo polje $-f$.
-	Ker je $f$ zvezno, obstaja okolica $N\subseteq U$ točke $x_0$ z volumnom $v(N)>0$, tako da je $f(x)>0$
-	za vsak $x\in N$. Po izreku o povprečni vrednosti iz analize obstaja točka $\xi\in N$, da je
-	\[ \int_{N}f\,dv=v(N)f(\xi)> 0, \]
-	kar nasprotuje predpostavki iz izreka, torej take točke $x_0\in U$ ni.
+	Recimo, da obstaja $x_0\in \U$, da je $f(x_0)> 0$. Če je $f(x_0)< 0$, potem gledamo polje $-f$.
+	Ker je $f$ zvezno, obstaja okolica $\mathcal{N}\subseteq \U$ točke $x_0$ z volumnom $v(\mathcal{N})>0$, tako da je $f(x)>0$
+	za vsak $x\in \mathcal{N}$. Po izreku o povprečni vrednosti iz analize obstaja točka $\xi\in \mathcal{N}$, da je
+	\[ \int_{\mathcal{N}}f\,dv=v(\mathcal{N})f(\xi)> 0, \]
+	kar nasprotuje predpostavki iz izreka, torej take točke $x_0\in \U$ ni.
 \endproof
 
 \begin{definicija}
 	\begin{itemize}
 		\item
-		Za krivuljo ali ploskev v prostoru $\E$ bomo rekli, da je razreda $C^r$, $r\in\mathbb{N}$, če se jo da
-		parametrizirati s preslikavo, ki je razreda $C^r$.
+		Za krivuljo ali ploskev v prostoru $\E$ bomo rekli, da je razreda $C^r$, $r\in\mathbb{N}$,
+		če se da to krivuljo ali ploskev parametrizirati s preslikavo, ki je razreda $C^r$.
 		\item
-		Območje $B\subset\E$ je \emph{regularno}, če je omejeno in je njegov rob $\partial B$
+		Območje $\B\subset\E$ je \emph{regularno}, če je omejeno in je njegov rob $\partial \B$
 		orientabilna ploskev, sestavljena iz končnega števila ploskev razreda $C^r$ za neki $r\geq 1$.
 		\item
 		Točka na ploskvi v prostoru $\E$ je \emph{regularna}, če obstaja enotska normala
@@ -349,23 +350,23 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko mero oz.~ploščino enako 0.
 
 \begin{izrek}[Divergenčni izrek] \label{i:divtheo}
-	Naj bo $B$ regularno območje v $\E$ in $\vek{n}(x)\in\V$ zunanja enotska normala
-	na rob $\partial B$ v regularni točki $x\in\partial B$. Naj bodo $\phi\colon\overline{B}\to\R$,
-	$\vek{u}\colon\overline{B}\to V$ ter $\ten{S}\colon\overline{B}\to\L(V)$
-	zvezna polja, diferenciabilna v notranjosti območja $B$. Potem velja
+	Naj bo $\B$ regularno območje v $\E$ in $\vek{n}(x)\in\V$ zunanja enotska normala
+	na rob $\partial \B$ v regularni točki $x\in\partial \B$. Naj bodo $\phi\colon\overline{\B}\to\R$,
+	$\vek{u}\colon\overline{\B}\to V$ ter $\ten{S}\colon\overline{\B}\to\L(V)$
+	zvezna polja, diferenciabilna v notranjosti območja $\B$. Potem velja
 	\begin{align*}
-		\int_{\partial B} \phi\vek{n}\,ds &= \int_{B} \grad\phi\,dv, \\
-		\int_{\partial B} \vek{u}\cdot\vek{n}\,ds &= \int_{B} \div\vek{u}\,dv, \\
-		\int_{\partial B} \ten{S}\vek{n}\,ds &= \int_{B} \div\ten{S}\,dv.
+		\int_{\partial \B} \phi\vek{n}\,ds &= \int_{\B} \grad\phi\,dv, \\
+		\int_{\partial \B} \vek{u}\cdot\vek{n}\,ds &= \int_{\B} \div\vek{u}\,dv, \\
+		\int_{\partial \B} \ten{S}\vek{n}\,ds &= \int_{\B} \div\ten{S}\,dv.
 	\end{align*}
 \end{izrek}
 \proof
 	Druga enakost je splošno znan \emph{Gaussov izrek} iz vektorske analize, zato ga tukaj ne bomo dokazovali.
 	Naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
 	\begin{align*}
-		\vek{w}\cdot\int_{\partial B}\phi\vek{n}\,ds &= \int_{\partial B}\phi\vek{w}\cdot\vek{n}\,ds=
-		\int_{B}\div(\phi\vek{w})\,dv \\
-		&= \int_{B}\vek{w}\cdot\grad\phi \,dv = \vek{w}\cdot\int_{B}\grad\phi \,dv,
+		\vek{w}\cdot\int_{\partial \B}\phi\vek{n}\,ds &= \int_{\partial \B}\phi\vek{w}\cdot\vek{n}\,ds=
+		\int_{\B}\div(\phi\vek{w})\,dv \\
+		&= \int_{\B}\vek{w}\cdot\grad\phi \,dv = \vek{w}\cdot\int_{\B}\grad\phi \,dv,
 	\end{align*}
 	s čimer smo dokazali prvo enakost.
 	Pri tem smo uporabili Gaussov izrek, tretjo enakost iz trditve (\ref{t:divprop}) ter
@@ -373,51 +374,50 @@ Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko
 	
 	Zopet naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
 	\begin{align*}
-		\vek{w}\cdot\int_{\partial B}\ten{S}\vek{n}\,ds &= \int_{\partial B}\vek{w}\cdot\ten{S}\vek{n}\,ds=
-		\int_{\partial B}\ten{S}^T\vek{w}\cdot\vek{n}\,ds=
-		\int_{B}\div(\ten{S}^T\vek{w})\,dv \\ &=\int_{B}\vek{w}\cdot\div\ten{S}\,dv=
-		\vek{w}\cdot\int_{B}\div\ten{S}\,dv,
+		\vek{w}\cdot\int_{\partial \B}\ten{S}\vek{n}\,ds &= \int_{\partial \B}\vek{w}\cdot\ten{S}\vek{n}\,ds=
+		\int_{\partial \B}\ten{S}^T\vek{w}\cdot\vek{n}\,ds=
+		\int_{\B}\div(\ten{S}^T\vek{w})\,dv \\ &=\int_{\B}\vek{w}\cdot\div\ten{S}\,dv=
+		\vek{w}\cdot\int_{\B}\div\ten{S}\,dv,
 	\end{align*}
 	kjer smo zopet uporabili Gaussov izrek in definicijo divergence (\ref{e:div2}). S tem smo dokazali še tretjo enakost.
 \endproof
 
 
-\section{Krivočrtne koordinate} \label{s:koordinate}
+\section{Krivuljne koordinate} \label{s:koordinate}
 
 
 \subsection{Koordinatni sistem}
 
 
 \begin{definicija}
-	Naj bo $U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $U$ je bijektivna
-	preslikava $\psi\colon U\to V$ razreda $C^r$ (običajno je $r$ vsaj 2), kjer je $V$ odprta
+	Naj bo $\U\subseteq\E$ odprta množica. \emph{Koordinatni sistem} na $\U$ je bijektivna
+	preslikava $\psi\colon \U\to V$ razreda $C^r$ (običajno je $r$ vsaj 2), kjer je $V$ odprta
 	množica v $\R^3$, inverz $\psi^{-1}$ pa je prav tako razreda $C^r$.
 \end{definicija}
 
-Naj bo $x\in U$ in
+Naj bo $x\in \U$ in
 \[ \psi\colon x\mapsto (x^1,x^2,x^3)=\psi(x). \]
-$(x^1,x^2,x^3)$ so \emph{(krivočrtne) koordinate} točke $x$.
+$(x^1,x^2,x^3)$ so \emph{(krivuljne) koordinate} točke $x$.
 Za $i\in\{1,2,3\}$ se funkcija
-\[ \psi^i\colon U\to\R,\qquad \psi^i(x)=x^i \]
+\[ \psi^i\colon \U\to\R,\qquad \psi^i(x)=x^i \]
 imenuje \emph{$i$-ta koordinatna funkcija} koordinatnega sistema $\psi$.
-Po dogovoru tudi oznaki $(x^i)$ rečemo koordinatni sistem na $U$.
 
-Naj bodo $(x^1,x^2,x^3)$ koordinate točke $x\in U$. Z $\vek{j}_i$ označimo
+Naj bodo $(x^1,x^2,x^3)$ koordinate točke $x\in \U$. Z $\vek{j}_i$ označimo
 $i$-ti vektor iz standardne baze za $\R^3$,
 \[ \vek{j}_1=(1,0,0),\quad\vek{j}_2=(0,1,0),\quad\vek{j}_3=(0,0,1). \]
-Za neki $\varepsilon>0$ je slika preslikave
+Za pozitivno realno število $\varepsilon$ je slika preslikave
 \begin{equation} \label{e:kokri}
-	\gamma_i\colon(-\varepsilon,\varepsilon)\to U,\qquad
+	\gamma_i\colon(-\varepsilon,\varepsilon)\to \U,\qquad
 	\gamma_i(t)=\psi^{-1}\big((x^1,x^2,x^3)+t\vek{j}_i\big),\qquad i=1,2,3,
 \end{equation}
-\emph{$i$-ta koordinatna krivulja} v $U$, ki gre pri $t=0$ skozi točko $x$.
-V točki $x$ lahko definiramo \emph{tangentne vektorje}
+\emph{$i$-ta koordinatna krivulja} v $\U$, ki gre pri $t=0$ skozi točko $x$.
+V točki $x$ lahko definiramo \emph{kovariantne vektorje}
 \begin{equation} \label{e:tanvek}
-	\vek{g}_i(x)=\at{\frac{d}{dt}\gamma_i(t)}{t=0}=\dot{\gamma}_i(0)
+	\vek{g}_i(x)=\at{\frac{d}{dt}\gamma_i(t)}{t=0}=\gamma_i'(0)
 	=\at{\frac{\partial\psi^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
 	, \qquad i=1,2,3
 \end{equation}
-in \emph{gradientne vektorje}
+in \emph{kontravariantne vektorje}
 \begin{equation} \label{e:gradvek}
 	\vek{g}^i(x)=\nabla\psi^i(x),\qquad i=1,2,3.
 \end{equation}
@@ -428,7 +428,7 @@ in \emph{gradientne vektorje}
 
 \proof
 	Naj bo $\vek{u}\in\V$ poljuben in definirajmo krivuljo skozi $x$ s predpisom
-	\[ \gamma\colon(-\varepsilon,\varepsilon)\to U,\qquad \gamma(t)=x+t\vek{u}. \]
+	\[ \gamma\colon(-\varepsilon,\varepsilon)\to \U,\qquad \gamma(t)=x+t\vek{u}. \]
 	Velja
 	\[
 		\vek{u}=\at{\frac{d}{dt}\gamma(t)}{t=0}\quad\textrm{in}\quad
@@ -444,11 +444,11 @@ in \emph{gradientne vektorje}
 	Z drugimi besedami, $\{\vek{g}_i(x)\}_{i}$ razpenja prostor $\V$.
 \endproof
 
-Tangentni in gradientni vektorji so definirani v vsaki točki množice $U$, torej
-gre v bistvu za vektorska polja. V vsaki točki $x\in U$ se baza $\{\vek{g}_i(x)\}_i$
-imenuje \emph{naravna baza} koordinatnega sistema $(x^i)$ za prostor $\V$.
-Množica $\{\vek{g}^i(x)\}_i$ pa je prav tako baza za $\V$, ki je dualna bazi $\{\vek{g}_i(x)\}_i$.
-Res, iz zveze
+Kovariantni in kontravariantni vektorji so definirani v vsaki točki množice $U$, torej
+gre v bistvu za vektorska polja. V vsaki točki $x\in U$ se baza $\{\vek{g}_i(x)\}_i$ prostora $\V$
+imenuje \emph{kovariantna baza}.
+Množica $\{\vek{g}^i(x)\}_i$ je prav tako baza za $\V$, imenovana \emph{kontravariantna baza},
+in je dualna bazi $\{\vek{g}_i(x)\}_i$. Res, iz zveze
 \[ x^i=\psi^i(\psi^{-1}(x^1,x^2,x^3)) \]
 dobimo po verižnem pravilu
 \begin{equation} \label{e:gigj}
@@ -468,13 +468,14 @@ Iz zadnjih treh zvez hitro vidimo, da velja
 
 
 Naj bosta $\psi$ in $\bar{\psi}$ oz.~$(x^i)$ in $(\bar{x}^i)$ koordinatna sistema za
-$U\subseteq\E$ z naravnima bazama $\{\vek{g}_i(x)\}_i$ oz.~$\{\bar{\vek{g}}_i(x)\}_i$.
+$\U\subseteq\E$ s kovariantima bazama $\{\vek{g}_i(x)\}_i$ oz.~$\{\bar{\vek{g}}_i(x)\}_i$
+in kontravariantnima bazama $\{\vek{g}^i(x)\}_i$ oz.~$\{\bar{\vek{g}}^i(x)\}_i$.
 Koordinatna transformacija je podana s preslikavami
 \[
 	x^i=x^i(\bar{x}^1,\bar{x}^2,\bar{x}^3)\quad\Longleftrightarrow\quad
 	\bar{x}^k=\bar{x}^k(x^1,x^2,x^3).
 \]
-Za vektorje iz naravne baze velja
+Za kovariantne in kontravariantne vektorje velja
 \begin{equation} \label{e:gtog}
 	\vek{g}^i=\frac{\partial x^i}{\partial\bar{x}^k}\bar{\vek{g}}^k,\qquad
 	\vek{g}_i=\frac{\partial\bar{x}^k}{\partial x^i}\bar{\vek{g}}_k.
@@ -489,15 +490,15 @@ drugo enakost pa dobimo s parcialnim odvajanjem enakosti
 %Naj bo $(x^1,x^2,x^3)$ in $(\bar{x}^1,\bar{x}^2,\bar{x}^3)$ dvoje koordinat točke $x\in U\subseteq\E$.
 %Če je $f\colon U\to\R$ skalarno polje, potem bomo brez posebnih oznak pisali
 %\[ f(x)=f(x^1,x^2,x^3)=f(\bar{x}^1,\bar{x}^2,\bar{x}^3). \]
-Če je $\vek{u}\colon U\to\V$ vektorsko polje, potem ga lahko zapišemo v komponentni
-obliki glede na naravno bazo prostora $\V$:
+Če je $\vek{u}\colon \U\to\V$ vektorsko polje, potem ga lahko zapišemo v komponentni
+obliki glede na eno od baz prostora $\V$:
 \begin{align}
 	\vek{u}&=u_i\,\vek{g}^i=u^i\,\vek{g}_i \nonumber \\
 	&=\bar{u}_i\,\bar{\vek{g}}^i=\bar{u}^i\,\bar{\vek{g}}_i, \label{e:vekkomp}
 \end{align}
 Pri tem so komponente $u_i,u^i,\dots$ skalarna polja.
-Prav tako lahko tenzorsko polje $\ten{S}\colon U\to\L(\V)$ zapišemo v
-komponentni obliki glede na bazo prostora $\L(\V)$:
+Prav tako lahko tenzorsko polje $\ten{S}\colon \U\to\L(\V)$ zapišemo v
+komponentni obliki glede na eno od baz prostora $\L(\V)$:
 \begin{align}
 	\ten{S}&=S_{ij}\,\vek{g}^i\otimes\vek{g}^j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j \nonumber \\
 	&=\bar{S}_{ij}\,\bar{\vek{g}}^i\otimes\bar{\vek{g}}^j=
@@ -524,7 +525,7 @@ S pomočjo (\ref{e:gtog}) dobimo naslednje zveze med posameznimi komponentami:
 	u_k\bottop{\delta}{i}{k}\vek{g}^i=u_k\vek{g}^k=\vek{u},
 \end{equation}
 torej je $\vek{g}^i\otimes\vek{g}_i=\ten{1}$, identična linearna preslikava, in to
-v vsaki točki množice $U$. Seveda velja tudi $\vek{g}_i\otimes\vek{g}^i=\ten{1}$.
+v vsaki točki množice $\U$. Seveda velja tudi $\vek{g}_i\otimes\vek{g}^i=\ten{1}$.
 
 
 \subsection{Gradient in kovariantni odvod}
@@ -533,14 +534,14 @@ v vsaki točki množice $U$. Seveda velja tudi $\vek{g}_i\otimes\vek{g}^i=\ten{1
 Do konca tega razdelka naj velja, da so vsa obravnavan tenzorska polja razreda
 $C^{1}$ ali $C^{2}$, kar bo razvidno samo po sebi.
 
-Naj bo $(x^i)$ koordinatni sistem na $U\subseteq\E$ z naravnima bazama $\{\vek{g}_i\}_i$ in $\{\vek{g}^i\}_i$.
-Gradiente tenzorskih polj lahko zapišemo v komponentni obliki glede na naravno bazo.
+Naj bo $\psi$ oz.~$(x^i)$ koordinatni sistem na $\U\subseteq\E$ z naravnima bazama $\{\vek{g}_i\}_i$ in $\{\vek{g}^i\}_i$.
+Ker so gradienti tenzorskih polj tudi tenzorska polja, jih lahko zapišemo v komponentni obliki.
 
-Naj bo $\vek{f}\colon U\to\W$ tenzorsko polje. Če je $\gamma_i$ $i$-ta
+Naj bo $\vek{f}\colon \U\to\W$ tenzorsko polje. Če je $\gamma_i$ $i$-ta
 koordinatna krivulja, ki gre pri $t=0$ skozi točko $x$, potem iz (\ref{e:tanvek}) dobimo
 \begin{equation*}
 	\at{\frac{d}{dt}\vek{f}(\gamma_i(t))}{t=0}=
-	\nabla \vek{f}(x)(\dot{\gamma}_i(0))=\nabla \vek{f}(x)(\vek{g}_i(x)),
+	\nabla \vek{f}(x)(\gamma_i'(0))=\nabla \vek{f}(x)(\vek{g}_i(x)),
 \end{equation*}
 po drugi strani pa imamo po (\ref{e:kokri})
 \begin{equation*}
@@ -559,12 +560,12 @@ dobimo $(\nabla f)_i=(\nabla f)\cdot\vek{g}_i=\partial f/\partial x^i$, torej je
 \end{equation}
 
 Preden nadaljujemo z gradienti vektorskih polj, vpeljimo najprej standardne oznake
-za gradiente vektorskih polj naravne baze:
+za gradiente kovariantnih in kontravariantnih vektorskih polj:
 \begin{equation} \label{e:cs} %former label: e:gradg
 	\nabla\vek{g}_i=\ten{\Gamma}_i=\cs{i}{j}{k}\,\vek{g}_j\otimes\vek{g}^k,\qquad
 	\nabla\vek{g}^i=\ten{\Gamma}^i=\ks{i}{jk}\,\vek{g}^j\otimes\vek{g}^k.
 \end{equation}
-Tu sta $\ten{\Gamma}_i,\ten{\Gamma}^i\colon U\to\L(\V)$ tenzorski polji drugega reda,
+Tu sta $\ten{\Gamma}_i,\ten{\Gamma}^i\colon \U\to\L(\V)$ tenzorski polji drugega reda,
 komponente $\cs{i}{j}{k}$ in $\ks{i}{jk}$ pa se imenujejo \emph{Christoffelovi simboli}
 in ne gre za komponente kakega tenzorja tretjega reda. Če v enačbi (\ref{e:sotf})
 za $\vek{f}$ vstavimo vektorsko polje $\vek{g}_i$ oz.~$\vek{g}^i$ in upoštevamo
@@ -587,14 +588,14 @@ potem dobimo zvezo
 \begin{equation} \label{e:lcs1}
 	\cs{j}{i}{k}=-\ks{i}{jk}.
 \end{equation}
-Nadalje, ker je $\ten{\Gamma}^i=\nabla(\nabla\psi^i)$ in je drugi gradient vedno
+Nadalje, ker je $\ten{\Gamma}^i=\nabla(\nabla\psi^i)$ in je drugi gradient
 simetrični tenzor\footnote{$(\nabla(\nabla\psi^i))^T=\nabla(\nabla\psi^i)$ \cite[str.~271]{liu}},
 veljata še naslednji zvezi:
 \[ \ks{i}{jk}=\ks{i}{kj},\qquad\cs{j}{i}{k}=\cs{k}{i}{j}. \]
 Ker je zaradi teh zvez možno prehajati iz ene vrste simbolov v drugo vrsto,
 so v uporabi zgolj simboli $\cs{i}{j}{k}$, imenovani Christoffelovi simboli druge vrste.
 
-Naj bo sedaj $\vek{u}\colon U\to\V$ vektorsko polje, v komponentni obliki
+Naj bo sedaj $\vek{u}\colon \U\to\V$ vektorsko polje, v komponentni obliki
 zapisano kot
 \[ \vek{u}=u^j\vek{g}_j=u_k\vek{g}^k. \]
 Njegov gradient zavzema vrednosti v prostoru $\L(\V)$, zato ga lahko zapišemo v komponentni obliki
@@ -632,7 +633,7 @@ in ponovimo prejšnji postopek, kjer dodatno uporabimo relacijo (\ref{e:lcs1}), 
 	\end{equation}
 \end{primer}
 
-Naj bo $\ten{S}\colon U\to\L(\V)$. Potem je $\nabla\ten{S}\colon U\to\L(\V,\L(\V))$
+Naj bo $\ten{S}\colon \U\to\L(\V)$. Potem je $\nabla\ten{S}\colon \U\to\L(\V,\L(\V))$
 in ga v komponentni obliki lahko razpišemo glede na bazo prostora $\L(\V,\L(\V))$ kot
 \[ \nabla\ten{S}=\topbot{S}{ij}{,k}\vek{g}_i\otimes\vek{g}_j\otimes\vek{g}^k. \]
 Iz (\ref{e:sotf}) dobimo
@@ -667,7 +668,7 @@ je\footnote{$\tr\ten{S}=\topbot{S}{i}{j}\tr(\vek{g}_i\otimes\vek{g}^j)=
 	\div\vek{u} = \tr(\nabla\vek{u}) = \topbot{u}{i}{,i} = g^{ij}u_{i,j}.
 \end{equation}
 
-Poiščimo še izraz za divergenco tenzorskega polja $\ten{S}\colon U\to\L(\V)$.
+Poiščimo še izraz za divergenco tenzorskega polja $\ten{S}\colon \U\to\L(\V)$.
 Iz (\ref{e:divu}) dobimo za poljubno vektorsko polje $\vek{u}=u_k\vek{g}^k$
 \[
 	\div(\ten{S}^{T}\vek{u})=\div(S^{ij}\vek{g}_j\otimes\vek{g}_i u_k\vek{g}^k)
@@ -677,7 +678,7 @@ Bralec se lahko sam prepriča, da tudi za kovariantni odvod produkta velja
 podobno pravilo, kot ga poznamo za običaji odvod, zato imamo
 \[
 	(S^{ij}u_i)_{,\,j}=\topbot{S}{ij}{\,,j}u_i+S^{ij}u_{i,\,j}=
-	\topbot{S}{ij}{,\,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u})
+	\topbot{S}{ij}{,\,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u}).
 \]
 Dobili smo enakost
 \begin{equation} \label{e:divStu}
@@ -691,7 +692,7 @@ enačbi (\ref{e:divStu}) s pomočjo definicije \ref{def:div} prepoznamo izraz za
 Če dobljeni izraz vstavimo nazaj v enačbo (\ref{e:divStu}) in zamenjamo $\ten{S}$ z
 $\ten{S}^{T}$, dobimo naslednjo trditev.
 \begin{trditev} \label{e:divSu}
-	Za poljubno tenzorsko polje $\ten{S}\in C^1(U,\L(\V))$ in poljubno
-	vektorsko polje $\vek{u}\in C^1(U,\V)$ velja
+	Za poljubno tenzorsko polje $\ten{S}\in C^1(\U,\L(\V))$ in poljubno
+	vektorsko polje $\vek{u}\in C^1(\U,\V)$ velja
 	\[ \div(\ten{S}\vek{u})=\vek{u}\cdot\div\ten{S}^{T}+\tr(\ten{S}\nabla\vek{u}). \]
 \end{trditev}

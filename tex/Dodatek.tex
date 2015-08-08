@@ -1,0 +1,152 @@
+\appendix
+
+\chapter{Konstitucijske enačbe}
+
+
+\section{Sprememba opazovališča in objektivnost}
+
+
+V razdelku \ref{s:evklipro} smo podali definicijo opazovališča za Evklidski
+prostor $\E$. Nato smo v poglavju \ref{chp:kinkon} omenili, da so določene
+fizikalne količine lahko odvisne od izbire opazovališča. V tem razdelku bomo
+na kratko analizirali spremembo opazovališča.
+
+
+Naj bosta $(\iota,o)$ in $(\iota^*,o^*)$ oz.~$\iota_o$ in $\iota^*_{o^*}$
+opazovališči za $\E$. \emph{Sprememba opazovališča} iz
+$(\iota,o)$ v $(\iota^*,o^*)$ je transformacija
+\[
+	\iota^*_{o^*}\circ\iota_o^{-1}\colon\V\to\V,\qquad
+	\vek{x}\mapsto\vek{x}^*=\iota^*_{o^*}(\iota_o^{-1}(\vek{x})).
+\]
+Za nas bodo pomembne take spremembe opazovališča, ki ohranjajo izmerjene razdalje
+med točkami, kar pomeni, da mora za vsaki točki $x_1,x_2\in\E$ veljati
+$\|\iota^*(x_1,x_2)\|=\|\iota(x_1,x_2)\|$. Iz linearne algebre vemo,
+da so izometrije na prostoru $\V$ natanko ortogonalne preslikave,
+torej mora veljati
+\[
+	\iota^*(x_1,x_2)=\ten{Q}\iota(x_1,x_2)\quad\forall x_1,x_2\in\E,
+\]
+kjer je $\ten{Q}\in\mathscr{O}(\V)$ ortogonalna preslikava. Če je $x\in\E$ in
+je $\vek{x}=\iota_o(x)$ ter $\vek{x}^*=\iota^*_{o^*}(x)$, potem je
+\begin{equation} \label{e:toga}
+	\vek{x}^*=\iota^*(o^*,x)=\iota^*(o^*,o)+\iota^*(o,x)=\vek{c}+\ten{Q}\vek{x}.
+\end{equation}
+Pri tem smo označili $\vek{c}=\iota^*(o^*,o)$. Transformaciji oblike (\ref{e:toga})
+se reče tudi \emph{toga transformacija}. Na množici $\Psi$ vseh opazovališč
+za $\E$ lahko vpeljemo dvojiško relacijo $\sim$ takole:
+$\iota_o\sim\iota^*_{o^*}\ \Leftrightarrow\ \iota^*_{o^*}\circ\iota_o^{-1}$ je toga
+transformacija na $\V$. Hitro se lahko prepričamo, da je relacija $\sim$ ekvivalenčna,
+torej množica $\Psi$ razpade na ekvivalenčne razrede.
+
+\begin{definicija}
+	\emph{Evklidska transformacija} je časovno odvisna sprememba opazovališča,
+	podana s preslikavo $(\vek{x},t)\mapsto(\vek{x}^*,t^*)$, ki slika iz
+	$\V\times\R$ v $\V\times\R$ in ima predpis
+	\begin{align*}
+		\vek{x}^*&=\ten{Q}(t)\vek{x}+\vek{c}(t),\\
+		t^*&=t+a,
+	\end{align*}
+	pri čemer so $\ten{Q}\colon\R\mapsto\mathscr{O}(\V)$, $\vek{c}\colon\R\mapsto\V$
+	in $a\in\R$.
+\end{definicija}
+
+Med vsemi časovno odvisnimi spremembami opazovališč so Evklidske transformacije
+tiste, ki ohranjajo izmerjene razdalje med točkami in ohranjajo izmerjen
+potek časa med dogodki.
+
+
+\subsection{Od tu dalje}
+
+
+\emph{Sprememba opazovališča} za $\E$ je prehod iz opazovališča $\iota_o$ v opazovališče
+$\iota^*_{o^*}$. Pri tem točka $x\in\E$, ki ima v opazovališču $\iota_o$ krajevni vektor
+$\vek{x}=\iota_o(x)$, dobi nov krajevni vektor $\vek{x}^*=\iota^*_{o^*}(x)$ glede na opazovališče
+$\iota^*_{o^*}$. Vsaka sprememba opazovališča porodi transformacijo
+\[
+	\iota^*_{o^*}\circ\iota_o^{-1}\colon\V\to\V,\qquad
+	\vek{x}\mapsto\vek{x}^*=\iota^*_{o^*}(\iota_o^{-1}(\vek{x})).
+\]
+
+Razdalja oz.~metrika na $\E$ je odvisna od izbire opazovališča. \emph{Izmerjena razdalja} med točkama
+$x_1,x_2\in\E$ v opazovališču $\iota_o$ je
+$d(x_1,x_2)=\|\iota_o(x_2)-\iota_o(x_1)\|=\|\iota(x_1,x_2)\|$,
+kjer je $\|\cdot\|$ norma prostora $\V$. Nas bodo zanimale take
+spremembe opazovališča, ki ohranjajo izmerjene razdalje med točkami, kar pomeni,
+da mora za vsaki točki $x_1,x_2\in\E$ veljati
+$\|\iota^*(x_1,x_2)\|=\|\iota(x_1,x_2)\|$.
+Iz linearne algebre vemo, da so izometrije na prostoru $\V$ natanko ortogonalne preslikave,
+torej mora veljati
+\begin{equation} \label{e:vektrans}
+	\iota^*(x_1,x_2)=\ten{Q}\iota(x_1,x_2)\quad\forall x_1,x_2\in\E,
+\end{equation}
+kjer je
+\[
+	\ten{Q}\in\mathscr{O}(\V)=\{\ten{R}\in\L(\V)\;;\ \ten{R}\ten{R}^T=\ten{R}^T\ten{R}=\ten{1}\}
+\]
+ortogonalna preslikava. Množica $\mathscr{O}(\V)$ vseh ortogonalnih preslikav na prostoru
+$\V$ je za operacijo kompozitum grupa, imenovana tudi \emph{ortogonalna grupa}. Če je $x\in\E$ in
+je $\vek{x}=\iota_o(x)$ ter $\vek{x}^*=\iota^*_{o^*}(x)$, potem je
+\begin{equation} \label{e:toga}
+	\vek{x}^*=\iota^*(o^*,x)=\iota^*(o^*,o)+\iota^*(o,x)=\vek{c}+\ten{Q}\vek{x}.
+\end{equation}
+Pri tem smo označili $\vek{c}=\iota^*(o^*,o)$. Transformaciji oblike (\ref{e:toga})
+se reče tudi \emph{toga transformacija}. Odselj bomo izraz \textit{sprememba opazovališča}
+uporabljali zgolj za take spremembe opazovališča, ki porodijo togo transformacijo.
+
+Za vsak vektor $\vek{u}\in\V$ po aksiomih Evklidskega točkovnega prostora obstajata
+točki $x_1,x_2\in\E$, da je $\vek{u}=\iota(x_1,x_2)$. Vektorju $\vek{u}$ pripada
+vektor $\vek{u}^*=\iota^*(x_1,x_2)$, za katerega po (\ref{e:vektrans}) velja
+\begin{equation} \label{e:travek}
+	\vek{u}^*=\ten{Q}\vek{u}.
+\end{equation}
+Linearni preslikavi $\ten{A}\in\L(\V)$ z razvojem $\ten{A}=A_{ij}\,\vek{e}_i\otimes\vek{e}_j$
+pripada linearna preslikava
+\begin{align}
+	\ten{A}^*&=A_{ij}\,\vek{e}^*_i\otimes\vek{e}^*_j=A_{ij}\,\ten{Q}\vek{e}_i\otimes\ten{Q}\vek{e}_j
+	=\ten{Q}A_{ij}\,\vek{e}_i\otimes\vek{e}_j\ten{Q}^T \nonumber \\
+	&=\ten{Q}\ten{A}\ten{Q}^T. \label{e:traten}
+\end{align}
+Za vektorsko količino $\vek{u}$ oz.~tenzorsko količino $\ten{A}$
+rečemo, da je \emph{objektivna} ali pa \emph{neodvisna od opazovališča},
+če se z vsako spremembo opazovališča iz $\iota_o$ v $\iota^*_{o^*}$
+transformira po pravilu (\ref{e:travek}) oz.~(\ref{e:traten}).
+Skalarna količina je \emph{objektivna} ali \emph{neodvisna od opazovališča},
+če ob vsaki spremembi opazovališča ostane nespremenjena.
+
+Za prostor $\E_R$, ki služi zgolj določitvi materialnega telesa, naj velja,
+da ima vseskozi enako opazovališče. Spremembe opazovališča pridejo v upoštev zgolj
+za prostor $\E$, kjer potekajo fizikalni dogodki. Naj bo $\chi\colon\B\times I\to\E$
+gibanje s pripadajočima vektorskima poljema $\vek{\chi}=\iota_o\circ\chi$ in
+$\vek{\chi}^*=\iota^*_{o^*}\circ\chi$. Po (\ref{e:toga}) velja
+\[
+	\vek{\chi}^*(X,t)=\ten{Q}\vek{\chi}(X,t)+\vek{c}.
+\]
+Naj bosta $\ten{F}=\Grad\vek{\chi}$ in $\ten{F}^*=\Grad\vek{\chi}^*$ pripadajoča
+deformacijska gradienta gibanja. Iz zgornje relacije dobimo
+\[
+	\ten{F}^*=\ten{Q}\ten{F}.
+\]
+Deformacijski gradient torej ni objektiven oz.~neodvisen od opazovališča, saj se ne
+transformira po pravilu (\ref{e:traten}). Jacobijan je objektivna skalarna
+količina, saj velja
+\[
+	J^*=|\det(\ten{F}^*)|=|\det(\ten{Q}\ten{F})|=|\det(\ten{Q})||\det(\ten{F})|
+	=1\cdot|\det(\ten{F})|=J.
+\]
+Posledično je tudi masna gostota trenutne konfiguracije objektivna skalarna količina,
+\[ \rho^*=\frac{\rho_R}{J^*}=\frac{\rho_R}{J}=\rho. \]
+
+Za gostoto notranje energije $\sigma(\ten{F})$, ki smo jo predstavili v primeru
+elastičnega trdnega telesa, zahtevamo, da je kot skalarna količina neodvisna
+od opazovališča, torej velja
+\[ \sigma^*:=\sigma(\ten{F}^*)=\sigma(\ten{F}) \]
+za vse $(X,t)\in\B\times I$.
+Dokažimo, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
+\[ \ten{T}=\rho D\sigma(\ten{F})\ten{F}^T \]
+tudi objektiven. Velja
+\begin{align*}
+	\ten{T}^*=\rho^* D\sigma(\ten{F}^*)\ten{F}^{*T}=\rho D\sigma(\ten{Q}\ten{F})(\ten{Q}\ten{F})^{*T}
+	=\rho D\sigma(\ten{Q}\ten{F})(\ten{Q}\ten{F})^{T}=\rho D\sigma(\ten{Q}\ten{F})(\ten{F}^{T}\ten{Q}^{T})
+	=\rho D\sigma(\ten{Q}\ten{F})\cdot(\ten{Q}\ten{F}^{T}\ten{Q}^{T})
+\end{align*}

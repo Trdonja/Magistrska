@@ -6,9 +6,9 @@
 
 Naj bosta $\E_R$ in $\E$ Evklidska točkovna prostora, ki imata sicer enake lastnosti,
 vendar ju bomo kljub temu razlikovali. Prostor $\E_R$ bo služil določitvi materialnega
-telesa: z množico točk izbranega regularnega območja $B\subset\E_R$ je določeno \emph{materialno
-telo} ali \emph{kontinuum}. Množici $B$ bomo rekli \emph{referenčna} ali \emph{sklicna konfiguracija}
-materialnega telesa. Privzeli bomo, da je $B$ zaprta.
+telesa: z množico točk izbranega regularnega območja $\B\subset\E_R$ je določeno \emph{materialno
+telo} ali \emph{kontinuum}. Množici $\B$ bomo rekli \emph{referenčna} ali \emph{sklicna konfiguracija}
+materialnega telesa. Privzeli bomo, da je $\B$ zaprta.
 Prostor $\E$ pa bo služil opisu dejanskega položaja materialnega telesa v prostoru.
 
 Točke prostora $\E_R$, njihove koordinate ter njihove krajevne vektorje bomo označevali
@@ -20,54 +20,60 @@ kot doslej, označevali z malimi simboli: $x$, $(x_1,x_2,x_3)$, $\vek{x}$, in ji
 
 \begin{definicija}
 	\emph{Konfiguracija (materialnega) telesa} je zvezna in injektivna preslikava
-	\[ \kappa\colon B\to\E,\qquad \kappa\colon X\mapsto x=\kappa(X). \]
-	Tudi sliki preslikave $\kappa$, tj.~$\kappa(B)$, rečemo \emph{konfiguracija telesa}.
+	\[ \kappa\colon \B\to\E,\qquad \kappa\colon X\mapsto x=\kappa(X). \]
+	Tudi sliki preslikave $\kappa$, t.~j.~$\kappa(\B)$, rečemo \emph{konfiguracija telesa}.
 \end{definicija}
-S konfiguracijo torej določamo položaj telesa v prostoru $\E$. Ker je $B$ kompaktna
-množica, je tudi inverz konfiguracije zvezna preslikava.
+S konfiguracijo torej določamo položaj telesa v prostoru $\E$. Ker je $\B$ kompaktna
+množica, je tudi inverz $\kappa^{-1}\colon\kappa(\B)\to\B$ konfiguracije $\kappa$ zvezna preslikava.
 
-Naj bo $I=[t_1,t_2]\subset\R$ časovni interval, torej je $B\times I\subset\N$.
+Naj bo $I=[t_1,t_2]\subset\R$ časovni interval.
 \begin{definicija}
 	\emph{Gibanje (materialnega) telesa} je zvezna preslikava
 	\begin{equation}\label{e:chi}
-		\chi\colon B\times I\to\E,\qquad \chi\colon(X,t)\mapsto x=\chi(X,t)
+		\chi\colon\B\times I\to\E,\qquad \chi\colon(X,t)\mapsto x.
 	\end{equation}
 	z lastnostjo, da je za vsak $t\in I$ preslikava
-	\[ \chi_t\colon B\to\E, \qquad \chi_t(X):=\chi(X,t) \]
-	konfiguracija. Preslikava $\chi_t$ in množica $ B_t:=\chi_t(B)$ se imenujeta
+	\[ \chi_t\colon\B\to\E,\qquad \chi_t(x):=\chi(X,t) \]
+	konfiguracija. Preslikava $\chi_t$ in množica $\B_t:=\chi_t(\B)$ se imenujeta
 	\emph{trenutna konfiguracija} telesa \emph{ob času} $t$.
 \end{definicija}
 
-Z oznako $\Omega$ bomo, dokler ne bo povedano drugače, označili množico
-\[ \Omega=\{(x,t)\;;\ x\in\chi_t(B),\ t\in I\}\subset\N. \]
-Gibanje (\ref{e:chi}) ni injektivna preslikava, zato nima inverza. Kljub temu na smiselen
-način definiramo \emph{inverzno gibanje}
+Na gibanje lahko gledamo tudi kot na enoparametrično družino konfiguracij
+$\{ \chi_t\,;\ t\in I \}$, kjer je preslikava $t\mapsto\chi_t$ (enakomerno) zvezna,
+t.j.~za vsak $\varepsilon>0$ obstaja $\delta>0$, tako da za vsaka $t_1,t_2\in I$,
+za katera je $|t_2-t_1|<\delta$, velja $\sup_{X\in\B}\|\vek{\chi}_{t_2}(X)-\vek{\chi}_{t_1}(X)\|<\varepsilon$.
+Pri tem je $\|\cdot\|$ norma prostora $\V$.
+
+Z oznako $\Omega$ bomo označili množico
+\[ \Omega=\{(x,t)\;;\ x\in\chi_t(B),\ t\in I\}\subset\E\times I. \]
+Gibanje (\ref{e:chi}) ni injektivna preslikava\footnote{Notranjost domene $\B\times I$ generira
+vektorski prostor dimenzije 4, notranjost slike preslikave $\chi$ pa generira vektorski prostor dimenzije 3.},
+zato nima inverza. Kljub temu na smiselen način definiramo \emph{inverzno gibanje}
 \[
-	\chi^{-1}\colon\Omega\to B,\qquad
-	\chi^{-1}(x,t):=\bottop{\chi}{t}{-1}(x),
+	\chi^{-1}\colon\Omega\to \B,\qquad
+	\chi^{-1}\colon(x,t)\mapsto X:=\bottop{\chi}{t}{-1}(x).
 \]
-ki je tudi zvezno. S $\chi^{-1}$ smo torej označili inverz preslikave
-$(X,t)\mapsto(x,t)=(\chi(X,t),t)$. Dodatno bomo do nadaljnjega predpostavili, da sta gibanje
-in inverzno gibanje razreda $C^2$.
+S $\chi^{-1}$ smo torej označili inverz preslikave $(X,t)\mapsto(x,t)=(\chi(X,t),t)$.
+Dodatno bomo do nadaljnjega predpostavilim da sta gibanje in iverzno gibanje razreda $C^2$.
 
 Tenzorsko polje
 \[
-	\ten{F}\colon B\times I\to\L(\V),\qquad \ten{F}=\Grad\chi(X,t)=\Grad\chi_t(X)
+	\ten{F}\colon \B\times I\to\L(\V),\qquad \ten{F}(X,t)=\Grad\vek{\chi}(X,t)=\Grad\vek{\chi}_t(X)
 \]
 se imenuje \emph{deformacijski gradient} gibanja. Determinanti $J=\det\ten{F}$ 
 rečemo \emph{jacobijan}. Ker so konfiguracije $\chi_t$
-injektivne oz.~bijektivne na svojo sliko, mora biti $J\neq 0$ povsod na $B\times I$.
+injektivne oz.~bijektivne na svojo sliko, mora biti $J\neq 0$ povsod na $\B\times I$.
 Zaradi zveznosti tenzorskega polja $\ten{F}$ mora biti potem skalarno polje $J$,
-ki je potem takem tudi zvezno, vseskozi
-enakega predznaka. Po dogovoru je $J>0$. Po izreku o inverzni funkciji velja
+ki je potem takem tudi zvezno, enakega predznaka povsod na $\B\times I$. Po dogovoru je
+$J>0$. Po izreku o inverzni funkciji velja
 \[
-	\ten{F}^{-1}(x,t)=\grad\chi_t^{-1}(x)=\grad\chi^{-1}(x,t).
+	\ten{F}^{-1}(x,t)=\grad\vek{\chi}_t^{-1}(x)=\grad\vek{\chi}^{-1}(x,t).
 \]
 
 \emph{Hitrost} $\vek{v}$ in \emph{pospešek} $\vek{a}$ gibanja $\chi$ sta vektorski polji
 \begin{align}
-	\vek{v}\colon B\times I\to \V \qquad & \vek{v}(X,t) = \frac{\partial\chi}{\partial t}(X,t), \label{e:v} \\
-	\vek{a}\colon B\times I\to \V \qquad & \vek{a}(X,t) = \frac{\partial^2\chi}{\partial t^2}(X,t). \label{e:a}
+	\vek{v}\colon \B\times I\to \V \qquad & \vek{v}(X,t) = \frac{\partial\vek{\chi}}{\partial t}(X,t), \label{e:v} \\
+	\vek{a}\colon \B\times I\to \V \qquad & \vek{a}(X,t) = \frac{\partial^2\vek{\chi}}{\partial t^2}(X,t). \label{e:a}
 \end{align}
 Alternativna oznaka za $\vek{v}$ je tudi $\dot{\vek{x}}$, za $\vek{a}$ pa $\ddot{\vek{x}}$.
 
@@ -75,7 +81,7 @@ Alternativna oznaka za $\vek{v}$ je tudi $\dot{\vek{x}}$, za $\vek{a}$ pa $\ddot
 \section{Materialni in prostorski opis}
 
 
-Vsakemu tenzorskemu polju $\vek{f}\colon B\times I\to\W$ pripada glede na gibanje
+Vsakemu tenzorskemu polju $\vek{f}\colon \B\times I\to\W$ pripada glede na gibanje
 (\ref{e:chi}) enakovreden predpis
 \[
 	\bar{\vek{f}}\colon\Omega\to\W,\qquad
@@ -86,7 +92,7 @@ Tenzorsko polje $\bar{\vek{f}}$ se imenuje \emph{prostorski opis} tenzorskega po
 Na enak način pripada vsakemu tenzorskemu polju $\vek{f}\colon\Omega\to\W$
 glede na gibanje (\ref{e:chi}) enakovreden predpis
 \begin{equation} \label{e:matopi}
-	\hat{\vek{f}}\colon B\times I\to\W,\qquad
+	\hat{\vek{f}}\colon \B\times I\to\W,\qquad
 	\hat{\vek{f}}(X,t):=\vek{f}(\chi(X,t),t)=\vek{f}(x,t).
 \end{equation}
 $\hat{\vek{f}}$ imenujemo \emph{materialni opis} tenzorskega polja $\vek{f}$.
@@ -116,14 +122,12 @@ z uporabo verižnega pravila
 	=(\grad\vek{u})\ten{F}\vek{w}.
 \end{gather*}
 
-\textcolor[rgb]{1,0,0}{Potrebno dodati še zvezo med divergencama $Div\vek{f}$ in $div\vek{f}$ ter jo dokazati.}
-
 \begin{definicija}
-	Časovni odvod tenzorskega polja $\vek{f}\colon B\times I\to\W$ označimo z
-	$\dot{\vek{f}}$ ali $d\vek{f}/dt$ in ga imenujemo \emph{materialni odvod};
+	Časovni odvod tenzorskega polja $\vek{f}\colon \B\times I\to\W$ označimo z
+	$\dot{\vek{f}}$ ali $d\vek{f}/dt$ in ga imenujemo \emph{materialni časovni odvod};
 	\[ \dot{\vek{f}}(X,t)=\frac{d\vek{f}}{dt}(X,t)=\frac{\partial\vek{f}}{\partial t}(X,t). \]
 \end{definicija}
-Iz (\ref{e:matopi}) dobimo z uporabo verižnega pravila še materialni odvod za prostorski opis:
+Iz (\ref{e:matopi}) dobimo z uporabo verižnega pravila še materialni časovni odvod za prostorski opis:
 \begin{equation} \label{e:matodv}
 	\dot{\vek{f}}=\frac{d\vek{f}}{dt}=
 	\frac{\partial\vek{f}}{\partial t}+(\grad\vek{f})(\vek{v}),
@@ -133,24 +137,24 @@ kjer je $\vek{v}$ hitrost gibanja (\ref{e:v}), $\partial\vek{f}/\partial t$ pa
 bo oznaka $\partial\vek{f}/\partial t$ vedno pomenila časovni odvod prostorskega opisa.
 
 \begin{primer} %\label{e:L}
-	Hitrost in pospešek sta prvi in drugi materialni odvod gibanja $\vek{x}(X,t)=\chi(X,t)$,
+	Hitrost in pospešek sta prvi in drugi materialni odvod gibanja $\vek{x}(X,t)=\vek{\chi}(X,t)$,
 	$\vek{v}=\dot{\vek{x}}$, $\vek{a}=\ddot{\vek{x}}$.
 	Pospešek je materialni odvod hitrosti in se v prostorskem opisu izraža kot
 	\[ \vek{a}=\dot{\vek{v}}=\frac{\partial\vek{v}}{\partial t}+(\grad\vek{v})\vek{v}. \]
 	Tenzorsko polje $\ten{L}=\grad\vek{v}$ se imenuje \emph{hitrostni gradient}.
-	Če je gibanje $\chi$ razreda $C^1$, potem je
+	Če je gibanje $\chi$ razreda $C^2$, potem je
 	\[
-		\frac{d}{dt}\Grad\chi=\Grad\frac{d\chi}{dt}\qquad\textrm{oziroma}\qquad
+		\frac{d}{dt}\Grad\vek{\chi}=\Grad\frac{d\vek{\chi}}{dt}\qquad\textrm{oziroma}\qquad
 		\dot{\ten{F}}=\Grad\vek{v},
 	\]
 	iz česar z uporabo zveze (\ref{e:gz}) dobimo
 	\begin{equation} \label{e:L}
-		\ten{L}:=\grad\vek{v}=\dot{\ten{F}}\ten{F}^{-1}
+		\ten{L}:=\grad\vek{v}=\dot{\ten{F}}\ten{F}^{-1}.
 	\end{equation}
 \end{primer}
 
 
-\section{Transformacija ploskovnih in volumskih integralov}
+\section{Površinski in prostorninski element}
 
 
 Naj bo $\Theta\subset\R^2$ odprta in $r\in C^1(\Theta,B)$ regularna parametrizacija
@@ -161,8 +165,6 @@ vrednost vektorske funkcije
 	\vek{S}=\frac{\partial r}{\partial\vartheta_1}\times
 	\frac{\partial r}{\partial\vartheta_2}.
 \]
-pri danem $(\vartheta_1,\vartheta_2)$ je normalni vektor na ploskev $S$
-v točki $X=r(\vartheta_1,\vartheta_2)\in S$.
 Preslikava $\chi_t\circ r$ je parametrizacija ploskve $s\subset B_t$, pripadajoča
 vektorska funkcija normalnih vektorjev je
 \[
@@ -327,7 +329,7 @@ odvod prostorskega opisa polja $\vek{f}$.
 		\int_{P}\frac{d}{dt}(\vek{f}J)\,dV = \int_{P}(\dot{\vek{f}}J+\vek{f}\dot{J})\,dV =\\
 		&=\int_{P}(\dot{\vek{f}}+\vek{f}\div\vek{v})J\,dV = \int_{P_t}(\dot{\vek{f}}+\vek{f}\div\vek{v})\,dv,
 	\end{align*}
-	s čimer je dokazan prvi del enačbe iz ireka.
+	s čimer je dokazan prvi del enačbe iz izreka.
 	Pri tem smo na drugem koraku smeli zamenjati vrstni red odvajanja in integriranja,
 	ker se referenčna konfiguracija s časom ne spreminja.
 	
@@ -392,7 +394,7 @@ Seveda potem velja $\rho_R=\rho J$ tudi v prostorskem opisu na $\Omega$.
 \end{posledica}
 
 \proof
-	Uporabimo relacijo ({e:rojror}) in izrek \ref{i:prointrel}.
+	Uporabimo relacijo (\ref{e:rojror}) in izrek \ref{i:prointrel}.
 \endproof
 
 Še ena takojšnja posledica zakona o ohranitvi mase je ta, da se masa katerega koli

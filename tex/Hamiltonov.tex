@@ -33,7 +33,9 @@ predpisa za normo je npr.
 	\|\cdot\|\colon\mathcal{X}\to[0,\infty),\quad
 	\|\chi\|=\sup\big\{\|\chi(X,t)\|\: ;\ (X,t)\in B\times I\big\}.
 \]
-Pri tem je z normo, ki se pojavi znotraj množice, mišljena Evklidska norma krajevnega vektorja točke $\chi(X,t)$.
+Pri tem je z normo, ki se pojavi znotraj množice, mišljena Evklidska norma krajevnega vektorja točke $x=\chi(X,t)$.
+Dejansko lahko supremum nadomestimo z maksimumom, ker je vsak $\chi\in\mathcal{X}$
+zvezna preslikava na kompaktni domeni $B\times I$.
 
 \begin{definicija}
 	\begin{enumerate}
@@ -296,20 +298,18 @@ kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
 \begin{posledica} \label{p:varham0}
 	Potreben pogoj, ki mu mora pravo gibanje zadoščati, je pozitivnost jacobijana
 	na celotnem definicijskem območju ter
-	\[ \delta H = \int_{t_0}^{t_1}(\delta T+\delta W+\delta U)\,dt = 0. \]
+	\[ \delta H = \int_{t_1}^{t_2}(\delta T+\delta W+\delta U)\,dt = 0. \]
 \end{posledica}
 
 Če poznamo izraz za notranjo energijo in njeno variacijo, potem iz posledice
 dobimo integralsko enačbo. Izraz za variacijo kinetične energije in virtualno delo 
 smo namreč že izpeljali. Iz integralske enačbe se da dobiti sistem lokalnih diferencialnih enačb
-za tenzorska polja. Med rešitvami tega sistema je tudi samo gibanje telesa.
+za tenzorska polja. Med rešitvami tega sistema je tudi sámo gibanje telesa.
 Da pa dobimo lokalne enačbe, potrebujemo nekaj izrekov, ki so podani v naslednjem razdelku.
 
 
 \section{Osnovne leme variacijskega računa}
 
-
-\textcolor[rgb]{0,0.58,0}{Ta razdelek sem pregledal in popravil in sem z njim zadovoljen, tako da lahko označite napake.}
 
 Skozi ta razdelek naj oznaka $\W$ stoji za
 končnorazsežen vektorski prostor nad poljem realnih števil, opremljen s skalarnim produktom.
@@ -510,11 +510,6 @@ V enačbi (\ref{e:lem3}) nastopata polji $\vek{f}$ in $\vek{w}$ v prostorskem op
 \section{Primera}
 
 
-\textcolor[rgb]{1,0,0}{Ta razdelek ni dokončan. Primer za elastični fluid ni končan,
-manjka še primer za elastični solid. To bom še dopisal brez težav, ker tu gre
-potem le še za uporabo že vsega izpeljanega.}
-
-
 \subsection{Elastični fluid}
 
 
@@ -585,10 +580,10 @@ zato lahko uporabimo lemo \ref{lema4} (v tem primeru je $\partial_gB=\emptyset$)
 \]
 
 
-\subsection{Elastična trdnina}
+\subsection{Elastično trdno telo}
 
 
-\emph{Elastična trdnina} je model telesa iz trdnega materiala, v katerem se predpostavi,
+\emph{Elastično trdno telo} je model telesa iz trdnega materiala, v katerem se predpostavi,
 da je notranja energija telesa podana kot
 \[ U=\int_{B}\rho_R e(\ten{F})\,dV=\int_{\chi_t(B)}\rho e(\ten{F})\,dv, \]
 kjer je $e\colon\L(\V)\to\R$ \emph{gostota notranje energije}, vrednost katere je odvisna od
@@ -602,11 +597,11 @@ določen tenzor $\tilde{\ten{S}}\in\L(\V)$, da za vsak $\ten{A}\in\L(\V)$ velja
 \[ De(\ten{F})(\ten{A})=\tilde{\ten{S}}\cdot\ten{A}=\tr(\tilde{\ten{S}}^{T}\ten{A}). \]
 Zato bomo v bodoče kar enačili odvod $De(\ten{F})$ s pripadajočim tenzorjem $\tilde{\ten{S}}$.
 Definirajmo tenzorsko polje
-\[
+\begin{equation} \label{e:piola}
 	\ten{S}\colon B\times I\to\L(\V),\qquad
 	\ten{S}(X,t)=\rho_R(X)De(\ten{F}(X,t)).%\quad\textrm{oz.~krajše}\quad
 	%\ten{S}=\rho_RDe(\ten{F}).
-\]
+\end{equation}
 $\ten{S}(X,t)$ se imenuje \emph{prvi Piola-Kirchoffov napetostni tenzor}.
 
 Izračunajmo variacijo notranje energije:
@@ -625,9 +620,9 @@ Pri tem smo uporabili enakost (\ref{e:deltaF}). Če sedaj upoštevamo zvezi (\re
 	\int_{\chi_t(B)}\ten{T}\cdot\grad\vek{\eta}\,dv,
 \end{align*}
 kjer se vrednost tenzorskega polja
-\[
-	\ten{T}=\frac{1}{J}\ten{S}\ten{F}^{T}
-\]
+\begin{equation} \label{e:napetostni}
+	\ten{T}=\frac{1}{J}\ten{S}\ten{F}^{T}=\rho D\sigma(\ten{F})\ten{F}^{T}
+\end{equation}
 imenuje \emph{Cauchyjev napetostni tenzor}. Obe dobljeni enačbi za $\delta U$ lahko
 s pomočjo izrekov \ref{e:divSu} in \ref{i:divtheo} zapišemo v obliki
 \begin{align}
