@@ -1,6 +1,6 @@
 \appendix
 
-\chapter{Konstitucijske enačbe}
+\chapter{Konstitucijske enačbe za izotropno elastično trdno telo}
 
 
 \section{Sprememba opazovališča in objektivnost}
@@ -10,54 +10,6 @@ V razdelku \ref{s:evklipro} smo podali definicijo opazovališča za Evklidski
 prostor $\E$. Nato smo v poglavju \ref{chp:kinkon} omenili, da so določene
 fizikalne količine lahko odvisne od izbire opazovališča. V tem razdelku bomo
 na kratko analizirali spremembo opazovališča.
-
-
-Naj bosta $(\iota,o)$ in $(\iota^*,o^*)$ oz.~$\iota_o$ in $\iota^*_{o^*}$
-opazovališči za $\E$. \emph{Sprememba opazovališča} iz
-$(\iota,o)$ v $(\iota^*,o^*)$ je transformacija
-\[
-	\iota^*_{o^*}\circ\iota_o^{-1}\colon\V\to\V,\qquad
-	\vek{x}\mapsto\vek{x}^*=\iota^*_{o^*}(\iota_o^{-1}(\vek{x})).
-\]
-Za nas bodo pomembne take spremembe opazovališča, ki ohranjajo izmerjene razdalje
-med točkami, kar pomeni, da mora za vsaki točki $x_1,x_2\in\E$ veljati
-$\|\iota^*(x_1,x_2)\|=\|\iota(x_1,x_2)\|$. Iz linearne algebre vemo,
-da so izometrije na prostoru $\V$ natanko ortogonalne preslikave,
-torej mora veljati
-\[
-	\iota^*(x_1,x_2)=\ten{Q}\iota(x_1,x_2)\quad\forall x_1,x_2\in\E,
-\]
-kjer je $\ten{Q}\in\mathscr{O}(\V)$ ortogonalna preslikava. Če je $x\in\E$ in
-je $\vek{x}=\iota_o(x)$ ter $\vek{x}^*=\iota^*_{o^*}(x)$, potem je
-\begin{equation} \label{e:toga}
-	\vek{x}^*=\iota^*(o^*,x)=\iota^*(o^*,o)+\iota^*(o,x)=\vek{c}+\ten{Q}\vek{x}.
-\end{equation}
-Pri tem smo označili $\vek{c}=\iota^*(o^*,o)$. Transformaciji oblike (\ref{e:toga})
-se reče tudi \emph{toga transformacija}. Na množici $\Psi$ vseh opazovališč
-za $\E$ lahko vpeljemo dvojiško relacijo $\sim$ takole:
-$\iota_o\sim\iota^*_{o^*}\ \Leftrightarrow\ \iota^*_{o^*}\circ\iota_o^{-1}$ je toga
-transformacija na $\V$. Hitro se lahko prepričamo, da je relacija $\sim$ ekvivalenčna,
-torej množica $\Psi$ razpade na ekvivalenčne razrede.
-
-\begin{definicija}
-	\emph{Evklidska transformacija} je časovno odvisna sprememba opazovališča,
-	podana s preslikavo $(\vek{x},t)\mapsto(\vek{x}^*,t^*)$, ki slika iz
-	$\V\times\R$ v $\V\times\R$ in ima predpis
-	\begin{align*}
-		\vek{x}^*&=\ten{Q}(t)\vek{x}+\vek{c}(t),\\
-		t^*&=t+a,
-	\end{align*}
-	pri čemer so $\ten{Q}\colon\R\mapsto\mathscr{O}(\V)$, $\vek{c}\colon\R\mapsto\V$
-	in $a\in\R$.
-\end{definicija}
-
-Med vsemi časovno odvisnimi spremembami opazovališč so Evklidske transformacije
-tiste, ki ohranjajo izmerjene razdalje med točkami in ohranjajo izmerjen
-potek časa med dogodki.
-
-
-\subsection{Od tu dalje}
-
 
 \emph{Sprememba opazovališča} za $\E$ je prehod iz opazovališča $\iota_o$ v opazovališče
 $\iota^*_{o^*}$. Pri tem točka $x\in\E$, ki ima v opazovališču $\iota_o$ krajevni vektor
@@ -140,13 +92,117 @@ Posledično je tudi masna gostota trenutne konfiguracije objektivna skalarna kol
 Za gostoto notranje energije $\sigma(\ten{F})$, ki smo jo predstavili v primeru
 elastičnega trdnega telesa, zahtevamo, da je kot skalarna količina neodvisna
 od opazovališča, torej velja
-\[ \sigma^*:=\sigma(\ten{F}^*)=\sigma(\ten{F}) \]
+\begin{equation} \label{e:objesig}
+	\sigma(\ten{F}^*)=\sigma(\ten{Q}\ten{F})=\sigma(\ten{F})
+\end{equation}
 za vse $(X,t)\in\B\times I$.
 Dokažimo, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
-\[ \ten{T}=\rho D\sigma(\ten{F})\ten{F}^T \]
-tudi objektiven. Velja
+\[
+	\ten{T}=\mathcal{T}(\ten{F})=\rho D\sigma(\ten{F})\ten{F}^T
+	=\frac{\rho_R}{|\det\ten{F}|} D\sigma(\ten{F})\ten{F}^T
+\]
+tudi objektiven. Če izraz $\sigma(\ten{Q}\ten{F})$ posredno odvajamo po $\ten{F}$,
+dobimo za poljuben $\ten{H}\in\L(\V)$
+\[
+	D(\sigma\circ(\ten{X}\mapsto\ten{Q}\ten{X}))(\ten{F})(\ten{H})=
+	D\sigma(\ten{Q}\ten{F})\cdot(\ten{Q}\ten{H})=\ten{Q}^T D\sigma(\ten{Q}\ten{F})\cdot\ten{H}.
+\]
+Z odvajanjem enakosti (\ref{e:objesig}) po $\ten{F}$ torej pridemo do
+\[
+	\ten{Q}^T D\sigma(\ten{Q}\ten{F}) = D\sigma(\ten{F})\qquad\textrm{oziroma}
+	\qquad D\sigma(\ten{Q}\ten{F}) = \ten{Q}D\sigma(\ten{F}).
+\]
+Z upoštevanjem pravkar dobljene enakosti in objektivnosti masne gostote dobimo
 \begin{align*}
-	\ten{T}^*=\rho^* D\sigma(\ten{F}^*)\ten{F}^{*T}=\rho D\sigma(\ten{Q}\ten{F})(\ten{Q}\ten{F})^{*T}
-	=\rho D\sigma(\ten{Q}\ten{F})(\ten{Q}\ten{F})^{T}=\rho D\sigma(\ten{Q}\ten{F})(\ten{F}^{T}\ten{Q}^{T})
-	=\rho D\sigma(\ten{Q}\ten{F})\cdot(\ten{Q}\ten{F}^{T}\ten{Q}^{T})
+	\ten{T}^*&=\rho^* D\sigma(\ten{F}^*)\ten{F}^{*T}
+	=\rho D\sigma(\ten{Q}\ten{F})\ten{F}^{T}\ten{Q}^{T}
+	=\rho \ten{Q} D\sigma(\ten{F})\ten{F}^{T}\ten{Q}^{T} \nonumber \\
+	&=\ten{Q}\ten{T}\ten{Q}^{T}
 \end{align*}
+oziroma
+\[
+	\mathcal{T}(\ten{Q}\ten{F})=\ten{Q}\mathcal{T}(\ten{F})\ten{Q}^{T}\qquad\forall\;\ten{Q}\in\mathscr{O}(\V),
+\]
+kar dokazuje, da je $\ten{T}$ neodvisen od opazovališča.
+
+
+\subsection{Materialne simetrije}
+
+
+\emph{Sprememba referenčne konfiguracije} je bijektivna gladka preslikava $\kappa\colon\B\to\E_R$.
+Pri tem je $\B_{\kappa}=\kappa(\B)$ nova referenčna konfiguracija telesa. Gibanje
+$\chi\colon\B\times I\to\E$ lahko enakovredno predstavimo s preslikavo
+\[
+	\chi_{\kappa}\colon\B_{\kappa}\times I\to\E, \qquad
+	\chi_{\kappa}=\chi\circ\kappa^{-1}.
+\]
+Če označimo $\ten{F}=\Grad\vek{\chi}$, $\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}$
+in $\ten{P}=\Grad\vek{\kappa}$, potem z odvajanjem enakosti $\chi=\chi_{\kappa}\circ\kappa$
+dobimo zvezo med gradienti
+\[
+	\ten{F}=\ten{F}_{\kappa}\,\ten{P}.
+\]
+
+\begin{definicija}
+	Referenčni konfiguraciji $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$
+	sta \emph{materialno nerazločljivi}, če velja
+	\begin{equation} \label{e:grarefc}
+		\mathcal{T}(\ten{F}_{\kappa})=\mathcal{T}(\ten{F}_{\hat{\kappa}}),
+	\end{equation}
+	pri čemer je $\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}$ in
+	$\ten{F}_{\hat{\kappa}}=\Grad\vek{\chi}_{\hat{\kappa}}$.
+\end{definicija}
+
+Če označimo z $\ten{G}=\Grad(\vek{\kappa}\circ\hat{\vek{\kappa}}^{-1})$,
+potem je pogoj (\ref{e:grarefc}) ekvivalenten pogoju
+\[
+	a
+\]
+
+\begin{izrek}[Polarni razcep]
+	Za vsako obrnljivo linearno preslikavo $\ten{F}\in\L(\V)$, $\det\ten{F}\neq 0$,
+	obstajata simetrični pozitivno definitni linearni preslikavi $\ten{V}$ in $\ten{U}$
+	ter ortogonalna linearna preslikava $\ten{R}$, tako da velja
+	\[
+		\ten{F}=\ten{R}\ten{U}=\ten{V}\ten{R}.
+	\]
+	Pri tem so $\ten{U}$, $\ten{V}$ in $\ten{R}$ z zgornjim razcepom enolično določene.
+\end{izrek}
+
+\proof
+	Takoj se vidi, da sta preslikavi $\ten{F}\ten{F}^T$ in $\ten{F}^T\ten{F}$
+	simetrični, hkrati pa tudi pozitivno definitni, saj za poljuben $\vek{v}\in\V$,
+	$\vek{v}\neq\vek{0}$, velja
+	\[ \vek{v}\cdot\ten{F}^T\ten{F}\vek{v}=\ten{F}\vek{v}\cdot\ten{F}\vek{v}>0, \]
+	saj je $\ten{F}$ nesingularna.
+	
+	Iz spektralnega izreka iz linearne algebre vemo, da se da vsako simetrično
+	linearno preslikavo $\ten{S}$ zapisati kot
+	\[ \ten{S}=\sum_{j=1}^3 a_j\vek{u}_j\otimes\vek{u}_j, \]
+	kjer so $a_j$ lastne vrednosti, $\vek{u}_j$ pa pripadajoči lastni vektorji.
+	Pri tem je mogoče lastne vektorje izberati tako, da so medsebojno ortogonalni.
+	Vse lastne vrednosti simetrične preslikave so vedno realne. Za vsako
+	simetrično linearno preslikavo $\ten{S}$ obstaja kvadratni koren, t.j.~enolično določena linearna
+	preslikava $\ten{G}$, da je $\ten{G}^2=\ten{S}$. Velja
+	\[ \ten{G}=\sqrt{\ten{S}}=\sum_{j=1}^3 \sqrt{a_j}\,\vek{u}_j\otimes\vek{u}_j. \]
+	
+	Definirajmo
+	\[
+		\ten{U}=\sqrt{\ten{F}^T\ten{F}},\quad\ten{R}=\ten{F}\ten{U}^{-1},\quad
+		\ten{V}=\ten{R}\ten{U}\ten{R}^T.
+	\]
+	Po definiciji je $\ten{U}$ simetrična pozitivno definitna in $\ten{R}$ je ortogonalna, saj je
+	\begin{align*}
+		\ten{R}\ten{R}^T&=\ten{F}\ten{U}^{-1}(\ten{F}\ten{U}^{-1})^T
+		=\ten{F}\ten{U}^{-1}\ten{U}^{-T}\ten{F}^T \\ &=\ten{F}\ten{U}^{-2}\ten{F}^T
+		=\ten{F}(\ten{F}^T\ten{F})^{-1}\ten{F}^T=\ten{1}.
+	\end{align*}
+	Poleg tega je
+	\[
+		\ten{V}^2=(\ten{R}\ten{U}\ten{R}^T)(\ten{R}\ten{U}\ten{R}^T)
+		=(\ten{R}\ten{U})(\ten{R}\ten{U})^T=\ten{F}\ten{F}^T,
+	\]
+	torej je $\ten{V}$ kvadratni koren od $\ten{F}\ten{F}^T$ in je zato
+	simetrična in pozitivno definitna. Enoličnost sledi iz enoličnosti obstoja
+	kvadratnega korena.
+\endproof
