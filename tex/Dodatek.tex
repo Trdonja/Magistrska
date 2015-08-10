@@ -132,32 +132,153 @@ kar dokazuje, da je $\ten{T}$ neodvisen od opazovališča.
 \emph{Sprememba referenčne konfiguracije} je bijektivna gladka preslikava $\kappa\colon\B\to\E_R$.
 Pri tem je $\B_{\kappa}=\kappa(\B)$ nova referenčna konfiguracija telesa. Gibanje
 $\chi\colon\B\times I\to\E$ lahko enakovredno predstavimo s preslikavo
-\[
+\begin{equation} \label{e:chgrek}
 	\chi_{\kappa}\colon\B_{\kappa}\times I\to\E, \qquad
 	\chi_{\kappa}=\chi\circ\kappa^{-1}.
-\]
+\end{equation}
 Če označimo $\ten{F}=\Grad\vek{\chi}$, $\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}$
-in $\ten{P}=\Grad\vek{\kappa}$, potem z odvajanjem enakosti $\chi=\chi_{\kappa}\circ\kappa$
+in $\ten{P}=\Grad\vek{\kappa}$, potem z odvajanjem enakosti (\ref{e:chgrek})
 dobimo zvezo med gradienti
 \[
-	\ten{F}=\ten{F}_{\kappa}\,\ten{P}.
+	\ten{F}_{\kappa}=\ten{F}\ten{P}^{-1}.
 \]
+
+Naj bosta $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$ referenčni konfiguraciji.
+V točki $x=\chi(X,t)\in\B_t$ je vrednost Cauchyjevega napetostnega tenzorja
+\begin{equation} \label{e:responf}
+	\ten{T}(x,t)=\mathcal{T}_{\kappa}(\ten{F}_{\kappa}(\kappa(X),t))\quad\textrm{oz.}\quad
+	\ten{T}(x,t)=\mathcal{T}_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}}(\hat{\kappa}(X),t)).
+\end{equation}
+Pri tem sta $\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}$ in
+$\ten{F}_{\hat{\kappa}}=\Grad\vek{\chi}_{\hat{\kappa}}$ (glej zvezo (\ref{e:chgrek})).
+V splošnem sta \emph{odzivni funkciji} $\mathcal{T}_{\kappa}$ in $\mathcal{T}_{\hat{\kappa}}$
+različni. Iz diagrama REF vidimo, da velja $\chi_{\kappa}=\chi_{\hat{\kappa}}\circ\hat{\kappa}\circ\kappa^{-1}$.
+Če označimo s
+\begin{equation} \label{e:pupa}
+	\ten{G}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
+\end{equation}
+potem je $\ten{F}_{\kappa}=\ten{F}_{\hat{\kappa}}\ten{G}$. Po primerjanju relacij (\ref{e:responf})
+sedaj vidimo, da med odzivnima funkcijama velja zveza
+\begin{equation} \label{e:dolgnoc}
+	\mathcal{T}_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}})
+	=\mathcal{T}_{\kappa}(\ten{F}_{\hat{\kappa}}\ten{G}).
+\end{equation}
+
+Materialno telo lahko poseduje določene simetrije, zaradi katerih ni mogo\-če razločiti
+med določenimi referenčnimi konfiguracijami. Na primer, materialno telo iz
+kubične kristalne strukture je nemogoče razločiti pred in po rotaciji za
+$90^{\circ}$ okoli ene od kristalnih osi.
 
 \begin{definicija}
 	Referenčni konfiguraciji $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$
 	sta \emph{materialno nerazločljivi}, če velja
 	\begin{equation} \label{e:grarefc}
-		\mathcal{T}(\ten{F}_{\kappa})=\mathcal{T}(\ten{F}_{\hat{\kappa}}),
+		\mathcal{T}_{\hat{\kappa}}(\cdot)=\mathcal{T}_{\kappa}(\cdot).
 	\end{equation}
-	pri čemer je $\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}$ in
-	$\ten{F}_{\hat{\kappa}}=\Grad\vek{\chi}_{\hat{\kappa}}$.
 \end{definicija}
 
-Če označimo z $\ten{G}=\Grad(\vek{\kappa}\circ\hat{\vek{\kappa}}^{-1})$,
-potem je pogoj (\ref{e:grarefc}) ekvivalenten pogoju
+Če uporabimo oznako (\ref{e:pupa}) in upoštevamo enakosti (\ref{e:dolgnoc}),
+potem vidimo, da je pogoj (\ref{e:grarefc}) ekvivalenten pogoju
+\begin{equation} \label{e:pogir}
+	\mathcal{T}_{\kappa}(\ten{F})=\mathcal{T}_{\kappa}(\ten{F}\ten{G})\qquad
+	\forall\;\ten{F}.
+\end{equation}
+
+\begin{definicija}
+	Če za linearno preslikavo $\ten{G}$ velja pogoj (\ref{e:pogir}), potem ji rečemo
+	\emph{materialna simetrijska transformacija} gle\-de na konfiguracijo $\kappa$.
+\end{definicija}
+
+Materialna nerazločljivost v fizikalnem smislu pomeni, da se odziv materiala
+glede na konfiguracijo $\kappa$ ne da razločiti od odziva glede na konfiguracijo
+$\hat{\kappa}$ z nobenim mogočim eksperimentom.
+
+Predpostavili bomo, da vse materialne simetrijske transformacije ohranjajo prostornino telesa,
+saj bi se sicer materialno telo lahko poljubno razši\-rilo, ne da bi se to poznalo na odzivu,
+kar pa je fizikalno nesprejemljivo. Zato je potrebna predpostavka, da je
 \[
-	a
+	\ten{G}\in\mathscr{U}(\V)=\{\ten{A}\in\L(\V)\;;\ |\det\ten{A}|=1 \}.
 \]
+Množica $\mathscr{U}(\V)$ je za operacijo kompozitum grupa, imenovana \emph{unimodularna grupa}.
+Grupa $\mathscr{O}(\V)$ je podgrupa grupe $\mathscr{U}(\V)$.
+
+\begin{izrek}
+	Množica $\mathcal{G}_{\kappa}$ vseh materialnih simetrijskih transformacij glede
+	na konfiguracijo $\kappa$ je podgrupa unimodularne grupe.
+\end{izrek}
+
+\proof
+	Dovolj je dokazati, da je $\mathcal{G}_{\kappa}$ grupa. Za poljubni $\ten{G}_1,\ten{G}_2\in\mathcal{G}_{\kappa}$
+	z upoštevanjem relacije (\ref{e:pogir}) velja
+	\[
+		\mathcal{T}_{\kappa}(\ten{F})=\mathcal{T}_{\kappa}(\ten{F}\ten{G}_1)
+		=\mathcal{T}_{\kappa}((\ten{F}\ten{G}_1)\ten{G}_2)=\mathcal{T}_{\kappa}(\ten{F}(\ten{G}_1\ten{G}_2)),
+	\]
+	torej je $\ten{G}_1\ten{G}_2\in\mathcal{G}_{\kappa}$. Očitno je tudi $\ten{1}\in\mathcal{G}_{\kappa}$.
+	Naj bo $\ten{G}\in\mathcal{G}_{\kappa}$. Ker je $|\det\ten{G}|=1$, obstaja $\ten{G}^{-1}$ in je
+	\[
+		\mathcal{T}_{\kappa}(\ten{F}\ten{G}^{-1})=\mathcal{T}_{\kappa}((\ten{F}\ten{G}^{-1})\ten{G})
+		=\mathcal{T}_{\kappa}(\ten{F}),
+	\]
+	kar dokazuje, da je tudi $\ten{G}^{-1}\in\mathcal{G}_{\kappa}$. Torej je $\mathcal{G}_{\kappa}$ grupa.
+\endproof
+
+$\mathcal{G}_{\kappa}$ se imenuje \emph{materialna simetrijska grupa} za $\mathcal{T}$ glede
+na referenčno konfiguracijo $\kappa$. Očitno je, da je $\mathcal{G}_{\kappa}$ odvisna od
+referenčne konfiguracije $\kappa$. Če je $\hat{\kappa}$ še ena referenčna konfiguracija
+s pripadajočo materialno simetrijsko grupo $\mathcal{G}_{\hat{\kappa}}$
+in je $\ten{G}$ kot v (\ref{e:pupa}), potem za poljuben
+$\ten{H}\in\mathcal{G}_{\kappa}$ dobimo iz (\ref{e:dolgnoc})
+\begin{align*}
+	\mathcal{T}_{\hat{\kappa}}(\ten{F})&=\mathcal{T}_{\kappa}(\ten{F}\ten{G})
+	=\mathcal{T}_{\kappa}((\ten{F}\ten{G})\ten{H})
+	=\mathcal{T}_{\kappa}(\ten{F}(\ten{G}\ten{H}\ten{G}^{-1})\ten{G}) \\
+	&=\mathcal{T}_{\hat{\kappa}}(\ten{F}(\ten{G}\ten{H}\ten{G}^{-1})),
+\end{align*}
+iz česar sledi, da je $\ten{G}\ten{H}\ten{G}^{-1}\in\mathcal{G}_{\hat{\kappa}}$.
+S tem smo dokazali naslednji izrek.
+
+\begin{izrek}[Nollovo pravilo]
+	Naj bosta $\kappa$ ter $\hat{\kappa}$ konfiguraciji in naj bo
+	$\ten{G}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1})$. Potem
+	med materialnima simetrijskima grupama velja zveza
+	\[
+		\mathcal{G}_{\hat{\kappa}}=\ten{G}\mathcal{G}_{\kappa}\ten{G}^{-1}
+		=\{\ten{G}\ten{H}\ten{G}^{-1}\;;\ \ten{H}\in\mathcal{G}_{\kappa}\}.
+	\]
+\end{izrek}
+
+V zgornjem izreku je $\ten{G}$ gradient spremembe konfiguracije in ni nujno,
+da pripada unimodularni grupi.
+
+\begin{definicija}
+	\begin{enumerate}
+		\item Material je \emph{trdno telo}, če obstaja referenčna konfiguracija $\kappa$, da je
+		$\mathcal{G}_{\kappa}$ podgrupa ortogonalne grupe $\mathscr{O}(\V)$.
+		Taka konfiguracija se imenuje \emph{neizkrivljena}.
+		\item Material je \emph{fluid}, če je za neko referenčno konfiguracijo $\kappa$
+		pripadajoča simetrijska grupa kar cela unimodularna grupa,
+		t.j.~$\mathcal{G}_{\kappa}=\mathscr{U}(\V)$.
+		\item Če material ni niti trdno telo niti fluid, potem je \emph{fluidni kristal}.
+	\end{enumerate}
+\end{definicija}
+
+Po Nollovem pravilu je za fluide $\mathcal{G}_{\kappa}=\mathcal{G}_{\hat{\kappa}}$
+za poljubni referenčni konfiguraciji $\kappa$ in $\hat{\kappa}$. Za fluid so torej
+vse referenčne konfiguracije enakovredne.
+
+\begin{definicija}
+	Materialno telo je \emph{izotropno}, če obstaja referenčna konfiguracija $\kappa$,
+	da je $\mathscr{O}(\V)\subseteq\mathcal{G}_{\kappa}$. Taka konfiguracija
+	se imenuje \emph{izotropna}.
+\end{definicija}
+
+Grupa $\mathscr{O}(\V)$ je maksimalna podgrupa v grupi $\mathscr{U}(\V)$, kar pomeni,
+da če je $\mathcal{G}$ taka grupa, da velja $\mathscr{O}(\V)\subseteq\mathcal{G}\subseteq\mathscr{U}(\V)$,
+potem je bodisi $\mathcal{G}=\mathscr{O}(\V)$ bodisi $\mathcal{G}=\mathscr{U}(\V)$.\footnote{
+Izrek je brez dokaza naveden v \cite[str.~88]{liu}.}
+Izotropno materialno telo je torej bodisi fluid, $\mathcal{G}_{\kappa}=\mathscr{U}(\V)$,
+bodisi izotropno trdno telo, $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$.
 
 \begin{izrek}[Polarni razcep]
 	Za vsako obrnljivo linearno preslikavo $\ten{F}\in\L(\V)$, $\det\ten{F}\neq 0$,
