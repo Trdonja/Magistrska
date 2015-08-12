@@ -95,7 +95,7 @@ od opazovališča, torej velja
 \begin{equation} \label{e:objesig}
 	\sigma(\ten{F}^*)=\sigma(\ten{Q}\ten{F})=\sigma(\ten{F})
 \end{equation}
-za vse $(X,t)\in\B\times I$.
+za vse nesingularne $\ten{F}\in\L(\V)$ in vse $\ten{Q}\in\mathscr{O}(\V)$.
 Dokažimo, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
 \[
 	\ten{T}=\mathcal{T}(\ten{F})=\rho D\sigma(\ten{F})\ten{F}^T
@@ -153,7 +153,7 @@ Pri tem sta $\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}$ in
 $\ten{F}_{\hat{\kappa}}=\Grad\vek{\chi}_{\hat{\kappa}}$ (glej zvezo (\ref{e:chgrek})).
 V splošnem sta \emph{odzivni funkciji} $\mathcal{T}_{\kappa}$ in $\mathcal{T}_{\hat{\kappa}}$
 različni. Iz diagrama REF vidimo, da velja $\chi_{\kappa}=\chi_{\hat{\kappa}}\circ\hat{\kappa}\circ\kappa^{-1}$.
-Če označimo s
+Če označimo z
 \begin{equation} \label{e:pupa}
 	\ten{G}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
 \end{equation}
@@ -273,12 +273,18 @@ vse referenčne konfiguracije enakovredne.
 	se imenuje \emph{izotropna}.
 \end{definicija}
 
+Izotropnost v fizikalnem smislu pomeni, da nobena ortogonalna transformacija izotropne
+konfiguracije ne spremeni odziva v materialu.
+
 Grupa $\mathscr{O}(\V)$ je maksimalna podgrupa v grupi $\mathscr{U}(\V)$, kar pomeni,
 da če je $\mathcal{G}$ taka grupa, da velja $\mathscr{O}(\V)\subseteq\mathcal{G}\subseteq\mathscr{U}(\V)$,
 potem je bodisi $\mathcal{G}=\mathscr{O}(\V)$ bodisi $\mathcal{G}=\mathscr{U}(\V)$.\footnote{
 Izrek je brez dokaza naveden v \cite[str.~88]{liu}.}
 Izotropno materialno telo je torej bodisi fluid, $\mathcal{G}_{\kappa}=\mathscr{U}(\V)$,
 bodisi izotropno trdno telo, $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$.
+
+V nadaljevanju bomo pokazali, da se da odzivno funkcijo $\mathcal{T}(\ten{F})$ za izotropne materiale
+zapisati v reducirani obliki. Še prej pa potrebujemo izrek o polarnem razcepu.
 
 \begin{izrek}[Polarni razcep]
 	Za vsako obrnljivo linearno preslikavo $\ten{F}\in\L(\V)$, $\det\ten{F}\neq 0$,
@@ -308,10 +314,10 @@ bodisi izotropno trdno telo, $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$.
 	\[ \ten{G}=\sqrt{\ten{S}}=\sum_{j=1}^3 \sqrt{a_j}\,\vek{u}_j\otimes\vek{u}_j. \]
 	
 	Definirajmo
-	\[
+	\begin{equation} \label{e:uandv}
 		\ten{U}=\sqrt{\ten{F}^T\ten{F}},\quad\ten{R}=\ten{F}\ten{U}^{-1},\quad
 		\ten{V}=\ten{R}\ten{U}\ten{R}^T.
-	\]
+	\end{equation}
 	Po definiciji je $\ten{U}$ simetrična pozitivno definitna in $\ten{R}$ je ortogonalna, saj je
 	\begin{align*}
 		\ten{R}\ten{R}^T&=\ten{F}\ten{U}^{-1}(\ten{F}\ten{U}^{-1})^T
@@ -326,4 +332,43 @@ bodisi izotropno trdno telo, $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$.
 	torej je $\ten{V}$ kvadratni koren od $\ten{F}\ten{F}^T$ in je zato
 	simetrična in pozitivno definitna. Enoličnost sledi iz enoličnosti obstoja
 	kvadratnega korena.
+\endproof
+
+Tenzorja $\ten{U}$ in $\ten{V}$ se imenujeta \emph{desni} oz.~\emph{levi raztegljivostni
+tenzor}, $\ten{R}$ pa je \emph{rotacijski tenzor}. Tenzorja
+\[
+	\ten{C}=\ten{U}^2=\ten{F}^T\ten{F},\qquad\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T
+\]
+se imenujeta \emph{desni} oz.~\emph{levi Cauchy-Greenov raztegljivostni tenzor}.
+
+\begin{izrek}
+	Odzivna funkcija $\mathcal{T}(\ten{F})$ izotropnega trdnega telesa se
+	da zapisati v obliki
+	\[
+		\ten{T}=\mathcal{T}(\ten{V})=\hat{\mathcal{T}}(\ten{B}).
+	\]
+	Funkcija $\hat{\mathcal{T}}(\ten{B})$ mora zadoščati pogoju
+	\[
+		\hat{\mathcal{T}}(\ten{Q}\ten{B}\ten{Q}^T)=\ten{Q}\hat{\mathcal{T}}(\ten{B})\ten{Q}^T
+		\qquad\forall\;\ten{Q}\in\mathscr{O}(\V).
+	\]
+\end{izrek}
+
+V izreku je funkcija $\mathcal{T}$ mišljena z obzirom na izotropno referenčno konfiguracijo.
+
+\proof
+	Naj bo $\ten{F}=\ten{R}\ten{U}$ polarni razcep. Materialna simetrijska grupa za izotropno
+	trdno telo je $\mathcal{G}=\mathscr{O}(\V)$, zato je $\ten{R}\in\mathcal{G}$
+	in iz pogoja (\ref{e:pogir}) dobimo ob izboru $\ten{G}=\ten{R}^T$
+	\[
+		\mathcal{T}(\ten{F})=\mathcal{T}(\ten{R}\ten{U}\ten{R}^T)=\mathcal{T}(\ten{V}).
+	\]
+	Pri tem smo upoštevali definicijo (\ref{e:uandv}) za $\ten{V}$. Ker je $\ten{B}=\ten{V}^2$,
+	lahko $\mathcal{T}$ prepišemo v obliko
+	\[
+		\mathcal{T}(\ten{V})=\hat{\mathcal{T}}(\ten{V}^2)=\hat{\mathcal{T}}(\ten{B}).
+	\]
+	
+	
+	
 \endproof
