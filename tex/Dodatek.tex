@@ -89,23 +89,25 @@ količina, saj velja
 Posledično je tudi masna gostota trenutne konfiguracije objektivna skalarna količina,
 \[ \rho^*=\frac{\rho_R}{J^*}=\frac{\rho_R}{J}=\rho. \]
 
-Za gostoto notranje energije $\sigma(\ten{F})$, ki smo jo predstavili v primeru
+Za gostoto notranje energije $\sigma=\sigma(\ten{F})$, ki smo jo predstavili v primeru
 elastičnega trdnega telesa, zahtevamo, da je kot skalarna količina neodvisna
 od opazovališča, torej velja
 \begin{equation} \label{e:objesig}
-	\sigma(\ten{F}^*)=\sigma(\ten{Q}\ten{F})=\sigma(\ten{F})
+	\sigma^*=\sigma(\ten{F}^*)=\sigma(\ten{Q}\ten{F})=\sigma(\ten{F})
 \end{equation}
 za vse nesingularne $\ten{F}\in\L(\V)$ in vse $\ten{Q}\in\mathscr{O}(\V)$.
 Dokažimo, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
 \[
-	\ten{T}=\mathcal{T}(\ten{F})=\rho D\sigma(\ten{F})\ten{F}^T
-	=\frac{\rho_R}{|\det\ten{F}|} D\sigma(\ten{F})\ten{F}^T
+	\ten{T}=\rho D\sigma(\ten{F})\ten{F}^T
+	%=\frac{\rho_R}{|\det\ten{F}|} D\sigma(\ten{F})\ten{F}^T
 \]
 tudi objektiven. Če izraz $\sigma(\ten{Q}\ten{F})$ posredno odvajamo po $\ten{F}$,
 dobimo za poljuben $\ten{H}\in\L(\V)$
 \[
-	D(\sigma\circ(\ten{X}\mapsto\ten{Q}\ten{X}))(\ten{F})(\ten{H})=
-	D\sigma(\ten{Q}\ten{F})\cdot(\ten{Q}\ten{H})=\ten{Q}^T D\sigma(\ten{Q}\ten{F})\cdot\ten{H}.
+	%D(\sigma\circ(\ten{X}\mapsto\ten{Q}\ten{X}))(\ten{F})(\ten{H})=
+	%D\sigma(\ten{Q}\ten{F})\cdot\ten{H}
+	\frac{d}{d\varepsilon}\at{\sigma(\ten{Q}(\ten{F}+\varepsilon\ten{H}))}{\varepsilon=0}
+	=D\sigma(\ten{Q}\ten{F})\cdot(\ten{Q}\ten{H})=\ten{Q}^T D\sigma(\ten{Q}\ten{F})\cdot\ten{H}.
 \]
 Z odvajanjem enakosti (\ref{e:objesig}) po $\ten{F}$ torej pridemo do
 \[
@@ -117,19 +119,19 @@ Z upoštevanjem pravkar dobljene enakosti in objektivnosti masne gostote dobimo
 	\ten{T}^*&=\rho^* D\sigma(\ten{F}^*)\ten{F}^{*T}
 	=\rho D\sigma(\ten{Q}\ten{F})\ten{F}^{T}\ten{Q}^{T}
 	=\rho \ten{Q} D\sigma(\ten{F})\ten{F}^{T}\ten{Q}^{T} \nonumber \\
-	&=\ten{Q}\ten{T}\ten{Q}^{T}
+	&=\ten{Q}\ten{T}\ten{Q}^{T}\qquad\forall\;\ten{Q}\in\mathscr{O}(\V),
 \end{align*}
-oziroma
-\[
-	\mathcal{T}(\ten{Q}\ten{F})=\ten{Q}\mathcal{T}(\ten{F})\ten{Q}^{T}\qquad\forall\;\ten{Q}\in\mathscr{O}(\V),
-\]
+%oziroma
+%\[
+%	\mathcal{T}(\ten{Q}\ten{F})=\ten{Q}\mathcal{T}(\ten{F})\ten{Q}^{T}\qquad\forall\;\ten{Q}\in\mathscr{O}(\V),
+%\]
 kar dokazuje, da je $\ten{T}$ neodvisen od opazovališča.
 
 
 \subsection{Materialne simetrije}
 
 
-\emph{Sprememba referenčne konfiguracije} je bijektivna gladka preslikava $\kappa\colon\B\to\E_R$.
+\emph{Sprememba referenčne konfiguracije} je difeomorfizem $\kappa\colon\B\to\E_R$.
 Pri tem je $\B_{\kappa}=\kappa(\B)$ nova referenčna konfiguracija telesa. Gibanje
 $\chi\colon\B\times I\to\E$ lahko enakovredno predstavimo s preslikavo
 \begin{equation} \label{e:chgrek}
@@ -143,28 +145,35 @@ dobimo zvezo med gradienti
 	\ten{F}_{\kappa}=\ten{F}\ten{P}^{-1}.
 \]
 
-Naj bosta $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$ referenčni konfiguraciji.
-V točki $x=\chi(X,t)\in\B_t$ je vrednost Cauchyjevega napetostnega tenzorja
+Naj bosta $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$ novi referenčni konfiguraciji.
+Naj bo $\chi\colon\B\times I\to\E_R$ gibanje in naj bosta
+$\chi_{\kappa}=\chi\circ\kappa^{-1}$ in $\chi_{\hat{\kappa}}=\chi\circ\hat{\kappa}^{-1}$
+opisa istega gibanja glede na referenčni konfiguraciji $\kappa(\B)$ in $\hat{\kappa}(\B)$.
+Označimo pripadajoča deformacijska gradienta z
+\[
+	\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}\quad \mathrm{in}\quad
+	\ten{F}_{\hat{\kappa}}=\Grad\vek{\chi}_{\hat{\kappa}}.
+\]
+Jasno je, da imata referenčni konfiguraciji $\kappa$ in $\hat{\kappa}$ vsaka
+svojo gostoto notranje energije, $\sigma_{\kappa}$ in $\sigma_{\hat{\kappa}}$,
+ki sta v splošnem različni, vendar pa mora v vsaki točki $X\in\B$ veljati
 \begin{equation} \label{e:responf}
-	\ten{T}(x,t)=\mathcal{T}_{\kappa}(\ten{F}_{\kappa}(\kappa(X),t))\quad\textrm{oz.}\quad
-	\ten{T}(x,t)=\mathcal{T}_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}}(\hat{\kappa}(X),t)).
+	\sigma_{\kappa}(\ten{F}_{\kappa}(\kappa(X),t))
+	=\sigma_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}}(\hat{\kappa}(X),t)).
 \end{equation}
-Pri tem sta $\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}$ in
-$\ten{F}_{\hat{\kappa}}=\Grad\vek{\chi}_{\hat{\kappa}}$ (glej zvezo (\ref{e:chgrek})).
-V splošnem sta \emph{odzivni funkciji} $\mathcal{T}_{\kappa}$ in $\mathcal{T}_{\hat{\kappa}}$
-različni. Iz diagrama REF vidimo, da velja $\chi_{\kappa}=\chi_{\hat{\kappa}}\circ\hat{\kappa}\circ\kappa^{-1}$.
-Če označimo z
+Iz diagrama REF vidimo, da velja $\chi_{\kappa}=\chi_{\hat{\kappa}}\circ\hat{\kappa}\circ\kappa^{-1}$.
+Če označimo s
 \begin{equation} \label{e:pupa}
-	\ten{G}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
+	\ten{P}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
 \end{equation}
-potem je $\ten{F}_{\kappa}=\ten{F}_{\hat{\kappa}}\ten{G}$. Po primerjanju relacij (\ref{e:responf})
-sedaj vidimo, da med odzivnima funkcijama velja zveza
+potem je $\ten{F}_{\kappa}=\ten{F}_{\hat{\kappa}}\ten{P}$. Iz relacije (\ref{e:responf})
+sedaj vidimo, da med gostotama notranje energije velja zveza
 \begin{equation} \label{e:dolgnoc}
-	\mathcal{T}_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}})
-	=\mathcal{T}_{\kappa}(\ten{F}_{\hat{\kappa}}\ten{G}).
+	\sigma_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}})
+	=\sigma_{\kappa}(\ten{F}_{\hat{\kappa}}\ten{P}).
 \end{equation}
 
-Materialno telo lahko poseduje določene simetrije, zaradi katerih ni mogo\-če razločiti
+Materialno telo lahko poseduje določene materialne simetrije, zaradi katerih ni mogoče razločiti
 med določenimi referenčnimi konfiguracijami. Na primer, materialno telo iz
 kubične kristalne strukture je nemogoče razločiti pred in po rotaciji za
 $90^{\circ}$ okoli ene od kristalnih osi.
@@ -173,32 +182,41 @@ $90^{\circ}$ okoli ene od kristalnih osi.
 	Referenčni konfiguraciji $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$
 	sta \emph{materialno nerazločljivi}, če velja
 	\begin{equation} \label{e:grarefc}
-		\mathcal{T}_{\hat{\kappa}}(\cdot)=\mathcal{T}_{\kappa}(\cdot).
+		\sigma_{\hat{\kappa}}(\ten{F})=\sigma_{\kappa}(\ten{F})
+		\qquad\forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0.
 	\end{equation}
 \end{definicija}
 
-Če uporabimo oznako (\ref{e:pupa}) in upoštevamo enakosti (\ref{e:dolgnoc}),
-potem vidimo, da je pogoj (\ref{e:grarefc}) ekvivalenten pogoju
-\begin{equation} \label{e:pogir}
-	\mathcal{T}_{\kappa}(\ten{F})=\mathcal{T}_{\kappa}(\ten{F}\ten{G})\qquad
-	\forall\;\ten{F}.
-\end{equation}
-
-\begin{definicija}
-	Če za linearno preslikavo $\ten{G}$ velja pogoj (\ref{e:pogir}), potem ji rečemo
-	\emph{materialna simetrijska transformacija} gle\-de na konfiguracijo $\kappa$.
-\end{definicija}
-
+Odziv materiala je odvisen od napetostnega tenzorja $\ten{T}$, da pa je odvisen
+od gostote notranje energije.
 Materialna nerazločljivost v fizikalnem smislu pomeni, da se odziv materiala
 glede na konfiguracijo $\kappa$ ne da razločiti od odziva glede na konfiguracijo
 $\hat{\kappa}$ z nobenim mogočim eksperimentom.
 
-Predpostavili bomo, da vse materialne simetrijske transformacije ohranjajo prostornino telesa,
+Če uporabimo oznako (\ref{e:pupa}) in upoštevamo enakosti (\ref{e:dolgnoc}),
+potem vidimo, da je pogoj (\ref{e:grarefc}) ekvivalenten pogoju
+\begin{equation*}
+	\sigma_{\kappa}(\ten{F})=\sigma_{\kappa}(\ten{F}\ten{P})\qquad
+	\forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0.
+\end{equation*}
+
+\begin{definicija}
+	Če za linearno preslikavo
+	\[
+		\ten{G}\in\mathscr{U}(\V)=\{\ten{A}\in\L(\V)\;;\ |\det\ten{A}|=1 \}.
+	\]
+	velja pogoj
+	\begin{equation} \label{e:pogir}
+		\sigma_{\kappa}(\ten{F})=\sigma_{\kappa}(\ten{F}\ten{G})\qquad
+		\forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0,
+	\end{equation}
+	potem ji rečemo \emph{materialna simetrijska transformacija} glede na konfiguracijo $\kappa$.
+\end{definicija}
+
+Pogoj $\ten{G}\in\mathscr{U}(\V)$ sodi k predpostavki,
+da vse materialne simetrijske transformacije ohranjajo prostornino telesa,
 saj bi se sicer materialno telo lahko poljubno razši\-rilo, ne da bi se to poznalo na odzivu,
-kar pa je fizikalno nesprejemljivo. Zato je potrebna predpostavka, da je
-\[
-	\ten{G}\in\mathscr{U}(\V)=\{\ten{A}\in\L(\V)\;;\ |\det\ten{A}|=1 \}.
-\]
+kar pa je fizikalno nesprejemljivo.
 Množica $\mathscr{U}(\V)$ je za operacijo kompozitum grupa, imenovana \emph{unimodularna grupa}.
 Grupa $\mathscr{O}(\V)$ je podgrupa grupe $\mathscr{U}(\V)$.
 
@@ -211,65 +229,65 @@ Grupa $\mathscr{O}(\V)$ je podgrupa grupe $\mathscr{U}(\V)$.
 	Dovolj je dokazati, da je $\mathcal{G}_{\kappa}$ grupa. Za poljubni $\ten{G}_1,\ten{G}_2\in\mathcal{G}_{\kappa}$
 	z upoštevanjem relacije (\ref{e:pogir}) velja
 	\[
-		\mathcal{T}_{\kappa}(\ten{F})=\mathcal{T}_{\kappa}(\ten{F}\ten{G}_1)
-		=\mathcal{T}_{\kappa}((\ten{F}\ten{G}_1)\ten{G}_2)=\mathcal{T}_{\kappa}(\ten{F}(\ten{G}_1\ten{G}_2)),
+		\sigma_{\kappa}(\ten{F})=\sigma_{\kappa}(\ten{F}\ten{G}_1)
+		=\sigma_{\kappa}((\ten{F}\ten{G}_1)\ten{G}_2)=\sigma_{\kappa}(\ten{F}(\ten{G}_1\ten{G}_2)),
 	\]
 	torej je $\ten{G}_1\ten{G}_2\in\mathcal{G}_{\kappa}$. Očitno je tudi $\ten{1}\in\mathcal{G}_{\kappa}$.
 	Naj bo $\ten{G}\in\mathcal{G}_{\kappa}$. Ker je $|\det\ten{G}|=1$, obstaja $\ten{G}^{-1}$ in je
 	\[
-		\mathcal{T}_{\kappa}(\ten{F}\ten{G}^{-1})=\mathcal{T}_{\kappa}((\ten{F}\ten{G}^{-1})\ten{G})
-		=\mathcal{T}_{\kappa}(\ten{F}),
+		\sigma_{\kappa}(\ten{F}\ten{G}^{-1})=\sigma_{\kappa}((\ten{F}\ten{G}^{-1})\ten{G})
+		=\sigma_{\kappa}(\ten{F}),
 	\]
 	kar dokazuje, da je tudi $\ten{G}^{-1}\in\mathcal{G}_{\kappa}$. Torej je $\mathcal{G}_{\kappa}$ grupa.
 \endproof
 
-$\mathcal{G}_{\kappa}$ se imenuje \emph{materialna simetrijska grupa} za $\mathcal{T}$ glede
+$\mathcal{G}_{\kappa}$ se imenuje \emph{materialna simetrijska grupa} za $\sigma$ glede
 na referenčno konfiguracijo $\kappa$. Očitno je, da je $\mathcal{G}_{\kappa}$ odvisna od
 referenčne konfiguracije $\kappa$. Če je $\hat{\kappa}$ še ena referenčna konfiguracija
 s pripadajočo materialno simetrijsko grupo $\mathcal{G}_{\hat{\kappa}}$
-in je $\ten{G}$ kot v (\ref{e:pupa}), potem za poljuben
-$\ten{H}\in\mathcal{G}_{\kappa}$ dobimo iz (\ref{e:dolgnoc})
+in je $\ten{P}$ kot v (\ref{e:pupa}), potem za poljuben
+$\ten{G}\in\mathcal{G}_{\kappa}$ dobimo iz (\ref{e:dolgnoc})
 \begin{align*}
-	\mathcal{T}_{\hat{\kappa}}(\ten{F})&=\mathcal{T}_{\kappa}(\ten{F}\ten{G})
-	=\mathcal{T}_{\kappa}((\ten{F}\ten{G})\ten{H})
-	=\mathcal{T}_{\kappa}(\ten{F}(\ten{G}\ten{H}\ten{G}^{-1})\ten{G}) \\
-	&=\mathcal{T}_{\hat{\kappa}}(\ten{F}(\ten{G}\ten{H}\ten{G}^{-1})),
+	\sigma_{\hat{\kappa}}(\ten{F})&=\sigma_{\kappa}(\ten{F}\ten{P})
+	=\sigma_{\kappa}((\ten{F}\ten{P})\ten{G})
+	=\sigma_{\kappa}(\ten{F}(\ten{P}\ten{G}\ten{P}^{-1})\ten{P}) \\
+	&=\sigma_{\hat{\kappa}}(\ten{F}(\ten{P}\ten{G}\ten{P}^{-1})),
 \end{align*}
-iz česar sledi, da je $\ten{G}\ten{H}\ten{G}^{-1}\in\mathcal{G}_{\hat{\kappa}}$.
-S tem smo dokazali naslednji izrek.
+iz česar sledi, da je $\ten{P}\ten{G}\ten{P}^{-1}\in\mathcal{G}_{\hat{\kappa}}$.
+Očitno je preslikava $\phi\colon\mathcal{G}_{\kappa}\to\mathcal{G}_{\hat{\kappa}}$,
+$\phi(\ten{G})=\ten{P}\ten{G}\ten{P}^{-1}$ homomorfizem grup in očitno je injektivna,
+torej je $|\mathcal{G}_{\kappa}|\leq|\mathcal{G}_{\hat{\kappa}}|$. Če bi zamenjali vlogi
+$\kappa$ in $\hat{\kappa}$ in ponovili postopek, bi dobili še
+$|\mathcal{G}_{\hat{\kappa}}|\leq|\mathcal{G}_{\kappa}|$,
+torej je $|\mathcal{G}_{\kappa}|=|\mathcal{G}_{\hat{\kappa}}|$ in
+s tem smo dokazali naslednji izrek.
 
 \begin{izrek}[Nollovo pravilo]
 	Naj bosta $\kappa$ ter $\hat{\kappa}$ konfiguraciji in naj bo
-	$\ten{G}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1})$. Potem
+	$\ten{P}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1})$. Potem
 	med materialnima simetrijskima grupama velja zveza
 	\[
-		\mathcal{G}_{\hat{\kappa}}=\ten{G}\mathcal{G}_{\kappa}\ten{G}^{-1}
-		=\{\ten{G}\ten{H}\ten{G}^{-1}\;;\ \ten{H}\in\mathcal{G}_{\kappa}\}.
+		\mathcal{G}_{\hat{\kappa}}=\ten{P}\mathcal{G}_{\kappa}\ten{P}^{-1}
+		=\{\ten{P}\ten{G}\ten{P}^{-1}\;;\ \ten{G}\in\mathcal{G}_{\kappa}\}.
 	\]
 \end{izrek}
 
-V zgornjem izreku je $\ten{G}$ gradient spremembe konfiguracije in ni nujno,
+V zgornjem izreku je $\ten{P}$ gradient spremembe konfiguracije in ni nujno,
 da pripada unimodularni grupi.
 
-\begin{definicija}
-	\begin{enumerate}
-		\item Material je \emph{trdno telo}, če obstaja referenčna konfiguracija $\kappa$, da je
-		$\mathcal{G}_{\kappa}$ podgrupa ortogonalne grupe $\mathscr{O}(\V)$.
-		Taka konfiguracija se imenuje \emph{neizkrivljena}.
-		\item Material je \emph{fluid}, če je za neko referenčno konfiguracijo $\kappa$
-		pripadajoča simetrijska grupa kar cela unimodularna grupa,
-		t.j.~$\mathcal{G}_{\kappa}=\mathscr{U}(\V)$.
-		\item Če material ni niti trdno telo niti fluid, potem je \emph{fluidni kristal}.
-	\end{enumerate}
-\end{definicija}
-
-Po Nollovem pravilu je za fluide $\mathcal{G}_{\kappa}=\mathcal{G}_{\hat{\kappa}}$
-za poljubni referenčni konfiguraciji $\kappa$ in $\hat{\kappa}$. Za fluid so torej
-vse referenčne konfiguracije enakovredne.
+\begin{comment}
+Podobno, kot smo definirali materialno simetrijsko grupo za $\sigma$, bi lahko
+definirali tudi materialno simetrijsko grupo za $\ten{T}$. Za elastične
+materiale velja definicija, da je materialno telo \emph{trdno}, če obstaja
+referenčna konfiguracija telesa, tako da je materialna simetrijska grupa za $\ten{T}$
+glede na to konfiguracijo podgrupa ortogonalne grupe $\mathscr{O}(V)$.
+Taki referenčni konfiguraciji se reče \emph{naravna referenčna konfiguracija}. Dokazati se da,
+da sta pri hiperelastičnih trdnih telesih materialni simetrijski grupi za $\sigma$ in za $\ten{T}$ enaki.
+\end{comment}
 
 \begin{definicija}
-	Materialno telo je \emph{izotropno}, če obstaja referenčna konfiguracija $\kappa$,
-	da je $\mathscr{O}(\V)\subseteq\mathcal{G}_{\kappa}$. Taka konfiguracija
+	Trdno hiperelastično materialno telo je \emph{izotropno}, če obstaja referenčna
+	konfiguracija $\kappa$, da je $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$. Taka konfiguracija
 	se imenuje \emph{izotropna}.
 \end{definicija}
 
