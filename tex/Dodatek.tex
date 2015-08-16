@@ -3,6 +3,17 @@
 \chapter{Konstitucijske enačbe za izotropno elastično trdno telo}
 
 
+\section{Nekaj izrekov iz linearne algebre}
+
+
+Tenzorja $\ten{U}$ in $\ten{V}$ se imenujeta \emph{desni} oz.~\emph{levi raztegljivostni
+tenzor}, $\ten{R}$ pa je \emph{rotacijski tenzor}. Tenzorja
+\[
+	\ten{C}=\ten{U}^2=\ten{F}^T\ten{F},\qquad\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T
+\]
+se imenujeta \emph{desni} oz.~\emph{levi Cauchy-Greenov raztegljivostni tenzor}.
+
+
 \section{Sprememba opazovališča in objektivnost}
 
 
@@ -96,11 +107,19 @@ od opazovališča, torej velja
 	\sigma^*=\sigma(\ten{F}^*)=\sigma(\ten{Q}\ten{F})=\sigma(\ten{F})
 \end{equation}
 za vse nesingularne $\ten{F}\in\L(\V)$ in vse $\ten{Q}\in\mathscr{O}(\V)$.
-Dokažimo, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
-\[
+Če deformacijski gradient zapišemo v polarnem razcepu $\ten{F}=\ten{R}\ten{U}$ (izrek \ref{i:polraz})
+in v ({e:objesig}) za $\ten{Q}$ uporabimo $\ten{R}^T$, dobimo
+\begin{equation} \label{e:siuonly}
+	\sigma(\ten{F})=\sigma(\ten{U}),
+\end{equation}
+torej je $\sigma$ odvisna od deformacijskega gradienta $\ten{F}$ le preko desnega
+raztegljivostnega tenzorja $\ten{U}$ in nič od rotacije $\ten{R}$.
+
+Dokažimo še, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
+\begin{equation} \label{e:Tdrugi}
 	\ten{T}=\rho D\sigma(\ten{F})\ten{F}^T
 	%=\frac{\rho_R}{|\det\ten{F}|} D\sigma(\ten{F})\ten{F}^T
-\]
+\end{equation}
 tudi objektiven. Če izraz $\sigma(\ten{Q}\ten{F})$ posredno odvajamo po $\ten{F}$,
 dobimo za poljuben $\ten{H}\in\L(\V)$
 \[
@@ -128,7 +147,7 @@ Z upoštevanjem pravkar dobljene enakosti in objektivnosti masne gostote dobimo
 kar dokazuje, da je $\ten{T}$ neodvisen od opazovališča.
 
 
-\subsection{Materialne simetrije}
+\section{Materialne simetrije}
 
 
 \emph{Sprememba referenčne konfiguracije} je difeomorfizem $\kappa\colon\B\to\E_R$.
@@ -145,32 +164,32 @@ dobimo zvezo med gradienti
 	\ten{F}_{\kappa}=\ten{F}\ten{P}^{-1}.
 \]
 
-Naj bosta $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$ novi referenčni konfiguraciji.
+Naj bosta $\kappa\colon\B\to\E_R$ in $\widehat{\kappa}\colon\B\to\E_R$ novi referenčni konfiguraciji.
 Naj bo $\chi\colon\B\times I\to\E_R$ gibanje in naj bosta
-$\chi_{\kappa}=\chi\circ\kappa^{-1}$ in $\chi_{\hat{\kappa}}=\chi\circ\hat{\kappa}^{-1}$
-opisa istega gibanja glede na referenčni konfiguraciji $\kappa(\B)$ in $\hat{\kappa}(\B)$.
+$\chi_{\kappa}=\chi\circ\kappa^{-1}$ in $\chi_{\widehat{\kappa}}=\chi\circ\widehat{\kappa}^{-1}$
+opisa istega gibanja glede na referenčni konfiguraciji $\kappa(\B)$ in $\widehat{\kappa}(\B)$.
 Označimo pripadajoča deformacijska gradienta z
 \[
 	\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}\quad \mathrm{in}\quad
-	\ten{F}_{\hat{\kappa}}=\Grad\vek{\chi}_{\hat{\kappa}}.
+	\ten{F}_{\widehat{\kappa}}=\Grad\vek{\chi}_{\widehat{\kappa}}.
 \]
-Jasno je, da imata referenčni konfiguraciji $\kappa$ in $\hat{\kappa}$ vsaka
-svojo gostoto notranje energije, $\sigma_{\kappa}$ in $\sigma_{\hat{\kappa}}$,
+Jasno je, da imata referenčni konfiguraciji $\kappa$ in $\widehat{\kappa}$ vsaka
+svojo gostoto notranje energije, $\sigma_{\kappa}$ in $\sigma_{\widehat{\kappa}}$,
 ki sta v splošnem različni, vendar pa mora v vsaki točki $X\in\B$ veljati
 \begin{equation} \label{e:responf}
 	\sigma_{\kappa}(\ten{F}_{\kappa}(\kappa(X),t))
-	=\sigma_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}}(\hat{\kappa}(X),t)).
+	=\sigma_{\widehat{\kappa}}(\ten{F}_{\widehat{\kappa}}(\widehat{\kappa}(X),t)).
 \end{equation}
-Iz diagrama REF vidimo, da velja $\chi_{\kappa}=\chi_{\hat{\kappa}}\circ\hat{\kappa}\circ\kappa^{-1}$.
+Iz diagrama REF vidimo, da velja $\chi_{\kappa}=\chi_{\widehat{\kappa}}\circ\widehat{\kappa}\circ\kappa^{-1}$.
 Če označimo s
 \begin{equation} \label{e:pupa}
-	\ten{P}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
+	\ten{P}=\Grad(\widehat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
 \end{equation}
-potem je $\ten{F}_{\kappa}=\ten{F}_{\hat{\kappa}}\ten{P}$. Iz relacije (\ref{e:responf})
+potem je $\ten{F}_{\kappa}=\ten{F}_{\widehat{\kappa}}\ten{P}$. Iz relacije (\ref{e:responf})
 sedaj vidimo, da med gostotama notranje energije velja zveza
 \begin{equation} \label{e:dolgnoc}
-	\sigma_{\hat{\kappa}}(\ten{F}_{\hat{\kappa}})
-	=\sigma_{\kappa}(\ten{F}_{\hat{\kappa}}\ten{P}).
+	\sigma_{\widehat{\kappa}}(\ten{F}_{\widehat{\kappa}})
+	=\sigma_{\kappa}(\ten{F}_{\widehat{\kappa}}\ten{P}).
 \end{equation}
 
 Materialno telo lahko poseduje določene materialne simetrije, zaradi katerih ni mogoče razločiti
@@ -179,10 +198,10 @@ kubične kristalne strukture je nemogoče razločiti pred in po rotaciji za
 $90^{\circ}$ okoli ene od kristalnih osi.
 
 \begin{definicija}
-	Referenčni konfiguraciji $\kappa\colon\B\to\E_R$ in $\hat{\kappa}\colon\B\to\E_R$
+	Referenčni konfiguraciji $\kappa\colon\B\to\E_R$ in $\widehat{\kappa}\colon\B\to\E_R$
 	sta \emph{materialno nerazločljivi}, če velja
 	\begin{equation} \label{e:grarefc}
-		\sigma_{\hat{\kappa}}(\ten{F})=\sigma_{\kappa}(\ten{F})
+		\sigma_{\widehat{\kappa}}(\ten{F})=\sigma_{\kappa}(\ten{F})
 		\qquad\forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0.
 	\end{equation}
 \end{definicija}
@@ -191,7 +210,7 @@ Odziv materiala je odvisen od napetostnega tenzorja $\ten{T}$, da pa je odvisen
 od gostote notranje energije.
 Materialna nerazločljivost v fizikalnem smislu pomeni, da se odziv materiala
 glede na konfiguracijo $\kappa$ ne da razločiti od odziva glede na konfiguracijo
-$\hat{\kappa}$ z nobenim mogočim eksperimentom.
+$\widehat{\kappa}$ z nobenim mogočim eksperimentom.
 
 Če uporabimo oznako (\ref{e:pupa}) in upoštevamo enakosti (\ref{e:dolgnoc}),
 potem vidimo, da je pogoj (\ref{e:grarefc}) ekvivalenten pogoju
@@ -243,31 +262,32 @@ Grupa $\mathscr{O}(\V)$ je podgrupa grupe $\mathscr{U}(\V)$.
 
 $\mathcal{G}_{\kappa}$ se imenuje \emph{materialna simetrijska grupa} za $\sigma$ glede
 na referenčno konfiguracijo $\kappa$. Očitno je, da je $\mathcal{G}_{\kappa}$ odvisna od
-referenčne konfiguracije $\kappa$. Če je $\hat{\kappa}$ še ena referenčna konfiguracija
-s pripadajočo materialno simetrijsko grupo $\mathcal{G}_{\hat{\kappa}}$
+referenčne konfiguracije $\kappa$. Če je $\widehat{\kappa}$ še ena referenčna konfiguracija
+s pripadajočo materialno simetrijsko grupo $\mathcal{G}_{\widehat{\kappa}}$
 in je $\ten{P}$ kot v (\ref{e:pupa}), potem za poljuben
 $\ten{G}\in\mathcal{G}_{\kappa}$ dobimo iz (\ref{e:dolgnoc})
 \begin{align*}
-	\sigma_{\hat{\kappa}}(\ten{F})&=\sigma_{\kappa}(\ten{F}\ten{P})
+	\sigma_{\widehat{\kappa}}(\ten{F})&=\sigma_{\kappa}(\ten{F}\ten{P})
 	=\sigma_{\kappa}((\ten{F}\ten{P})\ten{G})
 	=\sigma_{\kappa}(\ten{F}(\ten{P}\ten{G}\ten{P}^{-1})\ten{P}) \\
-	&=\sigma_{\hat{\kappa}}(\ten{F}(\ten{P}\ten{G}\ten{P}^{-1})),
+	&=\sigma_{\widehat{\kappa}}(\ten{F}(\ten{P}\ten{G}\ten{P}^{-1})),
 \end{align*}
-iz česar sledi, da je $\ten{P}\ten{G}\ten{P}^{-1}\in\mathcal{G}_{\hat{\kappa}}$.
-Očitno je preslikava $\phi\colon\mathcal{G}_{\kappa}\to\mathcal{G}_{\hat{\kappa}}$,
+iz česar sledi, da je $\ten{P}\ten{G}\ten{P}^{-1}\in\mathcal{G}_{\widehat{\kappa}}$.
+Očitno je preslikava $\phi\colon\mathcal{G}_{\kappa}\to\mathcal{G}_{\widehat{\kappa}}$,
 $\phi(\ten{G})=\ten{P}\ten{G}\ten{P}^{-1}$ homomorfizem grup in očitno je injektivna,
-torej je $|\mathcal{G}_{\kappa}|\leq|\mathcal{G}_{\hat{\kappa}}|$. Če bi zamenjali vlogi
-$\kappa$ in $\hat{\kappa}$ in ponovili postopek, bi dobili še
-$|\mathcal{G}_{\hat{\kappa}}|\leq|\mathcal{G}_{\kappa}|$,
-torej je $|\mathcal{G}_{\kappa}|=|\mathcal{G}_{\hat{\kappa}}|$ in
-s tem smo dokazali naslednji izrek.
+saj za $\ten{G}_1,\ten{G}_2\in\mathcal{G}_{\kappa}$ iz
+$\ten{P}\ten{G}_1\ten{P}^{-1}=\ten{P}\ten{G}_2\ten{P}^{-1}$ nemudoma sledi $\ten{G}_1=\ten{G}_2$.
+S podobnim postopkom, kot zgoraj, se dokaže še, da za poljuben $\ten{H}\in\mathcal{G}_{\widehat{\kappa}}$
+velja $\ten{P}^{-1}\ten{H}\ten{P}\in\mathcal{G}_{\kappa}$, torej je
+$\phi(\ten{P}^{-1}\ten{H}\ten{P})=\ten{H}$, kar pomeni, da je $\phi$ tudi surjektivna.
+$\phi$ je torej izomorfizem grup, zato smo dokazali naslednji izrek.
 
 \begin{izrek}[Nollovo pravilo]
-	Naj bosta $\kappa$ ter $\hat{\kappa}$ konfiguraciji in naj bo
-	$\ten{P}=\Grad(\hat{\vek{\kappa}}\circ\vek{\kappa}^{-1})$. Potem
+	Naj bosta $\kappa$ ter $\widehat{\kappa}$ konfiguraciji in naj bo
+	$\ten{P}=\Grad(\widehat{\vek{\kappa}}\circ\vek{\kappa}^{-1})$. Potem
 	med materialnima simetrijskima grupama velja zveza
 	\[
-		\mathcal{G}_{\hat{\kappa}}=\ten{P}\mathcal{G}_{\kappa}\ten{P}^{-1}
+		\mathcal{G}_{\widehat{\kappa}}=\ten{P}\mathcal{G}_{\kappa}\ten{P}^{-1}
 		=\{\ten{P}\ten{G}\ten{P}^{-1}\;;\ \ten{G}\in\mathcal{G}_{\kappa}\}.
 	\]
 \end{izrek}
@@ -285,6 +305,10 @@ Taki referenčni konfiguraciji se reče \emph{naravna referenčna konfiguracija}
 da sta pri hiperelastičnih trdnih telesih materialni simetrijski grupi za $\sigma$ in za $\ten{T}$ enaki.
 \end{comment}
 
+
+\section{Izotropna trdna hiperelastična telesa}
+
+
 \begin{definicija}
 	Trdno hiperelastično materialno telo je \emph{izotropno}, če obstaja referenčna
 	konfiguracija $\kappa$, da je $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$. Taka konfiguracija
@@ -294,99 +318,159 @@ da sta pri hiperelastičnih trdnih telesih materialni simetrijski grupi za $\sig
 Izotropnost v fizikalnem smislu pomeni, da nobena ortogonalna transformacija izotropne
 konfiguracije ne spremeni odziva v materialu.
 
-Grupa $\mathscr{O}(\V)$ je maksimalna podgrupa v grupi $\mathscr{U}(\V)$, kar pomeni,
-da če je $\mathcal{G}$ taka grupa, da velja $\mathscr{O}(\V)\subseteq\mathcal{G}\subseteq\mathscr{U}(\V)$,
-potem je bodisi $\mathcal{G}=\mathscr{O}(\V)$ bodisi $\mathcal{G}=\mathscr{U}(\V)$.\footnote{
-Izrek je brez dokaza naveden v \cite[str.~88]{liu}.}
-Izotropno materialno telo je torej bodisi fluid, $\mathcal{G}_{\kappa}=\mathscr{U}(\V)$,
-bodisi izotropno trdno telo, $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$.
+K zgornji definiciji sodi še ta opomba: Če je $\widehat{\kappa}$ taka konfiguracija, da je
+$\mathcal{G}_{\widehat{\kappa}}\subseteq\mathscr{O}(\V)$, potem je $\mathcal{G}_{\widehat{\kappa}}$
+podgrupa grupe $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$. Po Nollovem pravilu sta
+$\mathcal{G}_{\widehat{\kappa}}$ in $\mathcal{G}_{\kappa}$ izomorfni, zato $\mathcal{G}_{\widehat{\kappa}}$
+ne more biti prava podgrupa grupe $\mathcal{G}_{\kappa}$, ampak je
+$\mathcal{G}_{\widehat{\kappa}}=\mathcal{G}_{\kappa}$.
 
-V nadaljevanju bomo pokazali, da se da odzivno funkcijo $\mathcal{T}(\ten{F})$ za izotropne materiale
-zapisati v reducirani obliki. Še prej pa potrebujemo izrek o polarnem razcepu.
+V nadaljevanju naj bo $\sigma$ gostota notranje energije glede na neko izotropno referenčno konfiguracijo
+in $\mathcal{G}$ naj bo pripadajoča materialna simetrijska grupa.
 
-\begin{izrek}[Polarni razcep]
-	Za vsako obrnljivo linearno preslikavo $\ten{F}\in\L(\V)$, $\det\ten{F}\neq 0$,
-	obstajata simetrični pozitivno definitni linearni preslikavi $\ten{V}$ in $\ten{U}$
-	ter ortogonalna linearna preslikava $\ten{R}$, tako da velja
-	\[
-		\ten{F}=\ten{R}\ten{U}=\ten{V}\ten{R}.
-	\]
-	Pri tem so $\ten{U}$, $\ten{V}$ in $\ten{R}$ z zgornjim razcepom enolično določene.
-\end{izrek}
-
-\proof
-	Takoj se vidi, da sta preslikavi $\ten{F}\ten{F}^T$ in $\ten{F}^T\ten{F}$
-	simetrični, hkrati pa tudi pozitivno definitni, saj za poljuben $\vek{v}\in\V$,
-	$\vek{v}\neq\vek{0}$, velja
-	\[ \vek{v}\cdot\ten{F}^T\ten{F}\vek{v}=\ten{F}\vek{v}\cdot\ten{F}\vek{v}>0, \]
-	saj je $\ten{F}$ nesingularna.
-	
-	Iz spektralnega izreka iz linearne algebre vemo, da se da vsako simetrično
-	linearno preslikavo $\ten{S}$ zapisati kot
-	\[ \ten{S}=\sum_{j=1}^3 a_j\vek{u}_j\otimes\vek{u}_j, \]
-	kjer so $a_j$ lastne vrednosti, $\vek{u}_j$ pa pripadajoči lastni vektorji.
-	Pri tem je mogoče lastne vektorje izberati tako, da so medsebojno ortogonalni.
-	Vse lastne vrednosti simetrične preslikave so vedno realne. Za vsako
-	simetrično linearno preslikavo $\ten{S}$ obstaja kvadratni koren, t.j.~enolično določena linearna
-	preslikava $\ten{G}$, da je $\ten{G}^2=\ten{S}$. Velja
-	\[ \ten{G}=\sqrt{\ten{S}}=\sum_{j=1}^3 \sqrt{a_j}\,\vek{u}_j\otimes\vek{u}_j. \]
-	
-	Definirajmo
-	\begin{equation} \label{e:uandv}
-		\ten{U}=\sqrt{\ten{F}^T\ten{F}},\quad\ten{R}=\ten{F}\ten{U}^{-1},\quad
-		\ten{V}=\ten{R}\ten{U}\ten{R}^T.
-	\end{equation}
-	Po definiciji je $\ten{U}$ simetrična pozitivno definitna in $\ten{R}$ je ortogonalna, saj je
-	\begin{align*}
-		\ten{R}\ten{R}^T&=\ten{F}\ten{U}^{-1}(\ten{F}\ten{U}^{-1})^T
-		=\ten{F}\ten{U}^{-1}\ten{U}^{-T}\ten{F}^T \\ &=\ten{F}\ten{U}^{-2}\ten{F}^T
-		=\ten{F}(\ten{F}^T\ten{F})^{-1}\ten{F}^T=\ten{1}.
-	\end{align*}
-	Poleg tega je
-	\[
-		\ten{V}^2=(\ten{R}\ten{U}\ten{R}^T)(\ten{R}\ten{U}\ten{R}^T)
-		=(\ten{R}\ten{U})(\ten{R}\ten{U})^T=\ten{F}\ten{F}^T,
-	\]
-	torej je $\ten{V}$ kvadratni koren od $\ten{F}\ten{F}^T$ in je zato
-	simetrična in pozitivno definitna. Enoličnost sledi iz enoličnosti obstoja
-	kvadratnega korena.
-\endproof
-
-Tenzorja $\ten{U}$ in $\ten{V}$ se imenujeta \emph{desni} oz.~\emph{levi raztegljivostni
-tenzor}, $\ten{R}$ pa je \emph{rotacijski tenzor}. Tenzorja
+Naj bo $\ten{F}=\ten{V}\ten{R}$ polarni razcep. Ker je za izotropni material $\mathcal{G}=\mathscr{O}(\V)$,
+lahko v ({e:pogir}) za $\ten{G}$ uporabimo $\ten{R}^T$ in dobimo $\sigma(\ten{F})=\sigma(\ten{V})$.
+Za izotropne materiale torej skupaj z ({e:siuonly}) velja
 \[
-	\ten{C}=\ten{U}^2=\ten{F}^T\ten{F},\qquad\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T
+	\sigma(\ten{F})=\sigma(\ten{U})=\sigma(\ten{V}).
 \]
-se imenujeta \emph{desni} oz.~\emph{levi Cauchy-Greenov raztegljivostni tenzor}.
+V praktični uporabi je namesto levega raztegljivostnega tenzorja $\ten{V}$ bolj primeren
+levi Cauchy-Greenov deformacijski tenzor $\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T$, ker
+ga je lažje izračunati. Zato predstavimo funkcijo $\bsi$, definirano kot
+\begin{equation*} %\label{e:varisi}
+	\bar{\sigma}(\ten{B})=\bar{\sigma}(\ten{V}^2)=\sigma(\ten{V})=\sigma(\ten{F}).
+\end{equation*}
 
-\begin{izrek}
-	Odzivna funkcija $\mathcal{T}(\ten{F})$ izotropnega trdnega telesa se
-	da zapisati v obliki
+Poiščimo zvezo med odvodoma za $\sigma$ in $\bsi$. Najprej pokažimo, da je $D\bsi(\ten{B})$
+simetrični teznor. $\ten{B}$ je simetričen, $\ten{B}=\ten{B}^{T}$, in
+za poljuben $\ten{A}\in\L(\V)$ je
+\begin{align*}
+	D\bsi(\ten{B})\cdot\ten{A}&=D\bsi(\ten{B}^T)\cdot\ten{A}=
+	\frac{d}{d\varepsilon}\at{\bsi((\ten{B}+\varepsilon\ten{A})^T)}{\varepsilon=0}\\
+	&=D\bsi(\ten{B}^T)\cdot\ten{A}^T=(D\bsi(\ten{B}))^T\cdot\ten{A},
+\end{align*}
+torej je $D\bsi(\ten{B})=(D\bsi(\ten{B}))^T$. Če odvajamo $\bsi(\ten{B})=\bsi(\ten{F}\ten{F}^T)$
+po $\ten{F}$, dobimo
+\begin{align*}
+	\frac{d}{d\varepsilon}\at{\bsi((\ten{F}+\varepsilon\ten{A})(\ten{F}+\varepsilon\ten{A})^T)}{\varepsilon=0}&=
+	D\bsi(\ten{F}\ten{F}^T)\cdot(\ten{F}\ten{A}^T+\ten{A}\ten{F}^T)\\
+	&=2D\bsi(\ten{B})\cdot(\ten{A}\ten{F}^T)=2D\bsi(\ten{B})\ten{F}\cdot\ten{A},
+\end{align*}
+pri čemer smo na predzadnjem koraku upoštevali simetričnost $D\bsi(\ten{B})$.
+Če ta rezultat upoštevamo pri odvajanju zveze $\sigma(\ten{F})=\bar{\sigma}(\ten{F}\ten{F}^T)$
+po $\ten{F}$, dobimo
+\begin{equation*}
+	D\sigma(\ten{F})=2D\bsi(\ten{B})\ten{F}.
+\end{equation*}
+Cauchyev napetostni tenzor (\ref{e:Tdrugi}) lahko sedaj zapišemo v obliki
+\begin{equation} \label{e:tmalodrugace}
+	\ten{T}=\rho D\sigma(\ten{F})\ten{F}^T=2\rho D\bsi(\ten{B})\ten{F}\ten{F}^T=2\rho D\bsi(\ten{B})\ten{B}.
+\end{equation}
+
+Za izotropno hiperelastično trdno materialno telo lahko pogoja (\ref{e:objesig})
+in (\ref{e:pogir}) združimo v en sam ekvivalenten pogoj:
+\[
+	\sigma(\ten{F})=\sigma(\ten{Q}\ten{F}\ten{Q}),\qquad\forall\;\ten{Q}\in\mathscr{O}(\V)
+	\ \textrm{in}\ \forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0.
+\]
+Če v splošnem katera koli tenzorska funkcija zadošča temu pogoju, potem rečemo,
+da je \emph{izotropna}. Funkcija $\bsi(\ten{B})$ je tudi izotropna:
+\[
+	\bsi(\ten{B})=\sigma(\ten{F})=\sigma(\ten{Q}\ten{F}\ten{Q})=
+	\bsi(\ten{Q}\ten{F}\ten{Q}(\ten{Q}\ten{F}\ten{Q})^T)=\bsi(\ten{Q}\ten{B}\ten{Q}^T),
+\]
+kar velja za vsak simetričen pozitivno definiten $\ten{B}$ in vsak $\ten{Q}\in\mathscr{O}(\V)$.
+
+\begin{izrek} \label{i:prinva}
+	Naj bo $\phi\colon\mathrm{Sym}(\V)\to\R$ tenzorska funkcija, definirana
+	na vektorskem podprostoru vseh simetričnih linearnih preslikav iz $\V$ v $\V$.
+	Potem je $\phi$ izotropna natanko tedaj, ko se jo da zapisati v obliki
 	\[
-		\ten{T}=\mathcal{T}(\ten{V})=\hat{\mathcal{T}}(\ten{B}).
+		\phi(\ten{A})=f(a_1,a_2,a_3),
 	\]
-	Funkcija $\hat{\mathcal{T}}(\ten{B})$ mora zadoščati pogoju
-	\[
-		\hat{\mathcal{T}}(\ten{Q}\ten{B}\ten{Q}^T)=\ten{Q}\hat{\mathcal{T}}(\ten{B})\ten{Q}^T
-		\qquad\forall\;\ten{Q}\in\mathscr{O}(\V).
-	\]
+	kjer je $f$ poljubna skalarna funkcija, odvisna od lastnih vrednosti $a_1,a_2,a_3$
+	preslikave $\ten{A}$.
 \end{izrek}
 
-V izreku je funkcija $\mathcal{T}$ mišljena z obzirom na izotropno referenčno konfiguracijo.
-
 \proof
-	Naj bo $\ten{F}=\ten{R}\ten{U}$ polarni razcep. Materialna simetrijska grupa za izotropno
-	trdno telo je $\mathcal{G}=\mathscr{O}(\V)$, zato je $\ten{R}\in\mathcal{G}$
-	in iz pogoja (\ref{e:pogir}) dobimo ob izboru $\ten{G}=\ten{R}^T$
+	Naj bo $\phi$ izotropna in naj imata $\ten{A},\ten{B}\in\mathrm{Sym}(\V)$
+	enaki množici lastnih vrednosti, $\{a_1,a_2,a_3\}=\{b_1,b_2,b_3\}$.
+	Po spektralnem izreku obstajata ortonormirani bazi $\{\vek{d}_j\}$ in $\{\vek{e}_j\}$,
+	da je
 	\[
-		\mathcal{T}(\ten{F})=\mathcal{T}(\ten{R}\ten{U}\ten{R}^T)=\mathcal{T}(\ten{V}).
+		\ten{A}=\sum_{j=1}^3 a_j\vek{d}_j\otimes\vek{d}_j\quad\textrm{in}\quad
+		\ten{B}=\sum_{j=1}^3 b_j\vek{e}_j\otimes\vek{e}_j.
 	\]
-	Pri tem smo upoštevali definicijo (\ref{e:uandv}) za $\ten{V}$. Ker je $\ten{B}=\ten{V}^2$,
-	lahko $\mathcal{T}$ prepišemo v obliko
+	Obstaja ortogonalna preslikava $\ten{Q}\in\mathscr{O}(\V)$,
+	da velja $\ten{Q}\vek{e}_j=\vek{d}_j$, $j=1,2,3$, zato je
+	\begin{align*}
+		\ten{Q}\ten{B}\ten{Q}^T&=\sum_{j=1}^3 b_j\ten{Q}(\vek{e}_j\otimes\vek{e}_j)\ten{Q}^T
+		=\sum_{j=1}^3 b_j(\ten{Q}\vek{e}_j)\otimes(\ten{Q}\vek{e}_j) \\
+		&=\sum_{j=1}^3 a_j\vek{d}_j\otimes\vek{d}_j=\ten{A}.
+	\end{align*}
+	Ker je $\phi$ po predpostavki izotropna, je
 	\[
-		\mathcal{T}(\ten{V})=\hat{\mathcal{T}}(\ten{V}^2)=\hat{\mathcal{T}}(\ten{B}).
+		\phi(\ten{A})=\phi(\ten{Q}\ten{B}\ten{Q}^T)=\phi(\ten{B}).
 	\]
+	Dokazali smo, da je $\phi$ odvisna le od lastnih vrednosti simetrične matrike,
+	torej je $\phi(\ten{A})=f(a_1,a_2,a_3)$.
 	
-	
-	
+	Obratno, če velja $\phi(\ten{A})=f(a_1,a_2,a_3)$, potem je $\phi(\ten{A})=\phi(\ten{Q}\ten{A}\ten{Q}^T)$,
+	saj imata linearni preslikavi $\ten{A}$ in $\ten{Q}\ten{A}\ten{Q}^T$ enake lastne vrednosti,
+	kar se najhitreje vidi tako, da sta karakteristična polinoma obeh preslikav enaka.
 \endproof
+
+Karakteristični polinom linearne preslikave $\ten{A}\in\L(\V)$ je
+\[
+	\det(\ten{A}-\lambda\ten{1})=-\lambda^3+I_{\ten{A}}\lambda^2+\rdva_{\ten{A}}\lambda+\rtri_{\ten{A}},
+\]
+pri tem so $I_{\ten{A}}, \rdva_{\ten{A}}, \rtri_{\ten{A}}$ \emph{glavne invariante} za $\ten{A}$.
+Če so $a_1,a_2,a_3$ lastne vrednosti od $\ten{A}$, potem je
+\begin{align*}
+	I_{\ten{A}}&=a_1+a_2+a_3=\tr\ten{A},\\
+	\rdva_{\ten{A}}&=a_1a_2+a_1a_3+a_2a_3=\frac{1}{2}\big((\tr\ten{A})^2-\tr(\ten{A}^2)\big),\\
+	\rtri_{\ten{A}}&=a_1a_2a_3=\det\ten{A}.
+\end{align*}
+Množici $\{a_1,a_2,a_3\}$ in $\{I_{\ten{A}},\rdva_{\ten{A}},\rtri_{\ten{A}}\}$ sta ekvivalentni
+v smislu, da ena enoli\-čno določa drugo. Zato lahko v izreku \ref{i:prinva} nadomestimo
+funkcijo $f(a_1,a_2,a_3)$ z neko drugo funkcijo $\tilde{f}(I_{\ten{A}},\rdva_{\ten{A}},\rtri_{\ten{A}})$.
+Funkcijo $\bsi$ lahko torej predstavimo kot
+\begin{equation} \label{e:equinox}
+	\bsi(\ten{B})=w(I_{\ten{B}},\rdva_{\ten{B}},\rtri_{\ten{B}}).
+\end{equation}
+Na spremenljivke $I_{\ten{B}},\rdva_{\ten{B}},\rtri_{\ten{B}}$ v funkciji $w$ lahko gledamo kot
+na funkcije $I_{\ten{B}}=I(\ten{B})$, itd. Z odvajanjem enakosti (\ref{e:equinox}) po $\ten{B}$ dobimo
+\begin{equation} \label{e:dbshy}
+	D\bsi(\ten{B})=\frac{\partial w}{\partial I_{\ten{B}}}DI(\ten{B})+
+	\frac{\partial w}{\partial \rdva_{\ten{B}}}D\rdva(\ten{B})+
+	\frac{\partial w}{\partial \rtri_{\ten{B}}}D\rtri(\ten{B}).
+\end{equation}
+$D\rtri(\ten{B})=D\det(\ten{B})$ smo že izračunali v (\ref{e:odvodet}). Izračunajmo še
+odvoda preostalih dveh glavnih invariant. Za posljuben $\ten{S}$ imamo
+\begin{align*}
+	DI(\ten{B})(\ten{S})&=D\tr(\ten{B})(\ten{S})=
+	\frac{d}{d\varepsilon}\at{\tr(\ten{B}+\varepsilon\ten{S})}{\varepsilon=0}=
+	\tr(\ten{S})=\ten{1}\cdot\ten{S},\\
+	D\rdva(\ten{B})(\ten{S})&=
+	\frac{1}{2}\frac{d}{d\varepsilon}\at{\Big(
+	\big(\tr(\ten{B}+\varepsilon\ten{S})\big)^2-\tr\big((\ten{B}+\varepsilon\ten{S})^2\big)
+	\Big)}{\varepsilon=0}\\
+	&=(\tr\ten{B})(\tr\ten{S})-\frac{1}{2}\tr(\ten{B}\ten{S})-\frac{1}{2}\tr(\ten{S}\ten{B})\\
+	&=(\tr\ten{B})\ten{1}\cdot\ten{S}-\frac{1}{2}\ten{B}^T\cdot\ten{S}-\frac{1}{2}\ten{S}\cdot\ten{B}^T\\
+	&=\big((\tr\ten{B})\ten{1}-\ten{B}^T\big)\cdot\ten{S}.
+\end{align*}
+Odvodi glavnih invariant so torej
+\[
+	DI(\ten{B})=\ten{1},\quad D\rdva(\ten{B})=I_{\ten{B}}\ten{1}-\ten{B}^T,\quad
+	D\rtri(\ten{B})=\rtri_{\ten{B}}\ten{B}^{-T}.
+\]
+Če to upoštevamo v (\ref{e:dbshy}), rezultat pa nato v (\ref{e:tmalodrugace}), dobimo
+izraz za Cauchyjev napetostni tenzor $\ten{T}$ za izotropno hiperelastično trdno materialno telo,
+ki je
+\begin{equation}
+	\ten{T}=2\rho\bigg(
+	\rtri_{\ten{B}}\frac{\partial w}{\partial \rtri_{\ten{B}}}\ten{1}+
+	\Big(\frac{\partial w}{\partial I_{\ten{B}}}+I_{\ten{B}}\frac{\partial w}{\partial \rdva_{\ten{B}}}\Big)\ten{B}-
+	\frac{\partial w}{\partial \rdva_{\ten{B}}}\ten{B}^2
+	\bigg).
+\end{equation}

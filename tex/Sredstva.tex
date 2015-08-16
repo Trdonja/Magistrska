@@ -39,10 +39,22 @@ oz.~zvezna. Pogoj (\ref{e:frede}) je ekvivalenten pogoju
 	\lim_{v\to 0}\frac{\|o(v)\|_W}{\|v\|_V}=0.
 \end{equation*}
 
-Če je v definiciji \ref{def:odvod} $V=\R$, potem namesto $DF(u)$ pišemo $F'(u)$.
-V tem primeru je, striktno gledano, $F'(u)$ linearna preslikava iz $\R$ v $W$, kar je
-množenje nekega elementa $w\in W$ z realnim številom, zato kar
-enačimo $F'(u)$ s tem elementom $w$.
+\begin{dogovor} \label{d:riesz}
+	\begin{enumerate}
+		\item Če je v definiciji \ref{def:odvod} $V=\R$, potem namesto $DF(u)$ pišemo $F'(u)$.
+		V tem primeru je, striktno gledano, $F'(u)$ linearna preslikava iz $\R$ v $W$, kar je
+		množenje nekega elementa $w\in W$ z realnim številom, zato kar
+		enačimo $F'(u)$ s tem elementom $w$.
+		\item Če je v definiciji \ref{def:odvod} $W=\R$ in je $V$ opremljen s skalarnim produktom,
+		potem je $DF(u)$ linearen funkcional, ki mu po Riezsovem izreku o reprezentaciji
+		linearnih funkcionalov pripada enolično določen $w\in V$, da velja
+		\[
+			DF(u)(v)=\langle w,v\rangle \qquad\forall\; v\in V.
+		\]
+		Po dogovoru bomo $DF(u)$ kar enačili s pripadajočim vektorjem $w$ in bomo pisali
+		$DF(u)(v)=\langle DF(u),v\rangle$.
+	\end{enumerate}
+\end{dogovor}
 
 \begin{definicija}
 	Naj bosta $V$, $W$ Banachova prostora, $U\subseteq V$ odprta
@@ -143,25 +155,28 @@ za opis položaja in geometrije objektov, prostor $\R$ pa predstavlja časovno o
 
 \begin{definicija} \label{d:ep}
 	Množica točk $\E$ je \emph{Evklidski točkovni prostor} in trirazsežni Evklidski vektorski prostor $\V$ je
-	\emph{translacijski prostor} za $\E$, če poljubnemu paru točk $x,y\in\E$ pripada vektor iz $\V$,
-	ki ga zapišemo kot $y-x$, tako da velja:
+	\emph{translacijski prostor} za $\E$, če obstaja preslikava $\iota\colon\E\times\E\to\V$
+	z naslednjimi lastnostmi:
 	\begin{enumerate}
-		\item Za vsak $x\in\E$ je $x-x=\vek{0}$, ničelni vektor.
-		\item Za vsak $x\in\E$ in vsak $\vek{v}\in\V$ obstaja natanko ena točka $y\in\E$, da je
-		$\vek{v}=y-x$. Pišemo: $y=x+\vek{v}$.
-		\item Za vse $x,y,z\in\E$ velja $(y-x)+(z-y)=(z-x)$.
+		\item Za vsak $x\in\E$ je $\iota(x,x)=\vek{0}$, ničelni vektor.
+		\item Za vsak $o\in\E$ je preslikava
+		\begin{equation} \label{e:iotx}
+			\iota_o\colon\E\to\V,\qquad\iota_o(x)=\iota(o,x)
+		\end{equation}
+		bijektivna.
+		\item Za vse $x,y,z\in\E$ velja $\iota(x,y)+\iota(y,z)=\iota(x,z)$.
 	\end{enumerate}
+	Preslikava (\ref{e:iotx}) se imenuje \emph{opazovališče} za $\E$.
 \end{definicija}
 
-Razdalja med točkama $x,y\in\E$ je definirana kot $d(x,y)=\|y-x\|$, kjer $\|.\|$ označuje normo na
-vektorskem prostoru $\V$, porojeno iz standardnega skalarnega produkta. $(\E,d)$ je metrični prostor.
-
-V prostoru $\E$ si izberimo točko, jo označimo z $o$ in jo imenujmo \emph{izhodišče}.
-V skladu z aksiomi iz definicije pripada vsaki točki $p\in\E$ glede na izhodišče $o$ \emph{krajevni vektor}
-$\vek{x}=x-o\in \V$. Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ neka ortonormirana baza prostora $\V$,
-ki je desnosučna, tj.~$\vek{e}_3=(\vek{e}_1\times\vek{e}_2)$. Krajevni vektor $\vek{x}$
+Če preslikava $\iota$ iz definicije obstaja, potem je takih preslikav neskončno mnogo.
+Opazovališče (\ref{e:iotx}) je odvisno od izbire preslikave $\iota$ in od izbire točke $o\in\E$,
+ki jo imenujemo \emph{izhodišče}. 
+V skladu z drugo točko definicije pripada vsaki točki $x\in\E$ glede na izhodišče $o$ \emph{krajevni vektor}
+$\vek{x}=\iota(o,x)=\iota_o(x)\in \V$. Naj bo $\{\vek{e}_1,\vek{e}_2,\vek{e}_3\}$ ortonormirana baza prostora $\V$,
+ki je desnosučna, tj.~$\vek{e}_3=\vek{e}_1\times\vek{e}_2$. Krajevni vektor $\vek{x}$
 ima enoličen razvoj po bazi, $\vek{x}=x_i\vek{e}_i$, koeficientom $x_i$ tega razvoja pa rečemo
-\emph{kartezijeve koordinate}. Te so odvisne od izbire izhodišča in ortonormirane baze.
+\emph{kartezijeve koordinate}. Te so odvisne od opazovališča in od ortonormirane baze.
 Imamo bijektivno korespondenco med naslednjimi objekti:
 \begin{itemize}
 	\item točka $x\in\E$,
@@ -169,24 +184,203 @@ Imamo bijektivno korespondenco med naslednjimi objekti:
 	\item kartezijeve koordinate $(x_1,x_2,x_3)\in\R^3$.
 \end{itemize}
 
-Z izbiro izhodišča je preslikava
-\[
-	\iota\colon\E\to\V,\qquad\iota\colon x\mapsto x-o=\vek{x}
-\]
-bijektivna vložitev prostora $\E$ v vektorski prostor $\V$. Točke
-prostora $\E$ identificiramo z njihovimi krajevnimi vektorji in prostor $\E$
-lahko obravnavamo kot vektorski prostor $\V$. Zaradi tega bomo še posebej, kadar bomo imeli opravka
-z odvodi, vsako preslikavo $F\colon U\to \E$, kjer je $U\subseteq V$ in $V$ neki Banachov prostor,
-obravnavali kot vektorsko preslikavo $F\colon U\to\V$. Na ta način so vsi odvodi preslikave $F$
-smiselno definirani. Za $x\in U$ je odvod $DF(x)$ linearna preslikava iz prostora $V$ v prostor $\V$.
-Če bomo želeli poudariti, da gre za vektorsko preslikavo, jo bomo označili s krepkim simbolom,
-npr.~$\vek{F}$ namesto $F$.
+Razdalja med točkama $x,y\in\E$ je definirana kot $d(x,y)=\|\iota(x,y)\|$, kjer je $\|.\|$ norma na
+vektorskem prostoru $\V$, porojena iz standardnega skalarnega produkta. $(\E,d)$ je metrični prostor.
+Metrika je odvisna od izbire preslikave $\iota$.
 
-Newtonov prostor-čas $\mathcal{N}=\E\times\R$ lahko preko vložitve $\iota$ prostora $\E$ v $\V$
-identificiramo z vektorskim prostorom $\V\times\R\cong\R^4$. Običajni skalarni produkt na $\N$ je
-\[ (x,t_1)\cdot(y,t_2) = \vek{x}\cdot\vek{y} + t_1 t_2. \]
-kjer sta $\vek{x}$ in $\vek{y}$ krajevna vektorja točk $x$ in $y$ iz $\E$.
-Iz skalarnega produkta dobimo tudi normo.
+Ko imamo izbrano preslikavo $\iota$, lahko definiramo odštevanje točk in sešte\-vanje točke in vektorja
+na naslednji način.
+\begin{itemize}
+	\item Naj bo $x\in\E$ in $\vek{u}\in\V$. Potem je $x+\vek{u}$ tista točka $y\in\E$, za
+	katero velja $\iota(x,y)=\vek{u}$.
+	\item Naj bosta $x,y\in\E$. Potem je $y-x$ tisti vektor $\vek{u}\in\V$, za katerega
+	velja $\vek{u}=\iota(x,y)$.
+\end{itemize}
+
+\begin{dogovor} \label{d:dogovor}
+	Naj bo $V$ Banachov prostor ali pa prostor $\E$, naj bo $U\subseteq V$ in
+	$F\colon U\to \E$. Z enakim simbolom, le da bo pisan krepko (v tem primeru $\vek{F}$),
+	bomo označevali pripadajočo preslikavo
+	\[
+		\vek{F}\colon U\to\V,\qquad \vek{F}=\iota_o\circ F.
+	\]
+\end{dogovor}
+Za $u\in U$ je torej $\vek{F}(u)$ krajevni vektor točke $F(u)$ glede na opazovališče $\iota_o$ za $\E$.
+
+
+\subsection{Tenzorji drugega reda} \label{pdrten2}
+
+
+V tem podrazdelku naj oznaka $\V$ izjemoma pomeni $n$-razsežen vektorski prostor nad
+obsegom realnih števil, saj rezultati, navedeni v tem podrazdelku, držijo za poljuben
+končno razsežen vektorski prostor $\V$. Od tega podrazdelka dalje bo oznaka $\V$ vedno
+služila za translacijski prostor Evklidskega trirazsežnega točkovnega prostora, zato bo vedno $n=3$.
+
+$\V$ naj bo opremljen s standardnim skalarnim produktom $\langle\cdot,\cdot\rangle$.
+Elemente oz.~vektorje prostora $\V$ bomo vedno označevali s krepkimi poševni\-mi simboli,
+npr.~$\vek{u}$, $\vek{\eta}$, $\vek{F}$. Elemente prostora $\L(\V)$, t.j.~linearne
+preslikave iz $\V$ v $\V$, bomo vedno označevali s krepkimi pokončnimi simboli, npr.~$\ten{F}$,
+in jih kasneje imenovali \emph{tenzorji drugega reda} ali pa na kratko kar \emph{tenzorji}.
+\footnote{Tenzorji drugega reda so v matematiki sicer bilinearne funkcije iz $\V\times\V$ v $\R$, vendar med 
+bilinearnimi funkcijami in linearnimi preslikavami iz $\V$ v $\V$
+obstaja povezava preko Riezsovega izreka, zato se v mehaniki
+izraz \textit{tenzor} običajno uporablja kar za linearno preslikavo.}
+
+Če bralec s pojmi in rezultati, podanimi v tem podrazdelku, še ni seznanjen, lahko
+pripadajoče dokaze in utemeljitve najde v \cite[str.~233-261]{liu}.
+
+Krepka enica $\ten{1}$ bo pomenila identično linearno preslikavo, $\ten{1}\in\L(\V)$,
+$\ten{1}\vek{u}=\vek{u}$ za vsak $\vek{u}\in\V$. Krepka nič $\ten{0}$ pomeni bodisi
+ničelni vektor ali pa ničelno linearno preslikavo, odvisno od konteksta.
+
+\emph{Tenzorski produkt} vektorjev $\vek{u},\vek{v}\in\V$ je linearna preslikava
+\[
+	\vek{u}\otimes\vek{v}\in\L(\V),\qquad
+	(\vek{u}\otimes\vek{v})\vek{w}=\langle\vek{v},\vek{w}\rangle\vek{u}\quad\forall\;\vek{w}\in\L(V).
+\]
+Tenzorski produkt ni komutativen. Če sta $\{\vek{e}_1,\dots,\vek{e}_n\}$ in
+$\{\vek{d}_1,\dots,\vek{d}_n\}$ bazi za vektorski prostor $\V$, potem je
+$\{\vek{e}_i\otimes\vek{d}_j\;;\ i,j=1,\dots,n\}$ baza za vektorski prostor $\L(\V)$.
+Vsak $\ten{A}\in\L(\V)$ se da torej zapisat kot
+\[
+	\ten{A}=a_{ij}\vek{e}_i\otimes\vek{d}_j,
+\]
+kjer so $a_{ij}$ realna števila.
+
+\emph{Transponirana linearna preslikava} od $\ten{A}\in\L(\V)$ je linearna preslikava
+$\ten{A}^T\in\L(\V)$, za katero velja
+\[
+	\langle\ten{A}\vek{u},\vek{v}\rangle=\langle\vek{u},\ten{A}^T\vek{v}\rangle,
+	\qquad\;\forall \vek{u},\vek{v}\in\V.
+\]
+Velja $(\ten{A}^T)^{-1}=(\ten{A}^{-1})^T=:\ten{A}^{-T}$. Za poljubna vektorja $\vek{u},\vek{v}\in\V$ je
+\[ (\vek{u}\otimes\vek{v})^T=\vek{v}\otimes\vek{u}. \]
+
+\emph{Alternirajoča $n$-linearna forma} je $n$-linearna\footnote{Linearna v vsakem argumentu posebaj.} preslikava
+\[ \omega\colon\overbrace{\V\times\dots\times\V}^{n}\to\R, \]
+tako da za poljubno permutacijo $\sigma$ na množici $\{1,2,\dots,n\}$ in za poljubne
+$\vek{u}_1,\vek{u}_2,\dots,\vek{u}_n\in\V$ velja
+\[
+	\omega(\vek{u}_{\sigma(1)},\vek{u}_{\sigma(2)},\dots,\vek{u}_{\sigma(n)})
+	=(\mathrm{sign}\,\sigma)\omega(\vek{u}_1,\vek{u}_2,\dots,\vek{u}_n).
+\]
+Pri tem je $\mathrm{sign}\,\sigma$ predznak permutacije $\sigma$. $\omega$ je \emph{netrivialna},
+če obstajajo taki $\vek{u}_1,\dots,\vek{u}_n\in\V$, da je $\omega(\vek{u}_1,\dots,\vek{u}_n)\neq 0$.
+Če so vektorji $\vek{u}_1,\dots,\vek{u}_n$ linearno odvisni, potem je $\omega(\vek{u}_1,\dots,\vek{u}_n)=0$.
+Če sta $\omega$ in $\omega'$ alternirajoči $n$-linearni formi in je $\omega$ netrivialna, potem
+obstaja $\lambda\in\R$, da je $\omega'(\vek{u}_1,\dots,\vek{u}_n)=\lambda\omega(\vek{u}_1,\dots,\vek{u}_n)$
+za vse $\vek{u}_1,\dots,\vek{u}_n\in\V$.
+
+\emph{Determinanta} linearne preslikave $\ten{A}\in\L(\V)$ je realno število $\det\ten{A}$,
+za katerega velja
+\[
+	(\det\ten{A})\omega(\vek{u}_1,\dots,\vek{u}_n)=\omega(\ten{A}\vek{u}_1,\dots,\ten{A}\vek{u}_n)
+\]
+za poljubno netrivialno alternirajočo $n$-linearno formo $\omega$ in poljubne vektorje $\vek{u}_1,\dots,\vek{u}_n\in\V$.
+Definicija je nedvisna od izbire netrivialne forme $\omega$.
+
+\emph{Sled} linearne preslikave $\ten{A}\in\L(\V)$ je realno število $\tr\ten{A}$,
+za katerega velja
+\[
+	(\tr\ten{A})\omega(\vek{u}_1,\dots,\vek{u}_n)
+	=\sum_{j=1}^n\omega(\vek{u}_1,\dots,\ten{A}\vek{u}_j,\dots,\vek{u}_n)
+\]
+za poljubno netrivialno alternirajočo $n$-linearno formo $\omega$ in poljubne vektorje $\vek{u}_1,\dots,\vek{u}_n\in\V$.
+Tudi tu je definicija nedvisna od izbire netrivialne forme $\omega$.
+Za poljubne $\alpha\in\R$, $\ten{A},\ten{B}\in\L(\V)$, $\vek{u},\vek{v}\in\V$ velja
+\begin{enumerate} \label{traceprop}
+	\item $\tr(\alpha\ten{A}+\ten{B})=\alpha\tr\ten{A}+\tr\ten{B}$,
+	\item $\tr(\vek{u}\otimes\vek{v})=\langle\vek{u},\vek{v}\rangle$,
+	\item $\tr\ten{A}^T=\tr\ten{A}$,
+	\item $\tr(\ten{A}\ten{B})=\tr(\ten{B}\ten{A})$.
+\end{enumerate}
+
+Običajni skalarni produkt na prostoru $\L(\V)$ je definiran na sledeč način:
+\begin{equation*} %\label{e:dotprodnaL}
+	\langle\ten{A},\ten{B}\rangle=\tr(\ten{A}^T\ten{B})=\tr(\ten{B}^T\ten{A})
+	\qquad\;\forall\;\ten{A},\ten{B}\in\L(\V).
+\end{equation*}
+Za vse $\ten{A},\ten{B},\ten{C}\in\L(\V)$ velja
+\begin{equation} \label{e:skatra}
+	\langle\ten{A}\ten{B},\ten{C}\rangle=\langle\ten{B},\ten{A}^{T}\ten{C}\rangle
+	=\langle\ten{A},\ten{C}\ten{B}^{T}\rangle.
+\end{equation}
+
+Linearna preslikava $\ten{A}\in\L(\V)$ je \emph{simetrična}, če je $\ten{A}=\ten{A}^T$.
+$\ten{A}$ je \emph{pozitivno definitna}, če za vsak neničelen $\vek{u}\in\V$ velja
+$\langle\vek{u},\ten{A}\vek{u}\rangle >0$.
+
+Vpeljimo naslednje oznake:
+\begin{itemize}
+	\item $\mathrm{Inv}(\V)=\{\ten{A}\in\L(\V)\;;\ \det\ten{A}\neq 0 \}$
+	\item $\mathscr{U}(\V)=\{\ten{A}\in\L(\V)\;;\ |\det\ten{A}|=1 \}$
+	\item $\mathscr{O}(\V)=\{\ten{A}\in\L(\V)\;;\ \ten{A}\ten{A}^T=\ten{A}^T\ten{A}=\ten{1} \}$
+	\item $\mathrm{Sym}(\V)=\{\ten{A}\in\L(\V)\;;\ \ten{A}=\ten{A}^T \}$
+\end{itemize}
+Množice $\mathrm{Inv}(\V)$, $\mathscr{U}(\V)$ in $\mathscr{O}(\V)$ so za operacijo kompozitum
+grupe. $\mathrm{Inv}(\V)$ je grupa vseh obrnljivih linearnih preslikav, $\mathscr{U}(\V)$
+je \emph{unitarna grupa}, $\mathscr{O}(\V)$ pa je \emph{ortogonalna grupa} in njeni elementi
+se imenujejo \emph{ortogonalne preslikave}. Za grupi $G$ in $H$ naj oznaka $H<G$ pomeni \textit{$H$
+je (prava) podgrupa grupe $G$}. Velja $\mathscr{O}(\V)<\mathscr{U}(\V)<\mathrm{Inv}(\V)$.
+Množica $\mathrm{Sym}(\V)$ je vektorski podprostor prostora $\L(\V)$, ni pa grupa za kompozitum.
+V njem so vse simetrične linearne preslikave.
+
+Če je $\ten{S}\in\mathrm{Sym}(\V)$, potem iz linearne algebre vemo, da so vse lastne
+vrednosti preslikave $\ten{S}$ realne. Še več, za prostor $\V$ obstaja ortonormirana baza
+iz lastnih vektorjev $\{\vek{u}_1,\dots,\vek{u}_,\}$ preslikave $\ten{S}$. Če je
+$\vek{u}_j$ lastni vektor pri lastni vrednosti $a_j$, $j=1,\dots,n$, potem se da po spektralnem
+izreku $\ten{S}\in\mathrm{Sym}(\V)$ enolično zapisati kot
+\begin{equation} \label{e:spekraz}
+	\ten{S}=\sum_{j=1}^n a_j\vek{u}_j\otimes\vek{u}_j.
+\end{equation}
+
+$\ten{S}\in\mathrm{Sym}(\V)$ je pozitivno definitna natanko tedaj, ko so vse njene
+lastne vrednosti pozitivne. V tem primeru obstaja enolično določena simetrična pozitivno
+definitna linearna preslikava $\ten{T}$, tako da velja $\ten{T}^2=\ten{S}$.
+$\ten{T}$ imenujemo \emph{kvadratni koren} od $\ten{S}$ in pišemo kar $\ten{T}=\sqrt{\ten{S}}$.
+Če je $\ten{S}$ zapisana kot v (\ref{e:spekraz}), potem velja
+\[
+	\ten{T}=\sqrt{\ten{S}}=\sum_{j=1}^n \sqrt{a_j}\,\vek{u}_j\otimes\vek{u}_j.
+\]
+
+\begin{izrek}[Polarni razcep] \label{i:polraz}
+	Za vsak $\ten{F}\in\textrm{Inv}(\V)$
+	obstajata simetrični pozitivno definitni linearni preslikavi $\ten{V}$ in $\ten{U}$
+	ter ortogonalna linearna preslikava $\ten{R}$, tako da velja
+	\[
+		\ten{F}=\ten{R}\ten{U}=\ten{V}\ten{R}.
+	\]
+	Pri tem so $\ten{U}$, $\ten{V}$ in $\ten{R}$ z zgornjim razcepom enolično določene.
+\end{izrek}
+
+\proof
+	Takoj se vidi, da sta preslikavi $\ten{F}\ten{F}^T$ in $\ten{F}^T\ten{F}$
+	simetrični, hkrati pa tudi pozitivno definitni, saj je za poljuben neničelen $\vek{u}\in\V$
+	\[ 
+		\langle\vek{u},\ten{F}^T\ten{F}\vek{u}\rangle=\langle\ten{F}\vek{u},\ten{F}\vek{u}\rangle>0,
+	\]
+	ker je $\ten{F}$ nesingularna.
+	
+	Definirajmo
+	\begin{equation} \label{e:uandv}
+		\ten{U}=\sqrt{\ten{F}^T\ten{F}},\quad\ten{R}=\ten{F}\ten{U}^{-1},\quad
+		\ten{V}=\ten{R}\ten{U}\ten{R}^T.
+	\end{equation}
+	Po definiciji je $\ten{U}$ simetrična pozitivno definitna in $\ten{R}$ je ortogonalna, saj je
+	\begin{align*}
+		\ten{R}\ten{R}^T&=\ten{F}\ten{U}^{-1}(\ten{F}\ten{U}^{-1})^T
+		=\ten{F}\ten{U}^{-1}\ten{U}^{-T}\ten{F}^T \\ &=\ten{F}\ten{U}^{-2}\ten{F}^T
+		=\ten{F}(\ten{F}^T\ten{F})^{-1}\ten{F}^T=\ten{1}.
+	\end{align*}
+	Poleg tega je
+	\[
+		\ten{V}^2=(\ten{R}\ten{U}\ten{R}^T)(\ten{R}\ten{U}\ten{R}^T)
+		=(\ten{R}\ten{U})(\ten{R}\ten{U})^T=\ten{F}\ten{F}^T,
+	\]
+	torej je $\ten{V}$ kvadratni koren od $\ten{F}\ten{F}^T$ in je zato
+	simetrična in pozitivno definitna. Enoličnost sledi iz enoličnosti obstoja
+	kvadratnega korena.
+\endproof
 
 
 \subsection{Tenzorska polja, gradient in divergenca}
@@ -195,24 +389,11 @@ Iz skalarnega produkta dobimo tudi normo.
 Rezervirajmo oznako $\W$ za poljuben končnorazsežen normiran vektorski
 prostor nad obsegom $\R$. Običajno bo
 \[ \W\in\big\{ \R,\V,\L(\V),\L(\V,\L(\V)) \big\}. \]
-Elemente oz.~vektorje prostora $\V$ bomo vedno označevali s krepkimi poševni\-mi simboli,
-npr.~$\vek{u}$, $\vek{\mu}$, $\vek{F}$. Elemente prostora $\L(\V)$, t.j.~linearne
-preslikave iz $\V$ v $\V$, bomo vedno označevali s krepkimi pokončnimi simboli, npr.~$\ten{F}$,
-in jih včasih imenovali tudi \emph{tenzorji drugega reda} ali pa na kratko kar \emph{tenzorji}.
-Elemente prostora $\W$ bomo običajno označevali s krepkimi poševnimi simboli, torej kot vektorje.
+Če prostor $\W$ ne bo natančno določen, bomo njegove elemente običajno označevali s krepkimi poševnimi simboli, torej kot vektorje.
 Funkcije, katerih kodomena je $\V$, $\L(\V)$ ali $\W$, bomo označevali kot elemente teh prostorov.
 
-Na vektorskem prostoru $\L(\V)$ definiramo še običajen skalarni produkt: Za $\ten{A},\ten{S}\in\L(\V)$ je
-\[ \ten{A}\cdot\ten{S}=\tr(\ten{A}^{T}\ten{S}). \]
-Hitro se lahko prepričamo, da ta predpis res ustreza vsem pogojem za skalarni produkt.
-Za poljubne $\ten{A},\ten{B},\ten{C}\in\L(\V)$ velja
-\begin{equation} \label{e:skatra}
-	(\ten{A}\ten{B})\cdot\ten{C}=\ten{B}\cdot(\ten{A}^{T}\ten{C})=\ten{A}\cdot(\ten{C}\ten{B}^{T}),
-\end{equation}
-kar je takojšnja posledica multiplikativne lastnosti, ki velja za sled.
-
-Naj bo $\U\subseteq\E$, običajno odprta. Funkciji $\vek{f}\colon \U\to\W$ rečemo \emph{tenzorsko polje} ali pa
-\emph{tenzorska funkcija}. V posebnem primeru, ko je $\W=\R$, ji rečemo \emph{skalarno polje},
+Naj bo $\U\subseteq\E$. Funkciji $\vek{f}\colon \U\to\W$ rečemo \emph{tenzorsko polje}.
+V posebnem primeru, ko je $\W=\R$, ji rečemo \emph{skalarno polje},
 v primeru $\W=\V$ pa \emph{vektorsko polje}.
 
 Naj bo $\psi\colon \U\to\R^3$ bijektivna preslikava razreda $C^1$, katere inverz je prav tako
@@ -240,16 +421,16 @@ $\vek{x}=\iota(x)$ in $\vek{v}\in\V$ je
 Če je $f\colon \U\to\R$ skalarno polje, potem v $x\in \U$ vrednost gradienta $\nabla f(x)$
 pripada prostoru $\L(\V,\R)$, kar je linearni funkcional na prostoru $\V$. Po Riezsovem
 izreku o reprezentaciji mu enolično pripada vektor $\vek{u}\in\V$, da za vsak
-$\vek{v}\in\V$ velja $\nabla f(x)(\vek{v})=\vek{u}\cdot\vek{v}$. V tem primeru velja
-dogovor, da identificiramo $\nabla f$ s pripadajočim vektorskim poljem in pišemo
-\[ \nabla f(x)(\vek{v})=\nabla f(x)\cdot\vek{v}. \]
+$\vek{v}\in\V$ velja $\nabla f(x)(\vek{v})=\vek{u}\cdot\vek{v}$. V tem primeru po
+dogovoru \ref{d:riesz} identificiramo $\nabla f$ s pripadajočim vektorskim poljem in pišemo
+\[ \nabla f(x)(\vek{v})=\langle\nabla f(x),\vek{v}\rangle. \]
 
 Če je $\vek{f}\colon \U\to\V$ vektorsko polje, potem je v $x\in \U$ vrednost gradienta $\nabla\vek{f}(x)$
 linearna preslikava iz $\V$ v $\V$ in pišemo
 \[ \nabla\vek{f}(x)(\vek{v})=\nabla\vek{f}(x)\vek{v}, \]
 torej oklepaj opustimo, kot je to tudi sicer v navadi za linearne preslikave.
 
-Oznaka $I$ bo praviloma služila za odprti interval $I=(t_1,t_2)\subset\R$. Tudi funkciji
+Oznaka $I$ bo praviloma služila za interval $I=(t_1,t_2)\subset\R$, odprti ali zaprti. Tudi funkciji
 $\vek{f}\colon \U\times I\to\W$ bomo rekli \emph{(časovno odvisno) tenzorsko polje}.
 Gradient časovno odvisnega tenzorskega polja je definiran kot gradient polja
 $\vek{f}(\cdot,t)\colon \U\to\W$, v katerem je spremenljivka $t$ fiksna. Označimo
@@ -267,17 +448,17 @@ Medtem ko gradient viša red tenzorskega polja, ga divergenca niža.
 	\emph{Divergenca tenzorskega polja} $\ten{S}\colon \U\to\L(\V)$ je vektorsko polje $\div\ten{S}$ z lastnostjo,
 	da za vsako konstantno vektorsko polje $\vek{v}$ velja
 	\begin{equation} \label{e:div2}
-		\vek{v}\cdot\div\ten{S} = \div(\ten{S}^{T}\vek{v}).
+		\langle\vek{v},\div\ten{S}\rangle = \div(\ten{S}^{T}\vek{v}).
 	\end{equation}
 \end{definicija}
 
 Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadaljevanju.
 \begin{trditev} \label{t:divprop}
-	Za diferenciabilno skalarno polje $\phi$ ter diferenciabilni vektorski polji $\vek{u}$ in $\vek{v}$ velja
+	Za odvedljivo skalarno polje $\phi$ ter odvedljivi vektorski polji $\vek{u}$ in $\vek{v}$ velja
 	\begin{enumerate}
 		\item $\nabla(\phi\vek{v})=\vek{v}\otimes\nabla\phi+\phi\nabla\vek{v},$
-		\item $\nabla(\vek{u}\cdot\vek{v})=(\nabla\vek{u})^T\vek{v}+(\nabla\vek{v})^T\vek{u},$
-		\item $\div(\phi\vek{v})=\vek{v}\cdot\nabla\phi+\phi\div\vek{v}$,
+		\item $\nabla\langle\vek{u},\vek{v}\rangle=(\nabla\vek{u})^T\vek{v}+(\nabla\vek{v})^T\vek{u},$
+		\item $\div(\phi\vek{v})=\langle\vek{v},\nabla\phi\rangle+\phi\div\vek{v}$,
 		\item $\div(\vek{u}\otimes\vek{v})=(\nabla\vek{u})\vek{v}+\vek{u}\div\vek{v}$.
 	\end{enumerate}
 \end{trditev}
@@ -285,35 +466,36 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 	Za poljubno konstantno vektorsko polje $\vek{h}$ je
 	\begin{align*}
 		\nabla(\phi\vek{v})\vek{h}&=
-		(\nabla\phi\cdot\vek{h})\vek{v}+\phi(\nabla\vek{v})\vek{h}=
+		\langle\nabla\phi,\vek{h}\rangle\vek{v}+\phi(\nabla\vek{v})\vek{h}=
 		(\vek{v}\otimes\nabla\phi)\vek{h}+\phi(\nabla\vek{v})\vek{h}\\
 		&=\big(\vek{v}\otimes\nabla\phi+\phi\nabla\vek{v}\big)\vek{h},
 	\end{align*}
 	iz česar sledi prva enakost, ter
 	\begin{align*}
-		\nabla(\vek{u}\cdot\vek{v})\vek{h}&=((\nabla\vek{u})\vek{h})\cdot\vek{v}+\vek{u}\cdot(\nabla\vek{v})\vek{h}=
-		(\nabla\vek{u})^T\vek{v}\cdot\vek{h}+(\nabla\vek{v})^T\vek{u}\cdot\vek{h}\\
-		&=\big((\nabla\vek{u})^T\vek{v}+(\nabla\vek{v})^T\vek{u}\big)\vek{h},
+		\big<\nabla\langle\vek{u},\vek{v}\rangle,\vek{h}\big>&=\langle(\nabla\vek{u})\vek{h},\vek{v}\rangle
+		+\langle\vek{u},(\nabla\vek{v})\vek{h}\rangle=
+		\langle(\nabla\vek{u})^T\vek{v},\vek{h}\rangle+\langle(\nabla\vek{v})^T\vek{u},\vek{h}\rangle\\
+		&=\big<(\nabla\vek{u})^T\vek{v}+(\nabla\vek{v})^T\vek{u},\vek{h}\big>,
 	\end{align*}
 	iz česar sledi druga enakost. Tretjo enakost dokažemo neposredno:
 	\begin{align*}
 		\div(\phi\vek{v})&=\tr\big(\nabla(\phi\vek{v})\big)=\tr(\vek{v}\otimes\nabla\phi+\phi\nabla\vek{v})\\
-		&=\tr(\vek{v}\otimes\nabla\phi)+\phi\tr(\nabla\vek{v})=\vek{v}\cdot\nabla\phi+\phi\div\vek{v}.
+		&=\tr(\vek{v}\otimes\nabla\phi)+\phi\tr(\nabla\vek{v})=\langle\vek{v},\nabla\phi\rangle+\phi\div\vek{v}.
 	\end{align*}
-	Pri tem smo uporabili definicijo divergence (\ref{e:div1}), prvo enakost trditve in dejstvi, da je sled
-	linearen operator ter da je sled tenzorskega produkta dveh vektorjev enaka skalarnemu produktu teh
-	dveh vektorjev.
+	Pri tem smo uporabili definicijo divergence (\ref{e:div1}), prvo enakost trditve in lastnosti za sled,
+	podane na str.~\pageref{traceprop}.
 	
 	Za poljubno konstantno vektorsko polje $\vek{w}$ je
 	\begin{align*}
-		\vek{w}\cdot\div(\vek{u}\otimes\vek{v})&=\div\big((\vek{u}\otimes\vek{v})^T\vek{w}\big)=
+		\langle\vek{w},\div(\vek{u}\otimes\vek{v})\rangle&=\div\big((\vek{u}\otimes\vek{v})^T\vek{w}\big)=
 		\div\big((\vek{v}\otimes\vek{u})\vek{w}\big)\\
-		&=\div\big((\vek{u}\cdot\vek{w})\vek{v}\big)=\vek{v}\cdot\nabla(\vek{u}\cdot\vek{w})+(\vek{u}\cdot\vek{w})\div\vek{v}\\
-		&=(\nabla\vek{u})\vek{v}\cdot\vek{w}+\vek{u}\div\vek{v}\cdot\vek{w}=\big((\nabla\vek{u})\vek{v}+\vek{u}\div\vek{v}\big)\cdot\vek{w},
+		&=\div\big(\langle\vek{u},\vek{w}\rangle\vek{v}\big)
+		=\big<\vek{v},\nabla\langle\vek{u}\cdot\vek{w}\rangle\big>+\langle\vek{u}\cdot\vek{w}\rangle\div\vek{v}\\
+		&=\langle(\nabla\vek{u})\vek{v},\vek{w}\rangle+\langle\vek{u}\div\vek{v},\vek{w}\rangle
+		=\big<(\nabla\vek{u})\vek{v}+\vek{u}\div\vek{v},\vek{w}\big>,
 	\end{align*}
 	iz česar sledi četrta enakost. Pri tem smo uporabili definicijo divergence (\ref{e:div2}) ter
-	tretjo in drugo enakost trditve, pri čemer smo upoštevali, da je $\nabla\vek{w}=\ten{0}$
-	(ničelna linearna preslikava).
+	tretjo in drugo enakost trditve, pri čemer smo upoštevali, da je $\nabla\vek{w}=\ten{0}$.
 \endproof
 
 
@@ -337,26 +519,28 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 \begin{definicija}
 	\begin{itemize}
 		\item
-		Za krivuljo ali ploskev v prostoru $\E$ bomo rekli, da je razreda $C^r$, $r\in\mathbb{N}$,
-		če se da to krivuljo ali ploskev parametrizirati s preslikavo, ki je razreda $C^r$.
+		Območje $\B\subset\E$ je \emph{regularno}, če je njegov rob $\partial \B$ sestavljen
+		iz končnega števila orientabilnih ploskev.
 		\item
-		Območje $\B\subset\E$ je \emph{regularno}, če je omejeno in je njegov rob $\partial \B$
-		orientabilna ploskev, sestavljena iz končnega števila ploskev razreda $C^r$ za neki $r\geq 1$.
-		\item
-		Točka na ploskvi v prostoru $\E$ je \emph{regularna}, če obstaja enotska normala
-		na to ploskev v tej točki, sicer je \emph{neregularna}.
+		Točka na robu $\partial\B$ je \emph{regularna}, če obstaja enotska normala
+		na rob $\partial\B$ v tej točki, sicer je \emph{neregularna}.
 	\end{itemize}
 \end{definicija}
-Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko mero oz.~ploščino enako 0.
+Ploskev je že po definiciji regularna parametrizacija iz neke podmnožice v $\R^2$ z neprazno notranjostjo,
+ki slika v $\E$. Da je regularna pomeni, da obstaja odvod te parametrizacije na celotni domeni in
+rang odvoda je 2. Ekvivalentno, obstaja normala na ploskev v vsaki točki ploskve.
+Neregularne točke na robu $\partial\B$ se lahko pojavijo tam, kjer se stikata dve ali več ploskev,
+pa prehod med ploskvama ni gladek.
+Množica vseh neregularnih točk na robu regularnega območja ima ploščinsko mero oz.~ploščino enako 0.
 
 \begin{izrek}[Divergenčni izrek] \label{i:divtheo}
-	Naj bo $\B$ regularno območje v $\E$ in $\vek{n}(x)\in\V$ zunanja enotska normala
-	na rob $\partial \B$ v regularni točki $x\in\partial \B$. Naj bodo $\phi\colon\overline{\B}\to\R$,
+	Naj bo $\B$ regularno območje v $\E$ in $\vek{n}$ vektorsko polje zunanje enotske normale,
+	definirano na množici vseh regularnih točk robu $\partial \B$. Naj bodo $\phi\colon\overline{\B}\to\R$,
 	$\vek{u}\colon\overline{\B}\to V$ ter $\ten{S}\colon\overline{\B}\to\L(V)$
-	zvezna polja, diferenciabilna v notranjosti območja $\B$. Potem velja
+	zvezna polja, odvedljiva v notranjosti območja $\B$. Potem velja
 	\begin{align*}
 		\int_{\partial \B} \phi\vek{n}\,ds &= \int_{\B} \grad\phi\,dv, \\
-		\int_{\partial \B} \vek{u}\cdot\vek{n}\,ds &= \int_{\B} \div\vek{u}\,dv, \\
+		\int_{\partial \B} \langle\vek{u},\vek{n}\rangle\,ds &= \int_{\B} \div\vek{u}\,dv, \\
 		\int_{\partial \B} \ten{S}\vek{n}\,ds &= \int_{\B} \div\ten{S}\,dv.
 	\end{align*}
 \end{izrek}
@@ -364,9 +548,10 @@ Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko
 	Druga enakost je splošno znan \emph{Gaussov izrek} iz vektorske analize, zato ga tukaj ne bomo dokazovali.
 	Naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
 	\begin{align*}
-		\vek{w}\cdot\int_{\partial \B}\phi\vek{n}\,ds &= \int_{\partial \B}\phi\vek{w}\cdot\vek{n}\,ds=
+		\left<\vek{w},\int_{\partial \B}\phi\vek{n}\,ds\right>
+		&= \int_{\partial \B}\langle\phi\vek{w},\vek{n}\rangle\,ds=
 		\int_{\B}\div(\phi\vek{w})\,dv \\
-		&= \int_{\B}\vek{w}\cdot\grad\phi \,dv = \vek{w}\cdot\int_{\B}\grad\phi \,dv,
+		&= \int_{\B}\langle\vek{w},\grad\phi\rangle \,dv = \left<\vek{w},\int_{\B}\grad\phi \,dv\right>,
 	\end{align*}
 	s čimer smo dokazali prvo enakost.
 	Pri tem smo uporabili Gaussov izrek, tretjo enakost iz trditve (\ref{t:divprop}) ter
@@ -374,10 +559,11 @@ Množica vseh neregularnih točk na robu regularnega območja ima ploščin\-sko
 	
 	Zopet naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
 	\begin{align*}
-		\vek{w}\cdot\int_{\partial \B}\ten{S}\vek{n}\,ds &= \int_{\partial \B}\vek{w}\cdot\ten{S}\vek{n}\,ds=
-		\int_{\partial \B}\ten{S}^T\vek{w}\cdot\vek{n}\,ds=
-		\int_{\B}\div(\ten{S}^T\vek{w})\,dv \\ &=\int_{\B}\vek{w}\cdot\div\ten{S}\,dv=
-		\vek{w}\cdot\int_{\B}\div\ten{S}\,dv,
+		\left<\vek{w},\int_{\partial \B}\ten{S}\vek{n}\,ds\right>
+		&= \int_{\partial \B}\langle\vek{w},\ten{S}\vek{n}\rangle\,ds=
+		\int_{\partial \B}\langle\ten{S}^T\vek{w},\vek{n}\rangle\,ds=
+		\int_{\B}\div(\ten{S}^T\vek{w})\,dv \\ &=\int_{\B}\langle\vek{w},\div\ten{S}\rangle\,dv=
+		\left<\vek{w},\int_{\B}\div\ten{S}\,dv\right>,
 	\end{align*}
 	kjer smo zopet uporabili Gaussov izrek in definicijo divergence (\ref{e:div2}). S tem smo dokazali še tretjo enakost.
 \endproof
