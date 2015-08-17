@@ -3,17 +3,6 @@
 \chapter{Konstitucijske enačbe za izotropno elastično trdno telo}
 
 
-\section{Nekaj izrekov iz linearne algebre}
-
-
-Tenzorja $\ten{U}$ in $\ten{V}$ se imenujeta \emph{desni} oz.~\emph{levi raztegljivostni
-tenzor}, $\ten{R}$ pa je \emph{rotacijski tenzor}. Tenzorja
-\[
-	\ten{C}=\ten{U}^2=\ten{F}^T\ten{F},\qquad\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T
-\]
-se imenujeta \emph{desni} oz.~\emph{levi Cauchy-Greenov raztegljivostni tenzor}.
-
-
 \section{Sprememba opazovališča in objektivnost}
 
 
@@ -94,8 +83,8 @@ Deformacijski gradient torej ni objektiven oz.~neodvisen od opazovališča, saj 
 transformira po pravilu (\ref{e:traten}). Jacobijan je objektivna skalarna
 količina, saj velja
 \[
-	J^*=|\det(\ten{F}^*)|=|\det(\ten{Q}\ten{F})|=|\det(\ten{Q})||\det(\ten{F})|
-	=1\cdot|\det(\ten{F})|=J.
+	J^*=|\det(\ten{F}^*)|=|\det(\ten{Q}\ten{F})|=|\det\ten{Q}||\det\ten{F}|
+	=|\det\ten{F}|=J.
 \]
 Posledično je tudi masna gostota trenutne konfiguracije objektivna skalarna količina,
 \[ \rho^*=\frac{\rho_R}{J^*}=\frac{\rho_R}{J}=\rho. \]
@@ -108,7 +97,7 @@ od opazovališča, torej velja
 \end{equation}
 za vse nesingularne $\ten{F}\in\L(\V)$ in vse $\ten{Q}\in\mathscr{O}(\V)$.
 Če deformacijski gradient zapišemo v polarnem razcepu $\ten{F}=\ten{R}\ten{U}$ (izrek \ref{i:polraz})
-in v ({e:objesig}) za $\ten{Q}$ uporabimo $\ten{R}^T$, dobimo
+in v (\ref{e:objesig}) za $\ten{Q}$ uporabimo $\ten{R}^T$, dobimo
 \begin{equation} \label{e:siuonly}
 	\sigma(\ten{F})=\sigma(\ten{U}),
 \end{equation}
@@ -126,7 +115,7 @@ dobimo za poljuben $\ten{H}\in\L(\V)$
 	%D(\sigma\circ(\ten{X}\mapsto\ten{Q}\ten{X}))(\ten{F})(\ten{H})=
 	%D\sigma(\ten{Q}\ten{F})\cdot\ten{H}
 	\frac{d}{d\varepsilon}\at{\sigma(\ten{Q}(\ten{F}+\varepsilon\ten{H}))}{\varepsilon=0}
-	=D\sigma(\ten{Q}\ten{F})\cdot(\ten{Q}\ten{H})=\ten{Q}^T D\sigma(\ten{Q}\ten{F})\cdot\ten{H}.
+	=\langle D\sigma(\ten{Q}\ten{F}),\ten{Q}\ten{H}\rangle=\langle\ten{Q}^T D\sigma(\ten{Q}\ten{F}),\ten{H}\rangle.
 \]
 Z odvajanjem enakosti (\ref{e:objesig}) po $\ten{F}$ torej pridemo do
 \[
@@ -342,19 +331,19 @@ ga je lažje izračunati. Zato predstavimo funkcijo $\bsi$, definirano kot
 \end{equation*}
 
 Poiščimo zvezo med odvodoma za $\sigma$ in $\bsi$. Najprej pokažimo, da je $D\bsi(\ten{B})$
-simetrični teznor. $\ten{B}$ je simetričen, $\ten{B}=\ten{B}^{T}$, in
+simetričen teznor. $\ten{B}$ je simetričen, $\ten{B}=\ten{B}^{T}$, in
 za poljuben $\ten{A}\in\L(\V)$ je
 \begin{align*}
-	D\bsi(\ten{B})\cdot\ten{A}&=D\bsi(\ten{B}^T)\cdot\ten{A}=
+	\langle D\bsi(\ten{B}),\ten{A}\rangle &=\langle D\bsi(\ten{B}^T),\ten{A}\rangle=
 	\frac{d}{d\varepsilon}\at{\bsi((\ten{B}+\varepsilon\ten{A})^T)}{\varepsilon=0}\\
-	&=D\bsi(\ten{B}^T)\cdot\ten{A}^T=(D\bsi(\ten{B}))^T\cdot\ten{A},
+	&=\langle D\bsi(\ten{B}^T),\ten{A}^T\rangle=\langle(D\bsi(\ten{B}))^T,\ten{A}\rangle,
 \end{align*}
 torej je $D\bsi(\ten{B})=(D\bsi(\ten{B}))^T$. Če odvajamo $\bsi(\ten{B})=\bsi(\ten{F}\ten{F}^T)$
 po $\ten{F}$, dobimo
 \begin{align*}
 	\frac{d}{d\varepsilon}\at{\bsi((\ten{F}+\varepsilon\ten{A})(\ten{F}+\varepsilon\ten{A})^T)}{\varepsilon=0}&=
-	D\bsi(\ten{F}\ten{F}^T)\cdot(\ten{F}\ten{A}^T+\ten{A}\ten{F}^T)\\
-	&=2D\bsi(\ten{B})\cdot(\ten{A}\ten{F}^T)=2D\bsi(\ten{B})\ten{F}\cdot\ten{A},
+	\langle D\bsi(\ten{F}\ten{F}^T),\ten{F}\ten{A}^T+\ten{A}\ten{F}^T\rangle\\
+	&=2\langle D\bsi(\ten{B}),\ten{A}\ten{F}^T\rangle=2\langle D\bsi(\ten{B})\ten{F},\ten{A}\rangle,
 \end{align*}
 pri čemer smo na predzadnjem koraku upoštevali simetričnost $D\bsi(\ten{B})$.
 Če ta rezultat upoštevamo pri odvajanju zveze $\sigma(\ten{F})=\bar{\sigma}(\ten{F}\ten{F}^T)$
@@ -450,14 +439,15 @@ odvoda preostalih dveh glavnih invariant. Za posljuben $\ten{S}$ imamo
 \begin{align*}
 	DI(\ten{B})(\ten{S})&=D\tr(\ten{B})(\ten{S})=
 	\frac{d}{d\varepsilon}\at{\tr(\ten{B}+\varepsilon\ten{S})}{\varepsilon=0}=
-	\tr(\ten{S})=\ten{1}\cdot\ten{S},\\
+	\tr(\ten{S})=\langle\ten{1},\ten{S}\rangle,\\
 	D\rdva(\ten{B})(\ten{S})&=
 	\frac{1}{2}\frac{d}{d\varepsilon}\at{\Big(
 	\big(\tr(\ten{B}+\varepsilon\ten{S})\big)^2-\tr\big((\ten{B}+\varepsilon\ten{S})^2\big)
 	\Big)}{\varepsilon=0}\\
 	&=(\tr\ten{B})(\tr\ten{S})-\frac{1}{2}\tr(\ten{B}\ten{S})-\frac{1}{2}\tr(\ten{S}\ten{B})\\
-	&=(\tr\ten{B})\ten{1}\cdot\ten{S}-\frac{1}{2}\ten{B}^T\cdot\ten{S}-\frac{1}{2}\ten{S}\cdot\ten{B}^T\\
-	&=\big((\tr\ten{B})\ten{1}-\ten{B}^T\big)\cdot\ten{S}.
+	&=(\tr\ten{B})\langle\ten{1},\ten{S}\rangle-\frac{1}{2}\langle\ten{B}^T,\ten{S}\rangle
+	-\frac{1}{2}\langle\ten{S},\ten{B}^T\rangle\\
+	&=\big<(\tr\ten{B})\ten{1}-\ten{B}^T,\ten{S}\big>.
 \end{align*}
 Odvodi glavnih invariant so torej
 \[

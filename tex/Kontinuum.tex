@@ -1,4 +1,4 @@
-\chapter{Kinematika kontinuuma} \label{chp:kinkon}
+\chapter{Materialno telo} \label{chp:kinkon}
 
 
 \section{Konfiguracije in gibanje telesa}
@@ -72,12 +72,20 @@ se imenuje \emph{deformacijski gradient} gibanja. Po izreku o inverzni funkciji 
 	\ten{F}^{-1}(x,t)=\grad\vek{\chi}_t^{-1}(x)=\grad\vek{\chi}^{-1}(x,t).
 \]
 
-Absolutni vrednosti determinante deformacijskega gradienta rečemo \emph{jacobijan} in jo označimo z
+Za $\ten{F}$ lahko uprabimo polarni razcep (izrek \ref{i:polraz}), $\ten{F}=\ten{R}\ten{U}=\ten{V}\ten{R}$.
+Tenzorja $\ten{U}$ in $\ten{V}$ v tem razcepu se imenujeta \emph{desni} oz.~\emph{levi raztegljivostni
+tenzor}, $\ten{R}$ pa je \emph{rotacijski tenzor}. Tenzorja
 \[
-	J=|\det\ten{F}|.
+	\ten{C}=\ten{U}^2=\ten{F}^T\ten{F},\qquad\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T
+\]
+se imenujeta \emph{desni} oz.~\emph{levi Cauchy-Greenov raztegljivostni tenzor}.
+
+Determinanti deformacijskega gradienta rečemo \emph{jacobijan} in jo označimo z
+\[
+	J=\det\ten{F}.
 \]
 Ker so konfiguracije $\chi_t$
-injektivne oz.~bijektivne na svojo sliko, mora biti $\det\ten{F}\neq 0$ povsod na $\B\times I$.
+injektivne oz.~bijektivne na svojo sliko, mora biti $J\neq 0$ povsod na $\B\times I$.
 Zaradi zveznosti tenzorskega polja $\ten{F}$ mora biti potem skalarno polje $\det\ten{F}$,
 ki je potem takem tudi zvezno, enakega predznaka povsod na $\B\times I$.
 Običajno, ni pa nujno, je začetna konfiguracija ob začetnem času $t_1$ časovnega intervala $I$
@@ -85,8 +93,7 @@ taka, da za vse $X\in\B$ velja $\hat{\iota}_{O}(X)=\iota_o(\chi(X,t_1))$. Poveda
 krajevni vektorji točk iz referenčne konfiguracije (glede na opazovališče $\hat{\iota}_{O}$ za $\E_R$)
 so enaki krajevnim vektorjem pripadajočih točk v začetni konfiguraciji (glede na opazovališče $\iota_o$ za $\E$).
 V tem primeru je $\ten{F}(\cdot,t_1)=\ten{1}$ in $\det\ten{F}(\cdot,t_1)=1$, zato je po prejšnjem
-premisleku $\det\ten{F}>0$ na celotnem območju $\B\times I$ in absolutno vrednost v izrazu za $J$
-lahko izpustimo. V tem in še naslednjem poglavju bomo privzeli, da je $J>0$.
+premisleku $J=\det\ten{F}>0$ na celotnem območju $\B\times I$. V tem in še naslednjem poglavju bomo privzeli, da je $J>0$.
 
 \emph{Hitrost} $\vek{v}$ in \emph{pospešek} $\vek{a}$ gibanja $\chi$ sta vektorski polji
 \begin{align}
@@ -126,6 +133,11 @@ V materialnem opisu pišemo oznaki za gradient in divergenco z veliko začetnico
 \[ \Grad\vek{f}:=\nabla\hat{\vek{f}},\qquad \Div\vek{f}:=\div\hat{\vek{f}}, \]
 v prostorskem opisu pa z malo,
 \[ \grad\vek{f}:=\nabla\bar{\vek{f}},\qquad \div\vek{f}:=\div\bar{\vek{f}}. \]
+Če je $\vek{f}$ vektorsko polje, potem je
+\[
+	\Div\vek{f}:=\tr(\Grad\hat{\vek{f}})\quad\textrm{in}\quad
+	\div\vek{f}:=\tr(\grad\bar{\vek{f}}).
+\]
 
 Če je $\phi$ skalarno, $\vek{u}$ pa vektorsko polje, potem je zveza med gradientoma
 \begin{equation}\label{e:gz}
@@ -322,7 +334,7 @@ Naj bo $\ten{S}\in\L(\W)$ še ena linearna preslikava in $\varepsilon>0$. Potem 
 	\sum_{j=1}^n\omega(\vek{u}_1,\dots,\ten{A}^{-1}\ten{S}\vek{u}_j,\dots,\vek{u}_n)\Big)+o(\varepsilon)\\
 	&=(\det \ten{A})(1+\varepsilon\,\tr(\ten{A}^{-1}\ten{S}))\,\omega(\vek{u}_1,\dots,\vek{u}_n)+o(\varepsilon).
 \end{align*}
-Pri tem smo člene, kjer nastopajo potence števila $\varepsilon$, spravili
+Pri tem smo člene, kjer nastopajo potence števila $\varepsilon$, večje od 1, spravili
 v izraz $o(\varepsilon)$. Od tu sedaj lahko izračunamo smerni odvod
 \begin{multline*}
 	\at{\frac{d}{d\varepsilon}\det(\ten{A}+\varepsilon \ten{S})}{\varepsilon=0}
@@ -410,12 +422,12 @@ integrabilno skalarno polje $\rho_{\kappa}\colon B\to(0,\infty)$, imenovano
 \end{comment}
 
 V mehaniki kontinuuma se predpostavi naslednji zakon.
-\begin{aksiom}[Zakon o ohranitvi mase]
+\begin{ohmas}
 	Gibanju $\chi(X,t)=\chi_t(X)$ pripada integrabilno, časovno odvisno skalarno polje
 	$\rho\colon\Omega\to(0,\infty)$, imenovano \emph{masna gostota trenutne konfiguracije},
 	tako da za vsako množico $\mathcal{P}\subseteq \B$ velja
 	\[ M(\mathcal{P})=\int_{\chi_t(\mathcal{P})}\rho\,dv\qquad\textrm{za vsak}\ t\in I. \]
-\end{aksiom}
+\end{ohmas}
 
 Iz tega zakona z uporabo izreka \ref{i:prointrel} dobimo
 \[ \int_{\mathcal{P}}(\rho_R-\rho J)\,dV=0 \qquad\textrm{za vsak}\ t\in I, \]
@@ -443,7 +455,7 @@ Seveda potem velja $\rho_R=\rho J$ tudi v prostorskem opisu na $\Omega$.
 dela delesa med gibanjem ne spreminja, torej velja
 \[ \frac{d}{dt}\int_{\chi_t(\mathcal{P})}\rho(x,t)\,dv = 0\quad\textrm{za vsak}\ t\in I. \]
 Če je $\rho$ razreda $C^1$, potem z uporabo transportnega izreka \ref{i:transport}
-pridem do
+dobimo
 \[ \int_{\chi_t(\mathcal{P})}(\dot{\rho}+\rho\div\vek{v})\,dv=0, \]
 in ker to velja za poljubno množico $\chi_t(\mathcal{P})\subseteq\chi_t(\B)$, je po trditvi \ref{t:oiz}
 \begin{equation} \label{e:lozom}

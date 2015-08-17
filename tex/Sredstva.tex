@@ -189,7 +189,7 @@ vektorskem prostoru $\V$, porojena iz standardnega skalarnega produkta. $(\E,d)$
 Metrika je odvisna od izbire preslikave $\iota$.
 
 Ko imamo izbrano preslikavo $\iota$, lahko definiramo odštevanje točk in sešte\-vanje točke in vektorja
-na naslednji način.
+na naslednji način. \label{seto}
 \begin{itemize}
 	\item Naj bo $x\in\E$ in $\vek{u}\in\V$. Potem je $x+\vek{u}$ tista točka $y\in\E$, za
 	katero velja $\iota(x,y)=\vek{u}$.
@@ -539,17 +539,17 @@ Množica vseh neregularnih točk na robu regularnega območja ima ploščinsko m
 	$\vek{u}\colon\overline{\B}\to V$ ter $\ten{S}\colon\overline{\B}\to\L(V)$
 	zvezna polja, odvedljiva v notranjosti območja $\B$. Potem velja
 	\begin{align*}
-		\int_{\partial \B} \phi\vek{n}\,ds &= \int_{\B} \grad\phi\,dv, \\
-		\int_{\partial \B} \langle\vek{u},\vek{n}\rangle\,ds &= \int_{\B} \div\vek{u}\,dv, \\
-		\int_{\partial \B} \ten{S}\vek{n}\,ds &= \int_{\B} \div\ten{S}\,dv.
+		\int_{\partial \B} \phi\vek{n}\,da &= \int_{\B} \grad\phi\,dv, \\
+		\int_{\partial \B} \langle\vek{u},\vek{n}\rangle\,da &= \int_{\B} \div\vek{u}\,dv, \\
+		\int_{\partial \B} \ten{S}\vek{n}\,da &= \int_{\B} \div\ten{S}\,dv.
 	\end{align*}
 \end{izrek}
 \proof
 	Druga enakost je splošno znan \emph{Gaussov izrek} iz vektorske analize, zato ga tukaj ne bomo dokazovali.
 	Naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
 	\begin{align*}
-		\left<\vek{w},\int_{\partial \B}\phi\vek{n}\,ds\right>
-		&= \int_{\partial \B}\langle\phi\vek{w},\vek{n}\rangle\,ds=
+		\left<\vek{w},\int_{\partial \B}\phi\vek{n}\,da\right>
+		&= \int_{\partial \B}\langle\phi\vek{w},\vek{n}\rangle\,da=
 		\int_{\B}\div(\phi\vek{w})\,dv \\
 		&= \int_{\B}\langle\vek{w},\grad\phi\rangle \,dv = \left<\vek{w},\int_{\B}\grad\phi \,dv\right>,
 	\end{align*}
@@ -559,9 +559,9 @@ Množica vseh neregularnih točk na robu regularnega območja ima ploščinsko m
 	
 	Zopet naj bo $\vek{w}$ poljubno konstantno vektorsko polje. Potem je
 	\begin{align*}
-		\left<\vek{w},\int_{\partial \B}\ten{S}\vek{n}\,ds\right>
-		&= \int_{\partial \B}\langle\vek{w},\ten{S}\vek{n}\rangle\,ds=
-		\int_{\partial \B}\langle\ten{S}^T\vek{w},\vek{n}\rangle\,ds=
+		\left<\vek{w},\int_{\partial \B}\ten{S}\vek{n}\,da\right>
+		&= \int_{\partial \B}\langle\vek{w},\ten{S}\vek{n}\rangle\,da=
+		\int_{\partial \B}\langle\ten{S}^T\vek{w},\vek{n}\rangle\,da=
 		\int_{\B}\div(\ten{S}^T\vek{w})\,dv \\ &=\int_{\B}\langle\vek{w},\div\ten{S}\rangle\,dv=
 		\left<\vek{w},\int_{\B}\div\ten{S}\,dv\right>,
 	\end{align*}

@@ -5,56 +5,81 @@
 
 
 V tem poglavju bomo s pomočjo t.~i.~\emph{Hamiltonovega principa} poiskali potrebne pogoje,
-ki jim mora zadoščati pravo gibanje telesa. Še naprej naj $B$ označuje referenčno konfiguracijo
+ki jim mora zadoščati pravo gibanje telesa. Še naprej naj $\B$ označuje referenčno konfiguracijo
 telesa (zaprto regularno območje v $\E_R$) in $I=[t_1,t_2]\subset\R$ zaprt časovni interval.
 
 Recimo, da pravo gibanje iščemo med vsemi gibanji
-$\chi\colon B\times I\to\E$ razreda $C^2$, ki zadoščajo \emph{začetnim pogojem}
-\[ \chi(X,t_1)=\chi_{t_1}(X)\quad\textrm{in}\quad \chi(X,t_2)=\chi_{t_2}(X), \]
-kjer sta $\chi_{t_1},\chi_{t_2}\colon B\to\E$ znani konfiguraciji razreda $C^2$, ki
-določata položaj telesa ob začetnem in končnem času $t_1$ oz.~$t_2$.
-Poleg začetnih pogojev so vnaprej predpisani še robni pogoji. \emph{Geometrijski robni pogoj} je predpis
-\begin{equation*} \label{e:grp}
-	\chi(X,t)=\chi_g(X,t)\quad\mathrm{za}\quad (X,t)\in \partial_g B\times I,
-\end{equation*}
-kjer je $\partial_g B\subseteq\partial B$ del robu območja $B$.
-Geometrijski robni pogoj torej v naprej določa položaj robnih točk telesa.
-Na preostalem delu $\partial_d B=\partial B \setminus \partial_g B$
-je potem predpisan \emph{dinamični robni pogoj}, ki ga bomo predstavili v naslednjem razdelku.
-Dopuščamo možnost, da je $\partial_g B$ ali $\partial_d B$ prazna množica, torej,
-da imamo le geometrijske ali pa le dinamične robne pogoje. Vendar pa mora vedno veljati
-$\partial_g B\cup\partial_d B=\partial B$ in $\partial_g B\cap\partial_d B=\emptyset$.
+$\chi\colon \B\times I\to\E$ razreda $C^2$, ki zadoščajo v naprej predpisanim začetnim
+in robnim pogojem.
+\begin{enumerate}
+	\item \emph{Začetni pogoj} je predpis
+		\begin{equation} \label{e:zacetnipogoj}
+			\chi(X,t_1)=\chi_{t_1}(X)\quad\textrm{in}\quad \chi(X,t_2)=\chi_{t_2}(X),\quad\forall\;X\in\B,
+		\end{equation}
+		kjer sta $\chi_{t_1},\chi_{t_2}\colon \B\to\E$ znani konfiguraciji razreda $C^2$, ki
+		določata položaj telesa ob začetnem in končnem času $t_1$ oz.~$t_2$.
+	\item \emph{Robni pogoji} so lahko treh vrst. \emph{Kinematični robni pogoj} je predpis
+		\begin{equation} \label{e:grp}
+			\chi(X,t)=q(X,t)\quad\mathrm{za}\quad (X,t)\in \partial\B\times I,
+		\end{equation}
+		kjer je $q\colon\partial\B\times I\to\E$ poznana.
+		Kinematični robni pogoj torej v naprej določa položaj robnih točk telesa.
+		\emph{Robni pogoj napetosti} je predpis za napetostni vektor, ki deluje na rob telesa.
+		Ta pogoj bomo predstavili v naslednjem razdelku. Če je kinematični robni pogoj (\ref{e:grp})
+		podan le na $\partial_1\B\times I$, kjer je $\partial_1\B\subset\partial\B$, na
+		$\partial_2\B\times I$ pa je podan robni pogoj napetosti, kjer je $\partial_2\B=\partial\B\setminus\partial_1\B$,
+		potem tak robni pogoj imenujemo \emph{mešani robni pogoj}.
+\end{enumerate}
 
-Množica $\mathcal{X}$ vseh preslikav $\chi\colon B\times I\to\E$
+Množica $\mathcal{X}$ vseh preslikav $\chi\colon \B\times I\to\E$
 razreda $C^2$ tvori vektorski prostor.
 $\mathcal{X}$ postane Banachov prostor, če na njem smiselno definiramo normo. Možna izbira
 predpisa za normo je npr.
 \[
 	\|\cdot\|\colon\mathcal{X}\to[0,\infty),\quad
-	\|\chi\|=\sup\big\{\|\chi(X,t)\|\: ;\ (X,t)\in B\times I\big\}.
+	\|\chi\|=\sup\big\{\|\vek{\chi}(X,t)\|\: ;\ (X,t)\in \B\times I\big\}.
 \]
-Pri tem je z normo, ki se pojavi znotraj množice, mišljena Evklidska norma krajevnega vektorja točke $x=\chi(X,t)$.
+
+Pri tem je v skladu z dogovorom \ref{d:dogovor} $\vek{chi}=\iota_o\circ\chi$, norma, ki se pojavi
+znotraj množice, pa je Evklidska norma na prostoru $\V$.
 Dejansko lahko supremum nadomestimo z maksimumom, ker je vsak $\chi\in\mathcal{X}$
 zvezna preslikava na kompaktni domeni $B\times I$.
 
 \begin{definicija}
 	\begin{enumerate}
-		\item Preslikava $\chi\in\mathcal{X}$, ki zadošča predpisanim začetnim in geometrijskim robnim pogojem,
+		\item Preslikava $\chi\in\mathcal{X}$, ki zadošča predpisanim začetnim pogojem in kinematičnim robnim pogojem,
 			se imenuje \emph{dopustno gibanje}. Množico vseh dopustnih gibanj bomo označili z $\mathcal{A}$.
-		\item Vektorsko polje $\vek{\eta}\colon B\times I\to\V$, ki je razreda $C^2$ in
+		\item Vektorsko polje $\vek{\eta}\colon \B\times I\to\V$, ki je razreda $C^2$ in
 			ustreza pogojem
-			\[ \vek{\eta}(X,t_1)=\vek{0}\quad \textrm{in} \quad\vek{\eta}(X,t_2)=\vek{0}\quad \textrm{za vse}\ X\in B\quad\textrm{ter} \]
-			\[ \vek{\eta}(X,t)=\vek{0}\quad \textrm{za vse}\ (X,t)\in \partial_g B\times I, \]
+			\[
+				\vek{\eta}(X,t_1)=\vek{0}\quad \textrm{in} \quad
+				\vek{\eta}(X,t_2)=\vek{0}\quad \textrm{za vse}\ X\in \B\quad\textrm{ter}
+			\]
+			\[
+				\vek{\eta}(X,t)=\vek{0}\quad \textrm{za vse}\ (X,t)\in \partial_1 \B\times I,
+			\]
 			se imenuje \emph{variacija gibanja}. Množico vseh variacij gibanja bomo ozna\-čili s $\mathcal{T}$.
-		\item Za dopustno gibanje $\chi$, variacijo gibanja $\vek{\eta}$ in realno konstanto $\varepsilon$ se gibanje
+		\item Za dopustno gibanje $\chi$, variacijo gibanja $\vek{\eta}$ in realno konstanto $\varepsilon$ se gibanje\footnote{
+			V skladu z dogovorom na strani \pageref{seto} je vsota točke in vektorja točka, zato preslikava
+			$\chi+\varepsilon\vek{\eta}$ pripada prostoru $\mathcal{X}$.}
 			$\chi+\varepsilon\vek{\eta}$ imenuje \emph{bližnje gibanje} gibanja $\chi$.
 	\end{enumerate}
 \end{definicija}
 
 Takoj je potrebno opozoriti, da kljub poimenovanju dopustno gibanje in bližnje gibanje nista nujno gibanji,
-kot smo ju definirali v poglavju \ref{chp:kinkon}, ker nismo postavili pogoja o pozitivnosti jacobijana.
+kot smo ju definirali v poglavju \ref{chp:kinkon}, ker tukaj nismo nič zahtevali, da morajo biti
+trenutne konfiguracije dopustnega ali bližnjega gibanja bijektivne.
+Ta pogoj je avtomatsko izpolnjen, če je pripadajoča determinanta deformacijskega
+gradienta vseskozi različna od 0. V bistvu je to potreben in tudi zadosten pogoj, da so trenutne konfiguracije
+dopustnega ali bližnjega gibanja res bijektivne za vsak $t\in I$\footnote{
+To velja za odvedljive preslikave, kar pa dopustna in bližnja gibanja po predpostavki so.}.
+Ko bomo iskali pravo gibanje, bo neničelnost jacobijana eden od potrebnih pogojev.
+V bistvu bomo predpostavili, da so konfiguracija $\chi_{t_1}$ iz začetnega pogoja (\ref{e:zacetnipogoj})
+ter opazovališči za $\E_R$ in $\E$ izbrani tako, da je $J(\cdot,t_1)>0$. Zato bo za pravo gibanje
+potreben dodaten pogoj, da je jacobijan pozitiven na celotnem definicijskem območju.
+
 Ni se težko prepričati, da je $\mathcal{T}$ vektorski podprostor prostora $\mathcal{X}$, če na elemente iz $\mathcal{X}$
-gledamo kot na vektorska polja s kodomeno $\V$ namesto $\E$.
+gledamo kot na vektorska polja glede na opazovališče $\iota_o$ za $\E$.
 Prav tako zlahka ugotovimo, da za poljubni dopustni gibanji $\chi_1$ in $\chi_2$
 velja $\chi_2-\chi_1\in\mathcal{T}$. $\mathcal{A}$ je torej afini podprostor prostora $\mathcal{X}$, saj je
 \[ \mathcal{A}=\big\{ \chi_0+\vek{\eta}\: ;\ \vek{\eta}\in\mathcal{T} \big\}=\chi_0+\mathcal{T}, \]
@@ -72,8 +97,10 @@ kjer je $\chi_0$ poljubno dopustno gibanje.
 \end{definicija}
 
 \begin{notacija}
-	Naj bo preslikava $F$ definirana kot v prejšnji definiciji. Če velja $F(\chi)=Y$,
-	potem oznaka $Y^*$ pomeni $Y^*=F(\chi+\varepsilon\vek{\eta})$ za neka $\vek{\eta}\in\mathcal{T}$ in $\varepsilon\in\R$,
+	Naj bo preslikava $F$ definirana kot v prejšnji definiciji. Če $F$ gibanju $\chi$
+	priredi neko njegovo fizikalno količino $Y$, $F(\chi)=Y$,
+	potem oznaka $Y^*$ pomeni pripadajočo fizikalno količino bližnjega gibanja,
+	$Y^*=F(\chi+\varepsilon\vek{\eta})$ za neka $\vek{\eta}\in\mathcal{T}$ in $\varepsilon\in\R$,
 	oznaka $\delta Y$ pa pomeni $\delta Y=\delta F(\chi)(\vek{\eta})$. V tej notaciji velja
 	\[ \delta Y = \at{\Big(\frac{dY^*}{d\varepsilon}\Big)}{\varepsilon=0}, \]
 	$\delta Y$ pa imenujemo tudi \emph{variacija} količine $Y$.
@@ -84,25 +111,26 @@ kjer je $\chi_0$ poljubno dopustno gibanje.
 	\begin{enumerate}
 		\item
 			Če $F$ dopustnemu gibanju $\chi$ priredi vektorsko polje hitrosti $\vek{v}$,
-			$F(\chi)=d\chi/dt=\dot{\chi}=\vek{v}$, potem je
+			$F(\chi)=d\vek{\chi}/dt=\dot{\vek{\chi}}=\vek{v}$, potem je
 			\[ \vek{v}^*=\frac{d}{dt}(\chi+\varepsilon\vek{\eta})=\vek{v}+\varepsilon\dot{\vek{\eta}}, \]
 			variacija polja hitrosti pa je
 			\[ \delta\vek{v}=\dot{\vek{\eta}}. \]
 		\item
 			Če $F$ dopustnemu gibanju $\chi$ priredi polje deformacijskega gradienta $\ten{F}$,
-			$F(\chi)=\Grad{\chi}=\ten{F}$, potem je
-			\[ \ten{F}^*=\Grad(\chi+\varepsilon\vek{\eta})=\ten{F}+\varepsilon\Grad\vek{\eta}, \]
+			$F(\chi)=\Grad{\vek{\chi}}=\ten{F}$, potem je
+			\[ \ten{F}^*=\Grad(\vek{\chi}+\varepsilon\vek{\eta})=\ten{F}+\varepsilon\Grad\vek{\eta}, \]
 			variacija pa je
 			\begin{equation} \label{e:deltaF}
 				\delta\ten{F}=\Grad\vek{\eta}.
 			\end{equation}
 		\item
-			Če je $J$ polje jacobijana dopustnega gibanja $\chi$, potem je
-			\[ J^*=\det(\Grad(\chi+\varepsilon\vek{\eta}))=\det(\ten{F}^*). \]
+			Če $F$ dopustnemu gibanju $\chi$ priredi polje jacobijana
+			$J=\det(\Grad\vek{\chi})$, potem je
+			\[ J^*=\det(\Grad(\vek{\chi}+\varepsilon\vek{\eta}))=\det(\ten{F}^*). \]
 			Pri računanju variacije polja $J$ se uporabi podobne prijeme,
 			kot smo jih uporabili pri računanju enakosti (\ref{e:dotJ}). Dobimo
 			\begin{align*}
-				\delta J&=D\det(\ten{F})(\delta\ten{F})=J\ten{F}^{-T}\cdot\Grad\vek{\eta}\\
+				\delta J&=D\det(\ten{F})(\delta\ten{F})=\langle J\ten{F}^{-T},\Grad\vek{\eta}\rangle \\
 				&=J\tr(\ten{F}^{-1}\Grad\vek{\eta})=J\tr(\grad\vek{\eta})=J\div\vek{\eta}.
 			\end{align*}
 			Na predzadnjem koraku smo uporabili enakost (\ref{e:gz}).
@@ -123,112 +151,121 @@ kjer je $\chi_0$ poljubno dopustno gibanje.
 \section{Hamiltonov princip}
 
 
-\begin{rdece}Ta razdelek sem napisal že pred časom in ga sedaj nisem pregledoval
-in popravljal, ker sem želel čimprej oddati v vpogled. Zato so nekatere oznake še
-neskladne, npr.~$dA$ je namesto $dS$ pa še kaj.
+Preden podamo Hamiltonov princip, ki nam bo povedal, kako poiskati pravo gibanje telesa,
+moramo definirati še nekaj fizikalnih količin, ki nastopajo v Hamiltonovem funkcionalu.
 
-Tukaj mi je na misel prišla ideja,
-da standardna tenzorska polja predstavim kot funkcionale. Npr.~vektorsko polje hitrosti
-$\vek{v}$ bi zapisal kot preslikavo
-\[ \vek{v}\colon\mathcal{X}\to C^2(B\times I,\V),\qquad \vek{v}(\chi)(X,t)=\frac{d\chi}{dt}(X,t). \]
-Podobno bi potem npr.~kinetično energijo zapisal kot $T(\chi)(t)$ itd. Ampak mi je zmanjkalo časa.
 
-Vseeno prosim, preglejte tudi ta razdelek, da boste povedali, če je v redu zastavljeno.
-\end{rdece}
+\subsection{Kinetična energija}
+
 
 \emph{Kinetična energija} telesa glede na dopustno gibanje $\chi$ je definirana kot
 \begin{equation*}
-	T = \int\limits_{B}\frac{1}{2}\vek{v}\cdot\vek{v}\rho_R\, dV =
-	\int\limits_{B_t}\frac{1}{2}\vek{v}\cdot\vek{v}\rho\, dv
+	T = \int_{\B}\frac{1}{2}\langle\vek{v},\vek{v}\rangle\rho_R\, dV =
+	\int_{\B_t}\frac{1}{2}\langle\vek{v},\vek{v}\rangle\rho\, dv
 \end{equation*}
 in je funkcija časa $t\in I$. Kinetična energija bližnjega gibanja $\chi+\varepsilon\vek{\eta}$
 je potemtakem
 \begin{equation*}
-	T^* = \int\limits_{B}\frac{1}{2}\vek{v}^*\cdot\vek{v}^*\rho_R\, dV =
-	\int\limits_{\bottop{B}{t}{*}}\frac{1}{2}\vek{v}^*\cdot\vek{v}^*\rho^*\, dv.
+	T^* = \int_{\B}\frac{1}{2}\langle\vek{v}^*,\vek{v}^*\rangle\rho_R\, dV =
+	\int_{\bottop{\B}{t}{*}}\frac{1}{2}\langle\vek{v}^*,\vek{v}^*\rangle\rho^*\, dv.
 \end{equation*}
+Pri tem je $\bottop{\B}{t}{*}=\chi(\B,t)+\varepsilon\vek{\eta}(\B,t)$.
 Variacijo kinetične energije je lažje izračunati iz prvega izraza, saj lahko odvajanje prenesemo pod
-integralski znak, ker se integracijsko območje ne spreminja. Skalarni produkt odvajamo
-po pravilu za odvod produkta in dobimo
+integralski znak, ker se integracijsko območje z $\varepsilon$ ne spreminja. Skalarni produkt pod integralom
+odvajamo po pravilu za odvod produkta in na koncu dobimo
 \[
 	\delta T =
-	\int\limits_{B}\delta\vek{v}\cdot\vek{v}\rho_R\, dV=
-	\int\limits_{B}\dot{\vek{\eta}}\cdot\vek{v}\rho_R\, dV.
+	\int_{\B}\langle\delta\vek{v},\vek{v}\rangle\rho_R\, dV=
+	\int_{\B}\langle\dot{\vek{\eta}},\vek{v}\rangle\rho_R\, dV.
 \]
 Zanimal nas bo še integral kinetične energije od časa $t_1$ do časa $t_2$,
-\[ \mathcal{I}=\int_{t_1}^{t_2} T\,dt=\int_{t_1}^{t_2} \int_{B}\frac{1}{2}\vek{v}\cdot\vek{v}\rho_R\, dV \,dt, \]
+\[
+	\mathcal{I}=\int_{t_1}^{t_2} T\,dt=\int_{t_1}^{t_2}
+	\int_{\B}\frac{1}{2}\langle\vek{v},\vek{v}\rangle\rho_R\, dV \,dt,
+\]
 katerega variacija je
 \begin{equation}\label{e:varInf}
-	\delta \mathcal{I}=\int_{t_1}^{t_2}\int_{B}\dot{\vek{\eta}}\cdot\vek{v}\rho_R\, dV\, dt.
+	\delta \mathcal{I}=\int_{t_1}^{t_2}\int_{\B}\langle\dot{\vek{\eta}},\vek{v}\rangle\rho_R\, dV\, dt.
 \end{equation}
 Zapišemo jo lahko še nekoliko drugače, v obliki, ki bo v nadaljevanju za nas bolj pomembna.
 V (\ref{e:varInf}) smemo po Fubinijevem izreku zamenjati vrstni red integriranja.
 Notranji integral, ki je sedaj integral po času, integriramo per-partes:
 \[
-	\int_{t_1}^{t_2}\rho_R\vek{v}\cdot\dot{\vek{\eta}}\, dt =
-	\left.\Big(\rho_R\vek{v}\cdot\vek{\eta}\Big)\right|_{t_1}^{t_2}-
-	\int_{t_1}^{t_2}\rho_R\vek{a}\cdot\vek{\eta}\,dt.
+	\int_{t_1}^{t_2}\langle\rho_R\vek{v},\dot{\vek{\eta}}\rangle\, dt =
+	\langle\rho_R\vek{v},\vek{\eta}\rangle\Big|_{t_1}^{t_2}-
+	\int_{t_1}^{t_2}\langle\rho_R\vek{a},\vek{\eta}\rangle\,dt.
 \]
 Prvi izraz na desni strani je enak 0, saj je $\vek{\eta}(\cdot,t_1)=\vek{\eta}(\cdot,t_2)=\vek{0}$.
 Rezultat vstavimo nazaj v (\ref{e:varInf}) in dobimo
 \begin{equation}\label{e:varkin}
 	\delta \mathcal{I} =
-	-\int_{t_1}^{t_2}\int_{B}\rho_R\vek{a}\cdot\vek{\eta}\, dV\, dt=
-	-\int_{t_1}^{t_2}\int_{B_t}\rho\vek{a}\cdot\vek{\eta}\, dv\, dt.
+	-\int_{t_1}^{t_2}\int_{\B}\langle\rho_R\vek{a},\vek{\eta}\rangle\, dV\, dt=
+	-\int_{t_1}^{t_2}\int_{\B_t}\langle\rho\vek{a},\vek{\eta}\rangle\, dv\, dt.
 \end{equation}
-Pri tem druga enakost velja zaradi REF.
+Pri tem druga enakost velja zaradi posledice \ref{p:roji}.
 
-Rezultanto vseh zunanjih sil, ki delujejo na telo med dopustnim gibanjem $\chi$, lahko zapišemo v obliki
+
+\subsection{Potencialna energija}
+
+
+Zunanje sile so prostorninske in površinske sile, ki delujejo na materialno telo med gibanjem $\chi$
+in so posledica interakcije telesa z okoljem.
+Rezultanto vseh zunanjih sil lahko zapišemo v obliki
 \begin{equation}\label{e:zunsil}
-	\int\limits_{B_t}\vek{b}\rho\, dv + \int\limits_{\partial B_t}\vek{t}\, da =
-	\int\limits_{B}\vek{b}\rho_R\, dV + \int\limits_{\partial B}\vek{t}_R\, dA.
+	\int_{B_t}\vek{b}\rho\, dv + \int_{\partial \B_t}\vek{t}\, da =
+	\int_{\B}\vek{b}\rho_R\, dV + \int_{\partial \B}\vek{t}_R\, dA.
 \end{equation}
 Vektorsko polje $\vek{b}$ je \emph{gostota prostorninske sile}, njegove vrednosti imajo fizikalno enoto
 pospeška, torej \textit{meter na kvadratno sekundo}, $ms^{-2}$. Primer takega vektorskega polja
 je npr. gravitacijski pospešek. Predpostavili bomo, da je $\vek{b}$ konzervativno vektorsko polje,
 kar pomeni, da obstaja $C^1$ skalarno polje $\phi\colon\E\times I\to\R$, da je
 \begin{equation*} \label{e:gps}
-	\vek{b}(x,t)=\nabla_{x}\phi(x,t).
+	\vek{b}(x,t)=\grad\phi(x,t).
 \end{equation*}
 Vektorsko polje
 \begin{equation*} \label{e:csv}
-	\vek{t}=\vek{t}(x,t),\quad (x,t)\in \textcolor[rgb]{1,0,0}{\big\{\partial B_t\times\{t\}\: ;\ t\in I\big\}}
+	\vek{t}=\vek{t}(x,t),\quad (x,t)\in \{(x,t)\:;\ x=\chi_t(\partial \B),\ t\in I\}
 \end{equation*}
 se imenuje \emph{Cauchyjev napetostni vektor}, polje
 \begin{equation*} \label{e:pksv}
-	\vek{t}_R=\vek{t}_R(X,t),\quad (X,t)\in \partial B\times I
+	\vek{t}_R=\vek{t}_R(X,t),\quad (X,t)\in \partial \B\times I
 \end{equation*}
 pa \emph{Piola-Kirchoffov napetostni vektor}. Oba
 imata fizikalno enoto tlaka, torej \textit{Newton na kvadratni meter}, $Nm^{-2}$.
 Primer napetostnega vektorja je npr. atmosferski tlak.
-Velja zveza
+Iz enačbe (\ref{e:zunsil}) vidimo, da mora veljati zveza
 \begin{equation}\label{e:ttr}
 	\vek{t}\, ds=\vek{t}_R\, dS.
 \end{equation}
-Tudi za napetosni vektor bomo predpostavili, da je konzervativno vektorsko polje v smislu,
+Tudi za napetosni vektor bomo predpostavili, da je konzervativno vektorsko polje, v smislu,
 da obstaja v času zvezno odvedljiv, v prostoru pa odsekoma zvezno odvedljiv\footnote{Namesto gradienta imamo v tem primeru
 smerni odvod, definiran le v smereh iz tangentne ravnine na ploskev $\partial B_t$; vseeno bomo uporabljali oznako za gradient.}
 skalarni potencial $\psi\colon\E\to\R$, da velja
-\[ \vek{t}_R(x,t)=\nabla_{x}\psi(x,t)\quad\textrm{za}\quad (x,t)\in \textcolor[rgb]{1,0,0}{\big\{\partial B_t\times\{t\}\: ;\ t\in I\big\}}, \]
+\[ \vek{t}_R(x,t)=\grad\psi(x,t)\quad\textrm{za}\quad (x,t)\in \{(x,t)\:;\ x=\chi_t(\partial \B),\ t\in I\}, \]
 kjer je $\vek{t}_R(x,t)=\vek{t}_R(\chi(X,t),t)$ prostorski opis polja $\vek{t}_R$.
 
-Za polje $\vek{b}$ bomo predpostavili, da je znano. Predpostavili bomo tudi, da poznamo predpis za
-polje $\vek{t}_R$ na območju $(X,t)\in \partial_d B\times I$ in ta predpis
-se imenuje dinamični robni pogoj.
+Za polje $\vek{b}$ bomo predpostavili, da je znano.
+Če imamo podan predpis za polje $\vek{t}_R$ na območju $\partial\B\times I$, potem je ta predpis
+robni pogoj napetosti. Pri mešanih robnih pogojih poznamo predpis za polje $\vek{t}_R$ na
+območju $\partial\B_2\times I$, na območju $\partial\B_1\times I$ pa je podan predpis $\chi=q$.
+Na kinematične robne pogoje in robne pogoje napetosti lahko gledamo kot na poseben
+primer mešanih pogojev; v prvem primeru je $\partial_2\B=\emptyset$, v drugem pa
+$\partial_1\B=\emptyset$.
 
 Izraz
 \begin{equation*}
-	W = \int\limits_{B}\phi\rho_R\, dV + \int\limits_{\partial_d B}\psi\, dA,
+	W = \int_{\B}\phi\rho_R\, dV + \int_{\partial_2 \B}\psi\, dA
 \end{equation*}
 predstavlja del \emph{potencialne energije} telesa in je prav tako funkcija časa.
-Preostali del potencialne energije tvori \emph{notranja energija}, ki jo bomo označili z $V$.
-Predpis za notranjo energijo je odvisen od materiala. Mi si bomo v tem délu ogledali primer
-idealnih tekočin in elastičnih trdnin. 
+Preostali del potencialne energije tvori \emph{notranja energija}.
+Celotno potencialno energijo bomo označili z $U$. Notranja energija je torej $U-W$.
+Predpis za $U$ je odvisen od materiala. Mi si bomo v tem délu ogledali primera
+idealnih tekočin in hiperelastičnih trdnih teles.
 
 Skalarni polji $\phi$ in $\psi$ sta na prostoru $\E\times I$ definirani neodvisno od gibanja.
 Seveda to ne velja za njun materialni opis, od gibanja $\chi$ sta odvisni preko zvez
-\[ \hat{\phi}(X,t)=\phi\big(\chi(X,t),t\big)\quad\textrm{in}\quad\hat{\psi}(X,t)=\psi\big(\chi(X,t),t\big) \]
-za $(X,t)\in B\times I$.
+\[ \hat{\phi}(X,t)=\phi(\chi(X,t),t)\quad\textrm{in}\quad\hat{\psi}(X,t)=\psi(\chi(X,t),t) \]
+za $(X,t)\in \B\times I$.
 Če imamo namesto gibanja $\chi$ njegovo bližnje gibanje $\chi+\varepsilon\vek{\eta}$, potem je
 \[
 	\hat{\phi}^*(X,t)=\phi\big(\chi(X,t)+\varepsilon\vek{\eta}(X,t),t\big)\quad\textrm{in}
@@ -236,55 +273,63 @@ za $(X,t)\in B\times I$.
 \]
 Če ta dva izraza odvajamo po $\varepsilon$, nato pa postavimo $\varepsilon=0$, dobimo variaciji
 \[
-	\delta\phi=\grad\phi\cdot\vek{\eta}=\vek{b}\cdot\vek{\eta},\quad
-	\delta\psi=\grad\psi\cdot\vek{\eta}=\vek{t}_R\cdot\vek{\eta}.
+	\delta\phi=\langle\grad\phi,\vek{\eta}\rangle=\langle\vek{b},\vek{\eta}\rangle,\qquad
+	\delta\psi=\langle\grad\psi,\vek{\eta}\rangle=\langle\vek{t}_R,\vek{\eta}\rangle.
 \]
 Variacijo izraza $W$ imamo sedaj na dlani:
 \begin{equation} \label{e:varvide}
-	\delta W = \int\limits_{B}\rho_R\vek{b}\cdot\vek{\eta}\, dV + \int\limits_{\partial_d B}\vek{t}_R\cdot\vek{\eta}\, dA=
-	\int\limits_{B_t}\rho\vek{b}\cdot\vek{\eta}\, dv + \int\limits_{\partial_d B_t}\vek{t}\cdot\vek{\eta}\, da.
+	\delta W = \int_{\B}\langle\rho_R\vek{b},\vek{\eta}\rangle\, dV
+	+ \int_{\partial_2 \B}\langle\vek{t}_R,\vek{\eta}\rangle\, dA=
+	\int_{\B_t}\langle\rho\vek{b},\vek{\eta}\rangle\, dv
+	+ \int_{\partial_2 \B_t}\langle\vek{t},\vek{\eta}\rangle\, da.
 \end{equation}
-Tu smo z $\partial_d B_t$ označili $\chi_t(\partial_d B)$ in uporabili zvezo (\ref{e:ttr}).
+Tu smo z $\partial_2 \B_t$ označili $\chi_t(\partial_2 \B)$ in uporabili zvezo (\ref{e:ttr}).
 Variacija $\delta W$ je sicer splošno znana
-pod imenom \emph{virtualno delo} zunanjih sil (\ref{e:zunsil}). Kot bomo videli v nadaljevanju,
+pod imenom \emph{virtualno delo} zunanjih sil. Kot bomo videli v nadaljevanju,
 ni potrebno, da poznamo skalarna potenciala $\phi$ in $\psi$, ker nas bo zanimalo le virtualno delo.
 Pomembno je le, da predpostavimo njun obstoj.
 
-\begin{definicija}
-	Naj bo $U\subseteq\mathcal{A}$ množica, dobljena kot presek afinega podprostora $\mathcal{A}$ in
-	neke odprte množice v prostoru $\mathcal{X}$.
-	Funkcional $F\colon U\to\R$ ima lokalni minimum pri dopustnem gibanju $\chi_{0}\in U$, če obstaja $\varepsilon >0$,
-	da za vsak $\chi\in U$, za katerega je $\|\chi-\chi_{0}\|<\varepsilon$, velja $F(\chi_{0})<F(\chi)$.
-\end{definicija}
+
+\subsection{Hamiltonov funkcional in Hamiltonov princip}
+
 
 \begin{definicija}
-	Funkcional, ki gibanju $\chi\in U$ s kinetično energijo $T$ in potencialno
-	energijo $W+V$ priredi realno število
+	Funkcional, ki gibanju $\chi\in \mathcal{D}$ s kinetično energijo $T$ in notranjo
+	energijo $U-W$ priredi realno število
 	\[
-		H=\int_{t_1}^{t_2}(T+W+V)\,dt,
+		H=\int_{t_1}^{t_2}(T-U+W)\,dt,
 	\]
 	se imenuje \emph{Hamiltonov funkcional}.
 \end{definicija}
 
-\begin{aksiom}[Hamiltonov princip]
+\begin{definicija}
+	Naj bo $\mathcal{D}\subseteq\mathcal{A}$ množica, dobljena kot presek afinega podprostora $\mathcal{A}$ in
+	neke odprte množice v prostoru $\mathcal{X}$.
+	Funkcional $F\colon \mathcal{D}\to\R$ ima lokalni minimum pri dopustnem gibanju
+	$\chi_{0}\in \mathcal{D}$, če obstaja $\varepsilon >0$,
+	da za vsak $\chi\in \mathcal{D}$, za katerega je $\|\chi-\chi_{0}\|<\varepsilon$, velja $F(\chi_{0})<F(\chi)$.
+\end{definicija}
+
+\begin{hampri}
 	Za pravo gibanje telesa velja, da je njegov jacobijan pozitiven na
 	celotnem definicijskem območju, Hamiltonov funkcional pa pri pravem gibanju
 	zavzame lokalni minimum.
-\end{aksiom}
+\end{hampri}
 
 Hamiltonov princip zajema načelo minimalnega odpora. Telo se bo gibalo tako, da
-bo za pot porabilo čim manj energije. Omenimo še, da zaradi zveznosti operatorja,
+bo na poti razlika med kinetično in notranjo energijo čim manjša. Omenimo še, da zaradi zveznosti operatorja,
 ki dopustnemu gibanju priredi njegov jacobijan, obstaja okolica pravega gibanja,
 kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
 
 \begin{trditev}
-	Naj bo $U$ odprta podmnožica Banachovega prostora $\mathcal{X}$.
-	Če funkcional $F\colon U\to\R$ zavzame lokalni minimum pri dopustnem gibanju $\chi$, potem velja
+	Naj bo $\mathcal{D}\subseteq\mathcal{A}$ množica, dobljena kot presek afinega podprostora $\mathcal{A}$ in
+	neke odprte množice v prostoru $\mathcal{X}$.
+	Če funkcional $F\colon \mathcal{D}\to\R$ zavzame lokalni minimum pri dopustnem gibanju $\chi\in\mathcal{D}$, potem velja
 	\[ \delta F(\chi)(\vek{\eta})=0\quad\textrm{za vsak}\ \vek{\eta}\in\mathcal{T}. \]
 \end{trditev}
 
 \proof
-	Recimo, da $F$ zavzame lokalni minimum pri $\chi\in U$ in naj bo $\vek{\eta}\in\mathcal{T}$ poljubna.
+	Recimo, da $F$ zavzame lokalni minimum pri $\chi\in\mathcal{D}$ in naj bo $\vek{\eta}\in\mathcal{T}$ poljubna.
 	Definirajmo funkcijo $\varphi\colon\R\to\R$ s predpisom
 	\[ \varphi(\varepsilon)=F(\chi+\varepsilon\vek{\eta}). \]
 	$\varphi$ ima lokalni minimum pri $\varepsilon=0$, zato velja $\varphi'(0)=0.$
@@ -298,10 +343,10 @@ kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
 \begin{posledica} \label{p:varham0}
 	Potreben pogoj, ki mu mora pravo gibanje zadoščati, je pozitivnost jacobijana
 	na celotnem definicijskem območju ter
-	\[ \delta H = \int_{t_1}^{t_2}(\delta T+\delta W+\delta U)\,dt = 0. \]
+	\[ \delta H = \int_{t_1}^{t_2}(\delta T-\delta U+\delta W)\,dt = 0. \]
 \end{posledica}
 
-Če poznamo izraz za notranjo energijo in njeno variacijo, potem iz posledice
+Če poznamo izraz za potencialno energijo in njeno variacijo, potem iz posledice
 dobimo integralsko enačbo. Izraz za variacijo kinetične energije in virtualno delo 
 smo namreč že izpeljali. Iz integralske enačbe se da dobiti sistem lokalnih diferencialnih enačb
 za tenzorska polja. Med rešitvami tega sistema je tudi sámo gibanje telesa.
@@ -311,7 +356,7 @@ Da pa dobimo lokalne enačbe, potrebujemo nekaj izrekov, ki so podani v naslednj
 \section{Osnovne leme variacijskega računa}
 
 
-Skozi ta razdelek naj oznaka $\W$ stoji za
+Skozi ta razdelek naj oznaka $\W$ predstavlja
 končnorazsežen vektorski prostor nad poljem realnih števil, opremljen s skalarnim produktom.
 Naj bo $U$ podmnožica nekega metričnega prostora.
 \emph{Nosilec} preslikave $\vek{w}\colon U\to\W$ je množica
@@ -331,7 +376,7 @@ je $g$ zvezna v 0. Za $x>0$ so odvodi funkcije $g$
 	g'(x)=\exp\left(-\frac{1}{x}\right)\frac{1}{x^2},\qquad
 	g^{(k)}(x)=\exp\left(-\frac{1}{x}\right)p_k\left(\frac{1}{x}\right),
 \]
-kjer so $p_k$ neki polinomi, $k\in\mathbb{N}$. Če naredimo limito teh odvodov, ko
+kjer so $p_k$ polinomi, $k\in\mathbb{N}$. Če naredimo limito teh odvodov, ko
 gre $x$ z desne proti 0, dobimo $g^{(k)}(0)=0$ za vse $k=1,2,\dots$. Leva limita
 odvodov funkcije $g$ je pa očitno vedno 0. Obe limiti sta enaki, torej so vsi odvodi
 funkcije $g$ zvezni v točki 0.
@@ -348,14 +393,17 @@ $[-1,1]$, v notranjosti nosilca pa je vrednost funkcije $\beta$ pozitivna.
 Definirajmo skalarno polje $\gamma\colon\E_R\to\R$ s predpisom
 \[
 	\gamma(X)=\left\{\begin{array}{ccl}
-	\exp\left(-\dfrac{1}{1-\|X\|^2}\right)&;&\|X\|<1 \\ 0&;&\|X\|\geq 1 \end{array}\right.
+	\exp\left(-\dfrac{1}{1-\|\vek{X}\|^2}\right)&;&\|\vek{X}\|<1 \\ 0&;&\|\vek{X}\|\geq 1 \end{array}\right.
 \]
-Zapišemo ga lahko kot kompozitum $X\mapsto\|X\|\mapsto \beta(\|X\|)$, zato je polje
+Pri tem je $\vek{X}$ krajevni vektor točke $X$. $\gamma$
+lahko zapišemo kot kompozitum $X\mapsto\|\vek{X}\|\mapsto \beta(\|\vek{X}\|)$, zato je polje
 $\gamma$ gladko s kompaktnim nosilcem
-\[ \textrm{supp}\,\gamma=\overline{\big\{X\in\E_R\,;\ \|X\|<1 \big\}}=\overline{K}(0,1). \]
+\[ \textrm{supp}\,\gamma=\overline{\big\{X\in\E_R\,;\ \|\vek{X}\|<1 \big\}}=\overline{K}(O,1). \]
+Tu je $\overline{K}(O,1)$ zaprta krogla z radijem 1 okoli izhodiščne točke $O\in\E_R$
+opazovališča $\hat{\iota}_O$ za $\E_R$.
 
-Naj bo $\{\vek{b}_j\}_{j=1}^{n}$ baza prostora $\W$. Za neki $1\leq k\leq n$, neki $\alpha>0$ in
-za neka $X_0\in\E_R$ ter $t_0\in\R$ definirajmo tenzorsko polje
+Naj bo $\{\vek{b}_j\}_{j=1}^{n}$ baza prostora $\W$. Za neke $1\leq k\leq n$, $\alpha>0$,
+$X_0\in\E_R$ in $t_0\in\R$ definirajmo tenzorsko polje
 \begin{equation} \label{e:funiw}
 	\vek{w}\colon\E_R\times\R\to\W,\qquad\vek{w}(X,t)=\beta\left(\frac{t-t_0}{\alpha}\right)
 	\gamma\left(\frac{X-X_0}{\alpha}\right)\vek{b}_k.
@@ -370,192 +418,191 @@ tudi gladko, saj je produkt gladkih polj. V notranjosti nosilca je njegova
 edina neničelna (t.j.~$k$-ta) komponenta glede na bazo $\{\vek{b}_j\}_{j=1}^{n}$ pozitivna.
 
 Omenimo še to pomembno dejstvo, da za vsako zvezno preslikavo $\vek{w}$ s kompaktnim
-nosilcem velja, da je $\vek{w}={0}$ na robu nosilca. Komplement nosilca je namreč odprta množica, na kateri
-je $\vek{w}={0}$, in ker je $\vek{w}$ zvezna, je po zvezni razširitvi $\vek{w}={0}$ tudi na robu komplementa,
+nosilcem velja, da je $\vek{w}=\vek{0}$ na robu nosilca. Komplement nosilca je namreč odprta množica, na kateri
+je $\vek{w}=\vek{0}$, in ker je $\vek{w}$ zvezna, je po zvezni razširitvi $\vek{w}=\vek{0}$ tudi na robu komplementa,
 ki je enak robu nosilca.
 
 \begin{lema}\label{l:1}
-	Naj bo $\vek{f}\colon B\times [t_1,t_2]\to\W$ zvezno polje. Če velja
+	Naj bo $\vek{f}\colon\B\times [t_1,t_2]\to\W$ zvezno polje. Če velja
 	\begin{equation}\label{e:lem1}
-		\int_{t_1}^{t_2}\int_B\vek{f}\cdot\vek{w}\,dV\,dt = 0
+		\int_{t_1}^{t_2}\int_B\langle\vek{f},\vek{w}\rangle\,dV\,dt = 0
 	\end{equation}
-	za vsako gladko polje $\vek{w}\colon B\times[t_1,t_2]\to\W$, za katerega velja
+	za vsako gladko polje $\vek{w}\colon\B\times[t_1,t_2]\to\W$, za katerega velja
 	\[
 		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
-		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial B\times[t_1,t_2],
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial \B\times[t_1,t_2],
 	\]
-	potem je $\vek{f}=\vek{0}$ na $B\times [t_1,t_2]$.
+	potem je $\vek{f}=\vek{0}$ na $\B\times [t_1,t_2]$.
 \end{lema}
 
 \proof
 	Glede na fiksno bazo $\{\vek{b}_j\}_{j=1}^n$ prostora $\W$ lahko $\vek{f}$
 	zapišemo v komponentni obliki kot $\vek{f}=f_j\vek{b}_j$.
-	Recimo, da obstaja točka $(X_0,t_0)$ v notranjosti območja $B\times[t_1,t_2]$, da je $f_{k}(X_0,t_0)\neq 0$
+	Recimo, da obstaja točka $(X_0,t_0)$ v notranjosti območja $\B\times[t_1,t_2]$, da je $f_{k}(X_0,t_0)\neq 0$
 	za neki $1\leq k\leq n$. Potem zaradi zveznosti polja $\vek{f}$
 	obstaja okolica $U$ točke $(X_0,t_0)$, na kateri je $f_k$
 	vseskozi različen od 0 in enakega predznaka, ter
-	je $U$ še v celoti vsebovana v notranjosti območja $B\times[t_1,t_2]$.
+	je $U$ še v celoti vsebovana v notranjosti območja $\B\times[t_1,t_2]$.
 	
 	Za dovolj majhen $\alpha>0$ lahko definiramo polje
-	$\vek{w}$ kot v (\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$ v (\ref{e:funiw}),
+	$\vek{w}$ kot v (\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$,
 	če je $f_{k}(X_0,t_0) < 0$, tako da je množica (\ref{e:supaw}) v celoti vsebovana v okolici $U$.
-	Skrčitev polja $\vek{w}$ na domeno $B\times[t_0,t_1]$ tako ustreza vsem pogojem iz leme.
-	Skalarni produkt $\vek{f}\cdot\vek{w}$ je pozitiven na notranjosti množice
+	Skrčitev polja $\vek{w}$ na domeno $\B\times[t_0,t_1]$ tako ustreza vsem pogojem iz leme.
+	Skalarni produkt $\langle\vek{f},\vek{w}\rangle$ je pozitiven na notranjosti množice
 	$\mathrm{supp}\,\vek{w}$ in je 0 drugje, zato je
 	\[
-		\int_{t_1}^{t_2}\int_B \vek{f}\cdot \vek{w}\,dV\,dt=
-		\int_{t_0-\alpha}^{t_0+\alpha}\int_{\overline{K}(X_0,\alpha)} \vek{f}\cdot \vek{w}\,dV\,dt> 0,
+		\int_{t_1}^{t_2}\int_B \langle\vek{f},\vek{w}\rangle\,dV\,dt=
+		\int_{t_0-\alpha}^{t_0+\alpha}\int_{\overline{K}(X_0,\alpha)} \langle\vek{f},\vek{w}\rangle\,dV\,dt> 0,
 	\]
 	kar nasprotuje enačbi (\ref{e:lem1}). Torej mora veljati $f_k=0$ za vsak $k$,
-	tj.~$\vek{f}=\vek{0}$ povsod v notranjosti območja $B\times [t_1,t_2]$,
+	tj.~$\vek{f}=\vek{0}$ povsod v notranjosti območja $\B\times [t_1,t_2]$,
 	zaradi zveznosti pa tudi na zaprtju.
 \endproof
 
 \begin{lema}\label{l:2}
-	Naj rob $\partial B$ sestoji iz komplementarnih ploskev $\partial_g B$ in
-	$\partial_d B$. Naj bo $V$ množica vseh tistih regularnih točk ploskve $\partial_d B$,
-	ki niso na robu ploskve $\partial_d B$ in naj bo 
-	polje $\vek{f}\colon \partial_d B\times[t_1,t_2]\to \W$ zvezno na podobmočju $V\times[t_1,t_2]$.
+	Naj rob $\partial\B$ sestoji iz komplementarnih ploskev $\partial_1 \B$ in
+	$\partial_2 \B$. Naj bo $\mathcal{R}$ množica vseh tistih regularnih točk ploskve $\partial_2\B$,
+	ki niso na robu ploskve $\partial_2\B$ in naj bo 
+	polje $\vek{f}\colon \partial_2\B\times[t_1,t_2]\to \W$ zvezno na podobmočju $\mathcal{R}\times[t_1,t_2]$.
 	Če velja
 	\begin{equation}\label{e:lem2}
-		\int_{t_1}^{t_2}\int_{\partial_d B} \vek{f}\cdot \vek{w}\,dS\,dt = 0
+		\int_{t_1}^{t_2}\int_{\partial_2\B} \langle\vek{f},\vek{w}\rangle\,dA\,dt = 0
 	\end{equation}
-	za vsako gladko polje $\vek{w}\colon B\times[t_1,t_2]\to\W$, za katero je
+	za vsako gladko polje $\vek{w}\colon\B\times[t_1,t_2]\to\W$, za katero je
 	\[
 		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
-		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial_g B\times[t_1,t_2],
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial_1\B\times[t_1,t_2],
 	\]
-	potem je $\vek{f}=\vek{0}$ na $V\times [t_1,t_2]$.
+	potem je $\vek{f}=\vek{0}$ na $\mathcal{R}\times [t_1,t_2]$.
 \end{lema}
 
 \proof
 	Podobno, kot v prejšnjem dokazu, zapišemo $\vek{f}=f_j\vek{b}_j$ in predpostavimo
-	$f_{k}(X_0,t_0)\neq 0$ za neke $1\leq k\leq n$, $t_0\in (t_1,t_2)$ in $X_0\in V$.
+	$f_{k}(X_0,t_0)\neq 0$ za neke $1\leq k\leq n$, $t_0\in (t_1,t_2)$ in $X_0\in \mathcal{R}$.
 	
-	Ker točka $X_0$ ni na robu in je regularna, obstaja odprta okolica $U\subset\E_R$ točke
-	$X_0$, ki ne seka ploskve $\partial_g B$ in so vse točke iz množice $U\cap\partial_d B$
-	regularne ter niso na robu.
-	Za dovolj majhen $\alpha>0$ je $\overline{K}(X_0,\alpha)$ vsebovana v $U$ in
+	Ker točka $X_0$ ni na robu ploskve $\partial_2 \B$ in je regularna, obstaja odprta okolica $\mathcal{U}\subset\E_R$ točke
+	$X_0$, da je $U\cap\partial_2\B\subset\mathcal{R}$.
+	Za dovolj majhen $\alpha>0$ je $\overline{K}(X_0,\alpha)$ vsebovana v $\mathcal{U}$ in
 	hkrati je $f_k$ zaradi zveznosti $\vek{f}$ ves čas različna od 0 in enakega predznaka
-	na območju $(K(X_0,\alpha)\cap\partial_dB)\times(t_1,t_2)$.
+	na območju $(K(X_0,\alpha)\cap\partial_2\B)\times(t_1,t_2)$.
 	
 	Definirajmo polje $\vek{w}$ kot v
-	(\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$ v (\ref{e:funiw}),
+	(\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$,
 	če je $f_{k}(X_0,t_0) < 0$. Skrčitev tako definiranega polja $\vek{w}$ na območje
-	$B\times[t_1,t_2]$ ustreza predpostavkam iz leme.
-	Skalarni produkt $\vek{f}\cdot\vek{w}$ je pozitiven na
-	$(K(X_0,\alpha)\cap\partial_dB)\times(t_1,t_2)$ in je 0 drugje na $V\times[t_1,t_2]$,
-	zato je\footnote{Ploščina množice $\partial_dB\setminus V$ je 0.}
+	$\B\times[t_1,t_2]$ ustreza predpostavkam iz leme.
+	Skalarni produkt $\langle\vek{f},\vek{w}\rangle$ je pozitiven na
+	$(K(X_0,\alpha)\cap\partial_2\B)\times(t_1,t_2)$ in je 0 drugje na $\mathcal{R}\times[t_1,t_2]$,
+	zato je\footnote{Ploščina množice $\partial_2\B\setminus \mathcal{R}$ je 0.}
 	\[
-		\int_{t_1}^{t_2}\int_{\partial_d B} \vek{f}\cdot \vek{w}\,dS\,dt=
-		\int_{t_0-\alpha}^{t_0+\alpha}\int_{K(X_0,\alpha)\cap\partial_dB} \vek{f}\cdot \vek{w}\,dS\,dt> 0,
+		\int_{t_1}^{t_2}\int_{\partial_2\B} \langle\vek{f},\vek{w}\rangle\,dA\,dt=
+		\int_{t_0-\alpha}^{t_0+\alpha}\int_{K(X_0,\alpha)\cap\partial_2\B} \langle\vek{f},\vek{w}\rangle\,dA\,dt> 0,
 	\]
 	kar nasprotuje enačbi (\ref{e:lem2}). Torej mora veljati $\vek{f}=\vek{0}$ na
-	$V\times [t_1,t_2]$.
+	$\mathcal{R}\times [t_1,t_2]$.
 \endproof
 
 \begin{lema} \label{lema3}
-	Naj bo $\chi\colon B\times[t_1,t_2]\to\E$ gibanje razreda $C^1$ s pozitivnim jacobijanom $J$ in
-	$\vek{f}\colon B\times[t_1,t_2]\to\W$ zvezno tenzorsko polje. Če velja
+	Naj bo $\chi\colon \B\times[t_1,t_2]\to\E$ gibanje razreda $C^1$ s pozitivnim jacobijanom $J$ in
+	$\vek{f}\colon \B\times[t_1,t_2]\to\W$ zvezno tenzorsko polje. Če velja
 	\begin{equation} \label{e:lem3}
-		\int_{t_1}^{t_2}\int_{\chi_t(B)}\vek{f}\cdot \vek{w} \,dv\,dt=0
+		\int_{t_1}^{t_2}\int_{\chi_t(\B)}\langle\vek{f},\vek{w}\rangle \,dv\,dt=0
 	\end{equation}
-	za vsako gladko polje $\vek{w}\colon B\times[t_1,t_2]\to\W$, za katerega velja
+	za vsako gladko polje $\vek{w}\colon \B\times[t_1,t_2]\to\W$, za katerega velja
 	\[
 		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
-		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial B\times[t_1,t_2],
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial \B\times[t_1,t_2],
 	\]
-	potem je $\vek{f}=\vek{0}$ na $B\times[t_1,t_2]$ oz.~na $\Omega$.
+	potem je $\vek{f}=\vek{0}$ na $\B\times[t_1,t_2]$ oz.~na $\Omega$.
 \end{lema}
 V enačbi (\ref{e:lem3}) nastopata polji $\vek{f}$ in $\vek{w}$ v prostorskem opisu.
 
 \proof
 	Enačba (\ref{e:lem3}) je po izreku \ref{i:prointrel} ekvivalentna enačbi
-	\[ \int_{t_1}^{t_2}\int_{B}J\vek{f}\cdot \vek{w} \,dV\,dt=0. \]
+	\[ \int_{t_1}^{t_2}\int_{\B}\langle J\vek{f},\vek{w}\rangle \,dV\,dt=0. \]
 	
-	Ker je polje $J\vek{f}$ zvezno na $B\times[t_1,t_2]$, je
+	Ker je polje $J\vek{f}$ zvezno na $\B\times[t_1,t_2]$, je
 	po lemi (\ref{l:1}) $J\vek{f}=\vek{0}$
-	na $B\times[t_1,t_2]$. Ker je $J>0$, je $\vek{f}=\vek{0}$ na $B\times[t_1,t_2]$,
+	na $\B\times[t_1,t_2]$. Ker je $J>0$, je $\vek{f}=\vek{0}$ na $\B\times[t_1,t_2]$,
 	v prostorskem opisu pa je potem tudi $\vek{f}=\vek{0}$ na $\Omega$.
 \endproof
 
 \begin{lema} \label{lema4}
-	Naj rob $\partial B$ sestoji iz komplementarnih ploskev $\partial_g B$ in $\partial_d B$.
-	Naj bo $\chi\colon B\times[t_1,t_2]\to\E$ gibanje razreda $C^1$ s pozitivnim jacobijanom $J$ in
-	$f\colon\partial_d B\times[t_1,t_2]\to\R$ skalarno polje, zvezno na podobmočju $V\times[t_1,t_2]$,
+	Naj rob $\partial \B$ sestoji iz komplementarnih ploskev $\partial_1 \B$ in $\partial_2 \B$.
+	Naj bo $\chi\colon \B\times[t_1,t_2]\to\E$ gibanje razreda $C^1$ s pozitivnim jacobijanom $J$ in
+	$f\colon\partial_2 \B\times[t_1,t_2]\to\R$ skalarno polje, zvezno na podobmočju $\mathcal{R}\times[t_1,t_2]$,
 	ki je definirano enako, kot v lemi \ref{l:2}.
 	Če velja
 	\begin{equation}\label{e:lem4}
-		\int_{t_1}^{t_2}\int_{\chi_t(\partial_d B)}f\vek{n}\cdot\vek{w}\,ds\,dt=0
+		\int_{t_1}^{t_2}\int_{\chi_t(\partial_2 \B)}\langle f\vek{n},\vek{w}\rangle\,da\,dt=0
 	\end{equation}
-	za vsako gladko vektorsko polje $\vek{w}\colon B\times[t_1,t_2]\to\V$, za katero je
+	za vsako gladko vektorsko polje $\vek{w}\colon \B\times[t_1,t_2]\to\V$, za katero je
 	\[
 		\vek{w}(\cdot,t_1)=\vek{w}(\cdot,t_2)=\vek{0}\quad\textrm{in}
-		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial_g B\times[t_1,t_2],
+		\quad\vek{w}=\vek{0}\ \textrm{na}\ \partial_1 \B\times[t_1,t_2],
 	\]
-	potem je $f=0$ na $V\times[t_1,t_2]$ oz.~na $\{(x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}$.
+	potem je $f=0$ na $\mathcal{R}\times[t_1,t_2]$ oz.~na $\{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}$.
 \end{lema}
 
 \proof
 	Enačba (\ref{e:lem4}) je po izreku \ref{i:suittra} ekvivalentna enačbi
-	\[ \int_{t_1}^{t_2}\int_{\partial_d B}fJ\ten{F}^{-T}\vek{N}\cdot\vek{w}\,dS\,dt=0. \]
-	Polje $fJ\ten{F}^{-T}\vek{N}$ je zvezno na $V\times[t_1,t_2]$,
-	zato je po lemi (\ref{l:2}) $fJ\ten{F}^{-T}\vek{N}=\vek{0}$ na $V\times[t_1,t_2]$.
-	Ker so točke iz $V$ regularne, je $\vek{N}\neq \vek{0}$, hkrati je po predpostavki $J>0$,
-	zato je tudi $\ten{F}^{-T}$ nesingularno. Od tod sledi, da je $f=0$ na $V\times[t_1,t_2]$,
-	v prostorskem opisu pa $f=0$ na $\{(x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}$.
+	\[ \int_{t_1}^{t_2}\int_{\partial_2 \B}\langle fJ\ten{F}^{-T}\vek{N},\vek{w}\rangle\,dA\,dt=0. \]
+	Polje $fJ\ten{F}^{-T}\vek{N}$ je zvezno na $\mathcal{R}\times[t_1,t_2]$,
+	zato je po lemi (\ref{l:2}) $fJ\ten{F}^{-T}\vek{N}=\vek{0}$ na $\mathcal{R}\times[t_1,t_2]$.
+	Ker so točke iz $\mathcal{R}$ regularne, je $\vek{N}\neq \vek{0}$, hkrati je po predpostavki $J>0$,
+	zato je tudi $\ten{F}^{-T}$ nesingularnen tenzor. Od tod sledi, da je $f=0$ na $\mathcal{R}\times[t_1,t_2]$,
+	v prostorskem opisu pa $f=0$ na $\{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}$.
 \endproof
 
 
 \section{Primera}
 
 
-\subsection{Elastični fluid}
+\subsection{Idealni fluid}
 
 
 Idealni fluid je model tekočine, v katerem zanemarimo učinke viskoznosti. Če je tekočina
-stisljiva, potem je njena notranja energija
-\[ U=\int_{B}\rho_R e(\rho)\,dV=\int_{\chi_t(B)}\rho e(\rho)\,dv, \]
+stisljiva, potem je njena potencialna energija
+\[ U=\int_{\B}\rho_R e(\rho)\,dV=\int_{\chi_t(\B)}\rho e(\rho)\,dv, \]
 kjer je $e\colon[0,\infty)\to\R$ funkcija razreda $C^2$, imenovana
 \emph{gostota notranje energije} in ima fizikalno enoto $m^2s^{-2}$.
-Predpostavili bomo, da ima $e$ znano funkcijsko obliko.
+Predpostavili bomo, da je funkcija $e$ poznana.
 
-Izračunajmo variacijo notranje energije:
+Izračunajmo variacijo potencialne energije:
 \begin{align*} 
 	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
-	\int_{B}\rho_R e(\rho^*)\,dV }{\varepsilon=0} =
-	\at{\int_{B}\rho_R e'(\rho^*)\frac{d\rho^*}{d\varepsilon}\,dV }{\varepsilon=0} \\
-	&= -\int_{B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV
-	= -\int_{\chi_t(B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv
+	\int_{\B}\rho_R e(\rho^*)\,dV }{\varepsilon=0} =
+	\at{\int_{\B}\rho_R e'(\rho^*)\frac{d\rho^*}{d\varepsilon}\,dV }{\varepsilon=0} \\
+	&= -\int_{\B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV
+	= -\int_{\chi_t(\B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv
 \end{align*}
 Pri tem smo smeli zamenjati vrstni red odvajanja in integriranja, ker se referenčna
-konfiguracija $B$ ne spreminja, nato pa smo uporabili verižno pravilo, enačbo
+konfiguracija $\B$ ne spreminja, nato pa smo uporabili verižno pravilo, enačbo
 (\ref{e:deltarho}) in posledico \ref{p:roji}.
 Če sedaj na dobljenem rezultatu uporabimo relacijo 3 iz trditve \ref{t:divprop} in
 nato divergenčni izrek \ref{i:divtheo}$_3$, dobimo
 \begin{equation} \label{e:varpot}
-	\delta U=\int_{\chi_t(B)}\grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dv
-	-\int_{\chi_t(\partial B)}\rho^2 e'(\rho)\vek{n}\cdot\vek{\eta}\,ds.
+	\delta U=\int_{\chi_t(\B)}\grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dv
+	-\int_{\chi_t(\partial \B)}\langle\rho^2 e'(\rho)\vek{n},\vek{\eta}\rangle\,da.
 \end{equation}
 
-Geometrijskih robnih pogojev ni, zato imamo zgolj dinamične robne pogoje.
-Naj bo $V\subseteq\partial B$ množica regularnih točk ploskve $\partial B$ in
+Od robnih pogojev omamo v tem primeru le robni pogoj napetosti.
+Naj bo $\mathcal{R}\subseteq\partial \B$ množica regularnih točk ploskve $\partial \B$ in
 predpostavimo, da imamo podan \emph{zunanji tlak}, t.j.~zvezno skalarno polje
 $p\colon \E\times[t_1,t_2]\to\R$, da je $\vek{t}=-p\vek{n}$ na
-$\{(x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2]\}$.
+$\{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2]\}$.
 
 Če sedaj upoštevamo rezultate (\ref{e:varkin}), (\ref{e:varvide}) in (\ref{e:varpot}),
 mora po posledici \ref{p:varham0} pravo gibanje zadoščati enačbi
 \begin{multline} \label{e:elflupog}
-	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(B)}\Big(-\rho\vek{a}-
+	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(\B)}\Big(-\rho\vek{a}-
 	\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\Big)\cdot\vek{\eta}\,dv+ \\
-	+\int_{\chi_t(\partial B)}\big(\rho^2 e'(\rho)-p\big)\vek{n}\cdot\vek{\eta}\,ds\bigg)\,dt=0
+	+\int_{\chi_t(\partial \B)}\big<\big(\rho^2 e'(\rho)-p\big)\vek{n},\vek{\eta}\big>\,da\bigg)\,dt=0
 \end{multline}
 za vsako variacijo gibanja $\vek{\eta}\in\mathcal{T}$. Med drugim mora to veljati za
 vsako variacijo gibanja iz množice
 \[
-	\big\{ \vek{\eta}\in C^{\infty}(B\times[t_1,t_2],\V)\,;\ \vek{\eta}(\cdot,t_1)=
-	\vek{\eta}(\cdot,t_2)=\vek{0},\ \vek{\eta}=\vek{0}\ \textrm{na}\ \partial B\times[t_1,t_2]
+	\big\{ \vek{\eta}\in C^{\infty}(\B\times[t_1,t_2],\V)\,;\ \vek{\eta}(\cdot,t_1)=
+	\vek{\eta}(\cdot,t_2)=\vek{0},\ \vek{\eta}=\vek{0}\ \textrm{na}\ \partial \B\times[t_1,t_2]
 	\big\}\subset\mathcal{T};
 \]
 pri teh variacijah je vrednost drugega integrala enaka 0, na preostali enačbi
@@ -564,60 +611,62 @@ pa lahko potem uporabimo lemo \ref{lema3} in dobimo
 	\rho\vek{a}=\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\quad
 	\textrm{na}\ \Omega.
 \end{equation*}
-Če ta rezultat sedaj upoštevamo v (\ref{e:elflupog}), dobimo, da mora
+Če ta rezultat sedaj upoštevamo v (\ref{e:elflupog}), vidimo, da mora
 za vsako variacijo gibanja $\vek{\eta}$ veljati
 \[
-	\int_{t_1}^{t_2}\int_{\chi_t(\partial B)}\big(\rho^2 e'(\rho)-p\big)\vek{n}\cdot\vek{\eta}\,ds\,dt=0,
+	\int_{t_1}^{t_2}\int_{\chi_t(\partial \B)}\big<\big(\rho^2 e'(\rho)-p\big)\vek{n},\vek{\eta}\big>\,da\,dt=0,
 \]
 med drugim tudi za vsako variacijo iz množice
 \[
-	\big\{ \vek{\eta}\in C^{\infty}(B\times[t_1,t_2],\V)\,;\ \vek{\eta}(\cdot,t_1)=
+	\big\{ \vek{\eta}\in C^{\infty}(\B\times[t_1,t_2],\V)\,;\ \vek{\eta}(\cdot,t_1)=
 	\vek{\eta}(\cdot,t_2)=\vek{0} \big\}\subset\mathcal{T},
 \]
-zato lahko uporabimo lemo \ref{lema4} (v tem primeru je $\partial_gB=\emptyset$) in dobimo še pogoj
+zato lahko uporabimo lemo \ref{lema4} (v tem primeru je $\partial_1\B=\emptyset$) in dobimo še pogoj
 \[
-	\rho^2 e'(\rho)=p \quad\textrm{na}\ \{ (x,t)\,;\ x\in\chi_t(V),\ t\in[t_1,t_2] \}.
+	\rho^2 e'(\rho)=p \quad\textrm{na}\ \{ (x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}.
 \]
 
 
-\subsection{Elastično trdno telo}
+\subsection{Hiperelastično trdno telo}
 
 
-\emph{Elastično trdno telo} je model telesa iz trdnega materiala, v katerem se predpostavi,
-da je notranja energija telesa podana kot
-\[ U=\int_{B}\rho_R e(\ten{F})\,dV=\int_{\chi_t(B)}\rho e(\ten{F})\,dv, \]
-kjer je $e\colon\L(\V)\to\R$ \emph{gostota notranje energije}, vrednost katere je odvisna od
-deformacijskega gradienta $\ten{F}$. Za funkcijo $e$ bomo predpostavili, da je znana in da je
-razreda $C^1$ na svoji domeni.
+\emph{Hiperelastično trdno telo} je model telesa iz trdnega materiala, v katerem se predpostavi,
+da je potencialna energija telesa podana kot
+\[ U=\int_{\B}\rho_R \sigma(\ten{F})\,dV=\int_{\chi_t(\B)}\rho\sigma(\ten{F})\,dv, \]
+kjer je $\sigma\colon\L(\V)\to\R$ \emph{gostota notranje energije}, vrednost katere je odvisna od
+deformacijskega gradienta $\ten{F}$. Za funkcijo $\sigma$ bomo v tem razdelku predpostavili, da je znana in da je
+razreda $C^1$ na svoji domeni. V dodatku A je za funkcijo $\sigma$ navedenih nekaj dodatnih lastnosti,
+bolj podrobno pa je obdelana za primer izotropnega hiperelastičnega trdnega telesa.
 
-Pri danem $\ten{F}$ je $De(\ten{F})$ linearen funkcional
+Pri danem $\ten{F}$ je $D\sigma(\ten{F})$ linearen funkcional
 na vektorskem prostoru $\L(\V)$ s svojim skalarnim produktom, zato po Riezsovem izreku
-o reprezentaciji linearnih funkcionalov pripada funkcionalu $De(\ten{F})$ natanko
+o reprezentaciji linearnih funkcionalov pripada funkcionalu $D\sigma(\ten{F})$ natanko
 določen tenzor $\tilde{\ten{S}}\in\L(\V)$, da za vsak $\ten{A}\in\L(\V)$ velja
-\[ De(\ten{F})(\ten{A})=\tilde{\ten{S}}\cdot\ten{A}=\tr(\tilde{\ten{S}}^{T}\ten{A}). \]
-Zato bomo v bodoče kar enačili odvod $De(\ten{F})$ s pripadajočim tenzorjem $\tilde{\ten{S}}$.
+\[ D\sigma(\ten{F})(\ten{A})=\langle\tilde{\ten{S}},\ten{A}\rangle=\tr(\tilde{\ten{S}}^{T}\ten{A}). \]
+Po drugi točki dogovora \ref{d:riesz}
+bomo odvod $D\sigma(\ten{F})$ enačili s pripadajočim tenzorjem $\tilde{\ten{S}}$.
 Definirajmo tenzorsko polje
 \begin{equation} \label{e:piola}
-	\ten{S}\colon B\times I\to\L(\V),\qquad
-	\ten{S}(X,t)=\rho_R(X)De(\ten{F}(X,t)).%\quad\textrm{oz.~krajše}\quad
+	\ten{S}\colon \B\times I\to\L(\V),\qquad
+	\ten{S}(X,t)=\rho_R(X)D\sigma(\ten{F}(X,t)).%\quad\textrm{oz.~krajše}\quad
 	%\ten{S}=\rho_RDe(\ten{F}).
 \end{equation}
 $\ten{S}(X,t)$ se imenuje \emph{prvi Piola-Kirchoffov napetostni tenzor}.
 
-Izračunajmo variacijo notranje energije:
+Izračunajmo variacijo potencialne energije:
 \begin{align*} 
 	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
-	\int_{B}\rho_R e(\ten{F}^*)\,dV }{\varepsilon=0} =
-	\at{\int_{B}\rho_R De(\ten{F}^*)\cdot\frac{d\ten{F}^*}{d\varepsilon}\,dV }{\varepsilon=0} \\
-	&= \int_{B}\rho_R De(\ten{F})\cdot\Grad\vek{\eta}\,dV
-	=\int_{B}\ten{S}\cdot\Grad\vek{\eta}\,dV.
+	\int_{\B}\rho_R \sigma(\ten{F}^*)\,dV }{\varepsilon=0} =
+	\at{\int_{\B}\rho_R \left< D\sigma(\ten{F}^*),\frac{d\ten{F}^*}{d\varepsilon}\right>\,dV }{\varepsilon=0} \\
+	&= \int_{\B}\rho_R \langle D\sigma(\ten{F}),\Grad\vek{\eta}\rangle\,dV
+	=\int_{\B}\langle\ten{S},\Grad\vek{\eta}\rangle\,dV.
 	%= -\int_{\chi_t(B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv
 \end{align*}
 Pri tem smo uporabili enakost (\ref{e:deltaF}). Če sedaj upoštevamo zvezi (\ref{e:gz}) in
 (\ref{e:skatra}) ter izrek (\ref{i:prointrel}), dobimo
 \begin{align*} 
-	\delta U = \int_{B}J\frac{1}{J}\ten{S}\ten{F}^{T}\cdot\grad\vek{\eta}\,dV =
-	\int_{\chi_t(B)}\ten{T}\cdot\grad\vek{\eta}\,dv,
+	\delta U = \int_{\B}J\left<\frac{1}{J}\ten{S}\ten{F}^{T},\grad\vek{\eta}\right>\,dV =
+	\int_{\chi_t(\B)}\langle\ten{T},\grad\vek{\eta}\rangle\,dv,
 \end{align*}
 kjer se vrednost tenzorskega polja
 \begin{equation} \label{e:napetostni}
@@ -626,33 +675,33 @@ kjer se vrednost tenzorskega polja
 imenuje \emph{Cauchyjev napetostni tenzor}. Obe dobljeni enačbi za $\delta U$ lahko
 s pomočjo izrekov \ref{e:divSu} in \ref{i:divtheo} zapišemo v obliki
 \begin{align}
-	\delta U &= \int_{\partial_dB}\ten{S}\vek{N}\cdot\vek{\eta}\,dS-
-	\int_B\Div\ten{S}\cdot\vek{\eta}\,dV \label{e:vapoesr} \\
-	&= \int_{\chi_t(\partial_dB)}\ten{T}\vek{n}\cdot\vek{\eta}\,dS-
-	\int_{\chi_t(B)}\div\ten{T}\cdot\vek{\eta}\,dV. \label{e:vapoesp}
+	\delta U &= \int_{\partial_2\B}\langle\ten{S}\vek{N},\vek{\eta}\rangle\,dA-
+	\int_{\B}\langle\Div\ten{S},\vek{\eta}\rangle\,dV \label{e:vapoesr} \\
+	&= \int_{\chi_t(\partial_2\B)}\langle\ten{T}\vek{n},\vek{\eta}\rangle\,ds-
+	\int_{\chi_t(\B)}\langle\div\ten{T},\vek{\eta}\rangle\,dv. \label{e:vapoesp}
 \end{align}
-Pri tem smo upoštevali, da sta ploskovna integrala po ploskvah $\partial_gB$ in
-$\chi_t(\partial_gB)$ enaka 0, saj je tam zaradi geometrijskega robnega pogoja $\vek{\eta}=\vek{0}$.
+Pri tem smo upoštevali, da sta ploskovna integrala po ploskvah $\partial_1\B$ in
+$\chi_t(\partial_1\B)$ enaka 0, saj je tam zaradi geometrijskega robnega pogoja $\vek{\eta}=\vek{0}$.
 
 Po posledici \ref{p:varham0} mora pravo gibanje zadoščati enačbama
 \begin{multline} \label{e:globoref}
-	\int_{t_1}^{t_2}\bigg( \int_{B}(-\rho_R\vek{a}+
-	\Div\ten{S}+\rho_R\vek{b})\cdot\vek{\eta}\,dV+ \\
-	+\int_{\partial_d B}(\vek{t}_R-\ten{S}\vek{N})\cdot\vek{\eta}\,dS\bigg)\,dt=0
+	\int_{t_1}^{t_2}\bigg( \int_{\B}\langle -\rho_R\vek{a}+
+	\Div\ten{S}+\rho_R\vek{b},\vek{\eta}\rangle \,dV+ \\
+	+\int_{\partial_2 \B}\langle\vek{t}_R-\ten{S}\vek{N},\vek{\eta}\rangle\,dA\bigg)\,dt=0
 \end{multline}
 in
 \begin{multline} \label{e:globoprost}
-	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(B)}(-\rho\vek{a}+
-	\div\ten{T}+\rho\vek{b})\cdot\vek{\eta}\,dv+ \\
-	+\int_{\chi_t(\partial_d B)}(\vek{t}-\ten{T}\vek{n})\cdot\vek{\eta}\,ds\bigg)\,dt=0
+	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(\B)}\langle -\rho\vek{a}+
+	\div\ten{T}+\rho\vek{b},\vek{\eta}\rangle\,dv+ \\
+	+\int_{\chi_t(\partial_2 \B)}\langle\vek{t}-\ten{T}\vek{n},\vek{\eta}\rangle\,ds\bigg)\,dt=0
 \end{multline}
 za vsa dopustna gibanja $\vek{\eta}\in\mathcal{T}$. Pri tem smo zopet upoštevali
 že prej izpeljana rezultata (\ref{e:varkin}) in (\ref{e:varvide}) ter
-variaciji notranje energije (\ref{e:vapoesr}) oz.~(\ref{e:vapoesp}).
-Od tu dalje postopamo na enak način, kot smo pri primeru za elastični fluid.
+variaciji potencialne energije (\ref{e:vapoesr}) oz.~(\ref{e:vapoesp}).
+Od tu dalje postopamo na enak način, kot smo pri primeru za idealni fluid.
 Iz enačbe (\ref{e:globoref}) dobimo z uporabo leme \ref{l:1}
 \begin{equation*}
-	\rho_R\vek{a}=\Div\ten{S}+\rho_R\vek{b}\quad\textrm{na}\ B\times[t_1,t_2],
+	\rho_R\vek{a}=\Div\ten{S}+\rho_R\vek{b}\quad\textrm{na}\ \B\times[t_1,t_2],
 \end{equation*}
 iz enačbe (\ref{e:globoprost}) pa z uporabo leme \ref{lema3} dobimo
 \begin{equation*}
@@ -661,9 +710,9 @@ iz enačbe (\ref{e:globoprost}) pa z uporabo leme \ref{lema3} dobimo
 Če dobljena rezultata upoštevamo v (\ref{e:globoref}) oz.~v (\ref{e:globoprost}) in
 nato uporabimo lemo \ref{l:2} oz.~lemo \ref{lema4}, dobimo še
 \begin{equation*}
-	\ten{S}\vek{N}=\vek{t}_R\quad\textrm{na}\ \partial_dB\times[t_1,t_2]
+	\ten{S}\vek{N}=\vek{t}_R\quad\textrm{na}\ \mathcal{R}\times[t_1,t_2]
 \end{equation*}
 oziroma
 \begin{equation*}
-	\ten{T}\vek{n}=\vek{t}\quad\textrm{na}\ \{(x,t)\,;\ x\in\chi_t(\partial_dB),\ t\in[t_1,t_2] \}.
+	\ten{T}\vek{n}=\vek{t}\quad\textrm{na}\ \{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}.
 \end{equation*}
