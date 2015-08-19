@@ -7,9 +7,12 @@
 
 
 V razdelku \ref{s:evklipro} smo podali definicijo opazovališča za Evklidski
-prostor $\E$. Nato smo v poglavju \ref{chp:kinkon} omenili, da so določene
-fizikalne količine lahko odvisne od izbire opazovališča. V tem razdelku bomo
-na kratko analizirali spremembo opazovališča.
+prostor $\E$. Določene fizikalne količine, definirane v poglavju \ref{chp:kinkon},
+so odvisne od izbire opazovališča. V tem razdelku bomo na kratko analizirali spremembo opazovališča
+in kako to vpliva na spremembo nekaterih fizikalnih količin.
+
+Da se bomo izognili morebitnim dvomom, omenimo, da bodo imele
+v tem poglavju oznake z $*$ drug pomen, kot pa ga imajo v poglavju \ref{pog:ham}.
 
 \emph{Sprememba opazovališča} za $\E$ je prehod iz opazovališča $\iota_o$ v opazovališče
 $\iota^*_{o^*}$. Pri tem točka $x\in\E$, ki ima v opazovališču $\iota_o$ krajevni vektor
@@ -22,7 +25,7 @@ $\iota^*_{o^*}$. Vsaka sprememba opazovališča porodi transformacijo
 
 Razdalja oz.~metrika na $\E$ je odvisna od izbire opazovališča. \emph{Izmerjena razdalja} med točkama
 $x_1,x_2\in\E$ v opazovališču $\iota_o$ je
-$d(x_1,x_2)=\|\iota_o(x_2)-\iota_o(x_1)\|=\|\iota(x_1,x_2)\|$,
+\[ d(x_1,x_2)=\|\iota_o(x_2)-\iota_o(x_1)\|=\|\iota(x_1,x_2)\|, \]
 kjer je $\|\cdot\|$ norma prostora $\V$. Nas bodo zanimale take
 spremembe opazovališča, ki ohranjajo izmerjene razdalje med točkami, kar pomeni,
 da mora za vsaki točki $x_1,x_2\in\E$ veljati
@@ -30,14 +33,9 @@ $\|\iota^*(x_1,x_2)\|=\|\iota(x_1,x_2)\|$.
 Iz linearne algebre vemo, da so izometrije na prostoru $\V$ natanko ortogonalne preslikave,
 torej mora veljati
 \begin{equation} \label{e:vektrans}
-	\iota^*(x_1,x_2)=\ten{Q}\iota(x_1,x_2)\quad\forall x_1,x_2\in\E,
+	\iota^*(x_1,x_2)=\ten{Q}\iota(x_1,x_2)\quad\forall\, x_1,x_2\in\E,
 \end{equation}
-kjer je
-\[
-	\ten{Q}\in\mathscr{O}(\V)=\{\ten{R}\in\L(\V)\;;\ \ten{R}\ten{R}^T=\ten{R}^T\ten{R}=\ten{1}\}
-\]
-ortogonalna preslikava. Množica $\mathscr{O}(\V)$ vseh ortogonalnih preslikav na prostoru
-$\V$ je za operacijo kompozitum grupa, imenovana tudi \emph{ortogonalna grupa}. Če je $x\in\E$ in
+kjer je $\ten{Q}\in\mathscr{O}(\V)$ ortogonalna preslikava. Če je $x\in\E$ in
 je $\vek{x}=\iota_o(x)$ ter $\vek{x}^*=\iota^*_{o^*}(x)$, potem je
 \begin{equation} \label{e:toga}
 	\vek{x}^*=\iota^*(o^*,x)=\iota^*(o^*,o)+\iota^*(o,x)=\vek{c}+\ten{Q}\vek{x}.
@@ -45,6 +43,9 @@ je $\vek{x}=\iota_o(x)$ ter $\vek{x}^*=\iota^*_{o^*}(x)$, potem je
 Pri tem smo označili $\vek{c}=\iota^*(o^*,o)$. Transformaciji oblike (\ref{e:toga})
 se reče tudi \emph{toga transformacija}. Odselj bomo izraz \textit{sprememba opazovališča}
 uporabljali zgolj za take spremembe opazovališča, ki porodijo togo transformacijo.
+V splošnem sta lahko $\ten{Q}$ in $\vek{c}$ časovno odvisna in v takem primeru
+gre za časovno odvisno spremembo opazovališča, vendar se bomo mi omejili na
+take spremembe opazovališč, kjer sta $\ten{Q}$ in $\vek{c}$ konstantna.
 
 Za vsak vektor $\vek{u}\in\V$ po aksiomih Evklidskega točkovnega prostora obstajata
 točki $x_1,x_2\in\E$, da je $\vek{u}=\iota(x_1,x_2)$. Vektorju $\vek{u}$ pripada
@@ -80,17 +81,19 @@ deformacijska gradienta gibanja. Iz zgornje relacije dobimo
 	\ten{F}^*=\ten{Q}\ten{F}.
 \]
 Deformacijski gradient torej ni objektiven oz.~neodvisen od opazovališča, saj se ne
-transformira po pravilu (\ref{e:traten}). Jacobijan je objektivna skalarna
+transformira po pravilu (\ref{e:traten}). Absolutna vrednost jacobijana je objektivna skalarna
 količina, saj velja
 \[
-	J^*=|\det(\ten{F}^*)|=|\det(\ten{Q}\ten{F})|=|\det\ten{Q}||\det\ten{F}|
-	=|\det\ten{F}|=J.
+	|J^*|=|\det(\ten{F}^*)|=|\det(\ten{Q}\ten{F})|=|\det\ten{Q}||\det\ten{F}|
+	=|\det\ten{F}|=|J|.
 \]
-Posledično je tudi masna gostota trenutne konfiguracije objektivna skalarna količina,
-\[ \rho^*=\frac{\rho_R}{J^*}=\frac{\rho_R}{J}=\rho. \]
+Masna gostota mora biti pozitivna, saj bi sicer lahko obstajali deli telesa
+z negativno ali ničelno maso. Zato v primeru, ko je $J<0$, definiramo masno
+gostoto trenutne konfiguracije kot $\rho=\rho_R/|J|$ in je tudi objektivna skalarna količina,
+\[ \rho^*=\frac{\rho_R}{|J^*|}=\frac{\rho_R}{|J|}=\rho. \]
 
-Za gostoto notranje energije $\sigma=\sigma(\ten{F})$, ki smo jo predstavili v primeru
-elastičnega trdnega telesa, zahtevamo, da je kot skalarna količina neodvisna
+Za funkcijo shranjene energije $\sigma=\sigma(\ten{F})$, ki smo jo predstavili v primeru
+hiperelastičnega trdnega telesa, zahtevamo, da je kot skalarna količina neodvisna
 od opazovališča, torej velja
 \begin{equation} \label{e:objesig}
 	\sigma^*=\sigma(\ten{F}^*)=\sigma(\ten{Q}\ten{F})=\sigma(\ten{F})
@@ -109,7 +112,7 @@ Dokažimo še, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
 	\ten{T}=\rho D\sigma(\ten{F})\ten{F}^T
 	%=\frac{\rho_R}{|\det\ten{F}|} D\sigma(\ten{F})\ten{F}^T
 \end{equation}
-tudi objektiven. Če izraz $\sigma(\ten{Q}\ten{F})$ posredno odvajamo po $\ten{F}$,
+tudi objektiven. Če izraz $\sigma(\ten{Q}\ten{F})$ odvajamo po $\ten{F}$,
 dobimo za poljuben $\ten{H}\in\L(\V)$
 \[
 	%D(\sigma\circ(\ten{X}\mapsto\ten{Q}\ten{X}))(\ten{F})(\ten{H})=
@@ -117,7 +120,7 @@ dobimo za poljuben $\ten{H}\in\L(\V)$
 	\frac{d}{d\varepsilon}\at{\sigma(\ten{Q}(\ten{F}+\varepsilon\ten{H}))}{\varepsilon=0}
 	=\langle D\sigma(\ten{Q}\ten{F}),\ten{Q}\ten{H}\rangle=\langle\ten{Q}^T D\sigma(\ten{Q}\ten{F}),\ten{H}\rangle.
 \]
-Z odvajanjem enakosti (\ref{e:objesig}) po $\ten{F}$ torej pridemo do
+Z odvajanjem zadnje enakosti iz (\ref{e:objesig}) po $\ten{F}$ torej pridemo do
 \[
 	\ten{Q}^T D\sigma(\ten{Q}\ten{F}) = D\sigma(\ten{F})\qquad\textrm{oziroma}
 	\qquad D\sigma(\ten{Q}\ten{F}) = \ten{Q}D\sigma(\ten{F}).
@@ -157,19 +160,24 @@ Naj bosta $\kappa\colon\B\to\E_R$ in $\widehat{\kappa}\colon\B\to\E_R$ novi refe
 Naj bo $\chi\colon\B\times I\to\E_R$ gibanje in naj bosta
 $\chi_{\kappa}=\chi\circ\kappa^{-1}$ in $\chi_{\widehat{\kappa}}=\chi\circ\widehat{\kappa}^{-1}$
 opisa istega gibanja glede na referenčni konfiguraciji $\kappa(\B)$ in $\widehat{\kappa}(\B)$.
+\begin{figure}[h] \begin{center}
+	\input{img/diagram}
+	\caption{Sprememba referenčne konfiguracije.}
+	\label{pic:diagram}
+\end{center} \end{figure}
 Označimo pripadajoča deformacijska gradienta z
 \[
 	\ten{F}_{\kappa}=\Grad\vek{\chi}_{\kappa}\quad \mathrm{in}\quad
 	\ten{F}_{\widehat{\kappa}}=\Grad\vek{\chi}_{\widehat{\kappa}}.
 \]
 Jasno je, da imata referenčni konfiguraciji $\kappa$ in $\widehat{\kappa}$ vsaka
-svojo gostoto notranje energije, $\sigma_{\kappa}$ in $\sigma_{\widehat{\kappa}}$,
+svojo funkcijo shranjene energije, $\sigma_{\kappa}$ in $\sigma_{\widehat{\kappa}}$,
 ki sta v splošnem različni, vendar pa mora v vsaki točki $X\in\B$ veljati
 \begin{equation} \label{e:responf}
 	\sigma_{\kappa}(\ten{F}_{\kappa}(\kappa(X),t))
 	=\sigma_{\widehat{\kappa}}(\ten{F}_{\widehat{\kappa}}(\widehat{\kappa}(X),t)).
 \end{equation}
-Iz diagrama REF vidimo, da velja $\chi_{\kappa}=\chi_{\widehat{\kappa}}\circ\widehat{\kappa}\circ\kappa^{-1}$.
+Iz slike \ref{pic:diagram} vidimo, da velja $\chi_{\kappa}=\chi_{\widehat{\kappa}}\circ\widehat{\kappa}\circ\kappa^{-1}$.
 Če označimo s
 \begin{equation} \label{e:pupa}
 	\ten{P}=\Grad(\widehat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
@@ -191,11 +199,11 @@ $90^{\circ}$ okoli ene od kristalnih osi.
 	sta \emph{materialno nerazločljivi}, če velja
 	\begin{equation} \label{e:grarefc}
 		\sigma_{\widehat{\kappa}}(\ten{F})=\sigma_{\kappa}(\ten{F})
-		\qquad\forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0.
+		\qquad\forall\:\ten{F}\in\mathrm{Inv}(\V).
 	\end{equation}
 \end{definicija}
 
-Odziv materiala je odvisen od napetostnega tenzorja $\ten{T}$, da pa je odvisen
+Odziv materiala je odvisen od napetostnega tenzorja $\ten{T}$, ta pa je odvisen
 od gostote notranje energije.
 Materialna nerazločljivost v fizikalnem smislu pomeni, da se odziv materiala
 glede na konfiguracijo $\kappa$ ne da razločiti od odziva glede na konfiguracijo
@@ -205,36 +213,31 @@ $\widehat{\kappa}$ z nobenim mogočim eksperimentom.
 potem vidimo, da je pogoj (\ref{e:grarefc}) ekvivalenten pogoju
 \begin{equation*}
 	\sigma_{\kappa}(\ten{F})=\sigma_{\kappa}(\ten{F}\ten{P})\qquad
-	\forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0.
+	\forall\:\ten{F}\in\mathrm{Inv}(\V).
 \end{equation*}
 
 \begin{definicija}
-	Če za linearno preslikavo
-	\[
-		\ten{G}\in\mathscr{U}(\V)=\{\ten{A}\in\L(\V)\;;\ |\det\ten{A}|=1 \}.
-	\]
-	velja pogoj
+	Če za linearno preslikavo $\ten{G}\in\mathscr{U}(\V)$ velja pogoj
 	\begin{equation} \label{e:pogir}
 		\sigma_{\kappa}(\ten{F})=\sigma_{\kappa}(\ten{F}\ten{G})\qquad
-		\forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0,
+		\forall\:\ten{F}\in\mathrm{Inv}(\V),
 	\end{equation}
-	potem ji rečemo \emph{materialna simetrijska transformacija} glede na konfiguracijo $\kappa$.
+	potem ji rečemo \emph{materialna simetrijska transformacija} za $\sigma$ glede na konfiguracijo $\kappa$.
 \end{definicija}
 
 Pogoj $\ten{G}\in\mathscr{U}(\V)$ sodi k predpostavki,
 da vse materialne simetrijske transformacije ohranjajo prostornino telesa,
 saj bi se sicer materialno telo lahko poljubno razši\-rilo, ne da bi se to poznalo na odzivu,
 kar pa je fizikalno nesprejemljivo.
-Množica $\mathscr{U}(\V)$ je za operacijo kompozitum grupa, imenovana \emph{unimodularna grupa}.
-Grupa $\mathscr{O}(\V)$ je podgrupa grupe $\mathscr{U}(\V)$.
 
 \begin{izrek}
-	Množica $\mathcal{G}_{\kappa}$ vseh materialnih simetrijskih transformacij glede
+	Množica $\mathcal{G}_{\kappa}$ vseh materialnih simetrijskih transformacij za $\sigma$ glede
 	na konfiguracijo $\kappa$ je podgrupa unimodularne grupe.
 \end{izrek}
 
 \proof
-	Dovolj je dokazati, da je $\mathcal{G}_{\kappa}$ grupa. Za poljubni $\ten{G}_1,\ten{G}_2\in\mathcal{G}_{\kappa}$
+	Dovolj je dokazati, da je $\mathcal{G}_{\kappa}$ grupa, saj je $\mathcal{G}_{\kappa}\subseteq\mathscr{U}(\V)$.
+	Za poljubni $\ten{G}_1,\ten{G}_2\in\mathcal{G}_{\kappa}$
 	z upoštevanjem relacije (\ref{e:pogir}) velja
 	\[
 		\sigma_{\kappa}(\ten{F})=\sigma_{\kappa}(\ten{F}\ten{G}_1)
@@ -263,7 +266,7 @@ $\ten{G}\in\mathcal{G}_{\kappa}$ dobimo iz (\ref{e:dolgnoc})
 \end{align*}
 iz česar sledi, da je $\ten{P}\ten{G}\ten{P}^{-1}\in\mathcal{G}_{\widehat{\kappa}}$.
 Očitno je preslikava $\phi\colon\mathcal{G}_{\kappa}\to\mathcal{G}_{\widehat{\kappa}}$,
-$\phi(\ten{G})=\ten{P}\ten{G}\ten{P}^{-1}$ homomorfizem grup in očitno je injektivna,
+$\phi(\ten{G})=\ten{P}\ten{G}\ten{P}^{-1}$, homomorfizem grup in očitno je injektivna,
 saj za $\ten{G}_1,\ten{G}_2\in\mathcal{G}_{\kappa}$ iz
 $\ten{P}\ten{G}_1\ten{P}^{-1}=\ten{P}\ten{G}_2\ten{P}^{-1}$ nemudoma sledi $\ten{G}_1=\ten{G}_2$.
 S podobnim postopkom, kot zgoraj, se dokaže še, da za poljuben $\ten{H}\in\mathcal{G}_{\widehat{\kappa}}$
@@ -284,16 +287,6 @@ $\phi$ je torej izomorfizem grup, zato smo dokazali naslednji izrek.
 V zgornjem izreku je $\ten{P}$ gradient spremembe konfiguracije in ni nujno,
 da pripada unimodularni grupi.
 
-\begin{comment}
-Podobno, kot smo definirali materialno simetrijsko grupo za $\sigma$, bi lahko
-definirali tudi materialno simetrijsko grupo za $\ten{T}$. Za elastične
-materiale velja definicija, da je materialno telo \emph{trdno}, če obstaja
-referenčna konfiguracija telesa, tako da je materialna simetrijska grupa za $\ten{T}$
-glede na to konfiguracijo podgrupa ortogonalne grupe $\mathscr{O}(V)$.
-Taki referenčni konfiguraciji se reče \emph{naravna referenčna konfiguracija}. Dokazati se da,
-da sta pri hiperelastičnih trdnih telesih materialni simetrijski grupi za $\sigma$ in za $\ten{T}$ enaki.
-\end{comment}
-
 
 \section{Izotropna trdna hiperelastična telesa}
 
@@ -303,6 +296,17 @@ da sta pri hiperelastičnih trdnih telesih materialni simetrijski grupi za $\sig
 	konfiguracija $\kappa$, da je $\mathcal{G}_{\kappa}=\mathscr{O}(\V)$. Taka konfiguracija
 	se imenuje \emph{izotropna}.
 \end{definicija}
+
+\begin{opomba}
+Podobno, kot smo definirali materialno simetrijsko grupo za $\sigma$, bi lahko
+definirali tudi materialno simetrijsko grupo za $\ten{T}$. Za elastične
+materiale velja definicija, da je materialno telo \emph{trdno}, če obstaja
+referenčna konfiguracija telesa, tako da je materialna simetrijska grupa za $\ten{T}$
+glede na to konfiguracijo podgrupa ortogonalne grupe $\mathscr{O}(V)$.
+Taki referenčni konfiguraciji se reče \emph{naravna referenčna konfiguracija}. V \cite[str.~310]{truesdell} je dokazano,
+da sta pri hiperelastičnih trdnih telesih materialni simetrijski grupi za $\sigma$ in za $\ten{T}$
+glede na isto referenčno konfiguracijo enaki.
+\end{opomba}
 
 Izotropnost v fizikalnem smislu pomeni, da nobena ortogonalna transformacija izotropne
 konfiguracije ne spremeni odziva v materialu.
@@ -314,12 +318,12 @@ $\mathcal{G}_{\widehat{\kappa}}$ in $\mathcal{G}_{\kappa}$ izomorfni, zato $\mat
 ne more biti prava podgrupa grupe $\mathcal{G}_{\kappa}$, ampak je
 $\mathcal{G}_{\widehat{\kappa}}=\mathcal{G}_{\kappa}$.
 
-V nadaljevanju naj bo $\sigma$ gostota notranje energije glede na neko izotropno referenčno konfiguracijo
+V nadaljevanju naj bo $\sigma$ funkcija shranjene energije glede na neko izotropno referenčno konfiguracijo
 in $\mathcal{G}$ naj bo pripadajoča materialna simetrijska grupa.
 
-Naj bo $\ten{F}=\ten{V}\ten{R}$ polarni razcep. Ker je za izotropni material $\mathcal{G}=\mathscr{O}(\V)$,
-lahko v ({e:pogir}) za $\ten{G}$ uporabimo $\ten{R}^T$ in dobimo $\sigma(\ten{F})=\sigma(\ten{V})$.
-Za izotropne materiale torej skupaj z ({e:siuonly}) velja
+Naj bo $\ten{F}=\ten{V}\ten{R}$ polarni razcep. Ker za izotropni material velja $\mathcal{G}=\mathscr{O}(\V)$,
+lahko v (\ref{e:pogir}) za $\ten{G}$ uporabimo $\ten{R}^T$ in dobimo $\sigma(\ten{F})=\sigma(\ten{V})$.
+Za izotropne materiale torej skupaj z (\ref{e:siuonly}) velja
 \[
 	\sigma(\ten{F})=\sigma(\ten{U})=\sigma(\ten{V}).
 \]
@@ -336,13 +340,15 @@ za poljuben $\ten{A}\in\L(\V)$ je
 \begin{align*}
 	\langle D\bsi(\ten{B}),\ten{A}\rangle &=\langle D\bsi(\ten{B}^T),\ten{A}\rangle=
 	\frac{d}{d\varepsilon}\at{\bsi((\ten{B}+\varepsilon\ten{A})^T)}{\varepsilon=0}\\
-	&=\langle D\bsi(\ten{B}^T),\ten{A}^T\rangle=\langle(D\bsi(\ten{B}))^T,\ten{A}\rangle,
+	&=\langle D\bsi(\ten{B}^T),\ten{A}^T\rangle=\langle D\bsi(\ten{B}),\ten{A}^T\rangle\\
+	&=\langle(D\bsi(\ten{B}))^T,\ten{A}\rangle,
 \end{align*}
 torej je $D\bsi(\ten{B})=(D\bsi(\ten{B}))^T$. Če odvajamo $\bsi(\ten{B})=\bsi(\ten{F}\ten{F}^T)$
 po $\ten{F}$, dobimo
 \begin{align*}
 	\frac{d}{d\varepsilon}\at{\bsi((\ten{F}+\varepsilon\ten{A})(\ten{F}+\varepsilon\ten{A})^T)}{\varepsilon=0}&=
 	\langle D\bsi(\ten{F}\ten{F}^T),\ten{F}\ten{A}^T+\ten{A}\ten{F}^T\rangle\\
+	&=\langle (D\bsi(\ten{B}))^T,\ten{A}\ten{F}^T\rangle+\langle D\bsi(\ten{B}),\ten{A}\ten{F}^T\rangle \\
 	&=2\langle D\bsi(\ten{B}),\ten{A}\ten{F}^T\rangle=2\langle D\bsi(\ten{B})\ten{F},\ten{A}\rangle,
 \end{align*}
 pri čemer smo na predzadnjem koraku upoštevali simetričnost $D\bsi(\ten{B})$.
@@ -359,11 +365,11 @@ Cauchyev napetostni tenzor (\ref{e:Tdrugi}) lahko sedaj zapišemo v obliki
 Za izotropno hiperelastično trdno materialno telo lahko pogoja (\ref{e:objesig})
 in (\ref{e:pogir}) združimo v en sam ekvivalenten pogoj:
 \[
-	\sigma(\ten{F})=\sigma(\ten{Q}\ten{F}\ten{Q}),\qquad\forall\;\ten{Q}\in\mathscr{O}(\V)
-	\ \textrm{in}\ \forall\;\ten{F}\in\L(\V),\ \det\ten{F}\neq 0.
+	\sigma(\ten{F})=\sigma(\ten{Q}\ten{F}\ten{Q}),\qquad\forall\:\ten{Q}\in\mathscr{O}(\V)
+	\ \textrm{in}\ \forall\:\ten{F}\in\mathrm{Inv}(\V).
 \]
 Če v splošnem katera koli tenzorska funkcija zadošča temu pogoju, potem rečemo,
-da je \emph{izotropna}. Funkcija $\bsi(\ten{B})$ je tudi izotropna:
+da je \emph{izotropna}. Funkcija $\bsi(\ten{B})$ je tudi izotropna na svoji domeni:
 \[
 	\bsi(\ten{B})=\sigma(\ten{F})=\sigma(\ten{Q}\ten{F}\ten{Q})=
 	\bsi(\ten{Q}\ten{F}\ten{Q}(\ten{Q}\ten{F}\ten{Q})^T)=\bsi(\ten{Q}\ten{B}\ten{Q}^T),
@@ -371,8 +377,7 @@ da je \emph{izotropna}. Funkcija $\bsi(\ten{B})$ je tudi izotropna:
 kar velja za vsak simetričen pozitivno definiten $\ten{B}$ in vsak $\ten{Q}\in\mathscr{O}(\V)$.
 
 \begin{izrek} \label{i:prinva}
-	Naj bo $\phi\colon\mathrm{Sym}(\V)\to\R$ tenzorska funkcija, definirana
-	na vektorskem podprostoru vseh simetričnih linearnih preslikav iz $\V$ v $\V$.
+	Naj bo $\phi\colon\mathrm{Sym}(\V)\to\R$ tenzorska funkcija.
 	Potem je $\phi$ izotropna natanko tedaj, ko se jo da zapisati v obliki
 	\[
 		\phi(\ten{A})=f(a_1,a_2,a_3),
@@ -384,8 +389,8 @@ kar velja za vsak simetričen pozitivno definiten $\ten{B}$ in vsak $\ten{Q}\in\
 \proof
 	Naj bo $\phi$ izotropna in naj imata $\ten{A},\ten{B}\in\mathrm{Sym}(\V)$
 	enaki množici lastnih vrednosti, $\{a_1,a_2,a_3\}=\{b_1,b_2,b_3\}$.
-	Po spektralnem izreku obstajata ortonormirani bazi $\{\vek{d}_j\}$ in $\{\vek{e}_j\}$,
-	da je
+	Po spektralnem izreku za simetrične linearne preslikave
+	obstajata ortonormirani bazi $\{\vek{d}_j\}$ in $\{\vek{e}_j\}$, da je
 	\[
 		\ten{A}=\sum_{j=1}^3 a_j\vek{d}_j\otimes\vek{d}_j\quad\textrm{in}\quad
 		\ten{B}=\sum_{j=1}^3 b_j\vek{e}_j\otimes\vek{e}_j.
@@ -406,7 +411,9 @@ kar velja za vsak simetričen pozitivno definiten $\ten{B}$ in vsak $\ten{Q}\in\
 	
 	Obratno, če velja $\phi(\ten{A})=f(a_1,a_2,a_3)$, potem je $\phi(\ten{A})=\phi(\ten{Q}\ten{A}\ten{Q}^T)$,
 	saj imata linearni preslikavi $\ten{A}$ in $\ten{Q}\ten{A}\ten{Q}^T$ enake lastne vrednosti,
-	kar se najhitreje vidi tako, da sta karakteristična polinoma obeh preslikav enaka.
+	kar se najhitreje vidi tako, da imata $\ten{A}$ in $\ten{Q}\ten{A}\ten{Q}^T$ enak karakteristični polinom.
+	Če je namreč $p_{ten{A}}$ karakteristični polinom za $\ten{A}$, potem je po Cayley-Hamiltonovem izreku
+	$p_{ten{A}}=0$, hitro pa lahko vidimo, da je tudi $p_{ten{A}}(\ten{Q}\ten{A}\ten{Q}^T)=0$.
 \endproof
 
 Karakteristični polinom linearne preslikave $\ten{A}\in\L(\V)$ je

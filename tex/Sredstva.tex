@@ -196,6 +196,12 @@ na naslednji način. \label{seto}
 	\item Naj bosta $x,y\in\E$. Potem je $y-x$ tisti vektor $\vek{u}\in\V$, za katerega
 	velja $\vek{u}=\iota(x,y)$.
 \end{itemize}
+Na sliki \ref{pic:evk} je grafični prikaz omenjenih operacij.
+\begin{figure}[h] \begin{center}
+	\input{img/evklidski}
+	\caption{Grafični prikaz seštevanja točke in vektorja ter odštevanja dveh točk.}
+	\label{pic:evk}
+\end{center} \end{figure}
 
 \begin{dogovor} \label{d:dogovor}
 	Naj bo $V$ Banachov prostor ali pa prostor $\E$, naj bo $U\subseteq V$ in
@@ -206,6 +212,14 @@ na naslednji način. \label{seto}
 	\]
 \end{dogovor}
 Za $u\in U$ je torej $\vek{F}(u)$ krajevni vektor točke $F(u)$ glede na opazovališče $\iota_o$ za $\E$.
+
+Prostor $\E\times\R$ se imenuje \emph{Newtonov prostor-čas}. Na njem lahko vpeljemo običajno evklidsko
+metriko preko opazovališča za $\E$: Za $(x_1,t_1),(x_2,t_2)\in\E\times\R$ je njuna
+medsebojna razdalja
+\[
+	d((x_1,t_1),(x_2,t_2))=\sqrt{\|\vek{x}_2-\vek{x}_1\|^2+(t_2-t_1)^2},
+\]
+kjer sta $\vek{x}_1=\iota_o(x_1)$ in $\vek{x}_2=\iota_o(x_2)$ krajevna vektorja točk $x_1$ in $x_2$.
 
 
 \subsection{Tenzorji drugega reda} \label{pdrten2}
@@ -253,8 +267,15 @@ $\ten{A}^T\in\L(\V)$, za katero velja
 	\langle\ten{A}\vek{u},\vek{v}\rangle=\langle\vek{u},\ten{A}^T\vek{v}\rangle,
 	\qquad\;\forall \vek{u},\vek{v}\in\V.
 \]
-Velja $(\ten{A}^T)^{-1}=(\ten{A}^{-1})^T=:\ten{A}^{-T}$. Za poljubna vektorja $\vek{u},\vek{v}\in\V$ je
-\[ (\vek{u}\otimes\vek{v})^T=\vek{v}\otimes\vek{u}. \]
+Za poljubne $\ten{A},\ten{B}\in\L(\V)$, $\vek{u},\vek{v}\in\V$ velja
+\begin{enumerate}[noitemsep]
+	\item $(\ten{A}^T)^T=\ten{A}$,
+	\item $(\ten{A}\ten{B})^T=\ten{B}^T\ten{A}^T$,
+	\item $(\ten{A}^T)^{-1}=(\ten{A}^{-1})^T=:\ten{A}^{-T}$,
+	\item $(\vek{u}\otimes\vek{v})^T=\vek{v}\otimes\vek{u}$,
+	\item $\ten{A}(\vek{u}\otimes\vek{v})=(\ten{A}\vek{u})\otimes\vek{v}$ in
+		$(\vek{u}\otimes\vek{v})\ten{A}=\vek{u}\otimes(\ten{A}^T\vek{v})$.
+\end{enumerate}
 
 \emph{Alternirajoča $n$-linearna forma} je $n$-linearna\footnote{Linearna v vsakem argumentu posebaj.} preslikava
 \[ \omega\colon\overbrace{\V\times\dots\times\V}^{n}\to\R, \]
@@ -277,7 +298,11 @@ za katerega velja
 	(\det\ten{A})\omega(\vek{u}_1,\dots,\vek{u}_n)=\omega(\ten{A}\vek{u}_1,\dots,\ten{A}\vek{u}_n)
 \]
 za poljubno netrivialno alternirajočo $n$-linearno formo $\omega$ in poljubne vektorje $\vek{u}_1,\dots,\vek{u}_n\in\V$.
-Definicija je nedvisna od izbire netrivialne forme $\omega$.
+Definicija je nedvisna od izbire netrivialne forme $\omega$. Za poljubna $\ten{A},\ten{B}\in\L(\V)$ velja
+\begin{enumerate}[noitemsep]
+	\item $\det(\ten{A}^T)=\det\ten{A}$,
+	\item $\det(\ten{A}\ten{B})=(\det\ten{A})(\det\ten{B})$.
+\end{enumerate}
 
 \emph{Sled} linearne preslikave $\ten{A}\in\L(\V)$ je realno število $\tr\ten{A}$,
 za katerega velja
@@ -288,7 +313,7 @@ za katerega velja
 za poljubno netrivialno alternirajočo $n$-linearno formo $\omega$ in poljubne vektorje $\vek{u}_1,\dots,\vek{u}_n\in\V$.
 Tudi tu je definicija nedvisna od izbire netrivialne forme $\omega$.
 Za poljubne $\alpha\in\R$, $\ten{A},\ten{B}\in\L(\V)$, $\vek{u},\vek{v}\in\V$ velja
-\begin{enumerate} \label{traceprop}
+\begin{enumerate}[noitemsep] \label{traceprop}
 	\item $\tr(\alpha\ten{A}+\ten{B})=\alpha\tr\ten{A}+\tr\ten{B}$,
 	\item $\tr(\vek{u}\otimes\vek{v})=\langle\vek{u},\vek{v}\rangle$,
 	\item $\tr\ten{A}^T=\tr\ten{A}$,
@@ -311,11 +336,11 @@ $\ten{A}$ je \emph{pozitivno definitna}, če za vsak neničelen $\vek{u}\in\V$ v
 $\langle\vek{u},\ten{A}\vek{u}\rangle >0$.
 
 Vpeljimo naslednje oznake:
-\begin{itemize}
-	\item $\mathrm{Inv}(\V)=\{\ten{A}\in\L(\V)\;;\ \det\ten{A}\neq 0 \}$
-	\item $\mathscr{U}(\V)=\{\ten{A}\in\L(\V)\;;\ |\det\ten{A}|=1 \}$
-	\item $\mathscr{O}(\V)=\{\ten{A}\in\L(\V)\;;\ \ten{A}\ten{A}^T=\ten{A}^T\ten{A}=\ten{1} \}$
-	\item $\mathrm{Sym}(\V)=\{\ten{A}\in\L(\V)\;;\ \ten{A}=\ten{A}^T \}$
+\begin{itemize}[noitemsep]
+	\item $\mathrm{Inv}(\V)=\{\ten{A}\in\L(\V)\;;\ \det\ten{A}\neq 0 \}$,
+	\item $\mathscr{U}(\V)=\{\ten{A}\in\L(\V)\;;\ |\det\ten{A}|=1 \}$,
+	\item $\mathscr{O}(\V)=\{\ten{A}\in\L(\V)\;;\ \ten{A}\ten{A}^T=\ten{A}^T\ten{A}=\ten{1} \}$,
+	\item $\mathrm{Sym}(\V)=\{\ten{A}\in\L(\V)\;;\ \ten{A}=\ten{A}^T \}$.
 \end{itemize}
 Množice $\mathrm{Inv}(\V)$, $\mathscr{U}(\V)$ in $\mathscr{O}(\V)$ so za operacijo kompozitum
 grupe. $\mathrm{Inv}(\V)$ je grupa vseh obrnljivih linearnih preslikav, $\mathscr{U}(\V)$
