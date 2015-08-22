@@ -40,7 +40,7 @@ predpisa za normo je npr.
 	\|\chi\|=\sup\big\{\|\vek{\chi}(X,t)\|\: ;\ (X,t)\in \B\times I\big\}.
 \]
 
-Pri tem je v skladu z dogovorom \ref{d:dogovor} $\vek{chi}=\iota_o\circ\chi$, norma, ki se pojavi
+Pri tem je v skladu z dogovorom \ref{d:dogovor} $\vek{\chi}=\iota_o\circ\chi$, norma, ki se pojavi
 znotraj množice, pa je Evklidska norma na prostoru $\V$.
 Dejansko lahko supremum nadomestimo z maksimumom, ker je vsak $\chi\in\mathcal{X}$
 zvezna preslikava na kompaktni domeni $B\times I$.
@@ -209,18 +209,26 @@ Pri tem druga enakost velja zaradi posledice \ref{p:roji}.
 
 
 Zunanje sile so prostorninske in površinske sile, ki delujejo na materialno telo med gibanjem $\chi$
-in so posledica interakcije telesa z okoljem.
-Rezultanto vseh zunanjih sil lahko zapišemo v obliki
+in so posledica interakcije telesa z okoljem. Rezultanto $\vek{f}(t)$ vseh zunanjih sil, ki delujejo
+na materialno telo ob času $t\in I$, lahko zapišemo kot vsoto
+\[
+	\vek{f}(t)=\vek{f}_b(t)+\vek{f}_s(t),
+\]
+kjer je
+\[
+	\vek{f}_b(t)=\int_{B_t}\vek{b}\rho\, dv=\int_{\B}\vek{b}\rho_R\, dV
+\]
+\emph{telesna sila}, ki deluje znotraj telesa, ter
 \begin{equation}\label{e:zunsil}
-	\int_{B_t}\vek{b}\rho\, dv + \int_{\partial \B_t}\vek{t}\, da =
-	\int_{\B}\vek{b}\rho_R\, dV + \int_{\partial \B}\vek{t}_R\, dA.
+	\vek{f}_s(t)=\int_{\partial \B_t}\vek{t}\, da=\int_{\partial \B}\vek{t}_R\, dA
 \end{equation}
+\emph{stična sila}, ki deluje na rob telesa.
 Vektorsko polje $\vek{b}$ je \emph{gostota prostorninske sile}, njegove vrednosti imajo fizikalno enoto
 pospeška, torej \textit{meter na kvadratno sekundo}, $ms^{-2}$. Primer takega vektorskega polja
 je npr. gravitacijski pospešek. Predpostavili bomo, da je $\vek{b}$ konzervativno vektorsko polje,
 kar pomeni, da obstaja $C^1$ skalarno polje $\phi\colon\E\times I\to\R$, da je
 \begin{equation*} \label{e:gps}
-	\vek{b}(x,t)=\grad\phi(x,t).
+	\vek{b}(x,t)=-\grad\phi(x,t).
 \end{equation*}
 Vektorsko polje
 \begin{equation*} \label{e:csv}
@@ -235,13 +243,13 @@ imata fizikalno enoto tlaka, torej \textit{Newton na kvadratni meter}, $Nm^{-2}$
 Primer napetostnega vektorja je npr. atmosferski tlak.
 Iz enačbe (\ref{e:zunsil}) vidimo, da mora veljati zveza
 \begin{equation}\label{e:ttr}
-	\vek{t}\, ds=\vek{t}_R\, dS.
+	\vek{t}\, da=\vek{t}_R\, dA.
 \end{equation}
-Tudi za napetosni vektor bomo predpostavili, da je konzervativno vektorsko polje, v smislu,
+Tudi za napetostni vektor bomo predpostavili, da je konzervativno vektorsko polje, v smislu,
 da obstaja v času zvezno odvedljiv, v prostoru pa odsekoma zvezno odvedljiv\footnote{Namesto gradienta imamo v tem primeru
 smerni odvod, definiran le v smereh iz tangentne ravnine na ploskev $\partial B_t$; vseeno bomo uporabljali oznako za gradient.}
 skalarni potencial $\psi\colon\E\to\R$, da velja
-\[ \vek{t}_R(x,t)=\grad\psi(x,t)\quad\textrm{za}\quad (x,t)\in \{(x,t)\:;\ x=\chi_t(\partial \B),\ t\in I\}, \]
+\[ \vek{t}_R(x,t)=-\grad\psi(x,t)\quad\textrm{za}\quad (x,t)\in \{(x,t)\:;\ x=\chi_t(\partial \B),\ t\in I\}, \]
 kjer je $\vek{t}_R(x,t)=\vek{t}_R(\chi(X,t),t)$ prostorski opis polja $\vek{t}_R$.
 
 Za polje $\vek{b}$ bomo predpostavili, da je znano.
@@ -256,11 +264,13 @@ Izraz
 \begin{equation*}
 	W = \int_{\B}\phi\rho_R\, dV + \int_{\partial_2 \B}\psi\, dA
 \end{equation*}
-predstavlja del \emph{potencialne energije} telesa in je prav tako funkcija časa.
-Preostali del potencialne energije tvori \emph{notranja energija}.
-Celotno potencialno energijo bomo označili z $U$. Notranja energija je torej $U-W$.
-Predpis za $U$ je odvisen od materiala. Mi si bomo v tem délu ogledali primera
-idealnih tekočin in hiperelastičnih trdnih teles.
+predstavlja del \emph{potencialne energije} telesa, ki izvira iz potencialov zunanjih sil.
+Preostali del potencialne energije tvori \emph{notranja} ali \emph{deformacijska energija},
+ki jo bomo označili z $U$, in je odvisna od materiala. Celotna potencialna energija je torej $W+U$.
+V razdelku \ref{sec:primeri} si bomo ogledali primera
+elastičnih tekočin in hiperelastičnih trdnih teles in takrat bomo tudi podali izraz
+za notranjo energijo za ta dva primera.
+
 
 Skalarni polji $\phi$ in $\psi$ sta na prostoru $\E\times I$ definirani neodvisno od gibanja.
 Seveda to ne velja za njun materialni opis, od gibanja $\chi$ sta odvisni preko zvez
@@ -273,15 +283,15 @@ za $(X,t)\in \B\times I$.
 \]
 Če ta dva izraza odvajamo po $\varepsilon$, nato pa postavimo $\varepsilon=0$, dobimo variaciji
 \[
-	\delta\phi=\langle\grad\phi,\vek{\eta}\rangle=\langle\vek{b},\vek{\eta}\rangle,\qquad
-	\delta\psi=\langle\grad\psi,\vek{\eta}\rangle=\langle\vek{t}_R,\vek{\eta}\rangle.
+	\delta\phi=\langle\grad\phi,\vek{\eta}\rangle=-\langle\vek{b},\vek{\eta}\rangle,\qquad
+	\delta\psi=\langle\grad\psi,\vek{\eta}\rangle=-\langle\vek{t}_R,\vek{\eta}\rangle.
 \]
 Variacijo izraza $W$ imamo sedaj na dlani:
 \begin{equation} \label{e:varvide}
-	\delta W = \int_{\B}\langle\rho_R\vek{b},\vek{\eta}\rangle\, dV
-	+ \int_{\partial_2 \B}\langle\vek{t}_R,\vek{\eta}\rangle\, dA=
-	\int_{\B_t}\langle\rho\vek{b},\vek{\eta}\rangle\, dv
-	+ \int_{\partial_2 \B_t}\langle\vek{t},\vek{\eta}\rangle\, da.
+	\delta W = -\int_{\B}\langle\rho_R\vek{b},\vek{\eta}\rangle\, dV
+	- \int_{\partial_2 \B}\langle\vek{t}_R,\vek{\eta}\rangle\, dA=
+	-\int_{\B_t}\langle\rho\vek{b},\vek{\eta}\rangle\, dv
+	- \int_{\partial_2 \B_t}\langle\vek{t},\vek{\eta}\rangle\, da.
 \end{equation}
 Tu smo z $\partial_2 \B_t$ označili $\chi_t(\partial_2 \B)$ in uporabili zvezo (\ref{e:ttr}).
 Variacija $\delta W$ je sicer splošno znana
@@ -294,10 +304,10 @@ Pomembno je le, da predpostavimo njun obstoj.
 
 
 \begin{definicija}
-	Funkcional, ki gibanju $\chi\in \mathcal{D}$ s kinetično energijo $T$ in notranjo
-	energijo $U-W$ priredi realno število
+	Funkcional, ki gibanju $\chi\in \mathcal{D}$ s kinetično energijo $T$ in potencialno
+	energijo $U+W$ priredi realno število
 	\[
-		H=\int_{t_1}^{t_2}(T-U+W)\,dt,
+		H=\int_{t_1}^{t_2}T-(U+W)\,dt,
 	\]
 	se imenuje \emph{Hamiltonov funkcional}.
 \end{definicija}
@@ -317,7 +327,7 @@ Pomembno je le, da predpostavimo njun obstoj.
 \end{hampri}
 
 Hamiltonov princip zajema načelo minimalnega odpora. Telo se bo gibalo tako, da
-bo na poti razlika med kinetično in notranjo energijo čim manjša. Omenimo še, da zaradi zveznosti operatorja,
+bo na poti razlika med kinetično in potencialno energijo čim manjša. Omenimo še, da zaradi zveznosti operatorja,
 ki dopustnemu gibanju priredi njegov jacobijan, obstaja okolica pravega gibanja,
 kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
 
@@ -343,10 +353,10 @@ kjer je jacobijan vsakega gibanja iz te okolice še prav tako pozitiven.
 \begin{posledica} \label{p:varham0}
 	Potreben pogoj, ki mu mora pravo gibanje zadoščati, je pozitivnost jacobijana
 	na celotnem definicijskem območju ter
-	\[ \delta H = \int_{t_1}^{t_2}(\delta T-\delta U+\delta W)\,dt = 0. \]
+	\[ \delta H = \int_{t_1}^{t_2}(\delta T-\delta U-\delta W)\,dt = 0. \]
 \end{posledica}
 
-Če poznamo izraz za potencialno energijo in njeno variacijo, potem iz posledice
+Če poznamo izraz za notranjo energijo in njeno variacijo, potem iz posledice
 dobimo integralsko enačbo. Izraz za variacijo kinetične energije in virtualno delo 
 smo namreč že izpeljali. Iz integralske enačbe se da dobiti sistem lokalnih diferencialnih enačb
 za tenzorska polja. Med rešitvami tega sistema je tudi sámo gibanje telesa.
@@ -554,20 +564,24 @@ V enačbi (\ref{e:lem3}) nastopata polji $\vek{f}$ in $\vek{w}$ v prostorskem op
 \endproof
 
 
-\section{Primera}
+\section{Primera} \label{sec:primeri}
 
 
-\subsection{Idealni fluid}
+V tem razdelku bomo podali dva primera, na katerih bomo prikazali uporabo Hamiltonovega principa
+kot sredstvo za izpeljavo enačb gibanja.
 
 
-Idealni fluid je model tekočine, v katerem zanemarimo učinke viskoznosti. Če je tekočina
-stisljiva, potem je njena potencialna energija
+\subsection{Elastični fluid}
+
+
+Elastični fluid je model tekočine, v katerem zanemarimo učinke viskoznosti. Če je tekočina
+stisljiva, potem je njena notranja ali deformacijska energija
 \[ U=\int_{\B}\rho_R e(\rho)\,dV=\int_{\chi_t(\B)}\rho e(\rho)\,dv, \]
 kjer je $e\colon[0,\infty)\to\R$ funkcija razreda $C^2$, imenovana
 \emph{gostota notranje energije} in ima fizikalno enoto $m^2s^{-2}$.
 Predpostavili bomo, da je funkcija $e$ poznana.
 
-Izračunajmo variacijo potencialne energije:
+Izračunajmo variacijo notranje energije:
 \begin{align*} 
 	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
 	\int_{\B}\rho_R e(\rho^*)\,dV }{\varepsilon=0} =
@@ -585,7 +599,7 @@ nato divergenčni izrek \ref{i:divtheo}$_3$, dobimo
 	-\int_{\chi_t(\partial \B)}\langle\rho^2 e'(\rho)\vek{n},\vek{\eta}\rangle\,da.
 \end{equation}
 
-Od robnih pogojev omamo v tem primeru le robni pogoj napetosti.
+Od robnih pogojev imamo v tem primeru le robni pogoj napetosti.
 Naj bo $\mathcal{R}\subseteq\partial \B$ množica regularnih točk ploskve $\partial \B$ in
 predpostavimo, da imamo podan \emph{zunanji tlak}, t.j.~zvezno skalarno polje
 $p\colon \E\times[t_1,t_2]\to\R$, da je $\vek{t}=-p\vek{n}$ na
@@ -631,9 +645,10 @@ zato lahko uporabimo lemo \ref{lema4} (v tem primeru je $\partial_1\B=\emptyset$
 
 
 \emph{Hiperelastično trdno telo} je model telesa iz trdnega materiala, v katerem se predpostavi,
-da je potencialna energija telesa podana kot
+da je notranja ali deformacijska energija telesa podana kot
 \[ U=\int_{\B}\rho_R \sigma(\ten{F})\,dV=\int_{\chi_t(\B)}\rho\sigma(\ten{F})\,dv, \]
-kjer je $\sigma\colon\L(\V)\to\R$ \emph{gostota notranje energije}, vrednost katere je odvisna od
+kjer je $\sigma\colon\L(\V)\to\R$ \emph{funkcija shranjene energije} ali \emph{gostota deformacijske energije},
+vrednost katere je odvisna od
 deformacijskega gradienta $\ten{F}$. Za funkcijo $\sigma$ bomo v tem razdelku predpostavili, da je znana in da je
 razreda $C^1$ na svoji domeni. V dodatku A je za funkcijo $\sigma$ navedenih nekaj dodatnih lastnosti,
 bolj podrobno pa je obdelana za primer izotropnega hiperelastičnega trdnega telesa.
@@ -653,7 +668,7 @@ Definirajmo tenzorsko polje
 \end{equation}
 $\ten{S}(X,t)$ se imenuje \emph{prvi Piola-Kirchoffov napetostni tenzor}.
 
-Izračunajmo variacijo potencialne energije:
+Izračunajmo variacijo notranje energije:
 \begin{align*} 
 	\delta U &=\at{\frac{dU^*}{d\varepsilon}}{\varepsilon=0}=\at{\frac{d}{d\varepsilon}
 	\int_{\B}\rho_R \sigma(\ten{F}^*)\,dV }{\varepsilon=0} =
@@ -677,7 +692,7 @@ s pomočjo izrekov \ref{e:divSu} in \ref{i:divtheo} zapišemo v obliki
 \begin{align}
 	\delta U &= \int_{\partial_2\B}\langle\ten{S}\vek{N},\vek{\eta}\rangle\,dA-
 	\int_{\B}\langle\Div\ten{S},\vek{\eta}\rangle\,dV \label{e:vapoesr} \\
-	&= \int_{\chi_t(\partial_2\B)}\langle\ten{T}\vek{n},\vek{\eta}\rangle\,ds-
+	&= \int_{\chi_t(\partial_2\B)}\langle\ten{T}\vek{n},\vek{\eta}\rangle\,da-
 	\int_{\chi_t(\B)}\langle\div\ten{T},\vek{\eta}\rangle\,dv. \label{e:vapoesp}
 \end{align}
 Pri tem smo upoštevali, da sta ploskovna integrala po ploskvah $\partial_1\B$ in
@@ -697,8 +712,8 @@ in
 \end{multline}
 za vsa dopustna gibanja $\vek{\eta}\in\mathcal{T}$. Pri tem smo zopet upoštevali
 že prej izpeljana rezultata (\ref{e:varkin}) in (\ref{e:varvide}) ter
-variaciji potencialne energije (\ref{e:vapoesr}) oz.~(\ref{e:vapoesp}).
-Od tu dalje postopamo na enak način, kot smo pri primeru za idealni fluid.
+variaciji notranje energije (\ref{e:vapoesr}) oz.~(\ref{e:vapoesp}).
+Od tu dalje postopamo na enak način, kot smo pri primeru za elastični fluid.
 Iz enačbe (\ref{e:globoref}) dobimo z uporabo leme \ref{l:1}
 \begin{equation*}
 	\rho_R\vek{a}=\Div\ten{S}+\rho_R\vek{b}\quad\textrm{na}\ \B\times[t_1,t_2],

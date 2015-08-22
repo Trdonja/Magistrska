@@ -1,6 +1,6 @@
 \appendix
 
-\chapter{Konstitucijske enačbe za izotropno elastično trdno telo}
+\chapter{Konstitucijske enačbe za izotropno hiperelastično trdno telo}
 
 
 \section{Sprememba opazovališča in objektivnost}
@@ -90,6 +90,7 @@ količina, saj velja
 Masna gostota mora biti pozitivna, saj bi sicer lahko obstajali deli telesa
 z negativno ali ničelno maso. Zato v primeru, ko je $J<0$, definiramo masno
 gostoto trenutne konfiguracije kot $\rho=\rho_R/|J|$ in je tudi objektivna skalarna količina,
+saj velja
 \[ \rho^*=\frac{\rho_R}{|J^*|}=\frac{\rho_R}{|J|}=\rho. \]
 
 Za funkcijo shranjene energije $\sigma=\sigma(\ten{F})$, ki smo jo predstavili v primeru
@@ -105,7 +106,7 @@ in v (\ref{e:objesig}) za $\ten{Q}$ uporabimo $\ten{R}^T$, dobimo
 	\sigma(\ten{F})=\sigma(\ten{U}),
 \end{equation}
 torej je $\sigma$ odvisna od deformacijskega gradienta $\ten{F}$ le preko desnega
-raztegljivostnega tenzorja $\ten{U}$ in nič od rotacije $\ten{R}$.
+razteznostnega tenzorja $\ten{U}$ in nič od rotacije $\ten{R}$.
 
 Dokažimo še, da je tedaj Cauchyev napetostni tenzor (\ref{e:napetostni})
 \begin{equation} \label{e:Tdrugi}
@@ -183,7 +184,7 @@ Iz slike \ref{pic:diagram} vidimo, da velja $\chi_{\kappa}=\chi_{\widehat{\kappa
 	\ten{P}=\Grad(\widehat{\vek{\kappa}}\circ\vek{\kappa}^{-1}),
 \end{equation}
 potem je $\ten{F}_{\kappa}=\ten{F}_{\widehat{\kappa}}\ten{P}$. Iz relacije (\ref{e:responf})
-sedaj vidimo, da med gostotama notranje energije velja zveza
+sedaj vidimo, da med funkcijama shranjene energije velja zveza
 \begin{equation} \label{e:dolgnoc}
 	\sigma_{\widehat{\kappa}}(\ten{F}_{\widehat{\kappa}})
 	=\sigma_{\kappa}(\ten{F}_{\widehat{\kappa}}\ten{P}).
@@ -204,7 +205,7 @@ $90^{\circ}$ okoli ene od kristalnih osi.
 \end{definicija}
 
 Odziv materiala je odvisen od napetostnega tenzorja $\ten{T}$, ta pa je odvisen
-od gostote notranje energije.
+od funkcije shranjene energije.
 Materialna nerazločljivost v fizikalnem smislu pomeni, da se odziv materiala
 glede na konfiguracijo $\kappa$ ne da razločiti od odziva glede na konfiguracijo
 $\widehat{\kappa}$ z nobenim mogočim eksperimentom.
@@ -327,7 +328,7 @@ Za izotropne materiale torej skupaj z (\ref{e:siuonly}) velja
 \[
 	\sigma(\ten{F})=\sigma(\ten{U})=\sigma(\ten{V}).
 \]
-V praktični uporabi je namesto levega raztegljivostnega tenzorja $\ten{V}$ bolj primeren
+V praktični uporabi je namesto levega razteznostnega tenzorja $\ten{V}$ bolj primeren
 levi Cauchy-Greenov deformacijski tenzor $\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T$, ker
 ga je lažje izračunati. Zato predstavimo funkcijo $\bsi$, definirano kot
 \begin{equation*} %\label{e:varisi}
@@ -442,7 +443,7 @@ na funkcije $I_{\ten{B}}=I(\ten{B})$, itd. Z odvajanjem enakosti (\ref{e:equinox
 	\frac{\partial w}{\partial \rtri_{\ten{B}}}D\rtri(\ten{B}).
 \end{equation}
 $D\rtri(\ten{B})=D\det(\ten{B})$ smo že izračunali v (\ref{e:odvodet}). Izračunajmo še
-odvoda preostalih dveh glavnih invariant. Za posljuben $\ten{S}$ imamo
+odvoda preostalih dveh glavnih invariant. Za poljuben $\ten{S}$ imamo
 \begin{align*}
 	DI(\ten{B})(\ten{S})&=D\tr(\ten{B})(\ten{S})=
 	\frac{d}{d\varepsilon}\at{\tr(\ten{B}+\varepsilon\ten{S})}{\varepsilon=0}=

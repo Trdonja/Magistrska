@@ -446,7 +446,7 @@ $\vek{x}=\iota(x)$ in $\vek{v}\in\V$ je
 Če je $f\colon \U\to\R$ skalarno polje, potem v $x\in \U$ vrednost gradienta $\nabla f(x)$
 pripada prostoru $\L(\V,\R)$, kar je linearni funkcional na prostoru $\V$. Po Riezsovem
 izreku o reprezentaciji mu enolično pripada vektor $\vek{u}\in\V$, da za vsak
-$\vek{v}\in\V$ velja $\nabla f(x)(\vek{v})=\vek{u}\cdot\vek{v}$. V tem primeru po
+$\vek{v}\in\V$ velja $\nabla f(x)(\vek{v})=\langle\vek{u},\vek{v}\rangle$. V tem primeru po
 dogovoru \ref{d:riesz} identificiramo $\nabla f$ s pripadajočim vektorskim poljem in pišemo
 \[ \nabla f(x)(\vek{v})=\langle\nabla f(x),\vek{v}\rangle. \]
 
@@ -515,7 +515,7 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 		\langle\vek{w},\div(\vek{u}\otimes\vek{v})\rangle&=\div\big((\vek{u}\otimes\vek{v})^T\vek{w}\big)=
 		\div\big((\vek{v}\otimes\vek{u})\vek{w}\big)\\
 		&=\div\big(\langle\vek{u},\vek{w}\rangle\vek{v}\big)
-		=\big<\vek{v},\nabla\langle\vek{u}\cdot\vek{w}\rangle\big>+\langle\vek{u}\cdot\vek{w}\rangle\div\vek{v}\\
+		=\big<\vek{v},\nabla\langle\vek{u},\vek{w}\rangle\big>+\langle\vek{u},\vek{w}\rangle\div\vek{v}\\
 		&=\langle(\nabla\vek{u})\vek{v},\vek{w}\rangle+\langle\vek{u}\div\vek{v},\vek{w}\rangle
 		=\big<(\nabla\vek{u})\vek{v}+\vek{u}\div\vek{v},\vek{w}\big>,
 	\end{align*}
@@ -624,8 +624,8 @@ Za pozitivno realno število $\varepsilon$ je slika preslikave
 \emph{$i$-ta koordinatna krivulja} v $\U$, ki gre pri $t=0$ skozi točko $x$.
 V točki $x$ lahko definiramo \emph{kovariantne vektorje}
 \begin{equation} \label{e:tanvek}
-	\vek{g}_i(x)=\at{\frac{d}{dt}\gamma_i(t)}{t=0}=\gamma_i'(0)
-	=\at{\frac{\partial\psi^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
+	\vek{g}_i(x)=\at{\frac{d}{dt}\vek{\gamma}_i(t)}{t=0}=\vek{\gamma}_i'(0)
+	=\at{\frac{\partial\vek{\psi}^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
 	, \qquad i=1,2,3
 \end{equation}
 in \emph{kontravariantne vektorje}
@@ -642,21 +642,21 @@ in \emph{kontravariantne vektorje}
 	\[ \gamma\colon(-\varepsilon,\varepsilon)\to \U,\qquad \gamma(t)=x+t\vek{u}. \]
 	Velja
 	\[
-		\vek{u}=\at{\frac{d}{dt}\gamma(t)}{t=0}\quad\textrm{in}\quad
+		\vek{u}=\at{\frac{d}{dt}\vek{\gamma}(t)}{t=0}\quad\textrm{in}\quad
 		\gamma(t)=\psi^{-1}\big(\psi^1(x+t\vek{u}),\psi^2(x+t\vek{u}),\psi^3(x+t\vek{u})\big),
 	\]
 	zato je
 	\[
 		\vek{u}=
-		\at{\frac{\partial\psi^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
+		\at{\frac{\partial\vek{\psi}^{-1}}{\partial x^i}}{(x^1,x^2,x^3)}
 		\at{\frac{d}{dt}\psi^i(x+t\vek{u})}{t=0}=
 		\at{\frac{d}{dt}\psi^i(x+t\vek{u})}{t=0}\vek{g}_i(x).
 	\]
 	Z drugimi besedami, $\{\vek{g}_i(x)\}_{i}$ razpenja prostor $\V$.
 \endproof
 
-Kovariantni in kontravariantni vektorji so definirani v vsaki točki množice $U$, torej
-gre v bistvu za vektorska polja. V vsaki točki $x\in U$ se baza $\{\vek{g}_i(x)\}_i$ prostora $\V$
+Kovariantni in kontravariantni vektorji so definirani v vsaki točki množice $\U$, torej
+gre v bistvu za vektorska polja. V vsaki točki $x\in \U$ se baza $\{\vek{g}_i(x)\}_i$ prostora $\V$
 imenuje \emph{kovariantna baza}.
 Množica $\{\vek{g}^i(x)\}_i$ je prav tako baza za $\V$, imenovana \emph{kontravariantna baza},
 in je dualna bazi $\{\vek{g}_i(x)\}_i$. Res, iz zveze
@@ -664,10 +664,10 @@ in je dualna bazi $\{\vek{g}_i(x)\}_i$. Res, iz zveze
 dobimo po verižnem pravilu
 \begin{equation} \label{e:gigj}
 	\topbot{\delta}{i}{j}=\frac{\partial x^i}{\partial x^j}=
-	(\nabla\psi^i)\cdot\frac{\partial\psi^{-1}}{\partial x^j}=\vek{g}^i\cdot\vek{g}_j.
+	\Big<\nabla\psi^i,\frac{\partial\vek{\psi}^{-1}}{\partial x^j}\Big>=\langle\vek{g}^i,\vek{g}_j\rangle.
 \end{equation}
 Skalarna polja
-\[ g_{ij}=\vek{g}_i\cdot\vek{g}_j\qquad\textrm{in}\qquad g^{ij}=\vek{g}^i\cdot\vek{g}^j \]
+\[ g_{ij}=\langle\vek{g}_i,\vek{g}_j\rangle\qquad\textrm{in}\qquad g^{ij}=\langle\vek{g}^i,\vek{g}^j\rangle \]
 imenujemo \emph{koeficienti metričnega tenzorja}. 
 Iz zadnjih treh zvez hitro vidimo, da velja
 \begin{equation} \label{e:relzag}
@@ -719,8 +719,8 @@ Tudi tu so $S_{ij},\topbot{S}{i}{j},\dots$ skalarna polja.
 Posamezne komponente vektorskih in tenzoskih polj dobimo s pomočjo zveze (\ref{e:gigj})
 iz (\ref{e:vekkomp}) in (\ref{e:tenkomp}):
 \begin{gather}
-	u_i=\vek{g}_i\cdot\vek{u},\qquad u^i=\vek{g}^i\cdot\vek{u}, \label{e:kompvek} \\
-	S_{ij}=\vek{g}_i\cdot\ten{S}\vek{g}_j,\qquad\topbot{S}{i}{j}=\vek{g}^i\cdot\ten{S}\vek{g}_j.\label{e:kompten}
+	u_i=\langle\vek{g}_i,\vek{u}\rangle,\qquad u^i=\langle\vek{g}^i,\vek{u}\rangle, \label{e:kompvek} \\
+	S_{ij}=\langle\vek{g}_i,\ten{S}\vek{g}_j\rangle,\qquad\topbot{S}{i}{j}=\langle\vek{g}^i,\ten{S}\vek{g}_j\rangle.\label{e:kompten}
 \end{gather}
 S pomočjo (\ref{e:gtog}) dobimo naslednje zveze med posameznimi komponentami:
 \begin{gather*}
@@ -752,7 +752,7 @@ Naj bo $\vek{f}\colon \U\to\W$ tenzorsko polje. Če je $\gamma_i$ $i$-ta
 koordinatna krivulja, ki gre pri $t=0$ skozi točko $x$, potem iz (\ref{e:tanvek}) dobimo
 \begin{equation*}
 	\at{\frac{d}{dt}\vek{f}(\gamma_i(t))}{t=0}=
-	\nabla \vek{f}(x)(\gamma_i'(0))=\nabla \vek{f}(x)(\vek{g}_i(x)),
+	\nabla \vek{f}(x)(\vek{\gamma}_i'(0))=\nabla \vek{f}(x)(\vek{g}_i(x)),
 \end{equation*}
 po drugi strani pa imamo po (\ref{e:kokri})
 \begin{equation*}
@@ -760,12 +760,12 @@ po drugi strani pa imamo po (\ref{e:kokri})
 	\at{\frac{d}{dt}\vek{f}\big(\psi^{-1}((x^1,x^2,x^3)+t\vek{j}_i)\big)}{t=0}=
 	\at{\frac{\partial(\vek{f}\circ\psi^{-1})}{\partial x^i}}{(x^1,x^2,x^3)}.
 \end{equation*}
-Po našem dogovoru pišemo namesto $\vek{f}\circ\psi^{-1}$ kar $\vek{f}$. Če izenačimo oba rezultata, dobimo
+Po dogovoru bomo namesto $\vek{f}\circ\psi^{-1}$ pisali kar $\vek{f}$. Če izenačimo oba rezultata, dobimo
 \begin{equation} \label{e:sotf}
 	\frac{\partial\vek{f}}{\partial x^i}(x^1,x^2,x^3)=\nabla \vek{f}(x)(\vek{g}_i(x)).
 \end{equation}
 V primeru, ko je $f$ skalarno polje, iz enačbe (\ref{e:kompvek}) in iz pravkar izpeljane enačbe
-dobimo $(\nabla f)_i=(\nabla f)\cdot\vek{g}_i=\partial f/\partial x^i$, torej je
+dobimo $(\nabla f)_i=\langle\nabla f,\vek{g}_i\rangle=\partial f/\partial x^i$, torej je
 \begin{equation} \label{e:gradskal}
 	\nabla f = \frac{\partial f}{\partial x^i}\,\vek{g}^i.
 \end{equation}
@@ -782,17 +782,17 @@ in ne gre za komponente kakega tenzorja tretjega reda. Če v enačbi (\ref{e:sot
 za $\vek{f}$ vstavimo vektorsko polje $\vek{g}_i$ oz.~$\vek{g}^i$ in upoštevamo
 (\ref{e:kompten}) in (\ref{e:cs}), dobimo
 \begin{equation} \label{e:csexplicit}
-	\cs{i}{j}{k}=\vek{g}^j\cdot\frac{\partial\vek{g}_i}{\partial x^k}
-	=-\vek{g}_i\cdot\frac{\partial\vek{g}^j}{\partial x^k},\qquad
-	\ks{i}{jk}=\vek{g}_j\cdot\frac{\partial\vek{g}_i}{\partial x^k}.
+	\cs{i}{j}{k}=\Big<\vek{g}^j,\frac{\partial\vek{g}_i}{\partial x^k}\Big>
+	=-\Big<\vek{g}_i,\frac{\partial\vek{g}^j}{\partial x^k}\Big>,\qquad
+	\ks{i}{jk}=\Big<\vek{g}_j,\frac{\partial\vek{g}_i}{\partial x^k}\Big>.
 \end{equation}
 Pri tem je drugi izraz za $\cs{i}{j}{k}$ dobljen iz prvega s parcialnim odvajanjem
-enakosti $\vek{g}^i\cdot\vek{g}_j=\topbot{\delta}{i}{j}$ po spremenljivki $x^k$.
+enakosti $\langle\vek{g}^i,\vek{g}_j\rangle=\topbot{\delta}{i}{j}$ po spremenljivki $x^k$.
 
-Če po pravilu (\ref{t:divprop})$_2$ izračunamo gradient izraza $(\vek{g}^i\cdot\vek{g}_j)$,
+Če po pravilu (\ref{t:divprop})$_2$ izračunamo gradient izraza $\langle\vek{g}^i,\vek{g}_j\rangle$,
 ki je $\vek{0}$, in upoštevamo, da velja\footnote{
-$(\vek{u}\otimes\vek{v})\vek{a}\cdot\vek{b}=(\vek{v}\cdot\vek{a})(\vek{u}\cdot\vek{b})=
-\vek{a}\cdot(\vek{v}\otimes\vek{u})\vek{b}$}
+$\langle(\vek{u}\otimes\vek{v})\vek{a},\vek{b}\rangle=\langle\vek{v},\vek{a}\rangle\langle\vek{u},\vek{b}\rangle=
+\langle\vek{a},(\vek{v}\otimes\vek{u})\vek{b}\rangle$}
 $(\vek{u}\otimes\vek{v})^{T}=\vek{v}\otimes\vek{u}$
 za poljubna vektorja $\vek{u}$ in $\vek{v}$ ter da je transponiranje linearna operacija,
 potem dobimo zvezo
@@ -816,10 +816,10 @@ Njegov gradient zavzema vrednosti v prostoru $\L(\V)$, zato ga lahko zapišemo v
 Poiščimo izraz za komponente $\topbot{u}{j}{,k}$. Z upoštevanjem
 (\ref{e:kompten}) in (\ref{e:sotf}) dobimo
 \begin{align}
-	\topbot{u}{j}{,k}&=\vek{g}^j\cdot\frac{\partial\vek{u}}{\partial x^k}=
-	\vek{g}^j\cdot\frac{\partial(u^i\vek{g}_i)}{\partial x^k} \nonumber \\
-	&=\vek{g}^j\cdot\Big(\frac{\partial u^i}{\partial x^k}\vek{g}_i+
-	u^i\frac{\partial\vek{g}_i}{\partial x^k}\Big) \nonumber \\
+	\topbot{u}{j}{,k}&=\Big<\vek{g}^j,\frac{\partial\vek{u}}{\partial x^k}\Big>=
+	\Big<\vek{g}^j,\frac{\partial(u^i\vek{g}_i)}{\partial x^k}\Big> \nonumber \\
+	&=\Big<\vek{g}^j,\frac{\partial u^i}{\partial x^k}\vek{g}_i+
+	u^i\frac{\partial\vek{g}_i}{\partial x^k}\Big> \nonumber \\
 	&=\frac{\partial u^j}{\partial x^k}+u^i\cs{i}{j}{k}. \label{e:kovod1}
 \end{align}
 Pri tem smo na zadnjem koraku upoštevali relacijo (\ref{e:csexplicit}). Dobljena enakost (\ref{e:kovod1})
@@ -855,13 +855,13 @@ Iz (\ref{e:sotf}) dobimo
 \]
 Če na dobljeni enakosti uporabimo (\ref{e:kompten}), dobimo
 \begin{align*}
-	\topbot{S}{ij}{,k}&=\vek{g}^i\cdot\frac{\partial\ten{S}}{\partial x^k}\vek{g}^j=
-	\vek{g}^i\cdot\frac{\partial(S^{lr}\vek{g}_l\otimes\vek{g}_r)}{\partial x^k}\vek{g}^j \\
-	&=\vek{g}^i\cdot\Big(
+	\topbot{S}{ij}{,k}&=\Big<\vek{g}^i,\frac{\partial\ten{S}}{\partial x^k}\vek{g}^j\Big>=
+	\Big<\vek{g}^i,\frac{\partial(S^{lr}\vek{g}_l\otimes\vek{g}_r)}{\partial x^k}\vek{g}^j\Big> \\
+	&=\Big<\vek{g}^i,\Big(
 	\frac{\partial S^{lr}}{\partial x^k}\vek{g}_l\otimes\vek{g}_r+
 	S^{lr}\frac{\partial\vek{g}_l}{\partial x^k}\otimes\vek{g}_r+
 	S^{lr}\vek{g}_l\otimes\frac{\partial\vek{g}_r}{\partial x^k}
-	\Big)\vek{g}^j \\
+	\Big)\vek{g}^j\Big> \\
 	&=\frac{\partial S^{ij}}{\partial x^k}+S^{lj}\cs{l}{i}{k}+S^{ir}\cs{r}{j}{k}.
 \end{align*}
 Preostale komponente za $\nabla\ten{S}$ dobimo na enak način.
@@ -872,7 +872,7 @@ Preostale komponente za $\nabla\ten{S}$ dobimo na enak način.
 
 Sled tenzorja $\ten{S}\in\L(\V)$ s komponentno obliko (\ref{e:tenkomp})
 je\footnote{$\tr\ten{S}=\topbot{S}{i}{j}\tr(\vek{g}_i\otimes\vek{g}^j)=
-\topbot{S}{i}{j}\vek{g}_i\cdot\vek{g}^j=\topbot{S}{i}{i}$ \cite[str.~249]{liu}}
+\topbot{S}{i}{j}\langle\vek{g}_i,\vek{g}^j\rangle=\topbot{S}{i}{i}$ \cite[str.~249]{liu}}
 \[ \tr\,\ten{S}=\topbot{S}{i}{i}=g^{ij}S_{ij}. \]
 Če je $\vek{u}$ vektorsko polje, potem iz (\ref{e:gradukomp}) in (\ref{e:nimena1}) dobimo
 \begin{equation} \label{e:divu}
@@ -889,11 +889,11 @@ Bralec se lahko sam prepriča, da tudi za kovariantni odvod produkta velja
 podobno pravilo, kot ga poznamo za običaji odvod, zato imamo
 \[
 	(S^{ij}u_i)_{,\,j}=\topbot{S}{ij}{\,,j}u_i+S^{ij}u_{i,\,j}=
-	\topbot{S}{ij}{,\,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u}).
+	\topbot{S}{ij}{,\,j}\langle\vek{g}_i,\vek{u}\rangle+\tr(\ten{S}^{T}\nabla\vek{u}).
 \]
 Dobili smo enakost
 \begin{equation} \label{e:divStu}
-	\div(\ten{S}^{T}\vek{u})=\topbot{S}{ij}{,\,j}\vek{g}_i\cdot\vek{u}+\tr(\ten{S}^{T}\nabla\vek{u}).
+	\div(\ten{S}^{T}\vek{u})=\topbot{S}{ij}{,\,j}\langle\vek{g}_i,\vek{u}\rangle+\tr(\ten{S}^{T}\nabla\vek{u}).
 \end{equation}
 Če je $\vek{u}$ konstantno vektorsko polje, potem je $\nabla\vek{u}=\ten{0}$ in v
 enačbi (\ref{e:divStu}) s pomočjo definicije \ref{def:div} prepoznamo izraz za $\div\ten{S}$, ki je
@@ -905,5 +905,5 @@ $\ten{S}^{T}$, dobimo naslednjo trditev.
 \begin{trditev} \label{e:divSu}
 	Za poljubno tenzorsko polje $\ten{S}\in C^1(\U,\L(\V))$ in poljubno
 	vektorsko polje $\vek{u}\in C^1(\U,\V)$ velja
-	\[ \div(\ten{S}\vek{u})=\vek{u}\cdot\div\ten{S}^{T}+\tr(\ten{S}\nabla\vek{u}). \]
+	\[ \div(\ten{S}\vek{u})=\langle\vek{u},\div\ten{S}^{T}\rangle+\tr(\ten{S}\nabla\vek{u}). \]
 \end{trditev}

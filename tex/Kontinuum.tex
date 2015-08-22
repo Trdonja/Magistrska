@@ -38,6 +38,19 @@ Naj bo $I=[t_1,t_2]\subset\R$ časovni interval.
 	\emph{trenutna konfiguracija} telesa ob času $t$.
 \end{definicija}
 
+\begin{figure}[h]
+ \begin{center}
+	\input{img/gibanje}
+	\caption{Prikaz referenčne konfiguracije telesa $\B\subset\E_R$ na levi strani in dveh trenutnih
+	konfiguracij $\B_{t_1}$ ter $\B_{t_2}$ v prostoru $\E$ ob časih $t_1,t_2\in I$ na desni strani.
+	Za točko $X\in\B$ je prikazan njen krajevni vektor $\vek{X}=\hat{\iota}_O(X)$ glede na opazovališče
+	$\hat{\iota}_O$ za $\E_R$. Položaj te materialne točke v trenutnih konfiguracijah je označen
+	s prostorskima točkama $x_1=\chi(X,t_1)\in\B_{t_1}$ in $x_2=\chi(X,t_2)\in\B_{t_2}$, ki imata
+	svoj krajevni vektor $\vek{x}_1=\iota_o(x_1)$ oz.~$\vek{x}_2=\iota_o(x_2)$ glede na opazovališče
+	$\iota_o$ za $\E$.}
+ \end{center}
+\end{figure}
+
 V skladu z dogovorom \ref{d:dogovor} bomo s krepkimi simboli $\vek{\chi}$, $\vek{\chi}_t$, \dots
 označevali vektorska polja $\vek{\chi}=\iota_o\circ\chi$, $\vek{\chi}_t=\iota_o\circ\chi$, \dots,
 kjer je $\iota_o$ opazovališče za $\E$.
@@ -73,12 +86,12 @@ se imenuje \emph{deformacijski gradient} gibanja. Po izreku o inverzni funkciji 
 \]
 
 Za $\ten{F}$ lahko uprabimo polarni razcep (izrek \ref{i:polraz}), $\ten{F}=\ten{R}\ten{U}=\ten{V}\ten{R}$.
-Tenzorja $\ten{U}$ in $\ten{V}$ v tem razcepu se imenujeta \emph{desni} oz.~\emph{levi raztegljivostni
+Tenzorja $\ten{U}$ in $\ten{V}$ v tem razcepu se imenujeta \emph{desni} oz.~\emph{levi razteznostni
 tenzor}, $\ten{R}$ pa je \emph{rotacijski tenzor}. Tenzorja
 \[
 	\ten{C}=\ten{U}^2=\ten{F}^T\ten{F},\qquad\ten{B}=\ten{V}^2=\ten{F}\ten{F}^T
 \]
-se imenujeta \emph{desni} oz.~\emph{levi Cauchy-Greenov raztegljivostni tenzor}.
+se imenujeta \emph{desni} oz.~\emph{levi Cauchy-Greenov deformacijski tenzor}.
 
 Determinanti deformacijskega gradienta rečemo \emph{jacobijan} in jo označimo z
 \[
@@ -135,8 +148,8 @@ v prostorskem opisu pa z malo,
 \[ \grad\vek{f}:=\nabla\bar{\vek{f}},\qquad \div\vek{f}:=\div\bar{\vek{f}}. \]
 Če je $\vek{f}$ vektorsko polje, potem je
 \[
-	\Div\vek{f}:=\tr(\Grad\hat{\vek{f}})\quad\textrm{in}\quad
-	\div\vek{f}:=\tr(\grad\bar{\vek{f}}).
+	\Div\vek{f}=\tr(\Grad\hat{\vek{f}})\quad\textrm{in}\quad
+	\div\vek{f}=\tr(\grad\bar{\vek{f}}).
 \]
 
 Če je $\phi$ skalarno, $\vek{u}$ pa vektorsko polje, potem je zveza med gradientoma
