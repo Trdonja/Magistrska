@@ -184,7 +184,9 @@ bo oznaka $\partial\vek{f}/\partial t$ vedno pomenila časovni odvod prostorskeg
 	Hitrost in pospešek sta prvi in drugi materialni časovni odvod gibanja $\vek{x}(X,t)=\vek{\chi}(X,t)$,
 	$\vek{v}=\dot{\vek{x}}$, $\vek{a}=\ddot{\vek{x}}$.
 	Pospešek je materialni časovni odvod hitrosti in se v prostorskem opisu izraža kot
-	\[ \vek{a}=\dot{\vek{v}}=\frac{\partial\vek{v}}{\partial t}+(\grad\vek{v})\vek{v}. \]
+	\begin{equation} \label{e:maohit}
+		\vek{a}=\dot{\vek{v}}=\frac{\partial\vek{v}}{\partial t}+(\grad\vek{v})\vek{v}.
+	\end{equation}
 	Tenzorsko polje $\ten{L}=\grad\vek{v}$ se imenuje \emph{hitrostni gradient}.
 	Če je gibanje $\chi$ razreda $C^2$, potem je
 	\[
@@ -478,6 +480,12 @@ in ker to velja za poljubno množico $\chi_t(\mathcal{P})\subseteq\chi_t(\B)$, j
 na celotnem območju $\chi_t(\B)$ in za vsak $t\in I$, torej na celotnem območju $\Omega$,
 enako pa potem velja tudi v materialnem opisu na $\B\times I$.
 Enačba (\ref{e:lozom}) je znana pod imenom \emph{lokalna oblika zakona o ohranitvi mase}.
+V krivuljnih koordinatah $(x^i)$ za prostor $\E$ se enačba (\ref{e:lozom}) glasi
+\[
+	\frac{\partial\rho}{\partial t}+\frac{\partial\rho}{\partial x^i}v^i+\rho\topbot{v}{i}{,\, i}=0,
+\]
+pri čemer smo uporabili materialni časovni odvod (\ref{e:matodv}) za $\rho$, $v^i$ pa so
+komponente vektorja hitrosti $\vek{v}=v^i\vek{g}_i$.
 
 \begin{izrek}
 	Naj bo tenzorsko polje $\vek{f}\colon \B\times I\to W$ razreda $C^1$ in naj bo masna gostota

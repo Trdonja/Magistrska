@@ -2,12 +2,10 @@
 
 \usepackage[slovene]{babel}
 \usepackage[utf8]{inputenc}
-%\usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsfonts,amsthm,mathrsfs,mathtools,stmaryrd}
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
-\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 \usepackage[mathcal]{euscript}
-\usepackage{color, verbatim} % briši na koncu ven
+\usepackage{verbatim}
 \usepackage{enumitem} % za sezname (spacing med vrsticami)
 \usepackage[pdftex]{graphicx}
 %\usepackage{phonetic}
@@ -34,12 +32,9 @@
 \newtheorem{opomba}[definicija]{Opomba}
 \newtheorem{dogovor}[definicija]{Dogovor}
 
-%barvana okolja
-\newenvironment{rdece}{\par\color{red}}{\par}
 
 % ukazi
 \newcommand{\R}{\mathbb R} % množica realnih števil
-\newcommand{\N}{\mathscr N} % Newtonov prostor-čas
 \newcommand{\E}{\mathscr E} % Evklidski točkovni prostor
 \newcommand{\V}{\mathscr V} % trirazsežni Evklidski vektorski prostor
 \newcommand{\W}{\mathscr W} % normirani vektorski prostor
@@ -50,10 +45,8 @@
 \newcommand{\ten}[1]{\mathbf #1} % tenzor drugega reda
 \newcommand{\grad}{\mathrm{grad}} % gradient
 \renewcommand{\div}{\mathrm{div}} % divergenca
-\newcommand{\rot}{\mathrm{rot}} % rotor
 \newcommand{\Grad}{\mathrm{Grad}} % Gradient
 \newcommand{\Div}{\mathrm {Div}} % Divergenca
-\newcommand{\Rot}{\mathrm{Rot}} % Rotor
 \newcommand{\tr}{\mathrm{tr}} % sled
 \newcommand{\bsi}{\bar{\sigma}} % bar sigma
 \newcommand{\rdva}{I\! I} % rimska 2
@@ -62,11 +55,4 @@
 \newcommand{\topbot}[3]{{#1}^{#2}_{\phantom{#2}{#3}}}
 \newcommand{\cs}[3]{{\mit\Gamma}_{#1\phantom{#2}#3}^{\phantom{#1}#2}} % Christoffelov simbol prve vrste
 \newcommand{\ks}[2]{{\mit\Gamma}^{#1}_{\phantom{#1}#2}} % Christoffelov simbol druge vrste
-\newcommand{\tics}[3]{\tilde{\mit\Gamma}_{#1\phantom{#2}#3}^{\phantom{#1}#2}} % Christoffelov simbol s tildo
-\newcommand{\jump}[1]{\left\llbracket #1 \right\rrbracket}
-%\newcommand{\at}[2]{\left.\kern-\nulldelimiterspace#1\right|_{#2}} % izvršeno v točki
 \newcommand{\at}[2]{#1\Big|_{#2}} % izvršeno v točki
-\renewcommand{\vec}[1]{\mathop{\textsc{#1}}\limits^{\vbox to -.5ex{\kern-0.75ex\hbox{$\rightharpoonup$}\vss}}}
-\newcommand{\dtd}{\delta} % delta-časovni odvod
-\newcommand{\gdtd}{\delta_D} % Groß-delta-časovni odvod
-%\newcommand{\dtd}{\textrm{\eth}} % delta-časovni odvod

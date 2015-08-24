@@ -579,7 +579,7 @@ stisljiva, potem je njena notranja ali deformacijska energija
 \[ U=\int_{\B}\rho_R e(\rho)\,dV=\int_{\chi_t(\B)}\rho e(\rho)\,dv, \]
 kjer je $e\colon[0,\infty)\to\R$ funkcija razreda $C^2$, imenovana
 \emph{gostota notranje energije} in ima fizikalno enoto $m^2s^{-2}$.
-Predpostavili bomo, da je funkcija $e$ poznana.
+Predpostavili bomo, da je funkcija $e$ poznana, recimo iz zakona o idealnih plinih.
 
 Izračunajmo variacijo notranje energije:
 \begin{align*} 
@@ -621,10 +621,10 @@ vsako variacijo gibanja iz množice
 \]
 pri teh variacijah je vrednost drugega integrala enaka 0, na preostali enačbi
 pa lahko potem uporabimo lemo \ref{lema3} in dobimo
-\begin{equation*}
+\begin{equation} \label{e:eflinmom}
 	\rho\vek{a}=\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\quad
 	\textrm{na}\ \Omega.
-\end{equation*}
+\end{equation}
 Če ta rezultat sedaj upoštevamo v (\ref{e:elflupog}), vidimo, da mora
 za vsako variacijo gibanja $\vek{\eta}$ veljati
 \[
@@ -636,9 +636,22 @@ med drugim tudi za vsako variacijo iz množice
 	\vek{\eta}(\cdot,t_2)=\vek{0} \big\}\subset\mathcal{T},
 \]
 zato lahko uporabimo lemo \ref{lema4} (v tem primeru je $\partial_1\B=\emptyset$) in dobimo še pogoj
-\[
+\begin{equation} \label{e:rpzef}
 	\rho^2 e'(\rho)=p \quad\textrm{na}\ \{ (x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}.
+\end{equation}
+
+Enačba (\ref{e:eflinmom}) je \emph{enačba za ohranitev gibalne količine}.
+Poleg enačb (\ref{e:eflinmom}) in (\ref{e:rpzef}) sodi v sistem še enačba (\ref{e:lozom})
+za ohranitev mase.
+
+V krivuljnih koordinatah $(x^i)$ za prostor $\E$ se enačba (\ref{e:eflinmom}) glasi
+\[
+	\rho\Big(\frac{\partial v^i}{\partial t}+v^j \topbot{v}{i}{,\, j}\Big)
+	=g^{ij}\frac{\partial (\rho^2e'(\rho))}{\partial x^j}+\rho b^i,
 \]
+pri čemer so $v^i$ in $b^i$ komponente vektorjev $\vek{v}=v^i\vek{g}_i$ in $\vek{b}=b^i\vek{g}_i$,
+$g^{ij}$ pa so metrični koeficienti.
+Pospešek $\vek{a}$ smo pri tem izrazili kot materialni odvod hitrosti (\ref{e:maohit}).
 
 
 \subsection{Hiperelastično trdno telo}
@@ -715,19 +728,38 @@ za vsa dopustna gibanja $\vek{\eta}\in\mathcal{T}$. Pri tem smo zopet upošteval
 variaciji notranje energije (\ref{e:vapoesr}) oz.~(\ref{e:vapoesp}).
 Od tu dalje postopamo na enak način, kot smo pri primeru za elastični fluid.
 Iz enačbe (\ref{e:globoref}) dobimo z uporabo leme \ref{l:1}
-\begin{equation*}
+\begin{equation} \label{e:heslmmat}
 	\rho_R\vek{a}=\Div\ten{S}+\rho_R\vek{b}\quad\textrm{na}\ \B\times[t_1,t_2],
-\end{equation*}
+\end{equation}
 iz enačbe (\ref{e:globoprost}) pa z uporabo leme \ref{lema3} dobimo
-\begin{equation*}
+\begin{equation} \label{e:heslmpro}
 	\rho\vek{a}=\div\ten{T}+\rho\vek{b}\quad\textrm{na}\ \Omega.
-\end{equation*}
+\end{equation}
 Če dobljena rezultata upoštevamo v (\ref{e:globoref}) oz.~v (\ref{e:globoprost}) in
 nato uporabimo lemo \ref{l:2} oz.~lemo \ref{lema4}, dobimo še
-\begin{equation*}
+\begin{equation} \label{e:robokop}
 	\ten{S}\vek{N}=\vek{t}_R\quad\textrm{na}\ \mathcal{R}\times[t_1,t_2]
-\end{equation*}
+\end{equation}
 oziroma
-\begin{equation*}
+\begin{equation} \label{e:robolom}
 	\ten{T}\vek{n}=\vek{t}\quad\textrm{na}\ \{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}.
+\end{equation}
+Pri tem je $\R$ množica regularnih točk ploskve $\partial_2\B$.
+
+Tudi tu sta (\ref{e:heslmmat}) in (\ref{e:heslmpro}) \emph{enačbi za ohranitev gibalne količine}.
+Poleg enačb (\ref{e:heslmmat}) in (\ref{e:robokop}) oz.~(\ref{e:heslmpro}) in (\ref{e:robolom})
+sodi v sistem še enačba ohranitve mase (\ref{e:lozom}).
+
+V krivuljnih koordinatah $(x^i)$ za prostor $\E$ se enačbi (\ref{e:heslmpro}) in (\ref{e:robolom}) glasita
+\begin{gather*}
+	\rho\Big(\frac{\partial v^i}{\partial t}+v^j\topbot{v}{i}{,\, j}\Big)=\topbot{T}{ij}{,\, j}+\rho b^i,\\
+	t^i=T^{ij}n_j=\topbot{T}{i}{j}n^j,
+\end{gather*}
+pri čemer so $\vek{v}=v^i\vek{g}_i$, $\vek{b}=b^i\vek{g}_i$, $\vek{t}=t^i\vek{g}_i$,
+$\vek{n}=n^i\vek{g}_i=n_i\vek{g}^i$ in $\ten{T}=T^{ij}\vek{g}_i\otimes\vek{g}_j=\topbot{T}{i}{j}\vek{g}_i\otimes\vek{g}^j$.
+Enačba (\ref{e:heslmmat}) se glasi
+\begin{equation*}
+	\rho_R\Big(\frac{\partial v^i}{\partial t}+v^j\topbot{v}{i}{,\, j}\Big)=\topbot{S}{iK}{,\, K}+\rho_R b^i,
 \end{equation*}
+pri čemer je $\ten{S}=\topbot{S}{i}{K}\vek{g}_i\otimes\vek{G}^K$
+in $\{\vek{G}^K\}$ je lastna baza za koordinatni sistem $(X^K)$ na $\B\subset\E_R$.
