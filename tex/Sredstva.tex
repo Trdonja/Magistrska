@@ -232,7 +232,7 @@ služila za translacijski prostor Evklidskega trirazsežnega točkovnega prostor
 
 $\V$ naj bo opremljen s standardnim skalarnim produktom $\langle\cdot,\cdot\rangle$.
 Elemente oz.~vektorje prostora $\V$ bomo vedno označevali s krepkimi poševni\-mi simboli,
-npr.~$\vek{u}$, $\vek{\eta}$, $\vek{F}$. Elemente prostora $\L(\V)$, t.j.~linearne
+npr.~$\vek{u}$, $\vek{\eta}$, $\vek{F}$. Elemente prostora $\L(\V)$, tj.~linearne
 preslikave iz $\V$ v $\V$, bomo vedno označevali s krepkimi pokončnimi simboli, npr.~$\ten{F}$,
 in jih kasneje imenovali \emph{tenzorji drugega reda} ali pa na kratko kar \emph{tenzorji}.
 \footnote{Tenzorji drugega reda so v matematiki sicer bilinearne funkcije iz $\V\times\V$ v $\R$, vendar med 
@@ -300,8 +300,9 @@ za katerega velja
 za poljubno netrivialno alternirajočo $n$-linearno formo $\omega$ in poljubne vektorje $\vek{u}_1,\dots,\vek{u}_n\in\V$.
 Definicija je nedvisna od izbire netrivialne forme $\omega$. Za poljubna $\ten{A},\ten{B}\in\L(\V)$ velja
 \begin{enumerate}[noitemsep]
-	\item $\det(\ten{A}^T)=\det\ten{A}$,
-	\item $\det(\ten{A}\ten{B})=(\det\ten{A})(\det\ten{B})$.
+	\item $\det(\ten{A}\ten{B})=(\det\ten{A})(\det\ten{B})$,
+	\item $\det(\ten{A}^T)=\det\ten{A}$.
+	%\item $\det(\ten{A}^{-1})=(\det\ten{A})^{-1}$ (če $\det\ten{A}\neq 0$).
 \end{enumerate}
 
 \emph{Sled} linearne preslikave $\ten{A}\in\L(\V)$ je realno število $\tr\ten{A}$,
@@ -352,9 +353,9 @@ V njem so vse simetrične linearne preslikave.
 
 Če je $\ten{S}\in\mathrm{Sym}(\V)$, potem iz linearne algebre vemo, da so vse lastne
 vrednosti preslikave $\ten{S}$ realne. Še več, za prostor $\V$ obstaja ortonormirana baza
-iz lastnih vektorjev $\{\vek{u}_1,\dots,\vek{u}_,\}$ preslikave $\ten{S}$. Če je
+iz lastnih vektorjev $\{\vek{u}_1,\dots,\vek{u}_n\}$ preslikave $\ten{S}$. Če je
 $\vek{u}_j$ lastni vektor pri lastni vrednosti $a_j$, $j=1,\dots,n$, potem se da po spektralnem
-izreku $\ten{S}\in\mathrm{Sym}(\V)$ enolično zapisati kot
+izreku $\ten{S}$ enolično zapisati kot
 \begin{equation} \label{e:spekraz}
 	\ten{S}=\sum_{j=1}^n a_j\vek{u}_j\otimes\vek{u}_j.
 \end{equation}
@@ -547,8 +548,8 @@ Podajmo nekaj lastnosti gradienta in divergence, ki jih bomo potrebovali v nadal
 		Območje $\B\subset\E$ je \emph{regularno}, če je njegov rob $\partial \B$ sestavljen
 		iz končnega števila orientabilnih ploskev.
 		\item
-		Točka na robu $\partial\B$ je \emph{regularna}, če obstaja enotska normala
-		na rob $\partial\B$ v tej točki, sicer je \emph{neregularna}.
+		Naj bo $\B\subset\E$ regularno območje. Točka na $\partial\B$ je \emph{regularna}, če obstaja enotska normala
+		na $\partial\B$ v tej točki, sicer je \emph{neregularna}.
 	\end{itemize}
 \end{definicija}
 Ploskev je že po definiciji regularna parametrizacija iz neke podmnožice v $\R^2$ z neprazno notranjostjo,
@@ -629,9 +630,9 @@ V točki $x$ lahko definiramo \emph{kovariantne vektorje}
 	, \qquad i=1,2,3
 \end{equation}
 in \emph{kontravariantne vektorje}
-\begin{equation} \label{e:gradvek}
+\begin{equation*} %\label{e:gradvek}
 	\vek{g}^i(x)=\nabla\psi^i(x),\qquad i=1,2,3.
-\end{equation}
+\end{equation*}
 
 \begin{trditev}
 	Množica $\{\vek{g}_i(x)\}_i$ tvori bazo za translacijski prostor $\V$.
@@ -670,9 +671,9 @@ Skalarna polja
 \[ g_{ij}=\langle\vek{g}_i,\vek{g}_j\rangle\qquad\textrm{in}\qquad g^{ij}=\langle\vek{g}^i,\vek{g}^j\rangle \]
 imenujemo \emph{koeficienti metričnega tenzorja}. 
 Iz zadnjih treh zvez hitro vidimo, da velja
-\begin{equation} \label{e:relzag}
+\begin{equation*} %\label{e:relzag}
 	g^{ik}g_{kj}=\topbot{\delta}{i}{j},\qquad \vek{g}^i=g^{ik}\vek{g}_k,\qquad \vek{g}_i=g_{ik}\vek{g}^k.
-\end{equation}
+\end{equation*}
 
 
 \subsection{Koordinatna transformacija}
@@ -713,7 +714,7 @@ komponentni obliki glede na eno od baz prostora $\L(\V)$:
 \begin{align}
 	\ten{S}&=S_{ij}\,\vek{g}^i\otimes\vek{g}^j=\topbot{S}{i}{j}\,\vek{g}_i\otimes\vek{g}^j \nonumber \\
 	&=\bar{S}_{ij}\,\bar{\vek{g}}^i\otimes\bar{\vek{g}}^j=
-	\topbot{\bar{S}}{i}{j}\,\bar{\vek{g}}_i\otimes\bar{\vek{g}}^j \label{e:tenkomp}
+	\topbot{\bar{S}}{i}{j}\,\bar{\vek{g}}_i\otimes\bar{\vek{g}}^j. \label{e:tenkomp}
 \end{align}
 Tudi tu so $S_{ij},\topbot{S}{i}{j},\dots$ skalarna polja.
 Posamezne komponente vektorskih in tenzoskih polj dobimo s pomočjo zveze (\ref{e:gigj})
@@ -731,10 +732,10 @@ S pomočjo (\ref{e:gtog}) dobimo naslednje zveze med posameznimi komponentami:
 \end{gather*}
 
 Če je $\vek{u}=u_k\vek{g}^k$ poljubno vektorsko polje, je
-\begin{equation} \label{e:iten}
+\begin{equation*} %\label{e:iten}
 	(\vek{g}^i\otimes\vek{g}_i)\vek{u}=(\vek{g}^i\otimes\vek{g}_i)u_k\vek{g}^k=
 	u_k\bottop{\delta}{i}{k}\vek{g}^i=u_k\vek{g}^k=\vek{u},
-\end{equation}
+\end{equation*}
 torej je $\vek{g}^i\otimes\vek{g}_i=\ten{1}$, identična linearna preslikava, in to
 v vsaki točki množice $\U$. Seveda velja tudi $\vek{g}_i\otimes\vek{g}^i=\ten{1}$.
 
@@ -745,7 +746,7 @@ v vsaki točki množice $\U$. Seveda velja tudi $\vek{g}_i\otimes\vek{g}^i=\ten{
 Do konca tega razdelka naj velja, da so vsa obravnavan tenzorska polja razreda
 $C^{1}$ ali $C^{2}$, kar bo razvidno samo po sebi.
 
-Naj bo $\psi$ oz.~$(x^i)$ koordinatni sistem na $\U\subseteq\E$ z naravnima bazama $\{\vek{g}_i\}_i$ in $\{\vek{g}^i\}_i$.
+Naj bo $\psi$ oz.~$(x^i)$ koordinatni sistem na $\U\subseteq\E$ z bazama $\{\vek{g}_i\}_i$ in $\{\vek{g}^i\}_i$.
 Ker so gradienti tenzorskih polj tudi tenzorska polja, jih lahko zapišemo v komponentni obliki.
 
 Naj bo $\vek{f}\colon \U\to\W$ tenzorsko polje. Če je $\gamma_i$ $i$-ta
@@ -837,11 +838,11 @@ in ponovimo prejšnji postopek, kjer dodatno uporabimo relacijo (\ref{e:lcs1}), 
 	Če v izrazu $\vek{u}=u_j\vek{g}^j$ vstavimo za $u_j=\partial f/\partial x^j$,
 	kar so komponente od $\nabla f$ v izrazu (\ref{e:gradskal}), ter vstavimo v
 	(\ref{e:kov2}), rezultat pa nato v (\ref{e:nimena1}), dobimo
-	\begin{equation} \label{e:dvagrad}
+	\begin{equation*} %\label{e:dvagrad}
 		%\Big(\frac{\partial f}{\partial x^j}\Big)_{,k}
 		\nabla(\nabla f)=\Big(\frac{\partial^2 f}{\partial x^j\partial x^k}-
 		\frac{\partial f}{\partial x^i}\cs{j}{i}{k}\Big)\vek{g}^j\otimes\vek{g}^k.
-	\end{equation}
+	\end{equation*}
 \end{primer}
 
 Naj bo $\ten{S}\colon \U\to\L(\V)$. Potem je $\nabla\ten{S}\colon \U\to\L(\V,\L(\V))$

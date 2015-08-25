@@ -59,7 +59,7 @@ zvezna preslikava na kompaktni domeni $B\times I$.
 				\vek{\eta}(X,t)=\vek{0}\quad \textrm{za vse}\ (X,t)\in \partial_1 \B\times I,
 			\]
 			se imenuje \emph{variacija gibanja}. Množico vseh variacij gibanja bomo ozna\-čili s $\mathcal{T}$.
-		\item Za dopustno gibanje $\chi$, variacijo gibanja $\vek{\eta}$ in realno konstanto $\varepsilon$ se gibanje\footnote{
+		\item Za dopustno gibanje $\chi$, variacijo gibanja $\vek{\eta}$ in realno število $\varepsilon$ se gibanje\footnote{
 			V skladu z dogovorom na strani \pageref{seto} je vsota točke in vektorja točka, zato preslikava
 			$\chi+\varepsilon\vek{\eta}$ pripada prostoru $\mathcal{X}$.}
 			$\chi+\varepsilon\vek{\eta}$ imenuje \emph{bližnje gibanje} gibanja $\chi$.
@@ -71,8 +71,8 @@ kot smo ju definirali v poglavju \ref{chp:kinkon}, ker tukaj nismo nič zahteval
 trenutne konfiguracije dopustnega ali bližnjega gibanja bijektivne.
 Ta pogoj je avtomatsko izpolnjen, če je pripadajoča determinanta deformacijskega
 gradienta vseskozi različna od 0. V bistvu je to potreben in tudi zadosten pogoj, da so trenutne konfiguracije
-dopustnega ali bližnjega gibanja res bijektivne za vsak $t\in I$\footnote{
-To velja za odvedljive preslikave, kar pa dopustna in bližnja gibanja po definiciji so.}.
+dopustnega ali bližnjega gibanja res bijektivne za vsak $t\in I$.\footnote{
+To velja za odvedljive preslikave, kar pa dopustna in bližnja gibanja po definiciji so.}
 Ko bomo iskali pravo gibanje, bo neničelnost jacobijana eden od potrebnih pogojev.
 V bistvu bomo predpostavili, da so konfiguracija $\chi_{t_1}$ iz začetnega pogoja (\ref{e:zacetnipogoj})
 ter opazovališči za $\E_R$ in $\E$ izbrani tako, da je $J(\cdot,t_1)>0$. Zato bo za pravo gibanje
@@ -112,7 +112,7 @@ kjer je $\chi_0$ poljubno dopustno gibanje.
 		\item
 			Če $F$ dopustnemu gibanju $\chi$ priredi vektorsko polje hitrosti $\vek{v}$,
 			$F(\chi)=d\vek{\chi}/dt=\dot{\vek{\chi}}=\vek{v}$, potem je
-			\[ \vek{v}^*=\frac{d}{dt}(\chi+\varepsilon\vek{\eta})=\vek{v}+\varepsilon\dot{\vek{\eta}}, \]
+			\[ \vek{v}^*=\frac{d}{dt}(\vek{\chi}+\varepsilon\vek{\eta})=\vek{v}+\varepsilon\dot{\vek{\eta}}, \]
 			variacija polja hitrosti pa je
 			\[ \delta\vek{v}=\dot{\vek{\eta}}. \]
 		\item
@@ -238,7 +238,7 @@ se imenuje \emph{Cauchyjev napetostni vektor}, polje
 \begin{equation*} \label{e:pksv}
 	\vek{t}_R=\vek{t}_R(X,t),\quad (X,t)\in \partial \B\times I
 \end{equation*}
-pa \emph{Piola-Kirchoffov napetostni vektor}. Oba
+pa \emph{Piola-Kirchhoffov napetostni vektor}. Oba
 imata fizikalno enoto tlaka, torej \textit{Newton na kvadratni meter}, $Nm^{-2}$.
 Primer napetostnega vektorja je npr. atmosferski tlak.
 Iz enačbe (\ref{e:zunsil}) vidimo, da mora veljati zveza
@@ -257,7 +257,7 @@ Za polje $\vek{b}$ bomo predpostavili, da je znano.
 robni pogoj napetosti. Pri mešanih robnih pogojih poznamo predpis za polje $\vek{t}_R$ na
 območju $\partial\B_2\times I$, na območju $\partial\B_1\times I$ pa je podan predpis $\chi=q$.
 Na kinematične robne pogoje in robne pogoje napetosti lahko gledamo kot na poseben
-primer mešanih pogojev; v prvem primeru je $\partial_2\B=\emptyset$, v drugem pa
+primer mešanih robnih pogojev; v prvem primeru je $\partial_2\B=\emptyset$, v drugem pa
 $\partial_1\B=\emptyset$.
 
 Izraz
@@ -307,7 +307,7 @@ Pomembno je le, da predpostavimo njun obstoj.
 	Funkcional, ki gibanju $\chi\in \mathcal{D}$ s kinetično energijo $T$ in potencialno
 	energijo $U+W$ priredi realno število
 	\[
-		H=\int_{t_1}^{t_2}T-(U+W)\,dt,
+		H=\int_{t_1}^{t_2}(T-U-W)\,dt,
 	\]
 	se imenuje \emph{Hamiltonov funkcional}.
 \end{definicija}
@@ -425,7 +425,7 @@ Hitro se lahko prepričamo, da je
 kjer je $\overline{K}(X_0,\alpha)=\{X\in\E_R\,;\ \|X-X_0\|\leq\alpha\}$ zaprta krogla
 s središčem v $X_0$ in radijem $\alpha$. Tako definirano polje $\vek{w}$ je
 tudi gladko, saj je produkt gladkih polj. V notranjosti nosilca je njegova 
-edina neničelna (t.j.~$k$-ta) komponenta glede na bazo $\{\vek{b}_j\}_{j=1}^{n}$ pozitivna.
+edina neničelna (tj.~$k$-ta) komponenta glede na bazo $\{\vek{b}_j\}_{j=1}^{n}$ pozitivna.
 
 Omenimo še to pomembno dejstvo, da za vsako zvezno preslikavo $\vek{w}$ s kompaktnim
 nosilcem velja, da je $\vek{w}=\vek{0}$ na robu nosilca. Komplement nosilca je namreč odprta množica, na kateri
@@ -435,7 +435,7 @@ ki je enak robu nosilca.
 \begin{lema}\label{l:1}
 	Naj bo $\vek{f}\colon\B\times [t_1,t_2]\to\W$ zvezno polje. Če velja
 	\begin{equation}\label{e:lem1}
-		\int_{t_1}^{t_2}\int_B\langle\vek{f},\vek{w}\rangle\,dV\,dt = 0
+		\int_{t_1}^{t_2}\int_{\B}\langle\vek{f},\vek{w}\rangle\,dV\,dt = 0
 	\end{equation}
 	za vsako gladko polje $\vek{w}\colon\B\times[t_1,t_2]\to\W$, za katerega velja
 	\[
@@ -449,17 +449,17 @@ ki je enak robu nosilca.
 	Glede na fiksno bazo $\{\vek{b}_j\}_{j=1}^n$ prostora $\W$ lahko $\vek{f}$
 	zapišemo v komponentni obliki kot $\vek{f}=f_j\vek{b}_j$.
 	Recimo, da obstaja točka $(X_0,t_0)$ v notranjosti območja $\B\times[t_1,t_2]$, da je $f_{k}(X_0,t_0)\neq 0$
-	za neki $1\leq k\leq n$. Potem zaradi zveznosti polja $\vek{f}$
-	obstaja okolica $U$ točke $(X_0,t_0)$, na kateri je $f_k$
-	vseskozi različen od 0 in enakega predznaka, ter
-	je $U$ še v celoti vsebovana v notranjosti območja $\B\times[t_1,t_2]$.
+	za neki $1\leq k\leq n$.
+	Potem zaradi zveznosti polja $\vek{f}$ obstaja dovolj majhen $\alpha>0$, da je $f_k$ na okolici
+	$U=K(X_0,\alpha)\times(t_0-\alpha,t_0+\alpha)$ točke $(X_0,t_0)$ različna
+	od 0 in enakega predznaka, hkrati pa je $U$ še v celoti vsebovana v notranjosti območja $\B\times[t_1,t_2]$.
 	
-	Za dovolj majhen $\alpha>0$ lahko definiramo polje
+	Definirajmo polje
 	$\vek{w}$ kot v (\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$,
-	če je $f_{k}(X_0,t_0) < 0$, tako da je množica (\ref{e:supaw}) v celoti vsebovana v okolici $U$.
-	Skrčitev polja $\vek{w}$ na domeno $\B\times[t_0,t_1]$ tako ustreza vsem pogojem iz leme.
-	Skalarni produkt $\langle\vek{f},\vek{w}\rangle$ je pozitiven na notranjosti množice
-	$\mathrm{supp}\,\vek{w}$ in je 0 drugje, zato je
+	če je $f_{k}(X_0,t_0) < 0$.
+	Skrčitev polja $\vek{w}$ na domeno $\B\times[t_1,t_2]$ tako ustreza vsem pogojem iz leme.
+	Skalarni produkt $\langle\vek{f},\vek{w}\rangle$ je pozitiven na množici $U$ (katere zaprtje
+	je ravno nosilec od $\vek{w}$) in je 0 drugje, zato je
 	\[
 		\int_{t_1}^{t_2}\int_B \langle\vek{f},\vek{w}\rangle\,dV\,dt=
 		\int_{t_0-\alpha}^{t_0+\alpha}\int_{\overline{K}(X_0,\alpha)} \langle\vek{f},\vek{w}\rangle\,dV\,dt> 0,
@@ -490,18 +490,19 @@ ki je enak robu nosilca.
 	Podobno, kot v prejšnjem dokazu, zapišemo $\vek{f}=f_j\vek{b}_j$ in predpostavimo
 	$f_{k}(X_0,t_0)\neq 0$ za neke $1\leq k\leq n$, $t_0\in (t_1,t_2)$ in $X_0\in \mathcal{R}$.
 	
-	Ker točka $X_0$ ni na robu ploskve $\partial_2 \B$ in je regularna, obstaja odprta okolica $\mathcal{U}\subset\E_R$ točke
-	$X_0$, da je $U\cap\partial_2\B\subset\mathcal{R}$.
-	Za dovolj majhen $\alpha>0$ je $\overline{K}(X_0,\alpha)$ vsebovana v $\mathcal{U}$ in
-	hkrati je $f_k$ zaradi zveznosti $\vek{f}$ ves čas različna od 0 in enakega predznaka
-	na območju $(K(X_0,\alpha)\cap\partial_2\B)\times(t_1,t_2)$.
+	Ker točka $X_0$ ni na robu ploskve $\partial_2 \B$ in je regularna,
+	obstaja za dovolj majhen $\alpha>0$ okolica $K(X_0,\alpha)\times(t_0-\alpha,t_0+\alpha)$
+	točke $(X_0,t_0)$, tako da je $K(X_0,\alpha)\cap\partial_2\B\subset\mathcal{R}$,
+	$(t_0-\alpha,t_0+\alpha)\subset[t_1,t_2]$ in je
+	$f_k$ zaradi zveznosti $\vek{f}$ različna od 0 in enakega predznaka
+	na območju $(K(X_0,\alpha)\cap\partial_2\B)\times(t_0-\alpha,t_0+\alpha)$.
 	
 	Definirajmo polje $\vek{w}$ kot v
 	(\ref{e:funiw}), če je $f_{k}(X_0,t_0) > 0$, oz.~kot $-\vek{w}$,
 	če je $f_{k}(X_0,t_0) < 0$. Skrčitev tako definiranega polja $\vek{w}$ na območje
 	$\B\times[t_1,t_2]$ ustreza predpostavkam iz leme.
 	Skalarni produkt $\langle\vek{f},\vek{w}\rangle$ je pozitiven na
-	$(K(X_0,\alpha)\cap\partial_2\B)\times(t_1,t_2)$ in je 0 drugje na $\mathcal{R}\times[t_1,t_2]$,
+	$(K(X_0,\alpha)\cap\partial_2\B)\times(t_0-\alpha,t_0+\alpha)$ in je 0 drugje na $\mathcal{R}\times[t_1,t_2]$,
 	zato je\footnote{Ploščina množice $\partial_2\B\setminus \mathcal{R}$ je 0.}
 	\[
 		\int_{t_1}^{t_2}\int_{\partial_2\B} \langle\vek{f},\vek{w}\rangle\,dA\,dt=
@@ -539,9 +540,8 @@ V enačbi (\ref{e:lem3}) nastopata polji $\vek{f}$ in $\vek{w}$ v prostorskem op
 \begin{lema} \label{lema4}
 	Naj rob $\partial \B$ sestoji iz komplementarnih ploskev $\partial_1 \B$ in $\partial_2 \B$.
 	Naj bo $\chi\colon \B\times[t_1,t_2]\to\E$ gibanje razreda $C^1$ s pozitivnim jacobijanom $J$ in
-	$f\colon\partial_2 \B\times[t_1,t_2]\to\R$ skalarno polje, zvezno na podobmočju $\mathcal{R}\times[t_1,t_2]$,
-	ki je definirano enako, kot v lemi \ref{l:2}.
-	Če velja
+	$f\colon\partial_2 \B\times[t_1,t_2]\to\R$ skalarno polje, zvezno na podobmočju $\mathcal{R}\times[t_1,t_2]$.
+	Pri tem je $\mathcal{R}$ definirana enako, kot v lemi \ref{l:2}. Če velja
 	\begin{equation}\label{e:lem4}
 		\int_{t_1}^{t_2}\int_{\chi_t(\partial_2 \B)}\langle f\vek{n},\vek{w}\rangle\,da\,dt=0
 	\end{equation}
@@ -587,7 +587,7 @@ Izračunajmo variacijo notranje energije:
 	\int_{\B}\rho_R e(\rho^*)\,dV }{\varepsilon=0} =
 	\at{\int_{\B}\rho_R e'(\rho^*)\frac{d\rho^*}{d\varepsilon}\,dV }{\varepsilon=0} \\
 	&= -\int_{\B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV
-	= -\int_{\chi_t(\B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv
+	= -\int_{\chi_t(\B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv.
 \end{align*}
 Pri tem smo smeli zamenjati vrstni red odvajanja in integriranja, ker se referenčna
 konfiguracija $\B$ ne spreminja, nato pa smo uporabili verižno pravilo, enačbo
@@ -595,21 +595,21 @@ konfiguracija $\B$ ne spreminja, nato pa smo uporabili verižno pravilo, enačbo
 Če sedaj na dobljenem rezultatu uporabimo relacijo 3 iz trditve \ref{t:divprop} in
 nato divergenčni izrek \ref{i:divtheo}$_3$, dobimo
 \begin{equation} \label{e:varpot}
-	\delta U=\int_{\chi_t(\B)}\grad\big(\rho^2 e'(\rho)\big)\cdot\vek{\eta}\,dv
-	-\int_{\chi_t(\partial \B)}\langle\rho^2 e'(\rho)\vek{n},\vek{\eta}\rangle\,da.
+	\delta U=\int_{\chi_t(\B)}\big<\grad\big(\rho^2 e'(\rho)\big),\vek{\eta}\big>\,dv
+	-\int_{\chi_t(\partial \B)}\big<\rho^2 e'(\rho)\vek{n},\vek{\eta}\big>\,da.
 \end{equation}
 
 Od robnih pogojev imamo v tem primeru le robni pogoj napetosti.
 Naj bo $\mathcal{R}\subseteq\partial \B$ množica regularnih točk ploskve $\partial \B$ in
-predpostavimo, da imamo podan \emph{zunanji tlak}, t.j.~zvezno skalarno polje
+predpostavimo, da imamo podan \emph{zunanji tlak}, tj.~zvezno skalarno polje
 $p\colon \E\times[t_1,t_2]\to\R$, da je $\vek{t}=-p\vek{n}$ na
 $\{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2]\}$.
 
 Če sedaj upoštevamo rezultate (\ref{e:varkin}), (\ref{e:varvide}) in (\ref{e:varpot}),
 mora po posledici \ref{p:varham0} pravo gibanje zadoščati enačbi
 \begin{multline} \label{e:elflupog}
-	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(\B)}\Big(-\rho\vek{a}-
-	\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\Big)\cdot\vek{\eta}\,dv+ \\
+	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(\B)}\Big<-\rho\vek{a}-
+	\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b},\vek{\eta}\Big>\,dv+ \\
 	+\int_{\chi_t(\partial \B)}\big<\big(\rho^2 e'(\rho)-p\big)\vek{n},\vek{\eta}\big>\,da\bigg)\,dt=0
 \end{multline}
 za vsako variacijo gibanja $\vek{\eta}\in\mathcal{T}$. Med drugim mora to veljati za
@@ -679,7 +679,7 @@ Definirajmo tenzorsko polje
 	\ten{S}(X,t)=\rho_R(X)D\sigma(\ten{F}(X,t)).%\quad\textrm{oz.~krajše}\quad
 	%\ten{S}=\rho_RDe(\ten{F}).
 \end{equation}
-$\ten{S}(X,t)$ se imenuje \emph{prvi Piola-Kirchoffov napetostni tenzor}.
+$\ten{S}(X,t)$ se imenuje \emph{prvi Piola-Kirchhoffov napetostni tenzor}.
 
 Izračunajmo variacijo notranje energije:
 \begin{align*} 
@@ -744,7 +744,7 @@ oziroma
 \begin{equation} \label{e:robolom}
 	\ten{T}\vek{n}=\vek{t}\quad\textrm{na}\ \{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}.
 \end{equation}
-Pri tem je $\R$ množica regularnih točk ploskve $\partial_2\B$.
+Pri tem je $\mathcal{R}$ množica regularnih točk ploskve $\partial_2\B$.
 
 Tudi tu sta (\ref{e:heslmmat}) in (\ref{e:heslmpro}) \emph{enačbi za ohranitev gibalne količine}.
 Poleg enačb (\ref{e:heslmmat}) in (\ref{e:robokop}) oz.~(\ref{e:heslmpro}) in (\ref{e:robolom})
@@ -761,5 +761,5 @@ Enačba (\ref{e:heslmmat}) se glasi
 \begin{equation*}
 	\rho_R\Big(\frac{\partial v^i}{\partial t}+v^j\topbot{v}{i}{,\, j}\Big)=\topbot{S}{iK}{,\, K}+\rho_R b^i,
 \end{equation*}
-pri čemer je $\ten{S}=\topbot{S}{i}{K}\vek{g}_i\otimes\vek{G}^K$
-in $\{\vek{G}^K\}$ je lastna baza za koordinatni sistem $(X^K)$ na $\B\subset\E_R$.
+pri čemer je $\ten{S}=S^{iK}\vek{g}_i\otimes\vek{G}_K$
+in $\{\vek{G}_K\}$ je kovariantna baza za koordinatni sistem $(X^K)$ na $\B\subset\E_R$.

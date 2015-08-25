@@ -60,8 +60,8 @@ vektor $\vek{u}^*=\iota^*(x_1,x_2)$, za katerega po (\ref{e:vektrans}) velja
 Linearni preslikavi $\ten{A}\in\L(\V)$ z razvojem $\ten{A}=A_{ij}\,\vek{e}_i\otimes\vek{e}_j$
 pripada linearna preslikava
 \begin{align}
-	\ten{A}^*&=A_{ij}\,\vek{e}^*_i\otimes\vek{e}^*_j=A_{ij}\,\ten{Q}\vek{e}_i\otimes\ten{Q}\vek{e}_j
-	=\ten{Q}A_{ij}\,\vek{e}_i\otimes\vek{e}_j\ten{Q}^T \nonumber \\
+	\ten{A}^*&=A_{ij}\,\vek{e}^*_i\otimes\vek{e}^*_j=A_{ij}\,(\ten{Q}\vek{e}_i)\otimes(\ten{Q}\vek{e}_j)
+	=\ten{Q}(A_{ij}\,\vek{e}_i\otimes\vek{e}_j)\ten{Q}^T \nonumber \\
 	&=\ten{Q}\ten{A}\ten{Q}^T. \label{e:traten}
 \end{align}
 Za vektorsko količino $\vek{u}$ oz.~tenzorsko količino $\ten{A}$
@@ -99,7 +99,7 @@ saj velja
 
 Za funkcijo shranjene energije $\sigma=\sigma(\ten{F})$, ki smo jo predstavili v primeru
 hiperelastičnega trdnega telesa, zahtevamo, da je kot skalarna količina neodvisna
-od opazovališča, torej velja
+od opazovališča, torej mora veljati
 \begin{equation} \label{e:objesig}
 	\sigma^*=\sigma(\ten{F}^*)=\sigma(\ten{Q}\ten{F})=\sigma(\ten{F})
 \end{equation}
@@ -177,7 +177,7 @@ Označimo pripadajoča deformacijska gradienta z
 \]
 Jasno je, da imata referenčni konfiguraciji $\kappa$ in $\widehat{\kappa}$ vsaka
 svojo funkcijo shranjene energije, $\sigma_{\kappa}$ in $\sigma_{\widehat{\kappa}}$,
-ki sta v splošnem različni, vendar pa mora v vsaki točki $X\in\B$ veljati
+ki sta v splošnem različni, vendar pa mora v vsaki točki $X\in\B$ in za vsak $t\in I$ veljati
 \begin{equation} \label{e:responf}
 	\sigma_{\kappa}(\ten{F}_{\kappa}(\kappa(X),t))
 	=\sigma_{\widehat{\kappa}}(\ten{F}_{\widehat{\kappa}}(\widehat{\kappa}(X),t)).
@@ -417,13 +417,13 @@ kar velja za vsak simetričen pozitivno definiten $\ten{B}$ in vsak $\ten{Q}\in\
 	Obratno, če velja $\phi(\ten{A})=f(a_1,a_2,a_3)$, potem je $\phi(\ten{A})=\phi(\ten{Q}\ten{A}\ten{Q}^T)$,
 	saj imata linearni preslikavi $\ten{A}$ in $\ten{Q}\ten{A}\ten{Q}^T$ enake lastne vrednosti,
 	kar se najhitreje vidi tako, da imata $\ten{A}$ in $\ten{Q}\ten{A}\ten{Q}^T$ enak karakteristični polinom.
-	Če je namreč $p_{ten{A}}$ karakteristični polinom za $\ten{A}$, potem je po Cayley-Hamiltonovem izreku
-	$p_{ten{A}}=0$, hitro pa lahko vidimo, da je tudi $p_{ten{A}}(\ten{Q}\ten{A}\ten{Q}^T)=0$.
+	Če je namreč $p_{\ten{A}}$ karakteristični polinom za $\ten{A}$, potem je po Cayley-Hamiltonovem izreku
+	$p_{\ten{A}}(\ten{A})=\ten{0}$, hitro pa lahko vidimo, da je tudi $p_{\ten{A}}(\ten{Q}\ten{A}\ten{Q}^T)=\ten{0}$.
 \endproof
 
 Karakteristični polinom linearne preslikave $\ten{A}\in\L(\V)$ je
 \[
-	\det(\ten{A}-\lambda\ten{1})=-\lambda^3+I_{\ten{A}}\lambda^2+\rdva_{\ten{A}}\lambda+\rtri_{\ten{A}},
+	\det(\ten{A}-\lambda\ten{1})=-\lambda^3+I_{\ten{A}}\lambda^2-\rdva_{\ten{A}}\lambda+\rtri_{\ten{A}},
 \]
 pri tem so $I_{\ten{A}}, \rdva_{\ten{A}}, \rtri_{\ten{A}}$ \emph{glavne invariante} za $\ten{A}$.
 Če so $a_1,a_2,a_3$ lastne vrednosti od $\ten{A}$, potem je

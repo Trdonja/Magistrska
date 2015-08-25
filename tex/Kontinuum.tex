@@ -21,7 +21,7 @@ kot doslej, označevali z malimi simboli: $x$, $(x_1,x_2,x_3)$, $\vek{x}$, in ji
 \begin{definicija}
 	\emph{Konfiguracija (materialnega) telesa} je zvezna in injektivna preslikava
 	\[ \kappa\colon \B\to\E,\qquad \kappa\colon X\mapsto x=\kappa(X). \]
-	Tudi sliki preslikave $\kappa$, t.~j.~$\kappa(\B)$, rečemo \emph{konfiguracija telesa}.
+	Tudi sliki preslikave $\kappa$, tj.~$\kappa(\B)$, rečemo \emph{konfiguracija telesa}.
 \end{definicija}
 S konfiguracijo torej določamo položaj telesa v prostoru $\E$. Ker je $\B$ kompaktna
 množica, je tudi inverz $\kappa^{-1}\colon\kappa(\B)\to\B$ konfiguracije $\kappa$ zvezna preslikava.
@@ -57,7 +57,7 @@ kjer je $\iota_o$ opazovališče za $\E$.
 
 Na gibanje lahko gledamo tudi kot na enoparametrično družino konfiguracij
 $\{ \chi_t\,;\ t\in I \}$, kjer je preslikava $t\mapsto\chi_t$ (enakomerno) zvezna,
-t.j.~za vsak $\varepsilon>0$ obstaja $\delta>0$, tako da za vsaka $t_1,t_2\in I$,
+tj.~za vsak $\varepsilon>0$ obstaja $\delta>0$, tako da za vsaka $t_1,t_2\in I$,
 za katera je $|t_2-t_1|<\delta$, velja $\sup_{X\in\B}\|\vek{\chi}_{t_2}(X)-\vek{\chi}_{t_1}(X)\|<\varepsilon$.
 Pri tem je $\|\cdot\|$ norma prostora $\V$.
 
@@ -100,7 +100,7 @@ Determinanti deformacijskega gradienta rečemo \emph{jacobijan} in jo označimo 
 Ker so konfiguracije $\chi_t$
 injektivne oz.~bijektivne na svojo sliko, mora biti $J\neq 0$ povsod na $\B\times I$.
 Zaradi zveznosti tenzorskega polja $\ten{F}$ mora biti potem skalarno polje $\det\ten{F}$,
-ki je potem takem tudi zvezno, enakega predznaka povsod na $\B\times I$.
+ki je potemtakem tudi zvezno, enakega predznaka povsod na $\B\times I$.
 Običajno, ni pa nujno, je začetna konfiguracija ob začetnem času $t_1$ časovnega intervala $I$
 taka, da za vse $X\in\B$ velja $\hat{\iota}_{O}(X)=\iota_o(\chi(X,t_1))$. Povedano drugače,
 krajevni vektorji točk iz referenčne konfiguracije (glede na opazovališče $\hat{\iota}_{O}$ za $\E_R$)
@@ -159,7 +159,7 @@ v prostorskem opisu pa z malo,
 Res, če je $\vek{w}$ poljubno vektorsko polje, dobimo iz (\ref{e:matopi})
 z uporabo verižnega pravila
 \begin{gather*}
-	\langle\Grad\phi,\vek{w}\rangle=\langle\grad\phi,(\Grad\chi)\vek{w}\rangle=
+	\langle\Grad\phi,\vek{w}\rangle=\langle\grad\phi,(\Grad\vek{\chi})\vek{w}\rangle=
 	\langle\grad\phi, \ten{F}\vek{w}\rangle=\langle\ten{F}^{T}\grad\phi,\vek{w}\rangle, \\
 	(\Grad\vek{u})\vek{w}=(\grad\vek{u})(\Grad\chi)\vek{w}
 	=(\grad\vek{u})\ten{F}\vek{w}.
@@ -264,7 +264,7 @@ enotski normali in
 \emph{ploščinska elementa}.
 
 Če je $r=r(u,v)$ regularna parametrizacija neke ploskve v $\B_t$, ki je lahko tudi
-del robu $\partial\B$, potem lahko dolžinska elementa $d\vek{x}_1\times d\vek{x}_2$,
+del robu $\partial\B$, potem lahko dolžinska elementa $d\vek{x}_1$, $d\vek{x}_2$,
 ki nastopata v površinskem elementu $d\vek{s}=d\vek{x}_1\times d\vek{x}_2$, razumemo kot
 infinitezimalna tangentna vektorja
 \[
@@ -350,8 +350,8 @@ Naj bo $\ten{S}\in\L(\W)$ še ena linearna preslikava in $\varepsilon>0$. Potem 
 	\sum_{j=1}^n\omega(\vek{u}_1,\dots,\ten{A}^{-1}\ten{S}\vek{u}_j,\dots,\vek{u}_n)\Big)+o(\varepsilon)\\
 	&=(\det \ten{A})(1+\varepsilon\,\tr(\ten{A}^{-1}\ten{S}))\,\omega(\vek{u}_1,\dots,\vek{u}_n)+o(\varepsilon).
 \end{align*}
-Pri tem smo člene, kjer nastopajo potence števila $\varepsilon$, večje od 1, spravili
-v izraz $o(\varepsilon)$. Od tu sedaj lahko izračunamo smerni odvod
+Pri tem smo člene, kjer nastopajo potence števila $\varepsilon$, višje od 1, spravili
+v izraz $o(\varepsilon)$. Od tu lahko sedaj izračunamo smerni odvod
 \begin{multline*}
 	\at{\frac{d}{d\varepsilon}\det(\ten{A}+\varepsilon \ten{S})}{\varepsilon=0}
 	\,\omega(\vek{u}_1,\dots,\vek{u}_n)=
@@ -365,7 +365,7 @@ Determinanta je odvedljiva preslikava, zato je krepki odvod enak pravkar izraču
 smernemu odvodu, torej imamo
 \begin{equation} \label{e:odvodet}
 	D\det(\ten{A})(\ten{S})=\langle(\det \ten{A})\ten{A}^{-T},\ten{S}\rangle
-	\quad\textrm{oz.}\quad D\det(\ten{A})=(\det \ten{A})\ten{A}^{-T}
+	\quad\textrm{oz.}\quad D\det(\ten{A})=(\det \ten{A})\ten{A}^{-T}.
 \end{equation}
 
 Sedaj imamo pripravljeno vse, da izračunamo materialni časovni odvod jacobijana:
@@ -374,7 +374,7 @@ Sedaj imamo pripravljeno vse, da izračunamo materialni časovni odvod jacobijan
 	\nonumber \\ &= J\tr(\dot{\ten{F}}\ten{F}^{-1}) = J\tr(\grad\vek{v})=J\div\vek{v}. \label{e:dotJ}
 \end{align}
 Pri tem smo uporabili verižno pravilo, malo prej izpeljano pravilo za odvod determinante
-(kjer vzamemo $\W=\V$), komutativnost skalarnega produkta ter zvezo (\ref{e:L}).
+(kjer vzamemo $\W=\V$), definicijo skalarnega produkta na prostoru $\L(\V)$ ter zvezo (\ref{e:L}).
 
 \begin{izrek}[Transportni izrek] \label{i:transport}
 	Naj bo $\mathcal{P}\subseteq \B$ regularno območje znotraj referenčne konfiguracije in naj
@@ -450,7 +450,7 @@ Iz tega zakona z uporabo izreka \ref{i:prointrel} dobimo
 in ker to velja za vsako množico $\mathcal{P}\subseteq \B$, dobimo po trditvi \ref{t:oiz}
 naslednjo relacijo za masni gostoti:
 \begin{equation} \label{e:rojror}
-	\rho_R(X)=\rho(X,t)J(X,t)\qquad\textrm{za vsak}\ X\in \B,\ t\in I.
+	\rho_R(X)=\rho(X,t)J(X,t)\qquad\textrm{za vse}\ X\in \B,\ t\in I.
 \end{equation}
 Seveda potem velja $\rho_R=\rho J$ tudi v prostorskem opisu na $\Omega$.
 
