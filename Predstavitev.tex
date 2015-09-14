@@ -1,0 +1,430 @@
+\documentclass{beamer}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usetheme{Goettingen} %Warsaw
+
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathrsfs,mathtools,stmaryrd,graphicx}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+\usepackage[mathcal]{euscript}
+\usepackage{verbatim}
+
+% ukazi
+\newcommand{\R}{\mathbb R} % množica realnih števil
+\newcommand{\E}{\mathscr E} % Evklidski točkovni prostor
+\newcommand{\V}{\mathscr V} % trirazsežni Evklidski vektorski prostor
+\newcommand{\W}{\mathscr W} % normirani vektorski prostor
+\renewcommand{\L}{\mathscr L} % prostor linearnih preslikav
+\newcommand{\B}{\mathcal B} % materialno telo
+\newcommand{\U}{\mathcal U} % množica U v E
+\newcommand{\vek}[1]{\boldsymbol #1} % vektor
+\newcommand{\ten}[1]{\mathbf #1} % tenzor drugega reda
+\newcommand{\grad}{\mathrm{grad}} % gradient
+\renewcommand{\div}{\mathrm{div}} % divergenca
+\newcommand{\Grad}{\mathrm{Grad}} % Gradient
+\newcommand{\Div}{\mathrm {Div}} % Divergenca
+\newcommand{\tr}{\mathrm{tr}} % sled
+\newcommand{\bsi}{\bar{\sigma}} % bar sigma
+\newcommand{\rdva}{I\! I} % rimska 2
+\newcommand{\rtri}{I\! I\! I} % rimska 3
+\newcommand{\bottop}[3]{{#1}_{#2}^{\phantom{#2}{#3}}}
+\newcommand{\topbot}[3]{{#1}^{#2}_{\phantom{#2}{#3}}}
+\newcommand{\cs}[3]{{\mit\Gamma}_{#1\phantom{#2}#3}^{\phantom{#1}#2}} % Christoffelov simbol prve vrste
+\newcommand{\ks}[2]{{\mit\Gamma}^{#1}_{\phantom{#1}#2}} % Christoffelov simbol druge vrste
+\newcommand{\at}[2]{#1\Big|_{#2}} % izvršeno v točki
+
+
+\title{Hamiltonov princip v mehaniki kontinuuma}
+\author{Domen Mo\v{c}nik}
+
+
+\begin{document}
+
+
+\begin{frame}%[plain]
+\titlepage
+\begin{center}Mentor: izr.~prof.~dr.~Igor Dobov\v{s}ek\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Konfiguracije}
+
+\begin{block}{Konfiguracija materialnega telesa}
+	\[ \kappa\colon \B\to\E,\qquad \kappa\colon X\mapsto x=\kappa(X). \]
+\end{block}
+
+\begin{figure}[h]
+ \begin{center}
+	\scalebox{.5}{\input{img/gibanje}}
+ \end{center}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Gibanje}
+
+\begin{block}{Gibanje materialnega telesa \tiny{v časovnem intervalu $I=[t_1,t_2]$}}
+	\begin{equation*}
+		\chi\colon\B\times I\to\E,\qquad \chi\colon(X,t)\mapsto x
+	\end{equation*}
+\end{block}
+
+\begin{block}{Trenutna konfiguracija telesa ob času $t\in I$}
+	\[ \chi_t\colon\B\to\E,\qquad \chi_t(x):=\chi(X,t) \]
+	\tiny{\[\B_t:=\chi_t(\B)\]}
+\end{block}
+
+\begin{figure}[h]
+ \begin{center}
+	\scalebox{.5}{\input{img/gibanje}}
+ \end{center}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Količine, povezane z gibanjem}
+
+\begin{itemize}
+	\item Deformacijski gradient
+	\[
+		\ten{F}\colon \B\times I\to\L(\V),\ \ten{F}(X,t)=\Grad\vek{\chi}(X,t)=\Grad\vek{\chi}_t(X)
+	\]
+	\item Jacobijan $J=\det\ten{F}$
+	\item Hitrost in pospešek
+	\begin{align*}
+		\vek{v}\colon \B\times I\to \V \qquad & \vek{v}(X,t) = \frac{\partial\vek{\chi}}{\partial t}(X,t) \\
+		\vek{a}\colon \B\times I\to \V \qquad & \vek{a}(X,t) = \frac{\partial^2\vek{\chi}}{\partial t^2}(X,t)
+	\end{align*}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Materialni in prostorski opis}
+
+\[ \Omega=\{(x,t)\;;\ x\in\chi_t(\B),\ t\in I\}\subset\E\times I \]
+
+\begin{block}{Prostorski opis polja $\vek{f}\colon \B\times I\to\W$}
+	\[
+		\bar{\vek{f}}\colon\Omega\to\W,\qquad
+		\bar{\vek{f}}(x,t):=\vek{f}(\chi^{-1}(x,t),t)=\vek{f}(X,t)
+	\]
+	\tiny{\[ \chi^{-1}(x,t):=\bottop{\chi}{t}{-1}(x) \]}
+\end{block}
+
+\begin{block}{Materialni opis polja $\vek{f}\colon\Omega\to\W$}
+	\begin{equation*}
+		\hat{\vek{f}}\colon \B\times I\to\W,\qquad
+		\hat{\vek{f}}(X,t):=\vek{f}(\chi(X,t),t)=\vek{f}(x,t)
+	\end{equation*}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Diferencialni operatorji v materialnem in prostorskem opisu}
+
+\[ \Grad\vek{f}:=\nabla\hat{\vek{f}},\qquad \Div\vek{f}:=\div\hat{\vek{f}}, \]
+\[ \grad\vek{f}:=\nabla\bar{\vek{f}},\qquad \div\vek{f}:=\div\bar{\vek{f}} \]
+
+\begin{block}{Zveza med gradienti}
+	$\phi$ skalarno, $\vek{u}$ pa vektorsko polje
+	\begin{equation*}
+		\Grad\phi=\ten{F}^{T}\grad\phi,\qquad \Grad\vek{u}=(\grad\vek{u})\ten{F}
+	\end{equation*}
+\end{block}
+
+\begin{block}{Materialni časovni odvod}
+	\begin{equation*}
+		\frac{d\vek{f}}{dt}=\frac{\partial\vek{f}}{\partial t}+(\grad\vek{f})(\vek{v})
+	\end{equation*}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Površinski in prostorninski element}
+
+\begin{equation*}
+	\vek{n}\,da=J\ten{F}^{-T}\vek{N}\,dA
+\end{equation*}
+\begin{equation*}
+	dv=J\,dV
+\end{equation*}
+
+\begin{align*}
+	\int_{\mathcal{S}_t}\vek{f}[\vek{n}]\,da=\int_{\mathcal{S}}\vek{f}[J\ten{F}^{-T}\vek{N}]\,dA\\
+	\int_{\mathcal{S}}\vek{f}[\vek{N}]\,dA=\int_{\mathcal{S}_t}\vek{f}[J^{-1}\ten{F}^{T}\vek{n}]\,da
+\end{align*}
+
+\begin{equation*}
+	\int_{\mathcal{P}_t}\vek{f}\,dv=\int_{\mathcal{P}}\vek{f}J\,dV \qquad
+	\int_{\mathcal{P}}\vek{f}\,dV=\int_{\mathcal{P}_t}\vek{f}J^{-1}\,dv
+\end{equation*}
+
+\end{frame}
+
+
+\begin{frame}{Masa in masna gostota}
+
+\[ M(\mathcal{P})=\int_{\mathcal{P}}\rho_R\,dV,\quad M(\mathcal{P})=\int_{\chi_t(\mathcal{P})}\rho\,dv \]
+\[ \rho_R=J\rho \]
+
+\begin{block}{Zakon o ohranitvi mase}
+	\[ \frac{d}{dt}\int_{\chi_t(\mathcal{P})}\rho(x,t)\,dv = 0\quad\textrm{za vsak}\ t\in I \]
+\end{block}
+
+\begin{itemize}
+	\item \[ \int_{\mathcal{P}}\vek{f}\rho_R\,dV=\int_{\chi_t(\mathcal{P})}\vek{f}\rho\,dv \]
+	\item \[ \dot{\rho}+\rho\div\vek{v}=0 \]
+	\item \[
+		\frac{d}{dt}\int_{\chi_t(\mathcal{P})}\vek{f}\rho\,dv=
+		\int_{\chi_t(\mathcal{P})}\dot{\vek{f}}\rho\,dv.
+	\]
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Dopustno gibanje}
+
+\[ \mathcal{X}=C^2(\B\times I,\E) \]
+\begin{block}{Dopustno gibanje}
+	$\chi\in\mathcal{X}$, ki ustreza začetnim in robnim pogojem\\
+	Množica vseh dopustnih gibanj: $\mathcal{A}$
+\end{block}
+
+\begin{block}{Variacija gibanja}
+	$\vek{\eta}\in C^2(\B\times I,\V)$,
+	\[
+		\vek{\eta}(X,t_1)=\vek{0}\quad \textrm{in} \quad
+		\vek{\eta}(X,t_2)=\vek{0}\quad \textrm{za vse}\ X\in \B\quad\textrm{ter}
+	\]
+	\[
+		\vek{\eta}(X,t)=\vek{0}\quad \textrm{za vse}\ (X,t)\in \partial_1 \B\times I
+	\]
+	Množica vseh variacij gibanja: $\mathcal{T}$
+\end{block}
+
+\begin{block}{Bližnje gibanje}
+	$\chi+\varepsilon\vek{\eta}$, $\varepsilon\in\R$
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Variacije}
+
+$U^{\mathrm{odp}}\subseteq\mathcal{A}$, $F\colon U\to\mathcal{Y}$
+\[
+	\delta F\colon U\to\L(\mathcal{T},\mathcal{Y}),\qquad
+	\delta F(\chi)(\vek{\eta})=\at{\frac{d}{d\varepsilon}F(\chi+\varepsilon\vek{\eta})}{\varepsilon=0}
+\]
+\[ F(\chi)=Y \]
+\[ Y^*=F(\chi+\varepsilon\vek{\eta}) \]
+\[ \delta Y = \at{\Big(\frac{dY^*}{d\varepsilon}\Big)}{\varepsilon=0} \]
+
+\end{frame}
+
+
+\begin{frame}{Variacije osnovnih količin}
+
+\begin{itemize}
+
+\item
+\[ F(\chi)=d\vek{\chi}/dt=\dot{\vek{\chi}}=\vek{v} \]
+\[ \vek{v}^*=\frac{d}{dt}(\vek{\chi}+\varepsilon\vek{\eta})=\vek{v}+\varepsilon\dot{\vek{\eta}} \]
+\[ \delta\vek{v}=\dot{\vek{\eta}} \]
+
+\item
+$F(\chi)=\Grad{\vek{\chi}}=\ten{F}$, $\delta\ten{F}=\Grad\vek{\eta}$
+
+\item
+$J=\det(\Grad\vek{\chi})$, $J^*=\det(\Grad(\vek{\chi}+\varepsilon\vek{\eta}))=\det(\ten{F}^*)$,
+$\delta J=J\div\vek{\eta}$
+
+\item
+$\rho^*=\frac{\rho_R}{J^*}$, $\delta\rho=-\rho\div\vek{\eta}$
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Kinetična energija}
+
+\begin{equation*}
+	T = \int_{\B}\frac{1}{2}\langle\vek{v},\vek{v}\rangle\rho_R\, dV =
+	\int_{\B_t}\frac{1}{2}\langle\vek{v},\vek{v}\rangle\rho\, dv
+\end{equation*}
+
+\[
+	\mathcal{I}=\int_{t_1}^{t_2} T\,dt=\int_{t_1}^{t_2}
+	\int_{\B}\frac{1}{2}\langle\vek{v},\vek{v}\rangle\rho_R\, dV \,dt
+\]
+
+\begin{equation*}
+	\delta \mathcal{I} =
+	-\int_{t_1}^{t_2}\int_{\B}\langle\rho_R\vek{a},\vek{\eta}\rangle\, dV\, dt=
+	-\int_{t_1}^{t_2}\int_{\B_t}\langle\rho\vek{a},\vek{\eta}\rangle\, dv\, dt
+\end{equation*}
+
+\end{frame}
+
+
+\begin{frame}{Virtualno delo zunanjih sil}
+
+\[
+	\vek{f}(t)=\vek{f}_b(t)+\vek{f}_s(t),
+\]
+\[
+	\vek{f}_b(t)=\int_{\B_t}\vek{b}\rho\, dv=\int_{\B}\vek{b}\rho_R\, dV
+\]
+\[
+	\vek{f}_s(t)=\int_{\partial \B_t}\vek{t}\, da=\int_{\partial \B}\vek{t}_R\, dA
+\]
+\[ \vek{b}(x,t)=-\grad\phi(x,t),\qquad \vek{t}_R(x,t)=-\grad\psi(x,t) \]
+
+\begin{equation*}
+	W = \int_{\B}\phi\rho_R\, dV + \int_{\partial_2 \B}\psi\, dA
+\end{equation*}
+
+\begin{align*}
+	\delta W &= -\int_{\B}\langle\rho_R\vek{b},\vek{\eta}\rangle\, dV
+	- \int_{\partial_2 \B}\langle\vek{t}_R,\vek{\eta}\rangle\, dA\\
+	&=-\int_{\B_t}\langle\rho\vek{b},\vek{\eta}\rangle\, dv
+	- \int_{\partial_2 \B_t}\langle\vek{t},\vek{\eta}\rangle\, da
+\end{align*}
+
+\end{frame}
+
+
+\begin{frame}{Hamiltonov princip}
+
+\begin{block}{Hamiltonov funkcional}
+	gibanju $\chi\in \mathcal{A}$ s kinetično energijo $T$ in potencialno
+	energijo $U+W$ priredi realno število
+	\[
+		H=\int_{t_1}^{t_2}(T-U-W)\,dt.
+	\]
+\end{block}
+
+\begin{block}{Hamiltonov princip}
+	Za pravo gibanje telesa velja $J>0$, Hamiltonov funkcional pa pri pravem gibanju
+	zavzame lokalni minimum.
+\end{block}
+
+\begin{block}{Trditev}
+	Če funkcional $F\colon \mathcal{D}\subseteq\mathcal{A}\to\R$ zavzame lokalni minimum pri dopustnem gibanju $\chi\in\mathcal{D}$, potem velja
+	\[ \delta F(\chi)(\vek{\eta})=0\quad\textrm{za vsak}\ \vek{\eta}\in\mathcal{T}. \]
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Potreben pogoj za pravo gibanje}
+
+\begin{itemize}
+	\item $J>0$
+	\item \[ \delta H = \int_{t_1}^{t_2}(\delta T-\delta U-\delta W)\,dt = 0 \]
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Elastični fluid}
+
+\begin{block}{Notranja energija}
+	\[ U=\int_{\B}\rho_R e(\rho)\,dV=\int_{\chi_t(\B)}\rho e(\rho)\,dv \]
+	$e\colon[0,\infty)\to\R$ gostota notranje energije
+\end{block}
+
+\begin{align*} 
+	\delta U &=-\int_{\B}\rho_R e'(\rho)\rho\div\vek{\eta}\,dV \\
+	&= -\int_{\chi_t(\B)}\rho^2 e'(\rho)\div\vek{\eta}\,dv.
+\end{align*}
+
+\begin{block}{Robni pogoj napetosti}
+	\[ \vek{t}=-p\vek{n}\ \textrm{na}\ \{ (x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \} \]
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Elastični fluid}
+
+\begin{multline*}
+	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(\B)}\Big<-\rho\vek{a}-
+	\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b},\vek{\eta}\Big>\,dv+ \\
+	+\int_{\chi_t(\partial \B)}\big<\big(\rho^2 e'(\rho)-p\big)\vek{n},\vek{\eta}\big>\,da\bigg)\,dt=0
+\end{multline*}
+
+\begin{equation*}
+	\rho\vek{a}=\grad\big(\rho^2 e'(\rho)\big)+\rho\vek{b}\quad
+	\textrm{na}\ \Omega
+\end{equation*}
+
+\begin{equation*}
+	\rho^2 e'(\rho)=p \quad\textrm{na}\ \{ (x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}
+\end{equation*}
+
+\end{frame}
+
+
+\begin{frame}{Hiperelastično trdno telo}
+
+\begin{block}{Notranja energija}
+	\[ U=\int_{\B}\rho_R \sigma(\ten{F})\,dV=\int_{\chi_t(\B)}\rho\sigma(\ten{F})\,dv \]
+	$\sigma\colon\L(\V)\to\R$ funkcija shranjene energije ali gostota deformacijske energije
+\end{block}
+
+\begin{align*} 
+	\delta U &=\int_{\B}\langle\ten{S},\Grad\vek{\eta}\rangle\,dV \\
+	&= \int_{\chi_t(\B)}\langle\ten{T},\grad\vek{\eta}\rangle\,dv
+\end{align*}
+
+\[ \ten{S}=\rho_RD\sigma(\ten{F}),\qquad \ten{T}=\frac{1}{J}\ten{S}\ten{F}^{T}=\rho D\sigma(\ten{F})\ten{F}^{T} \]
+
+\end{frame}
+
+
+\begin{frame}{Hiperelastično trdno telo}
+
+\begin{multline*}
+	\int_{t_1}^{t_2}\bigg( \int_{\B}\langle -\rho_R\vek{a}+
+	\Div\ten{S}+\rho_R\vek{b},\vek{\eta}\rangle \,dV+ \\
+	+\int_{\partial_2 \B}\langle\vek{t}_R-\ten{S}\vek{N},\vek{\eta}\rangle\,dA\bigg)\,dt=0
+\end{multline*}
+\begin{multline*}
+	\int_{t_1}^{t_2}\bigg( \int_{\chi_t(\B)}\langle -\rho\vek{a}+
+	\div\ten{T}+\rho\vek{b},\vek{\eta}\rangle\,dv+ \\
+	+\int_{\chi_t(\partial_2 \B)}\langle\vek{t}-\ten{T}\vek{n},\vek{\eta}\rangle\,ds\bigg)\,dt=0
+\end{multline*}
+
+\end{frame}
+
+
+\begin{frame}{Hiperelastično trdno telo}
+
+\begin{equation*}
+	\rho_R\vek{a}=\Div\ten{S}+\rho_R\vek{b}\quad\textrm{na}\ \B\times[t_1,t_2]
+\end{equation*}
+\begin{equation*}
+	\ten{S}\vek{N}=\vek{t}_R\quad\textrm{na}\ \mathcal{R}\times[t_1,t_2]
+\end{equation*}
+\\
+\begin{equation*}
+	\rho\vek{a}=\div\ten{T}+\rho\vek{b}\quad\textrm{na}\ \Omega
+\end{equation*}
+\begin{equation*}
+	\ten{T}\vek{n}=\vek{t}\quad\textrm{na}\ \{(x,t)\,;\ x\in\chi_t(\mathcal{R}),\ t\in[t_1,t_2] \}
+\end{equation*}
+
+\end{frame}
+
+
+
+\end{document}
